@@ -1,5 +1,6 @@
 # g30
-### write something
+### Write something
 #### Safe Space
+A diary web application
 
 

@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;800&display=swap');
+
+h1 {
+    font-weight: 800;
+}
+
+body {
+    height:100vh; 
+    background-size: contain;
+    background: rgb(255,255,255);
+    background: linear-gradient(200deg, rgba(255,255,255,1) 0%, rgba(202,222,242,1) 100%);
+    font-family: 'Fira Sans', sans-serif;
+}
+
+.navbar-brand {
+    font-size: 2rem;
+}
+
+.btn-custom {
+    border-style: solid;
+    border-radius: 25px;
+    border: 1px solid black;
+
+    transition: 0.3s;
+}
+
+.btn-custom:hover {
+    background-color: black;
+    color: white;
+
+    transition: 0.3s;
+}
+
+.form-control:focus {
+    border-color: #000000;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 5px rgba(0, 0, 0, 0.6);
+    transition: 0.3s;
+}
+
+.btn:focus {
+    border-color: #000000;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 5px rgba(0, 0, 0, 0.6);
+    transition: 0.3s;
+}
+
+
+  

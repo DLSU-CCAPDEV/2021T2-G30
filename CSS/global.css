@@ -1,63 +1,63 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;800&display=swap");
 
 h1 {
-    font-weight: 800;
+  font-weight: 800;
 }
 
 body {
-    height:100vh; 
-    background-size: contain;
-    background: rgb(255,255,255);
-    background: linear-gradient(200deg, rgba(255,255,255,1) 0%, rgba(202,222,242,1) 100%);
-    font-family: 'Fira Sans', sans-serif;
-    /* font-family: 'Courier New', Courier, monospace; */
+  height: 100vh;
+  background-size: contain;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    200deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(202, 222, 242, 1) 100%
+  );
+  font-family: "Fira Sans", sans-serif;
+  /* font-family: 'Courier New', Courier, monospace; */
 }
 
 .navbar-brand {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
 .header {
-    background-color: #163172;
+  background-color: #163172;
 }
 
 .navbarcolor {
-    background-color: inherit;
+  background-color: inherit;
 }
 
 .btn-custom {
-    border-style: solid;
-    border-radius: 25px;
-    border: 1px solid black;
-    transition: 0.3s;
+  border-style: solid;
+  border-radius: 25px;
+  border: 1px solid black;
+  transition: 0.3s;
 }
 
 .btn-custom:hover {
-    background-color: black;
-    color: white;
-    transition: 0.2s;
+  background-color: black;
+  color: white;
+  transition: 0.2s;
 }
 
 .btn-signup {
-    border-color: rgb(255, 255, 255);
-    color:rgb(0, 183, 255);
-    font-size: 10pt;
-    padding: 0px;
-   
+  border-color: rgb(255, 255, 255);
+  color: rgb(0, 183, 255);
+  font-size: 10pt;
+  padding: 0px;
 }
 
 .btn-signup:hover {
-    border-color: rgb(255, 255, 255);
-    color:rgb(0, 0, 255);
-    font-size: 10pt;
-    padding: 0px;
+  border-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 255);
+  font-size: 10pt;
+  padding: 0px;
 }
 
 .form-control:focus {
-    border-color: #000000;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 5px rgba(0, 0, 0, 0.6);
-    transition: 0.2s;
+  border-color: #000000;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 5px rgba(0, 0, 0, 0.6);
+  transition: 0.2s;
 }
-
-
-  

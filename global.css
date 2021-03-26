@@ -16,6 +16,14 @@ body {
     font-size: 2rem;
 }
 
+.header {
+    background-color: #163172;
+}
+
+.navcolor {
+    background-color: inherit;
+}
+
 .btn-custom {
     border-style: solid;
     border-radius: 25px;

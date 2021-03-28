@@ -1,32 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;800&display=swap");
 
-h1 {
-  font-weight: 800;
-}
+/* login */
 
 body {
   height: 100vh;
   background-size: contain;
-  background: rgb(255, 255, 255);
   background: linear-gradient(
     200deg,
     rgba(255, 255, 255, 1) 0%,
     rgba(202, 222, 242, 1) 100%
   );
   font-family: "Fira Sans", sans-serif;
-  /* font-family: 'Courier New', Courier, monospace; */
-}
-
-.navbar-brand {
-  font-size: 2rem;
-}
-
-.header {
-  background-color: #163172;
-}
-
-.navbarcolor {
-  background-color: inherit;
 }
 
 .btn-custom {
@@ -37,7 +21,7 @@ body {
 }
 
 .btn-custom:hover {
-  background-color: black;
+  background-color: #163172;
   color: white;
   transition: 0.2s;
 }
@@ -57,7 +41,21 @@ body {
 }
 
 .form-control:focus {
-  border-color: #000000;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 5px rgba(0, 0, 0, 0.6);
+  border-color: #163172;
+  box-shadow: inset 0 0px 0px #163172, 0 0 4px #163172;
   transition: 0.2s;
+}
+
+/* Main Page */
+
+.navbar-brand {
+  font-size: 2rem;
+}
+
+.header {
+  background-color: #163172;
+}
+
+h1 {
+  font-weight: 800;
 }

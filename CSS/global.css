@@ -1,8 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;800&display=swap");
 
-/* login */
+/* global */
 
-body {
+html, body {
+  min-height: 100%;
   background-size: contain;
   background: linear-gradient(
     200deg,
@@ -11,6 +12,8 @@ body {
   );
   font-family: "Fira Sans", sans-serif;
 }
+
+/* login */
 
 .btn-custom {
   border-style: solid;

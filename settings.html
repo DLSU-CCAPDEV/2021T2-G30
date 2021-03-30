@@ -100,7 +100,7 @@
     </header>
 
     <div class="container" style="padding-top: 5em">
-      <div class="row mx-auto">
+      <div class="row mx-auto" style="min-width:auto; min-height: 750px;">
         <div class="col">
           <div class="card" style="border: none; background: none">
             <div class="face face1 mx-auto" style="border-radius: 25px">
@@ -193,11 +193,35 @@
           <div class="modal-body">
             <form>
               <div class="mb-3">
+                <h5>First Name</h5>
+                <input
+                  type="email"
+                  class="form-control p-2"
+                  id="FirstNameNoEdit"
+                  aria-describedby="emailHelp"
+                  placeholder="Sugma"
+                  readonly
+                  style="border: 0px"
+                />
+              </div>
+              <div class="mb-3">
+                <h5>Last Name</h5>
+                <input
+                  type="email"
+                  class="form-control p-2"
+                  id="LastNameNoEdit"
+                  aria-describedby="emailHelp"
+                  placeholder="Balls"
+                  readonly
+                  style="border: 0px"
+                />
+              </div>
+              <div class="mb-3">
                 <h5>Username</h5>
                 <input
                   type="email"
                   class="form-control p-2"
-                  id="exampleInputEmail1"
+                  id="UsernameNoEdit"
                   aria-describedby="emailHelp"
                   placeholder="Ligmaballs"
                   readonly
@@ -209,7 +233,7 @@
                 <input
                   type="email"
                   class="form-control p-2"
-                  id="exampleInputEmail1"
+                  id="EmailNoEdit"
                   aria-describedby="emailHelp"
                   placeholder="Ligmaballs@yahoo.com"
                   readonly
@@ -221,8 +245,8 @@
                 <input
                   type="password"
                   class="form-control p-2"
-                  id="exampleInputPassword1"
-                  placeholder="Password"
+                  id="PasswordNoEdit"
+                  placeholder="***********"
                   readonly
                   style="border: 0px"
                 />
@@ -265,11 +289,31 @@
           <div class="modal-body">
             <form>
               <div class="mb-3">
+                <h5>First Name</h5>
+                <input
+                  type="email"
+                  class="form-control p-2"
+                  id="FirstNameEdit"
+                  aria-describedby="emailHelp"
+                  placeholder="Sugma"
+                />
+              </div>
+              <div class="mb-3">
+                <h5>Last Name</h5>
+                <input
+                  type="email"
+                  class="form-control p-2"
+                  id="LastNameEdit"
+                  aria-describedby="emailHelp"
+                  placeholder="Balls"
+                />
+              </div>
+              <div class="mb-3">
                 <h5>Username</h5>
                 <input
                   type="email"
                   class="form-control p-2"
-                  id="exampleInputEmail1"
+                  id="UsernameEdit"
                   aria-describedby="emailHelp"
                   placeholder="Ligmaballs"
                 />
@@ -279,7 +323,7 @@
                 <input
                   type="email"
                   class="form-control p-2"
-                  id="exampleInputEmail1"
+                  id="EmailEdit"
                   aria-describedby="emailHelp"
                   placeholder="Ligmaballs@yahoo.com"
                 />
@@ -289,7 +333,7 @@
                 <input
                   type="password"
                   class="form-control p-2"
-                  id="exampleInputPassword1"
+                  id="PasswordEdit"
                   placeholder="Password"
                 />
               </div>

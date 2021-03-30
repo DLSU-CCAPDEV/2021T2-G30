@@ -4,12 +4,12 @@ h3 {
   font-weight: 300;
 }
 
-.container {
-  width: 1000px;
+/*.container {
+  min-height: auto;
   position: relative;
   display: flex;
   justify-content: space-between;
-}
+}*/
 
 .container .card {
   position: relative;

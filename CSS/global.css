@@ -3,7 +3,7 @@
 /* login */
 
 body {
-  height: 100vh;
+  min-height: 100%;
   background-size: contain;
   background: linear-gradient(
     200deg,

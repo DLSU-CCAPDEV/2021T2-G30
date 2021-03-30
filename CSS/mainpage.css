@@ -2,3 +2,29 @@
     background-color: white
 
 }
+
+.fas {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    font-size: 50px;
+    color: #7cacd6;
+    padding-bottom: 20px;
+    padding-right: 30px;
+    transition: 0.3s;
+}
+
+.fas:hover {
+    color: #1e56a0;
+    animation-delay: 2s;
+    transition: 0.2s;
+}
+
+.card-text {
+    
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+} 

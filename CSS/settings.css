@@ -4,13 +4,6 @@ h3 {
   font-weight: 300;
 }
 
-/*.container {
-  min-height: auto;
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-}*/
-
 .container .card {
   position: relative;
   cursor: pointer;

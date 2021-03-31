@@ -24,6 +24,20 @@
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
 } 
+
+.card {
+    transition: .2s;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+.card:hover {
+    transition: 0.2s;
+    border-color: #163172;
+    box-shadow: inset 0 0px 0px white, 0 0 4px #163172;
+    -webkit-transform:translateY(-5px);
+    transform: translateY(-5px)
+}

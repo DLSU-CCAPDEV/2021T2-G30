@@ -38,18 +38,19 @@
             <input
               type="email"
               class="form-control p-2"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
+              id="LoginUsername"
               placeholder="Username"
             />
+            <!-- Required ^ -->
           </div>
           <div class="mb-0">
             <input
               type="password"
               class="form-control p-2"
-              id="exampleInputPassword1"
+              id="LoginPassword"
               placeholder="Password"
             />
+            <!-- Required ^ -->
           </div>
           <div>
             <p class="mt-1 mb-4" style="font-size: 10pt">
@@ -93,14 +94,27 @@
             </div>
             <div class="modal-body">
               <form action="login.html">
+                <div class="col">
+                  <div class="mb-3">
+                    <input
+                      type="file"
+                      accept=".jpg, .jpeg, .png"
+                      class="form-control p-2"
+                      id="DisplayPicture"
+                      title="Upload display picture"
+                      required
+                    />
+                  </div>
+                </div>
                 <div class="row mb-3">
                   <div class="col">
                     <div class="mb-0">
                       <input
                         type="text"
                         class="form-control p-2"
-                        id="firstname"
+                        id="FirstName"
                         placeholder="First Name"
+                        required
                       />
                     </div>
                   </div>
@@ -109,8 +123,9 @@
                       <input
                         type="text"
                         class="form-control p-2"
-                        id="lastname"
+                        id="LastName"
                         placeholder="Last Name"
+                        required
                       />
                     </div>
                   </div>
@@ -119,19 +134,22 @@
                   <input
                     type="email"
                     class="form-control p-2"
-                    id="exampleInputEmail1"
-                    aria-describedby="emailHelp"
+                    id="EmailRegister"
                     placeholder="Email"
+                    required
                   />
                 </div>
                 <div class="mb-3">
                   <input
                     type="text"
                     class="form-control p-2"
-                    id="exampleInputEmail1"
-                    aria-describedby="emailHelp"
+                    id="UserNameRegister"
                     placeholder="Username"
+                    required
                   />
+                </div>
+                <div class="mb-3">
+                  <textarea class="form-control" maxlength="150" placeholder="Bio (optional)" aria-label="With textarea"></textarea>
                 </div>
                 <div class="row mb-3">
                   <div class="col">
@@ -139,8 +157,9 @@
                       <input
                         type="password"
                         class="form-control p-2"
-                        id="exampleInputPassword1"
+                        id="PasswordRegister"
                         placeholder="Password"
+                        required
                       />
                     </div>
                   </div>
@@ -149,8 +168,9 @@
                       <input
                         type="password"
                         class="form-control p-2"
-                        id="exampleInputPassword1"
+                        id="PasswordRegister2"
                         placeholder="Re-enter Password"
+                        required
                       />
                     </div>
                   </div>

@@ -61,3 +61,14 @@ html, body {
 h1 {
   font-weight: 800;
 }
+
+
+.privacy-globe {
+  font-size: 0.9em;
+  cursor: pointer;
+}
+
+.privacy-lock {
+  font-size: 0.9em;
+  cursor: pointer;
+}

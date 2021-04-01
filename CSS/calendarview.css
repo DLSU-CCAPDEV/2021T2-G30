@@ -1,4 +1,4 @@
-html, body {
+html body {
   min-height: 100vh;
 }
 
@@ -13,6 +13,7 @@ html, body {
 .container {
   background-color: white;
 }
+
 .date i {
   cursor: pointer;
 }

@@ -1,4 +1,4 @@
-html body {
+html, body {
   min-height: 100vh;
 }
 
@@ -12,20 +12,21 @@ html body {
 
 .container {
   background-color: white;
+  height: 100%;
+  margin: 0 auto;
 }
+
 
 .date i {
   cursor: pointer;
 }
 
 .calendar {
-  
   border-radius: 5px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, .3);
   height: 501px;
   perspective: 1000;
   transition: .9s;
-  transform-style: preserve-3d;
   width: 100%;
 }
 
@@ -34,10 +35,6 @@ html body {
   font-weight: 500;
 }
 
-
-.today {
-  background-color: #167e56;
-}
 
 .weeks span:hover:not(.prev-month):not(.next-month) {
   cursor: pointer;

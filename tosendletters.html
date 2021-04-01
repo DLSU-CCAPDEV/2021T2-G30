@@ -120,7 +120,65 @@
         </div>
       </div>
 
+      <div class="container">
+        <div class="row">
+          <div class="col-9 mx-auto">
+            <div class="btn-group dropstart">
+              <button type="button" style="background-color: white; border-color: rgb(221, 221, 221);" class="btn dropdown-toggle letterdropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                Type
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item disabled">To send</a></li>
+                <li><a class="dropdown-item" href="sentletters.html">Sent</a></li>
+                <li><a class="dropdown-item" href="receivedletters.html">Received</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="container pt-3">
+        <div class="row">
+            <div class="col-9 mx-auto">
+              <div class="card mb-3 mx-auto" style="padding-right: 0">
+                <div class="row g-0">
+                  <div class="col-9 custom">
+                    <h5
+                      class="card-title ps-3 pt-4"
+                      style="margin-bottom: -0.4em"
+                    >
+                      Letter Title
+                    </h5>
+                    <div class="card-body" style="overflow: hidden">
+                      <p class="card-text">
+                        I then practiced for gedance because I need to submit a
+                        dance routine called pop line dance one and it comprised
+                        of six parts, the song we used for the dance was Dua
+                        Lipa's dont stop now. Over all a fun, productive day.
+                        Yesterday I ate lunch then worked out then studied arch1
+                        then played dota I really like the hero zeus because he
+                        has this ability called thundergod's wrath like woah wtf
+                        lit fam.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-3">
+                    <img
+                      src="Images/coffee.jpg"
+                      class="img-fluid"
+                      style="height: 169px; width: 246.5px; object-fit: cover"
+                      alt="..."
+                    />
+                  </div>
+                  <div class="card-footer">
+                    <p class="card-text">
+                      <small class="text-muted"> Send to <a href="#">Rayvhen Rosima</a> on May 4, 2023 </small>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         <div class="row">
           <div class="col-9 mx-auto">
             <div class="card mb-3 mx-auto" style="padding-right: 0">
@@ -130,7 +188,7 @@
                     class="card-title ps-3 pt-4"
                     style="margin-bottom: -0.4em"
                   >
-                    Entry Title
+                    Letter Title
                   </h5>
                   <div class="card-body" style="overflow: hidden">
                     <p class="card-text">
@@ -151,7 +209,7 @@
                 </div>
                 <div class="card-footer">
                   <p class="card-text">
-                    <small class="text-muted"> Sent by <a href="#">William Dimaculangan</a> on April 1, 2021</small>
+                    <small class="text-muted"> Send to <a href="#">William Dimaculangan</a> on August 30, 2021</small>
                   </p>
                 </div>
               </div>
@@ -159,47 +217,77 @@
           </div>
         </div>
 
-        <div class="row">
-          <div class="col-9 mx-auto">
-            <div class="card mb-3 mx-auto" style="padding-right: 0">
-              <div class="row g-0">
-                <div class="col-9 custom">
-                  <h5
-                    class="card-title ps-3 pt-4"
-                    style="margin-bottom: -0.4em"
-                  >
-                    Entry Title
-                  </h5>
-                  <div class="card-body" style="overflow: hidden">
-                    <p class="card-text">
-                      I then practiced for gedance because I need to submit a
-                      dance routine called pop line dance one and it comprised
-                      of six parts, the song we used for the dance was Dua
-                      Lipa's dont stop now. Over all a fun, productive day.
-                      Yesterday I ate lunch then worked out then studied arch1
-                      then played dota I really like the hero zeus because he
-                      has this ability called thundergod's wrath like woah wtf
-                      lit fam.
-                    </p>
+        <!-- Create Letter modal -->
+        <button
+        type="button"
+        class="btn"
+        data-bs-toggle="modal"
+        data-bs-target="#createLetterModal"
+        style="box-shadow: none"
+        >
+          <i class="fas fa-feather-alt" id="newLetter" title="Create Letter"></i>
+        </button>
+        
+        <section>
+          <div
+            class="modal fade"
+            id="createLetterModal"
+            tabindex="-1"
+            aria-labelledby="createLetterModalLabel"
+            aria-hidden="true"
+          >
+          <div class="modal-dialog modal-dialog-centered" style="width: 50em">
+            <div class="modal-content" style="border-radius: 15px">
+              <div class="modal-header">
+                <h5 class="modal-title" id="createLetterModalLabel"> Send a letter</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+
+                <!-- Creating letter -->
+                <form>
+                  <div class="mb-3">
+                    <label class="visually-hidden" for="autoSizingSelect">Title of Letter</label>
+                    <input type="text" class="form-control" placeholder="Title of Letter" aria-label="Title of Letter">
                   </div>
-                </div>
-                <div class="col-3">
-                  <img
-                    src="Images/letters.jpg"
-                    class="img-fluid"
-                    style="height: 169px; width: 246.5px; object-fit: cover"
-                    alt="..."
-                  />
-                </div>
-                <div class="card-footer">
-                  <p class="card-text">
-                    <small class="text-muted"> Sent by <a href="#">Rayvhen Rosima</a> on March 31, 2021 </small>
-                  </p>
-                </div>
+                  <div class="row g-3 mb-4">
+                    <div class="col-md-6">
+                      <label for="inputPrivacy" style="font-size: 14px;">Select Recipient</label>
+                      <select id="inputPrivacy" class="form-select">
+                        <option selected> Yourself </option>
+                        <option> Rayvhen Rosima </option>
+                        <option> William Dimaculangan </option>
+                        <option> Tony Stark </option>
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="dateLetter" style="font-size: 14px;"> Date to be sent </label>
+                      <input type="date" class="form-control" id="dateLetter">
+                    </div>
+                  </div>
+                  
+                  <div class="mb-3">
+                    <label class="visually-hidden" for="LetterFormControlTextarea1" class="form-label">Letter Text Area</label>
+                    <textarea class="form-control" id="LetterFormControlTextarea1" rows="5" placeholder="What do you want to say?" aria-label="letter content"></textarea>
+                  </div>
+
+                  <div class="mb-3">
+                    <div class="row">
+                      <label for="exampleFormControlFile1" style="font-size: 14px;">Insert Image</label>
+                      <input type="file" class="form-control-file" id="imageFormControlFile1" accept="image/x-png,image/jpeg" >
+                    </div>
+                  </div>
+                  
+                </form>
+              
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Send letter</button>
               </div>
             </div>
           </div>
-        </div>
+        </section>
       </div>
     </section>
 

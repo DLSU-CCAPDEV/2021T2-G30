@@ -1,43 +1,55 @@
 .card-footer {
-    background-color: white
+  background-color: white;
 }
 
-#newEntry {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    font-size: 50px;
-    color: #7cacd6;
-    padding-bottom: 20px;
-    padding-right: 30px;
-    transition: 0.3s;
+#newEntry,
+#newLetter {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  font-size: 50px;
+  color: #7cacd6;
+  padding-bottom: 20px;
+  padding-right: 30px;
+  transition: 0.3s;
 }
 
-#newEntry:hover {
-    color: #1e56a0;
-    animation-delay: 2s;
-    transition: 0.2s;
+#newEntry:hover,
+#newLetter:hover {
+  color: #1e56a0;
+  animation-delay: 2s;
+  transition: 0.2s;
 }
 
 .card-text {
-    
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-} 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
 
 .card {
-    transition: .2s;
-    -webkit-transition: all 0.2s ease;
-    transition: all 0.2s ease;
+  transition: 0.2s;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .card:hover {
-    transition: 0.2s;
-    border-color: #163172;
-    box-shadow: inset 0 0px 0px white, 0 0 4px #163172;
-    -webkit-transform:translateY(-5px);
-    transform: translateY(-5px)
+  transition: 0.2s;
+  border-color: #163172;
+  box-shadow: inset 0 0px 0px white, 0 0 4px #163172;
+  -webkit-transform: translateY(-5px);
+  transform: translateY(-5px);
+}
+
+.letterdropdown {
+  outline: none;
+  box-shadow: none;
+}
+
+.letterdropdown:focus {
+  outline: none;
+  box-shadow: inset 0 0px 0px #163172, 0 0 4px #163172;
+  transition: 0.2s;
 }

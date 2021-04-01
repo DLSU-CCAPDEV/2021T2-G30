@@ -2,7 +2,8 @@
 
 /* global */
 
-html, body {
+html,
+body {
   min-height: 100vh;
   background-size: contain;
   background: linear-gradient(
@@ -61,7 +62,6 @@ html, body {
 h1 {
   font-weight: 800;
 }
-
 
 .privacy-globe {
   font-size: 0.9em;

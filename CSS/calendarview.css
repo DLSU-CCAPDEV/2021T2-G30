@@ -1,4 +1,4 @@
-html, body {
+/* html, body {
   min-height: 100vh;
 }
 
@@ -12,14 +12,12 @@ html, body {
 
 .container {
   background-color: white;
-  height: 100%;
-  margin: 0 auto;
+  
+ 
 }
 
 
-.date i {
-  cursor: pointer;
-}
+
 
 .calendar {
   border-radius: 5px;
@@ -36,16 +34,82 @@ html, body {
 }
 
 
+
 .weeks span:hover:not(.prev-month):not(.next-month) {
   cursor: pointer;
   font-weight: 700;
 }
 
-.prev-month, .next-month {
-    opacity: 0.5;
-}
 
 .weeks span.today {
   background: #f78536;
   border-radius: 100%;
+} */
+
+
+
+.container {
+  background-color: white;
+  border-radius: 10px;
 }
+
+i {
+  cursor: pointer;
+  
+}
+
+#calendar {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+#calendar tr, #calendar tbody {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  width: 100%;
+}
+
+
+#calendar td {
+  display: flex;
+  flex-direction: column;
+	box-sizing: border-box;
+  padding: 10px;
+	border: 1px solid #DADCE0;
+  text-align: center;
+	min-height: 120px;
+}
+
+#calendar .weeks th {
+	text-align: center;
+	text-transform: uppercase;
+	line-height: 20px;
+	border: none !important;
+	font-size: 13px;
+}
+
+.today {
+  margin: 0;
+  padding: 10px;
+  border-radius: 50%;
+  background: #1967D2;
+  color: white;
+}
+
+tr td:hover:not(.prev-month):not(.next-month) {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+#calendar .prev-month, .next-month {
+  opacity: 0.5;
+
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0
+}
+

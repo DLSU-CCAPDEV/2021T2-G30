@@ -3,7 +3,7 @@
 /* global */
 
 html, body {
-  min-height: 100%;
+  min-height: 100vh;
   background-size: contain;
   background: linear-gradient(
     200deg,

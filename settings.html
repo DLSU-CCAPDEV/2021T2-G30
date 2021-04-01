@@ -166,7 +166,7 @@
                   Delete your account, all information within this account will
                   be deleted in this website. Change is permanent.
                 </p>
-                <a href="#">Delete</a>
+                <a data-bs-toggle="modal" data-bs-target="#deleteModal">Edit</a>
               </div>
             </div>
           </div>
@@ -243,7 +243,7 @@
                   style="border: 0px"
                 />
               </div>
-              <div class="mb-0">
+              <div class="mb-3">
                 <h5>Password</h5>
                 <input
                   type="password"
@@ -253,6 +253,22 @@
                   readonly
                   style="border: 0px"
                 />
+              </div>
+              <div class="mb-3">
+                <h5>Profile Picture</h5>
+                <input
+                  type="file"
+                  accept=".jpg, .jpeg, .png"
+                  class="form-control p-2"
+                  id="DisplayPicture"
+                  title="Upload display picture"
+                  disabled
+                  style="border: 0px"
+                />
+              </div>
+              <div class="mb-0">
+                <h5>Bio</h5>
+                <textarea class="form-control" maxlength="150" placeholder="Bio (optional)" aria-label="With textarea" readonly style="border: 0px"></textarea>
               </div>
             </form>
           </div>
@@ -331,7 +347,7 @@
                   placeholder="Ligmaballs@yahoo.com"
                 />
               </div>
-              <div class="mb-0">
+              <div class="mb-3">
                 <h5>Password</h5>
                 <input
                   type="password"
@@ -339,6 +355,21 @@
                   id="PasswordEdit"
                   placeholder="Password"
                 />
+              </div>
+              <div class="mb-3">
+                <h5>Profile Picture</h5>
+                <input
+                  type="file"
+                  accept=".jpg, .jpeg, .png"
+                  class="form-control p-2"
+                  id="DisplayPicture"
+                  title="Upload display picture"
+                  
+                />
+              </div>
+              <div class="mb-0">
+                <h5>Bio</h5>
+                <textarea class="form-control p-2" maxlength="150" placeholder="Bio (optional)" aria-label="With textarea"></textarea>
               </div>
             </form>
           </div>
@@ -360,7 +391,7 @@
       <div class="modal-dialog" style="width: 30em">
         <div class="modal-content" style="border-radius: 15px">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Account Details</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Memories</h5>
             <button
               type="button"
               class="btn-close"
@@ -371,7 +402,6 @@
           <div class="modal-body">
             <form>
               <div class="mb-3">
-                <h5>Memories</h5>
                 <p>
                   Clicking on "Enable" will enable memories to appear on your
                   timeline
@@ -388,6 +418,46 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-primary">Enable</button>
             <button type="button" class="btn btn-primary">Disable</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div
+      class="modal fade"
+      style="padding-top: 11.25rem"
+      id="deleteModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" style="width: 30em">
+        <div class="modal-content" style="border-radius: 15px">
+          <div class="modal-header">
+           <h5 class="modal-title" id="exampleModalLabel">Delete Account</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <p>
+                  Clicking on confirm will permanently delete your account in our website, all traces of your information will be lost.
+                </p>
+                <hr>
+                <p>
+                  Are you sure that you want to delete your account?
+                </p>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Confirm</button>
           </div>
         </div>
       </div>

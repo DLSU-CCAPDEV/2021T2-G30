@@ -2,7 +2,7 @@
     background-color: white
 }
 
-.fas {
+#newEntry {
     position: fixed;
     right: 0;
     bottom: 0;
@@ -13,7 +13,7 @@
     transition: 0.3s;
 }
 
-.fas:hover {
+#newEntry:hover {
     color: #1e56a0;
     animation-delay: 2s;
     transition: 0.2s;

@@ -1,53 +1,3 @@
-/* html, body {
-  min-height: 100vh;
-}
-
-* {
-  box-sizing: border-box;
-  list-style: none;
-  margin: 0;
-  outline: none;
-  padding: 0;
-}
-
-.container {
-  background-color: white;
-  
- 
-}
-
-
-
-
-.calendar {
-  border-radius: 5px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, .3);
-  height: 501px;
-  perspective: 1000;
-  transition: .9s;
-  width: 100%;
-}
-
-.current-date h1 {
-  font-size: 2em;
-  font-weight: 500;
-}
-
-
-
-.weeks span:hover:not(.prev-month):not(.next-month) {
-  cursor: pointer;
-  font-weight: 700;
-}
-
-
-.weeks span.today {
-  background: #f78536;
-  border-radius: 100%;
-} */
-
-
-
 .container {
   background-color: white;
   border-radius: 10px;
@@ -90,17 +40,23 @@ i {
 	font-size: 13px;
 }
 
-.today {
+.today button {
   margin: 0;
-  padding: 10px;
+  padding: 5px;
   border-radius: 50%;
   background: #1967D2;
   color: white;
 }
 
+.today button:hover {
+  cursor: pointer;
+  font-weight: 800;
+  color: white;
+}
+
 tr td:hover:not(.prev-month):not(.next-month) {
   cursor: pointer;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 #calendar .prev-month, .next-month {

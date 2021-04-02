@@ -78,3 +78,25 @@ h1 {
 .custom-section {
   min-height: calc(100vh - 74px);
 }
+
+.displaypicture {
+  padding: 0; 
+  border: 0; 
+  border-radius: 100px; 
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13); 
+  height: 12em; 
+  width: 12em; 
+  object-fit: cover;
+  transition: 0.2s;
+}
+
+.displaypicture:hover {
+  padding: 0; 
+  border: 0; 
+  border-radius: 100px; 
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.377); 
+  /* height: 12.8em; 
+  width: 12.8em;  */
+  object-fit: cover;
+  transition: 0.2s;
+}

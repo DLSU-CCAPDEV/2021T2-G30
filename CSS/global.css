@@ -79,6 +79,11 @@ h1 {
   min-height: calc(100vh - 74px);
 }
 
+a {
+  color: black;
+  text-decoration: none;
+}
+
 .displaypicture {
   padding: 0; 
   border: 0; 

@@ -1,6 +1,7 @@
 .container {
   background-color: white;
-  border-radius: 10px;
+  border-radius: 15px;
+  
 }
 
 i {
@@ -24,19 +25,34 @@ i {
 #calendar td {
   display: flex;
   flex-direction: column;
-	box-sizing: border-box;
+  box-sizing: border-box;
   padding: 10px;
-	border: 1px solid #DADCE0;
+  border: 1px solid #DADCE0;
   text-align: center;
-	min-height: 120px;
+  min-height: 120px;
 }
 
 #calendar .weeks th {
-	text-align: center;
-	text-transform: uppercase;
-	line-height: 20px;
-	border: none !important;
-	font-size: 13px;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 20px;
+    border: none !important;
+    font-size: 13px;
+}
+
+/* Days with entries have this color */
+.entry{
+  background-color: #4CBBF4;
+}
+
+.date button {
+  color: white;
+}
+
+ .date button:hover {
+  cursor: pointer;
+  font-weight: 800;
+  color: white;
 }
 
 .today button {
@@ -68,3 +84,25 @@ button::-moz-focus-inner {
   border: 0
 }
 
+.card-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  height: 50px;
+}
+
+.card {
+  transition: 0.2s;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  transition: 0.2s;
+  border-color: #163172;
+  box-shadow: inset 0 0px 0px white, 0 0 4px #163172;
+  -webkit-transform: translateY(-5px);
+  transform: translateY(-5px);
+}

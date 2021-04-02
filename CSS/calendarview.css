@@ -41,7 +41,7 @@ i {
 }
 
 /* Days with entries have this color */
-.entry{
+.entry {
   background-color: #4CBBF4;
 }
 
@@ -90,6 +90,5 @@ button::-moz-focus-inner {
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
-  height: 50px;
 }
 

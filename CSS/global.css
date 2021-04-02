@@ -72,3 +72,9 @@ h1 {
   font-size: 0.9em;
   cursor: pointer;
 }
+
+/* Personal Profile */
+
+.custom-section {
+  min-height: calc(100vh - 74px);
+}

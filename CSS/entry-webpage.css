@@ -3,7 +3,13 @@
     min-height: calc(100vh - 74px);
   }
 
+
+h5 {
+    font-size:30px;
+}
+
 #area { 
+    font-size: 24px;
     max-height: 500px;
     overflow-y: auto;
     word-break: break-word; 

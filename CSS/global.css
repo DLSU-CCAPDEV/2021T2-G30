@@ -67,6 +67,12 @@ h1 {
   font-weight: 800;
 }
 
+a {
+  color: black;
+  text-decoration: none;
+}
+
+
 .privacy-globe {
   font-size: 0.9em;
   cursor: pointer;

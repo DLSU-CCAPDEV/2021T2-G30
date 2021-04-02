@@ -91,11 +91,6 @@ button::-moz-focus-inner {
   -webkit-box-orient: vertical;
 }
 
-a {
-  color: black;
-  text-decoration: none;
-}
-
 .card {
   height: 138px;
 }

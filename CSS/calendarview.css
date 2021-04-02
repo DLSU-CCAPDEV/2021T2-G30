@@ -49,7 +49,7 @@ i {
   color: white;
 }
 
- .date button:hover {
+.date button:hover {
   cursor: pointer;
   font-weight: 800;
   color: white;
@@ -88,7 +88,16 @@ button::-moz-focus-inner {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+.card {
+  height: 138px;
 }
 

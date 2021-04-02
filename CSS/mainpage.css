@@ -29,7 +29,7 @@
   -webkit-box-orient: vertical;
 }
 
-.card {
+/* .card {
   transition: 0.2s;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
@@ -41,7 +41,7 @@
   box-shadow: inset 0 0px 0px white, 0 0 4px #163172;
   -webkit-transform: translateY(-5px);
   transform: translateY(-5px);
-}
+} */
 
 .letterdropdown {
   outline: none;

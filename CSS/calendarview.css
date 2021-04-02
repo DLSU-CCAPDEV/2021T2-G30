@@ -13,34 +13,34 @@ i {
   grid-template-columns: repeat(7, 1fr);
 }
 
-#calendar tr, #calendar tbody {
+#calendar tr,
+#calendar tbody {
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   width: 100%;
 }
 
-
 #calendar td {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   padding: 10px;
-  border: 1px solid #DADCE0;
+  border: 1px solid #dadce0;
   text-align: center;
   min-height: 120px;
 }
 
 #calendar .weeks th {
-    text-align: center;
-    text-transform: uppercase;
-    line-height: 20px;
-    border: none !important;
-    font-size: 13px;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 20px;
+  border: none !important;
+  font-size: 13px;
 }
 
 /* Days with entries have this color */
-.entry{
+.entry {
   background-color: #96bce2;
 }
 
@@ -73,14 +73,14 @@ tr td:hover:not(.prev-month):not(.next-month) {
   font-weight: 800;
 }
 
-#calendar .prev-month, .next-month {
+#calendar .prev-month,
+.next-month {
   opacity: 0.5;
-
 }
 
 button::-moz-focus-inner {
   padding: 0;
-  border: 0
+  border: 0;
 }
 
 .card-text {
@@ -112,4 +112,3 @@ a {
   -webkit-transform: translateY(-5px);
   transform: translateY(-5px);
 }
-

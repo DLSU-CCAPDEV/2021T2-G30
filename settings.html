@@ -124,6 +124,7 @@
             </div>
           </div>
         </div>
+
         <!-- Memory Card -->
         <div class="col">
           <div class="card" style="border: none; background: none">
@@ -163,10 +164,10 @@
             <div class="face face2 mx-auto" style="border-radius: 25px">
               <div class="content">
                 <p>
-                  Delete your account, all information within this account will
+                  Delete your account. All information within this account will
                   be deleted in this website. Change is permanent.
                 </p>
-                <a data-bs-toggle="modal" data-bs-target="#deleteModal">Edit</a>
+                <a data-bs-toggle="modal" data-bs-target="#deleteModal">Delete Account</a>
               </div>
             </div>
           </div>
@@ -174,6 +175,7 @@
       </div>
     </div>
 
+    <!-- Account Details Modal -->
     <div
       class="modal fade"
       style="padding-top: 11.25rem"
@@ -182,7 +184,7 @@
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog" style="width: 30em">
+      <div class="modal-dialog modal-dialog-scrollable" style="width: 30em">
         <div class="modal-content" style="border-radius: 15px">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Account Details</h5>
@@ -202,7 +204,7 @@
                   class="form-control p-2"
                   id="FirstNameNoEdit"
                   aria-describedby="emailHelp"
-                  placeholder="Sugma"
+                  placeholder="Matthew"
                   readonly
                   style="border: 0px"
                 />
@@ -214,7 +216,7 @@
                   class="form-control p-2"
                   id="LastNameNoEdit"
                   aria-describedby="emailHelp"
-                  placeholder="Balls"
+                  placeholder="Buensalida"
                   readonly
                   style="border: 0px"
                 />
@@ -226,7 +228,7 @@
                   class="form-control p-2"
                   id="UsernameNoEdit"
                   aria-describedby="emailHelp"
-                  placeholder="Ligmaballs"
+                  placeholder="mattbuen"
                   readonly
                   style="border: 0px"
                 />
@@ -238,7 +240,7 @@
                   class="form-control p-2"
                   id="EmailNoEdit"
                   aria-describedby="emailHelp"
-                  placeholder="Ligmaballs@yahoo.com"
+                  placeholder="matt@yahoo.com"
                   readonly
                   style="border: 0px"
                 />
@@ -262,7 +264,6 @@
                   class="form-control p-2"
                   id="DisplayPicture"
                   title="Upload display picture"
-                  disabled
                   style="border: 0px"
                 />
               </div>
@@ -381,6 +382,7 @@
       </div>
     </div> -->
 
+    <!-- Memories Modal -->
     <div
       class="modal fade"
       style="padding-top: 11.25rem"
@@ -450,7 +452,7 @@
                 <p>
                   Clicking on confirm will permanently delete your account in our website, all traces of your information will be lost.
                 </p>
-                <hr>
+                <br>
                 <p>
                   Are you sure that you want to delete your account?
                 </p>

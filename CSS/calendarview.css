@@ -42,7 +42,7 @@ i {
 
 /* Days with entries have this color */
 .entry{
-  background-color: #4CBBF4;
+  background-color: #96bce2;
 }
 
 .date button {
@@ -59,7 +59,7 @@ i {
   margin: 0;
   padding: 5px;
   border-radius: 50%;
-  background: #1967D2;
+  background: rgb(30, 105, 218);
   color: white;
 }
 

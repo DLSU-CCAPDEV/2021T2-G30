@@ -40,8 +40,8 @@ i {
 }
 
 /* Days with entries have this color */
-.entry {
-  background-color: #4CBBF4;
+.entry{
+  background-color: #96bce2;
 }
 
 .date button {
@@ -58,7 +58,7 @@ i {
   margin: 0;
   padding: 5px;
   border-radius: 50%;
-  background: #1967D2;
+  background: rgb(30, 105, 218);
   color: white;
 }
 
@@ -98,5 +98,18 @@ a {
 
 .card {
   height: 138px;
+}
+
+.card {
+  transition: 0.2s;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  transition: 0.2s;
+  box-shadow: inset 0 0px 0px white, 0 0 4px #163172;
+  -webkit-transform: translateY(-5px);
+  transform: translateY(-5px);
 }
 

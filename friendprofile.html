@@ -19,6 +19,9 @@
 
     <link href="CSS/global.css" rel="stylesheet" />
     <link href="CSS/mainpage.css" rel="stylesheet" />
+    <link href="CSS/friendprofile.css" rel="stylesheet" />
+
+
     <script src="https://kit.fontawesome.com/62fb675735.js" crossorigin="anonymous"></script>
   </head>
   <body>
@@ -61,7 +64,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="personalprofile.html">Profile</a>
+                <a class="nav-link" href="personalprofile.html">Profile</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="">Notifications</a>
@@ -95,40 +98,27 @@
       </nav>
     </header>
 
-
-      <div class="container d-flex align-items-center justify-content-center" style="padding-top: 5em; padding-bottom: 5em;">
+    <section class="custom-section">
+      <div class="container d-flex align-items-center justify-content-center" style="min-height: inherit;">
         <div class="row">
           <div class="col-12 mx-auto text-center">
-            <img src="Images/Jager.jpg" alt="displayPicture" class="mx-auto btn dropdown-toggle displaypicture text-center" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="Images/Jager.jpg" alt="displayPicture" class="mx-auto displaypicture">
           </div>
           <div class="col-12 mx-auto pt-2">
-            <p style="text-align: center; font-size: 20pt; font-weight: 400; margin-bottom: -0.6em;"> Aaron Yogurt </p>
+            <p style="text-align: center; font-size: 30pt; font-weight: 400; margin-bottom: -0.4em;"> Aaron Yogurt </p>
           </div>
           <div class="col-10 mx-auto">
-            <hr class="mx-auto" style="border: 1px solid #000000; width: 16em; height: 2px;">
+            <hr class="mx-auto" style="margin-bottom: 0.3em; border: 1px solid #000000; width: 5em; height: 2px;">
           </div>    
-          <div class="col-3 mx-auto pt-2" style="margin-top: -1em;">
-            <p style="text-align: center; font-size: 10pt; font-weight: 100;"> I hate titans </p>
-          </div>  
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#removefriendmodal">Remove Friend</button>   
+          <div class="col-3 mx-auto pt-2" style="width: 28em;">
+            <p style="text-align: center; font-size: 12pt; font-weight: 100;"> I hate titans! </p>
+          </div>
+          <div class="col-12 d-flex justify-content-center">
+            <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#removefriendmodal"> Unfriend </button>
+          </div>
         </div>
       </div>
-
-    <!-- <div class="text-center" style="padding-top: 2em;padding-bottom: 2em;">
-        <img src="Images/Jager.jpg" class="rounded-circle mx-auto d-block border" alt="Jager" style="width: 200px;height: 200px;">
-        <h2                         
-        class="text-center"
-        style="
-          text-shadow: 0 0 1px #22479c, 0 0 1px #163172;
-          font-weight: 400;
-          font-size: 30pt;
-          padding-top: 2mm;
-          padding-bottom: 2mm;">
-          Aaron Yogurt</h2>
-        Add friend Confirm Modal
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addfriendmodal">Add Friend</button>
-
-    </div> -->
+    </section>
 
     <section> 
 
@@ -156,20 +146,7 @@
                         <p class="card-text">
                           <small class="text-muted">
                             Posted on March 30, 2021
-                            <i class="fas fa-globe-americas mx-1 privacy-globe" data-bs-toggle="tooltip" title="Public Entry"></i> 
                           </small></p>
-                      </div>
-                      <!-- Entry Settings -->
-                      <div class="col d-flex justify-content-end">
-                        <div class="dropdown dropup">
-                          <button class="btn" type="button" id="dropdownMenuEntry" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-ellipsis-h text-end" data-bs-toggle="tooltip" title="Entry Settings"></i>
-                          </button>
-                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuEntry">
-                            <li><button class="dropdown-item" type="button">Edit Entry</button></li>
-                            <li><button class="dropdown-item" type="button">Delete Entry</button></li>
-                          </ul>
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -201,16 +178,7 @@
                         <p class="card-text">
                           <small class="text-muted">
                             Posted on March 29, 2021
-                            <i class="fas fa-globe-americas mx-1 privacy-globe" data-bs-toggle="tooltip" title="Public Entry"></i> 
                           </small></p>
-                      </div>
-                      <!-- Entry Settings -->
-                      <div class="col d-flex justify-content-end">
-                        <div class="dropdown dropup">
-                          <button class="btn" type="button" id="dropdownMenuEntry" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-ellipsis-h text-end" data-bs-toggle="tooltip" title="Entry Settings"></i>
-                          </button>
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -239,16 +207,7 @@
                         <p class="card-text">
                           <small class="text-muted">
                             Posted on March 28, 2021
-                            <i class="fas fa-lock mx-1 privacy-globe" data-bs-toggle="tooltip" title="Public Entry"></i> 
                           </small></p>
-                      </div>
-                      <!-- Entry Settings -->
-                      <div class="col d-flex justify-content-end">
-                        <div class="dropdown dropup">
-                          <button class="btn" type="button" id="dropdownMenuEntry" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-ellipsis-h text-end" data-bs-toggle="tooltip" title="Entry Settings"></i>
-                          </button>
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -268,7 +227,9 @@
                         The last thing you'd want in your Burger King burger is someone's foot fungus. But as it turns out, that might be what you get. 
                         A 4channer uploaded a photo anonymously to the site showcasing his feet in a plastic bin of lettuce. 
                         With the statement: "This is the lettuce you eat at Burger King." Admittedly, he had shoes on.
-
+                        The last thing you'd want in your Burger King burger is someone's foot fungus. But as it turns out, that might be what you get. 
+                        A 4channer uploaded a photo anonymously to the site showcasing his feet in a plastic bin of lettuce. 
+                        With the statement: "This is the lettuce you eat at Burger King." Admittedly, he had shoes on.
                       </p>
                     </div>
                   </div>
@@ -282,17 +243,9 @@
                         <p class="card-text">
                           <small class="text-muted">
                             Posted on March 29, 2021
-                            <i class="fas fa-globe-americas mx-1 privacy-globe" data-bs-toggle="tooltip" title="Public Entry"></i> 
                           </small></p>
                       </div>
                       <!-- Entry Settings -->
-                      <div class="col d-flex justify-content-end">
-                        <div class="dropdown dropup">
-                          <button class="btn" type="button" id="dropdownMenuEntry" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-ellipsis-h text-end" data-bs-toggle="tooltip" title="Entry Settings"></i>
-                          </button>
-                        </div>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -308,8 +261,7 @@
                     <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;"> BIG TITAN </h5>
                     <div class="card-body" style="overflow: hidden;">
                       <p class="card-text">
-                        Today i found a titan that looks bald on top on the wall, I hope he doesn't kick down the wal-
-
+                        Today i found a titan that looks bald on top on the wall, I hope he doesn't kick down the wall.
                       </p>
                     </div>
                   </div>
@@ -323,16 +275,7 @@
                         <p class="card-text">
                           <small class="text-muted">
                             Posted on March 29, 2021
-                            <i class="fas fa-globe-americas mx-1 privacy-globe" data-bs-toggle="tooltip" title="Public Entry"></i> 
                           </small></p>
-                      </div>
-                      <!-- Entry Settings -->
-                      <div class="col d-flex justify-content-end">
-                        <div class="dropdown dropup">
-                          <button class="btn" type="button" id="dropdownMenuEntry" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-ellipsis-h text-end" data-bs-toggle="tooltip" title="Entry Settings"></i>
-                          </button>
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -340,8 +283,6 @@
               </div>
             </div>
           </div>
-
-
         </section>
         
         <!-- Modal -->
@@ -356,7 +297,7 @@
                         This option will remove this friend in your friend's list, continue?
                         </div>
                         <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Remove Friend</button>
+                        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Remove Friend</button>
                         </div>
                 </div>
             </div>

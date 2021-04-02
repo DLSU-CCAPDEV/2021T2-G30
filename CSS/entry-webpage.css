@@ -1,5 +1,7 @@
-.text-area.custom {
-    overflow-x: scroll;
-    width:100%;
-    
+#area { 
+    max-height: 500px;
+    overflow-y: auto;
+    word-break: break-word; 
+    text-align: justify;
+    max-width: auto;
 }

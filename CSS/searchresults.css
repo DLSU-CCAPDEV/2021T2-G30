@@ -23,12 +23,11 @@ img {
 .name-card-body {
     padding: 1em 1em 0 1em;
 }
-/* 
-  .img-col {
-      max-width: 128px;
-      padding-right: 0;
-  }
 
-  .btn-col {
-      width: 50px;
-  } */
+.card-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+  }

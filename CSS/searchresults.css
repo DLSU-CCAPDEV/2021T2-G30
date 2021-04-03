@@ -1,7 +1,7 @@
 img {
     border-radius: 200%;
-    height: 200px;
-    width: 200px;
+    height: 100px;
+    width: 100px;
 }
 
 .card {
@@ -19,3 +19,16 @@ img {
 .custom-section {
     min-height: calc(100vh - 74px);
   }
+
+.name-card-body {
+    padding: 1em 1em 0 1em;
+}
+/* 
+  .img-col {
+      max-width: 128px;
+      padding-right: 0;
+  }
+
+  .btn-col {
+      width: 50px;
+  } */

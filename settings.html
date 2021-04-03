@@ -99,372 +99,273 @@
     </header>
 
     <!-- Account Card -->
-    <div class="container" style="padding-top: 5em">
-      <div class="row mx-auto" style="min-width:auto; min-height: 750px;">
-        <div class="col">
-          <div class="card" style="border: none; background: none">
-            <div class="face face1 mx-auto" style="border-radius: 25px">
-              <div class="content">
-                <img src="Images/accountuser.png" alt="accountlogo" />
-                <h3>Account</h3>
+    <section class="custom-section">
+      <div class="container d-flex align-items-center justify-content-center" style="min-height: inherit;">
+        <div class="row" style="padding-bottom: 8em;">
+          <div class="col-sm-12 col-lg-4">
+            <div class="card" style="border: none; background: none">
+              <div class="face face1 mx-auto" style="border-radius: 10px">
+                <div class="content">
+                  <img src="Images/accountuser.png" alt="accountlogo"/>
+                  <h3>Account</h3>
+                </div>
+              </div>
+              <div class="face face2 mx-auto" style="border-radius: 10px">
+                <div class="content">
+                  <p>
+                    View your account settings, as well as edit your account
+                    information.
+                  </p>
+                  <a data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    View
+                  </a>
+  
+                  <!-- <a href="#">Edit</a> -->
+                </div>
               </div>
             </div>
-            <div class="face face2 mx-auto" style="border-radius: 25px">
-              <div class="content">
-                <p>
-                  View your account settings, as well as edit your account
-                  information.
-                </p>
-                <a data-bs-toggle="modal" data-bs-target="#exampleModal">
-                  View
-                </a>
-
-                <!-- <a href="#">Edit</a> -->
+          </div>
+  
+          <!-- Memory Card -->
+          <div class="col-sm-12 col-lg-4">
+            <div class="card" style="border: none; background: none">
+              <div class="face face1 mx-auto" style="border-radius: 10px">
+                <div class="content">
+                  <img
+                    src="Images/timecap.png"
+                    alt="timecapsule"
+                    style="transform: rotate(90deg)"
+                  />
+                  <h3>Memories</h3>
+                </div>
+              </div>
+              <div class="face face2 mx-auto" style="border-radius: 10px">
+                <div class="content">
+                  <p>
+                    Changes if memories will appear in your account, you can
+                    change this later.
+                  </p>
+                  <a data-bs-toggle="modal" data-bs-target="#memoryModal">Edit</a>
+  
+                  <!-- <a href="#">Edit</a> -->
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Delete Account Card -->
+          <div class="col-sm-12 col-lg-4">
+            <div class="card" style="border: none; background: none">
+              <div class="face face1 mx-auto" style="border-radius: 10px">
+                <div class="content">
+                  <img src="Images/trash.png" style="margin-left: 2em" />
+                  <h3>Delete Account</h3>
+                </div>
+              </div>
+              <div class="face face2 mx-auto" style="border-radius: 10px">
+                <div class="content">
+                  <p>
+                    Delete your account. All information within this account will
+                    be deleted in this website. Change is permanent.
+                  </p>
+                  <a data-bs-toggle="modal" data-bs-target="#deleteModal">Delete Account</a>
+                </div>
               </div>
             </div>
           </div>
         </div>
-
-        <!-- Memory Card -->
-        <div class="col">
-          <div class="card" style="border: none; background: none">
-            <div class="face face1 mx-auto" style="border-radius: 25px">
-              <div class="content">
-                <img
-                  src="Images/timecap.png"
-                  alt="timecapsule"
-                  style="transform: rotate(90deg)"
-                />
-                <h3>Memories</h3>
+        
+    
+        <!-- Account Details Modal -->
+        <div
+          class="modal fade"
+          style="padding-top: 4rem"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-scrollable" style="width: 30em">
+            <div class="modal-content" style="border-radius: 15px">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Account Details</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
               </div>
-            </div>
-            <div class="face face2 mx-auto" style="border-radius: 25px">
-              <div class="content">
-                <p>
-                  Changes if memories will appear in your account, you can
-                  change this later.
-                </p>
-                <a data-bs-toggle="modal" data-bs-target="#memoryModal">Edit</a>
-
-                <!-- <a href="#">Edit</a> -->
+              <div class="modal-body">
+                <form>
+                  <div class="mb-3">
+                    <div class="row">
+                      <div class="col">
+                        <h5>First Name</h5>
+                        <input
+                          type="email"
+                          class="form-control p-2"
+                          id="FirstNameNoEdit"
+                          aria-describedby="emailHelp"
+                          placeholder="Matthew"
+                          readonly
+                          style="border: 0px"
+                        />
+                      </div>
+                      <div class="col">
+                        <h5>Last Name</h5>
+                          <input
+                            type="email"
+                            class="form-control p-2"
+                            id="LastNameNoEdit"
+                            aria-describedby="emailHelp"
+                            placeholder="Buensalida"
+                            readonly
+                            style="border: 0px"
+                          />
+                      </div>
+                    </div>
+                  </div>
+                
+                  <div class="mb-3">
+                    <h5>Username</h5>
+                    <input
+                      type="email"
+                      class="form-control p-2"
+                      id="UsernameNoEdit"
+                      aria-describedby="emailHelp"
+                      placeholder="mattbuen"
+                      readonly
+                      style="border: 0px"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <h5>Email</h5>
+                    <input
+                      type="email"
+                      class="form-control p-2"
+                      id="EmailNoEdit"
+                      aria-describedby="emailHelp"
+                      placeholder="matt@yahoo.com"
+                      readonly
+                      style="border: 0px"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <h5>Password</h5>
+                    <input
+                      type="password"
+                      class="form-control p-2"
+                      id="PasswordNoEdit"
+                      placeholder="***********"
+                      readonly
+                      style="border: 0px"
+                    />
+                  </div>
+                  <div class="mb-0">
+                    <h5>Bio</h5>
+                    <textarea class="form-control" maxlength="150" placeholder="Bio (optional)" aria-label="With textarea" readonly style="border: 0px"></textarea>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <a
+                  type="button"
+                  class="btn btn-primary"
+                  href="editaccount.html"
+                >
+                  Edit Account
+              </a>
               </div>
             </div>
           </div>
         </div>
-
-        <!-- Delete Account Card -->
-        <div class="col">
-          <div class="card" style="border: none; background: none">
-            <div class="face face1 mx-auto" style="border-radius: 25px">
-              <div class="content">
-                <img src="Images/trash.png" style="margin-left: 2em" />
-                <h3>Delete Account</h3>
+    
+        <!-- Memories Modal -->
+        <div
+          class="modal fade"
+          style="padding-top: 8rem"
+          id="memoryModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog" style="width: 30em">
+            <div class="modal-content" style="border-radius: 15px">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Memories</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="mb-3">
+                    <p>
+                      Clicking on "Enable" will enable memories to appear on your
+                      timeline
+                    </p>
+                    <hr />
+                    <p>
+                      Clicking on "Disable" will disable memories to appear on your
+                      timeline
+                    </p>
+                    <p>Memories is currently active.</p>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Enable</button>
+                <button type="button" class="btn btn-primary">Disable</button>
               </div>
             </div>
-            <div class="face face2 mx-auto" style="border-radius: 25px">
-              <div class="content">
-                <p>
-                  Delete your account. All information within this account will
-                  be deleted in this website. Change is permanent.
-                </p>
-                <a data-bs-toggle="modal" data-bs-target="#deleteModal">Delete Account</a>
+          </div>
+        </div>
+    
+    
+        <div
+          class="modal fade"
+          style="padding-top: 10rem"
+          id="deleteModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog" style="width: 30em">
+            <div class="modal-content" style="border-radius: 15px">
+              <div class="modal-header">
+               <h5 class="modal-title" id="exampleModalLabel">Delete Account</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="mb-3">
+                    <p>
+                      Clicking on confirm will permanently delete your account in our website, all traces of your information will be lost.
+                    </p>
+                    <br>
+                    <p>
+                      Are you sure that you want to delete your account?
+                    </p>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Confirm</button>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-
-    <!-- Account Details Modal -->
-    <div
-      class="modal fade"
-      style="padding-top: 11.25rem"
-      id="exampleModal"
-      tabindex="-1"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-scrollable" style="width: 30em">
-        <div class="modal-content" style="border-radius: 15px">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Account Details</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <form>
-              <div class="mb-3">
-                <h5>First Name</h5>
-                <input
-                  type="email"
-                  class="form-control p-2"
-                  id="FirstNameNoEdit"
-                  aria-describedby="emailHelp"
-                  placeholder="Matthew"
-                  readonly
-                  style="border: 0px"
-                />
-              </div>
-              <div class="mb-3">
-                <h5>Last Name</h5>
-                <input
-                  type="email"
-                  class="form-control p-2"
-                  id="LastNameNoEdit"
-                  aria-describedby="emailHelp"
-                  placeholder="Buensalida"
-                  readonly
-                  style="border: 0px"
-                />
-              </div>
-              <div class="mb-3">
-                <h5>Username</h5>
-                <input
-                  type="email"
-                  class="form-control p-2"
-                  id="UsernameNoEdit"
-                  aria-describedby="emailHelp"
-                  placeholder="mattbuen"
-                  readonly
-                  style="border: 0px"
-                />
-              </div>
-              <div class="mb-3">
-                <h5>Email</h5>
-                <input
-                  type="email"
-                  class="form-control p-2"
-                  id="EmailNoEdit"
-                  aria-describedby="emailHelp"
-                  placeholder="matt@yahoo.com"
-                  readonly
-                  style="border: 0px"
-                />
-              </div>
-              <div class="mb-3">
-                <h5>Password</h5>
-                <input
-                  type="password"
-                  class="form-control p-2"
-                  id="PasswordNoEdit"
-                  placeholder="***********"
-                  readonly
-                  style="border: 0px"
-                />
-              </div>
-              <div class="mb-3">
-                <h5>Profile Picture</h5>
-                <input
-                  type="file"
-                  accept=".jpg, .jpeg, .png"
-                  class="form-control p-2"
-                  id="DisplayPicture"
-                  title="Upload display picture"
-                  style="border: 0px"
-                />
-              </div>
-              <div class="mb-0">
-                <h5>Bio</h5>
-                <textarea class="form-control" maxlength="150" placeholder="Bio (optional)" aria-label="With textarea" readonly style="border: 0px"></textarea>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <a
-              type="button"
-              class="btn btn-primary"
-              href="editaccount.html"
-            >
-              <!-- data-bs-toggle="modal" -->
-              <!-- data-bs-target="#exampleModal2" -->
-              Edit Changes
-          </a>
-          </div>
-        </div>
-      </div>
-    </div>
-<!-- 
-    <div
-      class="modal fade"
-      style="padding-top: 11.25rem"
-      id="exampleModal2"
-      tabindex="-1"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog" style="width: 30em">
-        <div class="modal-content" style="border-radius: 15px">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Account Details</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <form>
-              <div class="mb-3">
-                <h5>First Name</h5>
-                <input
-                  type="email"
-                  class="form-control p-2"
-                  id="FirstNameEdit"
-                  aria-describedby="emailHelp"
-                  placeholder="Sugma"
-                />
-              </div>
-              <div class="mb-3">
-                <h5>Last Name</h5>
-                <input
-                  type="email"
-                  class="form-control p-2"
-                  id="LastNameEdit"
-                  aria-describedby="emailHelp"
-                  placeholder="Balls"
-                />
-              </div>
-              <div class="mb-3">
-                <h5>Username</h5>
-                <input
-                  type="email"
-                  class="form-control p-2"
-                  id="UsernameEdit"
-                  aria-describedby="emailHelp"
-                  placeholder="Ligmaballs"
-                />
-              </div>
-              <div class="mb-3">
-                <h5>Email</h5>
-                <input
-                  type="email"
-                  class="form-control p-2"
-                  id="EmailEdit"
-                  aria-describedby="emailHelp"
-                  placeholder="Ligmaballs@yahoo.com"
-                />
-              </div>
-              <div class="mb-3">
-                <h5>Password</h5>
-                <input
-                  type="password"
-                  class="form-control p-2"
-                  id="PasswordEdit"
-                  placeholder="Password"
-                />
-              </div>
-              <div class="mb-3">
-                <h5>Profile Picture</h5>
-                <input
-                  type="file"
-                  accept=".jpg, .jpeg, .png"
-                  class="form-control p-2"
-                  id="DisplayPicture"
-                  title="Upload display picture"
-                  
-                />
-              </div>
-              <div class="mb-0">
-                <h5>Bio</h5>
-                <textarea class="form-control p-2" maxlength="150" placeholder="Bio (optional)" aria-label="With textarea"></textarea>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
-        </div>
-      </div>
-    </div> -->
-
-    <!-- Memories Modal -->
-    <div
-      class="modal fade"
-      style="padding-top: 11.25rem"
-      id="memoryModal"
-      tabindex="-1"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog" style="width: 30em">
-        <div class="modal-content" style="border-radius: 15px">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Memories</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <form>
-              <div class="mb-3">
-                <p>
-                  Clicking on "Enable" will enable memories to appear on your
-                  timeline
-                </p>
-                <hr />
-                <p>
-                  Clicking on "Disable" will disable memories to appear on your
-                  timeline
-                </p>
-                <p>Memories is currently active.</p>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary">Enable</button>
-            <button type="button" class="btn btn-primary">Disable</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <div
-      class="modal fade"
-      style="padding-top: 11.25rem"
-      id="deleteModal"
-      tabindex="-1"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog" style="width: 30em">
-        <div class="modal-content" style="border-radius: 15px">
-          <div class="modal-header">
-           <h5 class="modal-title" id="exampleModalLabel">Delete Account</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <form>
-              <div class="mb-3">
-                <p>
-                  Clicking on confirm will permanently delete your account in our website, all traces of your information will be lost.
-                </p>
-                <br>
-                <p>
-                  Are you sure that you want to delete your account?
-                </p>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary">Confirm</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    </section>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"

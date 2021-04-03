@@ -1,0 +1,25 @@
+.custom-section {
+    min-height: calc(100vh - 74px);
+}
+
+.card-title {
+    font-weight: normal;
+}
+
+
+.container {
+    width: 900px;
+    margin-top: 100px;
+}
+
+img {
+    border-radius: 200%;
+    height: 200px;
+    width: 200px;
+}
+
+.fa-envelope, .fa-hourglass {
+    font-size: 70px;
+}
+
+

@@ -1,0 +1,21 @@
+img {
+    border-radius: 200%;
+    height: 200px;
+    width: 200px;
+}
+
+.card {
+    border: none;
+}
+
+.card-header {
+    background-color: white;
+}
+
+.entry {
+    border-radius:none;
+}
+
+.custom-section {
+    min-height: calc(100vh - 74px);
+  }

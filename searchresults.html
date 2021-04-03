@@ -17,8 +17,8 @@
       crossorigin="anonymous"
     />
 
-    <link href="CSS/global.css" rel="stylesheet" />
-    <link href="CSS/personalprofile.css" rel="stylesheet" />
+    <link href="CSS/global.css" rel="stylesheet"/>
+     <link href="CSS/searchresults.css" rel="stylesheet"/>
 
     <script src="https://kit.fontawesome.com/62fb675735.js" crossorigin="anonymous"></script>
   </head>
@@ -96,34 +96,132 @@
       </nav>
     </header>
 
-    <section>
-        <div class="container pt-5">
-          <div class="row text-center">
-            <p style="font-size: 24pt; margin-bottom: -.5em;"> Search Results for: "Jay Won" </p>
-            <div class="col-9 mx-auto">
-              <hr class="my-4" style="border: 1px solid #000000; height: 2px;">
-            </div>
-          </div>
-            <div class="row d-flex justify-content-center">
-              <div class="col-sm-12 col-xxl-3 mx-2">
-                <a href="friendprofile2notadded.html">
-                  <div class="card mb-3 mx-auto">
-                    <div class="row g-0">
-                      <div class="col-7 custom">
-                        <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;"> Jay Won </h5>
-                      </div>
-                      <div class="col-5">
-                        <img src="Images/sinatraa.png" class="img-fluid" alt="...">
-                      </div>
-                    </div>
+    <section class="custom-section d-flex align-items-center justify-content-center">
+      <div class="container">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title mx-1 mb-2">People</h5>
+  
+              <!-- Dummy data 1 -->
+              <div class="card mt-4">
+              <div class="row d-flex align-items-center justify-content-center">
+                  <div class="col-md-2 px-4 py-2 d-flex align-items-center justify-content-center">
+                      <img src="Images/sinatraa.png" class="img-fluid profile-pic" alt="...">
                   </div>
-                </a>
+                  <div class="col-md-8">
+                    <a href="friendprofile2notadded.html">
+                      <div class="card-body">
+                        <h5 class="card-title">Jay Won</h5>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col-2">
+                    <a href="friendprofile2notadded.html" class="btn btn-primary">Visit Profile</a>
+                  </div>
+              </div>
+            </div>
+  
+            <hr>
+  
+            <!-- Dummy data 2 -->
+            <div class="card">
+              <div class="row d-flex align-items-center justify-content-center">
+                  <div class="col-md-2 px-4 py-2 d-flex align-items-center justify-content-center">
+                      <img src="Images/DP/william.jpg" class="img-fluid profile-pic" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <a href="friendprofile4.html">
+                      <div class="card-body">
+                        <h5 class="card-title">William Dimaculangan</h5>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col-2">
+                    <a href="friendprofile4.html" class="btn btn-primary">Visit Profile</a>
+                  </div>
+              </div>
+            </div>
+            <hr>
+            <!-- Dummy data 3 -->
+            <div class="card">
+              <div class="row d-flex align-items-center justify-content-center">
+                  <div class="col-md-2 px-4 py-2 d-flex align-items-center justify-content-center">
+                      <img src="Images/DP/ray.jpg" class="img-fluid profile-pic" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <a href="friendprofile3.html">
+                      <div class="card-body">
+                        <h5 class="card-title">Rayvhen Rosima</h5>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col-2">
+                    <a href="friendprofile3.html" class="btn btn-primary">Visit Profile</a>
+                  </div>
+              </div>
+            </div>
+  
+          </div>
+        </div>
+  
+        <!-- Entries Container -->
+        <div class="container mt-5">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title mx-1 mb-2">Entries</h5>
+  
+              <!-- 1st Entry Public -->
+              <div class="container pt-3">
+                <div class="row">
+                  <div class="col-9 mx-auto">
+                      <div class="card mb-3">
+                        <div class="row g-0">
+                          <div class="col-12">
+                            <a href="entry1webpage.html" target="_blank">
+                              <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;"> GEDANCE </h5>
+                              <div class="card-body">
+                                <p class="card-text">
+                                  I then practiced for gedance because I need to 
+                                  submit a dance routine called pop line dance one and it comprised of six parts.
+                                </p>
+                              </div>
+                            </a> 
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                <hr>
+                <!-- 2nd Entry Public -->
+                <div class="row">
+                  <div class="col-9 mx-auto">
+                      <div class="card mb-3 mx-auto" style="padding-right: 0;">
+                        <div class="row g-0">
+                          <div class="col-12">
+                            <a href="entry2webpage.html" target="_blank">
+                              <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;"> Great lunch </h5>
+                              <div class="card-body">
+                                <p class="card-text">
+                                  Yesterday I ate lunch then worked 
+                                  out then studied arch1 then played dota I really like the hero zeus because he has this ability called 
+                                  thundergod's wrath like woah wtf lit fam.
+                                </p>
+                              </div>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                </div>  
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
+    
+      
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"

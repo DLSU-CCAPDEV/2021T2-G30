@@ -173,11 +173,28 @@
       </div>
     </section>
 
+    <!-- Sort Button -->
+    <div class="container">
+      <div class="row">
+        <div class="col-9 mx-auto">
+          <div class="dropstart">
+            <button class="btn dropdown-toggle dropDownSort" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-filter"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item disabled" href="#">Sort by Date</a></li>
+              <li><a class="dropdown-item" href="#">Sort by Significance</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
     <!-- Hard coded values -->
     <section> 
-
       <!-- 1st Entry Public -->
-      <div class="container">
+      <div class="container pt-3">
+
         <div class="row">
           <div class="col-9 mx-auto">
             <a href="entry1webpage.html" target="_blank">
@@ -420,7 +437,7 @@
           </div>
         </div>
 
-        <!-- 6th Entry Private -->
+        <!-- 6th Entry Public -->
         <div class="row">
           <div class="col-9 mx-auto">
             <a href="entry6webpage.html" target="_blank">
@@ -430,7 +447,7 @@
                     <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;"> Friendzone inbound? </h5>
                     <div class="card-body">
                       <p class="card-text">
-                        Just confessed to my crush. Yolo right? A start of the end?
+                        Just confessed to my crush. Yolo right? A start of the end? 
                       </p>
                     </div>
                   </div>
@@ -441,6 +458,53 @@
                         <p class="card-text">
                           <small class="text-muted">
                             Posted on March 29, 2021
+                            <i class="fas fa-globe-americas mx-1 privacy-globe" data-bs-toggle="tooltip" title="Public Entry"></i> 
+                          </small></p>
+                      </div>
+                      <!-- Entry Settings -->
+                      <div class="col d-flex justify-content-end">
+                        <div class="dropdown dropup">
+                          <button class="btn" type="button" id="dropdownMenuEntry" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-ellipsis-h text-end" data-bs-toggle="tooltip" title="Entry Settings"></i>
+                          </button>
+                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuEntry">
+                            <li><button class="dropdown-item" type="button">Edit Entry</button></li>
+                            <li><button class="dropdown-item" type="button">Delete Entry</button></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- 7th Entry Private -->
+        <div class="row">
+          <div class="col-9 mx-auto">
+            <a href="#">
+              <div class="card mb-3 mx-auto" style="padding-right: 0;">
+                <div class="row g-0">
+                  <div class="col-9 custom">
+                    <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;">no way am i staying indoors for more than a month</h5>
+                    <div class="card-body">
+                      <p class="card-text">
+                        yoooo wth my parents thinks that it would take around 2 years or so before things go back to normal. I can't even imagine staying quarantined for a year. Sheesh I hope that doesn't happen!
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-3">
+                    <img src="Images/coffee.jpg" class="img-fluid" style="height: 169px; width: 246.5px; object-fit: cover;" alt="...">
+                  </div>
+                  <!-- Entry Footer -->
+                  <div class="card-footer">
+                    <div class="row">
+                      <div class="col mt-1">
+                        <p class="card-text">
+                          <small class="text-muted">
+                            Posted on March 30, 2020
                             <i class="fas fa-lock mx-1 privacy-lock" data-bs-toggle="tooltip" title="Private Entry"></i> 
                           </small></p>
                       </div>
@@ -461,9 +525,198 @@
                 </div>
               </div>
             </a>
-            
           </div>
         </div>
+
+        <!-- 8th Entry memories -->
+        <div class="row">
+          <div class="col-9 mx-auto">
+            <a href="#">
+              <div class="card mb-3 mx-auto" style="padding-right: 0;">
+                <div class="row g-0">
+                  <div class="col-9 custom">
+                    <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;">March 30, 2020</h5>
+                    <div class="card-body">
+                      <p class="card-text">
+                        Time to binge watch bojack horseman, hope it cures my sadness
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-3">
+                    <img src="Images/mountain.jpg" class="img-fluid" style="height: 169px; width: 246.5px; object-fit: cover;" alt="...">
+                  </div>
+                  <!-- Entry Footer -->
+                  <div class="card-footer">
+                    <div class="row">
+                      <div class="col mt-1">
+                        <p class="card-text">
+                          <small class="text-muted">
+                            Posted on March 30, 2020
+                            <i class="fas fa-lock mx-1 privacy-lock" data-bs-toggle="tooltip" title="Private Entry"></i> 
+                          </small></p>
+                      </div>
+                      <!-- Entry Settings -->
+                      <div class="col d-flex justify-content-end">
+                        <div class="dropdown dropup">
+                          <button class="btn" type="button" id="dropdownMenuEntry" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-ellipsis-h text-end" data-bs-toggle="tooltip" title="Entry Settings"></i>
+                          </button>
+                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuEntry">
+                            <li><button class="dropdown-item" type="button">Edit Entry</button></li>
+                            <li><button class="dropdown-item" type="button">Delete Entry</button></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- 9th Entry memories -->
+        <div class="row">
+          <div class="col-9 mx-auto">
+            <a href="#">
+              <div class="card mb-3 mx-auto" style="padding-right: 0;">
+                <div class="row g-0">
+                  <div class="col-9 custom">
+                    <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;">Utter loneliness </h5>
+                    <div class="card-body">
+                      <p class="card-text">
+                        just finished phase 1, what now? Missing my friends, can't wait to get back to class again
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-3">
+                    <img src="Images/mountain.jpg" class="img-fluid" style="height: 169px; width: 246.5px; object-fit: cover;" alt="...">
+                  </div>
+                  <!-- Entry Footer -->
+                  <div class="card-footer">
+                    <div class="row">
+                      <div class="col mt-1">
+                        <p class="card-text">
+                          <small class="text-muted">
+                            Posted on March 30, 2020
+                            <i class="fas fa-lock mx-1 privacy-lock" data-bs-toggle="tooltip" title="Private Entry"></i> 
+                          </small></p>
+                      </div>
+                      <!-- Entry Settings -->
+                      <div class="col d-flex justify-content-end">
+                        <div class="dropdown dropup">
+                          <button class="btn" type="button" id="dropdownMenuEntry" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-ellipsis-h text-end" data-bs-toggle="tooltip" title="Entry Settings"></i>
+                          </button>
+                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuEntry">
+                            <li><button class="dropdown-item" type="button">Edit Entry</button></li>
+                            <li><button class="dropdown-item" type="button">Delete Entry</button></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+
+        <!-- 10th Entry memories -->
+        <div class="row">
+          <div class="col-9 mx-auto">
+            <a href="#">
+              <div class="card mb-3 mx-auto" style="padding-right: 0;">
+                <div class="row g-0">
+                  <div class="col-9 custom">
+                    <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;">PROG2 EXTENDED!!!  </h5>
+                    <div class="card-body">
+                      <p class="card-text">
+                        Phase one of the mp has been extended woo!!!! Been stressed about it lately sheesh XDDDDDDDD
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-3">
+                    <img src="Images/memories.jpg" class="img-fluid" style="height: 169px; width: 246.5px; object-fit: cover;" alt="...">
+                  </div>
+                  <!-- Entry Footer -->
+                  <div class="card-footer">
+                    <div class="row">
+                      <div class="col mt-1">
+                        <p class="card-text">
+                          <small class="text-muted">
+                            Posted on March 30, 2020
+                            <i class="fas fa-lock mx-1 privacy-lock" data-bs-toggle="tooltip" title="Private Entry"></i> 
+                          </small></p>
+                      </div>
+                      <!-- Entry Settings -->
+                      <div class="col d-flex justify-content-end">
+                        <div class="dropdown dropup">
+                          <button class="btn" type="button" id="dropdownMenuEntry" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-ellipsis-h text-end" data-bs-toggle="tooltip" title="Entry Settings"></i>
+                          </button>
+                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuEntry">
+                            <li><button class="dropdown-item" type="button">Edit Entry</button></li>
+                            <li><button class="dropdown-item" type="button">Delete Entry</button></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+
+        <!-- 11th Entry memories -->
+        <div class="row">
+          <div class="col-9 mx-auto">
+            <a href="#">
+              <div class="card mb-3 mx-auto" style="padding-right: 0;">
+                <div class="row g-0">
+                  <div class="col-9 custom">
+                    <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;">March 30, 2020 </h5>
+                    <div class="card-body">
+                      <p class="card-text">
+                        Nice, the government has extended the lockdown woo! More time for CCPROG2! Starting to miss my friends, though. Hope I see them again soon.
+                      </p>
+                    </div>
+                  </div>
+                  <!-- Entry Footer -->
+                  <div class="card-footer">
+                    <div class="row">
+                      <div class="col mt-1">
+                        <p class="card-text">
+                          <small class="text-muted">
+                            Posted on March 30, 2020
+                            <i class="fas fa-lock mx-1 privacy-lock" data-bs-toggle="tooltip" title="Private Entry"></i> 
+                          </small></p>
+                      </div>
+                      <!-- Entry Settings -->
+                      <div class="col d-flex justify-content-end">
+                        <div class="dropdown dropup">
+                          <button class="btn" type="button" id="dropdownMenuEntry" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-ellipsis-h text-end" data-bs-toggle="tooltip" title="Entry Settings"></i>
+                          </button>
+                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuEntry">
+                            <li><button class="dropdown-item" type="button">Edit Entry</button></li>
+                            <li><button class="dropdown-item" type="button">Delete Entry</button></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+
+        
           
 
         <!-- Create entry button (modal) -->
@@ -497,7 +750,7 @@
                 <form>
                   <div class="mb-3">
                     <label class="visually-hidden" for="autoSizingSelect">Title of Entry</label>
-                    <input type="text" class="form-control" placeholder="Title of Entry" aria-label="Title of Entry">
+                    <input type="text" class="form-control" placeholder="Title of Entry" aria-label="Title of Entry" maxlength = "50">
                   </div>
                   <div class="row g-3 mb-4">
                     <div class="col-md-4">

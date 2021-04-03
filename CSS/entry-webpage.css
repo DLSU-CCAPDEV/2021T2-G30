@@ -3,16 +3,32 @@
     min-height: calc(100vh - 74px);
   }
 
-
 h5 {
     font-size:30px;
 }
 
-#area { 
+.card {
+    max-width:1600px;
+    padding: 0px;
+    border-radius: 15PX;
+}
+
+#area {
+    min-width: 200px; 
     font-size: 24px;
     max-height: 500px;
     overflow-y: auto;
     word-break: break-word; 
     text-align: justify;
-    max-width: auto;
+}
+
+
+img {
+    min-width: 200px;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.card-footer {
+    background-color: white;
 }

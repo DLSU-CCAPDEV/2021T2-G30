@@ -173,25 +173,43 @@
       </div>
     </section>
 
+    <!-- Sort Button -->
+    <div class="container">
+      <div class="row">
+        <div class="col-9 mx-auto">
+          <div class="dropstart">
+            <button class="btn dropdown-toggle dropDownSort" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-filter"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item disabled" href="#">Sort by Date</a></li>
+              <li><a class="dropdown-item" href="#">Sort by Significance</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
     <!-- Hard coded values -->
     <section> 
-
       <!-- 1st Entry Public -->
-      <div class="container">
+      <div class="container pt-3">
         <div class="row">
           <div class="col-9 mx-auto">
-            <a href="entry1webpage.html" target="_blank">
               <div class="card mb-3 mx-auto" style="padding-right: 0;">
                 <div class="row g-0">
                   <div class="col-9 custom">
-                    <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;"> GEDANCE </h5>
-                    <div class="card-body">
-                      <p class="card-text">
-                        I then practiced for gedance because I need to 
-                        submit a dance routine called pop line dance one and it comprised of six parts.
-                      </p>
-                    </div>
+                    <a href="entry1webpage.html" target="_blank">
+                      <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;"> GEDANCE </h5>
+                      <div class="card-body">
+                        <p class="card-text">
+                          I then practiced for gedance because I need to 
+                          submit a dance routine called pop line dance one and it comprised of six parts.
+                        </p>
+                      </div>
+                    </a> 
                   </div>
+                     
                   <div class="col-3">
                     <img src="Images/gedance.jpg" class="img-fluid" style="height: 169px; width: 246.5px; object-fit: cover;" alt="...">
                   </div>
@@ -212,8 +230,10 @@
                             <i class="fas fa-ellipsis-h text-end" data-bs-toggle="tooltip" title="Entry Settings"></i>
                           </button>
                           <ul class="dropdown-menu" aria-labelledby="dropdownMenuEntry">
-                            <li><button class="dropdown-item" type="button">Edit Entry</button></li>
-                            <li><button class="dropdown-item" type="button">Delete Entry</button></li>
+                            <li><button class="dropdown-item" type="button" data-bs-toggle="modal"
+                              data-bs-target="#editEntry">Edit Entry</button></li>
+                            <li><button class="dropdown-item" type="button" data-bs-toggle="modal"
+                              data-bs-target="#deleteEntry">Delete Entry</button></li>
                           </ul>
                         </div>
                       </div>
@@ -221,25 +241,25 @@
                   </div>
                 </div>
               </div>
-            </a>           
           </div>
         </div>
 
         <!-- 2nd Entry Public -->
         <div class="row">
           <div class="col-9 mx-auto">
-            <a href="entry2webpage.html" target="_blank">
               <div class="card mb-3 mx-auto" style="padding-right: 0;">
                 <div class="row g-0">
                   <div class="col-9 custom">
-                    <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;"> Great lunch </h5>
-                    <div class="card-body">
-                      <p class="card-text">
-                        Yesterday I ate lunch then worked 
-                        out then studied arch1 then played dota I really like the hero zeus because he has this ability called 
-                        thundergod's wrath like woah wtf lit fam.
-                      </p>
-                    </div>
+                    <a href="entry2webpage.html" target="_blank">
+                      <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;"> Great lunch </h5>
+                      <div class="card-body">
+                        <p class="card-text">
+                          Yesterday I ate lunch then worked 
+                          out then studied arch1 then played dota I really like the hero zeus because he has this ability called 
+                          thundergod's wrath like woah wtf lit fam.
+                        </p>
+                      </div>
+                    </a>
                   </div>
                   <div class="col-3">
                     <img src="Images/memories.jpg" class="img-fluid" style="height: 169px; width: 246.5px; object-fit: cover;" alt="...">
@@ -261,8 +281,10 @@
                             <i class="fas fa-ellipsis-h text-end" data-bs-toggle="tooltip" title="Entry Settings"></i>
                           </button>
                           <ul class="dropdown-menu" aria-labelledby="dropdownMenuEntry">
-                            <li><button class="dropdown-item" type="button">Edit Entry</button></li>
-                            <li><button class="dropdown-item" type="button">Delete Entry</button></li>
+                            <li><button class="dropdown-item" type="button" data-bs-toggle="modal"
+                              data-bs-target="#editEntry">Edit Entry</button></li>
+                            <li><button class="dropdown-item" type="button" data-bs-toggle="modal"
+                              data-bs-target="#deleteEntry">Delete Entry</button></li>
                           </ul>
                         </div>
                       </div>
@@ -270,27 +292,27 @@
                   </div>
                 </div>
               </div>
-            </a>
           </div>
         </div>
 
         <!-- 3rd Entry Public -->
         <div class="row">
           <div class="col-9 mx-auto">
-            <a href="entry3webpage.html" target="_blank">
               <div class="card mb-3 mx-auto" style="padding-right: 0;">
                 <div class="row g-0">
                   <div class="col-9 custom">
-                    <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;">Dua Lipa</h5>
-                    <div class="card-body">
-                      <p class="card-text">
-                        I then practiced for gedance because I need to 
-                        submit a dance routine called pop line dance one and it comprised of six parts, the song we used for 
-                        the dance was Dua Lipa's dont stop now. Over all a fun, productive day. Yesterday I ate lunch then worked 
-                        out then studied arch1 then played dota I really like the hero zeus because he has this ability called 
-                        thundergod's wrath like woah wtf lit fam.
-                      </p>
-                    </div>
+                    <a href="entry3webpage.html" target="_blank">
+                      <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;">Dua Lipa</h5>
+                      <div class="card-body">
+                        <p class="card-text">
+                          I then practiced for gedance because I need to 
+                          submit a dance routine called pop line dance one and it comprised of six parts, the song we used for 
+                          the dance was Dua Lipa's dont stop now. Over all a fun, productive day. Yesterday I ate lunch then worked 
+                          out then studied arch1 then played dota I really like the hero zeus because he has this ability called 
+                          thundergod's wrath like woah wtf lit fam.
+                        </p>
+                      </div>
+                    </a>
                   </div>
                   <div class="col-3">
                     <img src="Images/letters.jpg" class="img-fluid" style="height: 169px; width: 246.5px; object-fit: cover;" alt="...">
@@ -312,8 +334,10 @@
                             <i class="fas fa-ellipsis-h text-end" data-bs-toggle="tooltip" title="Entry Settings"></i>
                           </button>
                           <ul class="dropdown-menu" aria-labelledby="dropdownMenuEntry">
-                            <li><button class="dropdown-item" type="button">Edit Entry</button></li>
-                            <li><button class="dropdown-item" type="button">Delete Entry</button></li>
+                            <li><button class="dropdown-item" type="button" data-bs-toggle="modal"
+                              data-bs-target="#editEntry">Edit Entry</button></li>
+                            <li><button class="dropdown-item" type="button" data-bs-toggle="modal"
+                              data-bs-target="#deleteEntry">Delete Entry</button></li>
                           </ul>
                         </div>
                       </div>
@@ -321,24 +345,25 @@
                   </div>
                 </div>
               </div>
-            </a>
           </div>
         </div>
 
         <!-- 4th Entry Public -->
         <div class="row">
           <div class="col-9 mx-auto">
-            <a href="entry4webpage.html" target="_blank">
+            
               <div class="card mb-3 mx-auto" style="padding-right: 0;">
                 <div class="row g-0">
                   <div class="col-9 custom">
-                    <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;"> Goodbye Creamer! </h5>
-                    <div class="card-body">
-                      <p class="card-text">
-                        Woke up and drank coffee. Thought I tried making without putting in
-                        a creamer. I liked it! The coffee, tasted better even without a creamer. Might not use a creamer ever again.
-                      </p>
-                    </div>
+                    <a href="entry4webpage.html" target="_blank">
+                      <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;"> Goodbye Creamer! </h5>
+                      <div class="card-body">
+                        <p class="card-text">
+                          Woke up and drank coffee. Thought I tried making without putting in
+                          a creamer. I liked it! The coffee, tasted better even without a creamer. Might not use a creamer ever again.
+                        </p>
+                      </div>
+                    </a>
                   </div>
                   <div class="col-3">
                     <img src="Images/coffee.jpg" class="img-fluid" style="height: 169px; width: 246.5px; object-fit: cover;" alt="...">
@@ -360,8 +385,10 @@
                             <i class="fas fa-ellipsis-h text-end" data-bs-toggle="tooltip" title="Entry Settings"></i>
                           </button>
                           <ul class="dropdown-menu" aria-labelledby="dropdownMenuEntry">
-                            <li><button class="dropdown-item" type="button">Edit Entry</button></li>
-                            <li><button class="dropdown-item" type="button">Delete Entry</button></li>
+                            <li><button class="dropdown-item" type="button" data-bs-toggle="modal"
+                              data-bs-target="#editEntry">Edit Entry</button></li>
+                            <li><button class="dropdown-item" type="button" data-bs-toggle="modal"
+                              data-bs-target="#deleteEntry">Delete Entry</button></li>
                           </ul>
                         </div>
                       </div>
@@ -369,23 +396,24 @@
                   </div>
                 </div>
               </div>
-            </a>
           </div>
         </div>
 
         <!-- 5th Entry Public -->
         <div class="row">
           <div class="col-9 mx-auto">
-            <a href="entry5webpage.html" target="_blank">
+           
               <div class="card mb-3 mx-auto" style="padding-right: 0;">
                 <div class="row g-0">
                   <div class="col-9 custom">
-                    <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;"> Gotta get the bread </h5>
-                    <div class="card-body">
-                      <p class="card-text">
-                        Today I will be coding all day to get that 4 in APDEV. 
-                      </p>
-                    </div>
+                    <a href="entry5webpage.html" target="_blank">
+                      <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;"> Gotta get the bread </h5>
+                      <div class="card-body">
+                        <p class="card-text">
+                          Today I will be coding all day to get that 4 in APDEV. 
+                        </p>
+                      </div>
+                    </a>
                   </div>
                   <div class="col-3">
                     <img src="Images/coding.jpg" class="img-fluid" style="height: 169px; width: 246.5px; object-fit: cover;" alt="...">
@@ -407,8 +435,10 @@
                             <i class="fas fa-ellipsis-h text-end" data-bs-toggle="tooltip" title="Entry Settings"></i>
                           </button>
                           <ul class="dropdown-menu" aria-labelledby="dropdownMenuEntry">
-                            <li><button class="dropdown-item" type="button">Edit Entry</button></li>
-                            <li><button class="dropdown-item" type="button">Delete Entry</button></li>
+                            <li><button class="dropdown-item" type="button" data-bs-toggle="modal"
+                              data-bs-target="#editEntry">Edit Entry</button></li>
+                            <li><button class="dropdown-item" type="button" data-bs-toggle="modal"
+                              data-bs-target="#deleteEntry">Delete Entry</button></li>
                           </ul>
                         </div>
                       </div>
@@ -416,23 +446,23 @@
                   </div>
                 </div>
               </div>
-            </a>
           </div>
         </div>
 
-        <!-- 6th Entry Private -->
+        <!-- 6th Entry Public -->
         <div class="row">
           <div class="col-9 mx-auto">
-            <a href="entry6webpage.html" target="_blank">
               <div class="card mb-3 mx-auto" style="padding-right: 0;">
                 <div class="row g-0">
                   <div class="col-9 custom">
-                    <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;"> Friendzone inbound? </h5>
-                    <div class="card-body">
-                      <p class="card-text">
-                        Just confessed to my crush. Yolo right? A start of the end?
-                      </p>
-                    </div>
+                    <a href="entry6webpage.html" target="_blank">
+                      <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;"> Friendzone inbound? </h5>
+                      <div class="card-body">
+                        <p class="card-text">
+                          Just confessed to my crush. Yolo right? A start of the end? 
+                        </p>
+                      </div>
+                    </a>
                   </div>
                   <!-- Entry Footer -->
                   <div class="card-footer">
@@ -441,6 +471,106 @@
                         <p class="card-text">
                           <small class="text-muted">
                             Posted on March 29, 2021
+                            <i class="fas fa-globe-americas mx-1 privacy-globe" data-bs-toggle="tooltip" title="Public Entry"></i> 
+                          </small></p>
+                      </div>
+                      <!-- Entry Settings -->
+                      <div class="col d-flex justify-content-end">
+                        <div class="dropdown dropup">
+                          <button class="btn" type="button" id="dropdownMenuEntry" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-ellipsis-h text-end" data-bs-toggle="tooltip" title="Entry Settings"></i>
+                          </button>
+                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuEntry">
+                            <li><button class="dropdown-item" type="button" data-bs-toggle="modal"
+                              data-bs-target="#editEntry">Edit Entry</button></li>
+                            <li><button class="dropdown-item" type="button" data-bs-toggle="modal"
+                              data-bs-target="#deleteEntry">Delete Entry</button></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+
+        <!-- 7th Entry Public -->
+        <div class="row">
+          <div class="col-9 mx-auto">
+              <div class="card mb-3 mx-auto" style="padding-right: 0;">
+                <div class="row g-0">
+                  <div class="col-9 custom">
+                    <a href="#">
+                      <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;"> no way am i staying indoors for more than a month </h5>
+                      <div class="card-body">
+                        <p class="card-text">
+                          yoooo wth my parents thinks that it would take around 2 years or so before things go back to normal. I can't even imagine staying quarantined for a year. Sheesh I hope that doesn't happen!
+                        </p>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col-3">
+                    <img src="Images/coffee.jpg" class="img-fluid" style="height: 169px; width: 246.5px; object-fit: cover;" alt="...">
+                  </div>
+                  <!-- Entry Footer -->
+                  <div class="card-footer">
+                    <div class="row">
+                      <div class="col mt-1">
+                        <p class="card-text">
+                          <small class="text-muted">
+                            Posted on March 29, 2021
+                            <i class="fas fa-globe-americas mx-1 privacy-globe" data-bs-toggle="tooltip" title="Public Entry"></i> 
+                          </small></p>
+                      </div>
+                      <!-- Entry Settings -->
+                      <div class="col d-flex justify-content-end">
+                        <div class="dropdown dropup">
+                          <button class="btn" type="button" id="dropdownMenuEntry" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-ellipsis-h text-end" data-bs-toggle="tooltip" title="Entry Settings"></i>
+                          </button>
+                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuEntry">
+                            <li><button class="dropdown-item" type="button" data-bs-toggle="modal"
+                              data-bs-target="#editEntry">Edit Entry</button></li>
+                            <li><button class="dropdown-item" type="button" data-bs-toggle="modal"
+                              data-bs-target="#deleteEntry">Delete Entry</button></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+
+        
+
+        <!-- 8th Entry memories -->
+        <div class="row">
+          <div class="col-9 mx-auto">
+              <div class="card mb-3 mx-auto" style="padding-right: 0;">
+                <div class="row g-0">
+                  <div class="col-9 custom">
+                    <a href="#">
+                      <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;">March 30, 2020</h5>
+                      <div class="card-body">
+                        <p class="card-text">
+                          Time to binge watch bojack horseman, hope it cures my sadness
+                        </p>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col-3">
+                    <img src="Images/mountain.jpg" class="img-fluid" style="height: 169px; width: 246.5px; object-fit: cover;" alt="...">
+                  </div>
+                  <!-- Entry Footer -->
+                  <div class="card-footer">
+                    <div class="row">
+                      <div class="col mt-1">
+                        <p class="card-text">
+                          <small class="text-muted">
+                            Posted on March 30, 2020
                             <i class="fas fa-lock mx-1 privacy-lock" data-bs-toggle="tooltip" title="Private Entry"></i> 
                           </small></p>
                       </div>
@@ -451,8 +581,10 @@
                             <i class="fas fa-ellipsis-h text-end" data-bs-toggle="tooltip" title="Entry Settings"></i>
                           </button>
                           <ul class="dropdown-menu" aria-labelledby="dropdownMenuEntry">
-                            <li><button class="dropdown-item" type="button">Edit Entry</button></li>
-                            <li><button class="dropdown-item" type="button">Delete Entry</button></li>
+                            <li><button class="dropdown-item" type="button" data-bs-toggle="modal"
+                              data-bs-target="#editEntry">Edit Entry</button></li>
+                            <li><button class="dropdown-item" type="button" data-bs-toggle="modal"
+                              data-bs-target="#deleteEntry">Delete Entry</button></li>
                           </ul>
                         </div>
                       </div>
@@ -460,10 +592,158 @@
                   </div>
                 </div>
               </div>
-            </a>
-            
           </div>
         </div>
+
+        <!-- 9th Entry memories -->
+        <div class="row">
+          <div class="col-9 mx-auto">
+              <div class="card mb-3 mx-auto" style="padding-right: 0;">
+                <div class="row g-0">
+                  <div class="col-9 custom">
+                    <a href="#">
+                      <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;">Utter loneliness </h5>
+                      <div class="card-body">
+                        <p class="card-text">
+                          just finished phase 1, what now? Missing my friends, can't wait to get back to class again
+                        </p>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col-3">
+                    <img src="Images/mountain.jpg" class="img-fluid" style="height: 169px; width: 246.5px; object-fit: cover;" alt="...">
+                  </div>
+                  <!-- Entry Footer -->
+                  <div class="card-footer">
+                    <div class="row">
+                      <div class="col mt-1">
+                        <p class="card-text">
+                          <small class="text-muted">
+                            Posted on March 30, 2020
+                            <i class="fas fa-lock mx-1 privacy-lock" data-bs-toggle="tooltip" title="Private Entry"></i> 
+                          </small></p>
+                      </div>
+                      <!-- Entry Settings -->
+                      <div class="col d-flex justify-content-end">
+                        <div class="dropdown dropup">
+                          <button class="btn" type="button" id="dropdownMenuEntry" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-ellipsis-h text-end" data-bs-toggle="tooltip" title="Entry Settings"></i>
+                          </button>
+                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuEntry">
+                            <li><button class="dropdown-item" type="button" data-bs-toggle="modal"
+                              data-bs-target="#editEntry">Edit Entry</button></li>
+                            <li><button class="dropdown-item" type="button" data-bs-toggle="modal"
+                              data-bs-target="#deleteEntry">Delete Entry</button></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+
+
+        <!-- 10th Entry memories -->
+        <div class="row">
+          <div class="col-9 mx-auto">
+              <div class="card mb-3 mx-auto" style="padding-right: 0;">
+                <div class="row g-0">
+                  <div class="col-9 custom">
+                    <a href="#">
+                      <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;">PROG2 EXTENDED!!!  </h5>
+                      <div class="card-body">
+                        <p class="card-text">
+                          Phase one of the mp has been extended woo!!!! Been stressed about it lately sheesh XDDDDDDDD
+                        </p>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col-3">
+                    <img src="Images/memories.jpg" class="img-fluid" style="height: 169px; width: 246.5px; object-fit: cover;" alt="...">
+                  </div>
+                  <!-- Entry Footer -->
+                  <div class="card-footer">
+                    <div class="row">
+                      <div class="col mt-1">
+                        <p class="card-text">
+                          <small class="text-muted">
+                            Posted on March 30, 2020
+                            <i class="fas fa-lock mx-1 privacy-lock" data-bs-toggle="tooltip" title="Private Entry"></i> 
+                          </small></p>
+                      </div>
+                      <!-- Entry Settings -->
+                      <div class="col d-flex justify-content-end">
+                        <div class="dropdown dropup">
+                          <button class="btn" type="button" id="dropdownMenuEntry" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-ellipsis-h text-end" data-bs-toggle="tooltip" title="Entry Settings"></i>
+                          </button>
+                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuEntry">
+                            <li><button class="dropdown-item" type="button" data-bs-toggle="modal"
+                              data-bs-target="#editEntry">Edit Entry</button></li>
+                            <li><button class="dropdown-item" type="button" data-bs-toggle="modal"
+                              data-bs-target="#deleteEntry">Delete Entry</button></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+
+
+        <!-- 11th Entry memories -->
+        <div class="row">
+          <div class="col-9 mx-auto">
+            
+              <div class="card mb-3 mx-auto" style="padding-right: 0;">
+                <div class="row g-0">
+                  <div class="col-9 custom">
+                    <a href="#">
+                      <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;">March 30, 2020 </h5>
+                      <div class="card-body">
+                        <p class="card-text">
+                          Nice, the government has extended the lockdown woo! More time for CCPROG2! Starting to miss my friends, though. Hope I see them again soon.
+                        </p>
+                      </div>
+                    </a>
+                  </div>
+                  <!-- Entry Footer -->
+                  <div class="card-footer">
+                    <div class="row">
+                      <div class="col mt-1">
+                        <p class="card-text">
+                          <small class="text-muted">
+                            Posted on March 30, 2020
+                            <i class="fas fa-lock mx-1 privacy-lock" data-bs-toggle="tooltip" title="Private Entry"></i> 
+                          </small></p>
+                      </div>
+                      <!-- Entry Settings -->
+                      <div class="col d-flex justify-content-end">
+                        <div class="dropdown dropup">
+                          <button class="btn" type="button" id="dropdownMenuEntry" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-ellipsis-h text-end" data-bs-toggle="tooltip" title="Entry Settings"></i>
+                          </button>
+                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuEntry">
+                            <li><button class="dropdown-item" type="button" data-bs-toggle="modal"
+                              data-bs-target="#editEntry">Edit Entry</button></li>
+                            <li><button class="dropdown-item" type="button" data-bs-toggle="modal"
+                              data-bs-target="#deleteEntry">Delete Entry</button></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+
+
+        
           
 
         <!-- Create entry button (modal) -->
@@ -478,6 +758,8 @@
         </button>
         
         <section>
+
+          <!-- Create Entry Modal -->
           <div
             class="modal fade"
             id="createEntryModal"
@@ -497,7 +779,7 @@
                 <form>
                   <div class="mb-3">
                     <label class="visually-hidden" for="autoSizingSelect">Title of Entry</label>
-                    <input type="text" class="form-control" placeholder="Title of Entry" aria-label="Title of Entry">
+                    <input type="text" class="form-control" placeholder="Title of Entry" aria-label="Title of Entry" maxlength = "50">
                   </div>
                   <div class="row g-3 mb-4">
                     <div class="col-md-4">
@@ -508,7 +790,7 @@
                       </select>
                     </div>
                     <div class="col-md-4">
-                      <label for="dateEntry" style="font-size: 14px;">Date and Time of Entry</label>
+                      <label for="dateEntry" style="font-size: 14px;">Date and Time</label>
                       <input type="datetime-local" class="form-control" id="dateEntry">
                     </div>
                     <div class="col-md-4">
@@ -547,6 +829,96 @@
           </div>
         </section>
       </div>
+      
+
+      <!-- Edit Entry Modal -->
+      <div
+            class="modal fade"
+            id="editEntry"
+            tabindex="-1"
+            aria-labelledby="createEntryModalLabel"
+            aria-hidden="true"
+          >
+          <div class="modal-dialog modal-dialog-centered" style="width: 50em">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="editEntryModalLabel">Edit Entry</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+
+                <!-- Creating entry -->
+                <form>
+                  <div class="mb-3">
+                    <label class="visually-hidden" for="autoSizingSelect">New Title</label>
+                    <input type="text" class="form-control" placeholder="New Title" aria-label="New Title" maxlength = "50">
+                  </div>
+                  <div class="row g-3 mb-4">
+                    <div class="col-md-4">
+                      <label for="inputPrivacy" style="font-size: 14px;">Select Privacy</label>
+                      <select id="inputPrivacy" class="form-select">
+                        <option selected>Private</option>
+                        <option>Public</option>
+                      </select>
+                    </div>
+                    <div class="col-md-4">
+                      <label for="dateEntry" style="font-size: 14px;">Date and Time</label>
+                      <input type="datetime-local" class="form-control" id="dateEntry">
+                    </div>
+                    <div class="col-md-4">
+                      <label for="inputPrivacy" style="font-size: 14px;">Entry's Significance</label>
+                      <select id="inputPrivacy" class="form-select ">
+                        <option selected>None</option>
+                        <option>5</option>
+                        <option>4</option>
+                        <option>3</option>
+                        <option>2</option>
+                        <option>1</option>
+                      </select>
+                    </div> 
+                  </div>
+                  
+                  <div class="mb-3">
+                    <label class="visually-hidden" for="entryFormControlTextarea1" class="form-label">New Entry</label>
+                    <textarea class="form-control" id="entryFormControlTextarea1" rows="5" placeholder="Enter new entry" aria-label="entry content"></textarea>
+                  </div>
+
+                  <div class="mb-3">
+                    <div class="row">
+                      <label for="exampleFormControlFile1" style="font-size: 14px;">Insert Image</label>
+                      <input type="file" class="form-control-file" id="imageFormControlFile1" accept="image/x-png,image/jpeg" >
+                    </div>
+                  </div>
+                </form>
+              
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+
+      <!-- Delete Modal -->
+      <div class="modal fade" id="deleteEntry" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="deleteEntryModalLabel">Remove Post</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      This option will delete your entry forever, delete entry?
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Delete Entry</button>
+                    </div>
+            </div>
+        </div>
+    </div>
     </section>
 
     <script

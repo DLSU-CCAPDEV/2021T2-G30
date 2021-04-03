@@ -18,6 +18,10 @@ body {
   border-radius: 15px;
 }
 
+.dropDownSort {
+  font-size: 12px;
+  background-color: white; border-color: rgb(221, 221, 221);
+}
 
 ::-webkit-scrollbar {
   width: 14px;
@@ -30,6 +34,16 @@ body {
   background-clip: padding-box;
   border-radius: 7px;
   background-color: #D9D9D9;
+}
+
+::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+    display: none;
+}
+
+.card-text {
+  text-align: justify;
 }
 
 

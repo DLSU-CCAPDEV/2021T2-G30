@@ -7,6 +7,14 @@ Resources:
 * https://getbootstrap.com/
 * https://fontawesome.com/
 
+Mainpage sources:
+* https://unsplash.com/photos/3ckWUnaCxzc 
+* https://unsplash.com/photos/FgSyP02I0gw
+* https://unsplash.com/photos/toQNPpuDuwI
+* https://unsplash.com/photos/_wkd7XBRfU4
+* https://unsplash.com/photos/m_HRfLhgABo
+* https://www.walpaperlist.com/2020/01/4k-wallpaper-vertical.html
+
 Image Sources From:
 * https://pbs.twimg.com/media/ErNNDilVcAEJC9Z?format=jpg&name=large
 * https://pbs.twimg.com/media/Et1RWuBVkAIiCqa?format=jpg&name=large

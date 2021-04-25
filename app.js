@@ -1,21 +1,36 @@
-const http = require('http');
 const dotenv = require('dotenv');
-const fs = require('fs');
-const url = require('url');
+// const fs = require('fs');
 const express = require('express');
+const bodyParser = require('body-parser');
+const exphbs  = require('express-handlebars');
+const path = require('path');
 
-const app = express();
 
-// Router
-const appRouter = require('./router/router');
-app.use('/', appRouter);
+const app = express(); //initializing express server
+app.use(bodyParser.urlencoded({ extended: false }));
+
 
 dotenv.config();
 port = process.env.PORT;
 hostname = process.env.HOSTNAME;
 
 
-app.listen(port, hostname, () => {
+//Templating Engine
+app.engine('.hbs', exphbs({
+    defaultLayout: 'main',
+    extname: '.hbs',
+    layoutsDir: path.join(_dirname, 'views/layouts'),
+    partialsDir: path.join(__dirname, 'views/partials')
+}));
+
+app.set('view engine', '.hbs');
+
+// Routers
+const appRouter = require('./routes/router.js');
+app.use('/', appRouter);
+
+
+app.listen(port, hostname, function() {
     console.log('Server running at: ');
     console.log('http://' + hostname + ':' + port);
-})
+}); 

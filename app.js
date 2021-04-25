@@ -19,12 +19,12 @@ hostname = process.env.HOSTNAME;
 app.engine('.hbs', exphbs({
     defaultLayout: 'main',
     extname: '.hbs',
-    layoutsDir: path.join(_dirname, 'views/layouts'),
+    layoutsDir: path.join(__dirname, 'views/layouts'),
     partialsDir: path.join(__dirname, 'views/partials')
 }));
 
 app.set('view engine', '.hbs');
-
+app.use(express.static('public'))
 // Routers
 const appRouter = require('./routes/router.js');
 app.use('/', appRouter);

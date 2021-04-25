@@ -1,0 +1,19 @@
+{
+  "name": "2021t2-g30",
+  "version": "1.0.0",
+  "description": "A diary web application. Wi-Fi is required to run the web application. For the best experience, begin by opening the login.html file.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DLSU-CCAPDEV/2021T2-G30.git"
+  },
+  "author": "Buensalida, Dimaculangan, Rosima",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DLSU-CCAPDEV/2021T2-G30/issues"
+  },
+  "homepage": "https://github.com/DLSU-CCAPDEV/2021T2-G30#readme"
+}

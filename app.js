@@ -24,7 +24,8 @@ app.engine('.hbs', exphbs({
 }));
 
 app.set('view engine', '.hbs');
-app.use(express.static('public'))
+app.use(express.static('public'));
+
 // Routers
 const appRouter = require('./routes/router.js');
 app.use('/', appRouter);

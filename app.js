@@ -5,8 +5,8 @@ const bodyParser = require('body-parser');
 const exphbs  = require('express-handlebars');
 const path = require('path');
 
-
 const app = express(); //initializing express server
+
 app.use(bodyParser.urlencoded({ extended: false }));
 
 

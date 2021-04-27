@@ -30,7 +30,10 @@ var UserSchema = new mongoose.Schema({
     pw: {
         type: String,
         required: true
-    }
+    },
+    entries: [{
+        type: mongoose.Schema.Types.ObjectId, ref: 'entries'
+    }]
 });
 
 /*

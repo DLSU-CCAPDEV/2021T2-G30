@@ -60,7 +60,7 @@ const database = {
     */
     findOne: function(model, query, projection, callback) {
         model.findOne(query, projection, function(error, result) {
-            if(error) return callback(false);
+            if(error) return callback(null);
             return callback(result);
         });
     },

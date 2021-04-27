@@ -4,15 +4,18 @@ const profileController = require('../controllers/profileController.js');
 
 
 // GET
-router.get('/Login', mainController.getLogin);
 router.get('/', mainController.getLogin); //incase user tries to access this route
+router.get('/Login', mainController.getLogin);
 router.get('/Error', mainController.getError);
 router.get('/mainpage', mainController.getMainPage);
 router.get('/settings', mainController.getSettingsPage);
-router.get('/checksignup', profileController.checksignup);
-//POST // Creation
 
+router.get('/checksignup', profileController.checksignup);
+router.get('/checklogin', profileController.checklogin);
+
+//POST // Creation
 router.post('/signup', profileController.signup);
+
 
 //PATCH // Editing
 

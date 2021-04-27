@@ -34,10 +34,25 @@ const routerController = {
     checksignup: function (req, res) {
         var uName = req.query.uName;
         // console.log("test");
-        db.findOne(userCollection, {uName: uName}, 'uName', function (result) {
+        db.findOne(userCollection, {uName: uName}, '', function (result) {
             res.send(result);
         });
-    }
+    },
+
+    checklogin: function (req, res) {
+        var uName = req.query.uName;
+        var pw = req.query.pw;
+
+        console.log(uName + ' ' + pw);
+        // console.log("test");
+        db.findOne(userCollection, {uName: uName, pw: pw}, '', function (result) {
+            if(result === null)
+                res.send(false);
+            else 
+                res.send(true);
+            // console.log(result);
+        });
+    },
     
 };   
 

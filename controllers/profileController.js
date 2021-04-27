@@ -28,9 +28,16 @@ const routerController = {
                 res.redirect('/Login');
             }
         });
-       
 
     },
+
+    checksignup: function (req, res) {
+        var uName = req.query.uName;
+        // console.log("test");
+        db.findOne(userCollection, {uName: uName}, 'uName', function (result) {
+            res.send(result);
+        });
+    }
     
 };   
 

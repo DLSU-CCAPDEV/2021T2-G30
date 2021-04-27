@@ -1,5 +1,5 @@
 const dotenv = require('dotenv');
-// const fs = require('fs');
+const fs = require('fs');
 const express = require('express');
 const bodyParser = require('body-parser');
 const exphbs  = require('express-handlebars');
@@ -22,7 +22,7 @@ app.engine('.hbs', exphbs({
     partialsDir: path.join(__dirname, 'views/partials')
 }));
 
-app.set('view engine', '.hbs');
+app.set('view engine', '.hbs'); //using hbs as view engine
 app.use(express.static('public'));
 
 // Routers

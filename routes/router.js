@@ -1,11 +1,15 @@
 const router = require("express")();
-const controller = require('../controllers/controller.js');
+const mainController = require('../controllers/mainController.js');
+const profileController = require('../controllers/profileController.js');
+
 
 // GET
-router.get('/', controller.getIndex);
-router.get('/login', controller.getLogin);
+router.get('/Login', mainController.getLogin);
+router.get('/Homepage', mainController.getIndex);
 
 //POST // Creation
+
+router.post('/signup', profileController.signup);
 
 //PATCH // Editing
 

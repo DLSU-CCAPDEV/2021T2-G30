@@ -76,7 +76,7 @@
               ></button>
             </div>
             <div class="modal-body">
-              <form action="login.html">
+              <form action="/signup" method="POST">
                 <div class="col">
                   <div class="mb-3">
                     <input
@@ -85,7 +85,8 @@
                       class="form-control p-2"
                       id="DisplayPicture"
                       title="Upload display picture"
-                      required
+                      name="dPicture"
+                      {{!-- required --}}
                     />
                   </div>
                 </div>
@@ -97,7 +98,8 @@
                         class="form-control p-2"
                         id="FirstName"
                         placeholder="First Name"
-                        required
+                        name="fName"
+                        {{!-- required --}}
                       />
                     </div>
                   </div>
@@ -108,7 +110,8 @@
                         class="form-control p-2"
                         id="LastName"
                         placeholder="Last Name"
-                        required
+                        name="lName"
+                        {{!-- required --}}
                       />
                     </div>
                   </div>
@@ -119,7 +122,8 @@
                     class="form-control p-2"
                     id="EmailRegister"
                     placeholder="Email"
-                    required
+                    name="email"
+                    {{!-- required --}}
                   />
                 </div>
                 <div class="mb-3">
@@ -128,7 +132,8 @@
                     class="form-control p-2"
                     id="UserNameRegister"
                     placeholder="Username"
-                    required
+                    name="uName"
+                    {{!-- required --}}
                   />
                 </div>
                 <div class="mb-3">
@@ -137,6 +142,7 @@
                     maxlength="150"
                     placeholder="Bio (optional)"
                     aria-label="With textarea"
+                    name="bio"
                   ></textarea>
                 </div>
                 <div class="row mb-3">
@@ -147,7 +153,8 @@
                         class="form-control p-2"
                         id="PasswordRegister"
                         placeholder="Password"
-                        required
+                        name="pw"
+                        {{!-- required --}}
                       />
                     </div>
                   </div>
@@ -158,14 +165,15 @@
                         class="form-control p-2"
                         id="PasswordRegister2"
                         placeholder="Re-enter Password"
-                        required
+                        {{!-- required --}}
                       />
                     </div>
                   </div>
                 </div>
                 <div class="modal-footer">
                   <button
-                    type="submit"
+                    {{!-- Change to button --}}
+                    type="submit" 
                     class="btn btn-primary"
                     style="margin-bottom: -0.5rem; margin-right: -0.8rem"
                   >

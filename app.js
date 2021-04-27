@@ -14,7 +14,6 @@ dotenv.config();
 port = process.env.PORT;
 hostname = process.env.HOSTNAME;
 
-
 //Templating Engine
 app.engine('.hbs', exphbs({
     defaultLayout: 'main',
@@ -28,10 +27,13 @@ app.use(express.static('public'));
 
 // Routers
 const appRouter = require('./routes/router.js');
+const db = require('./models/db.js');
 app.use('/', appRouter);
 
+// Funtions
+db.connect();
 
 app.listen(port, hostname, function() {
     console.log('Server running at: ');
-    console.log('http://' + hostname + ':' + port);
+    console.log('http://' + hostname + ':' + port +  '/Login');
 }); 

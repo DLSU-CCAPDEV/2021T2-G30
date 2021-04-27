@@ -5,7 +5,8 @@ const mongoose = require('mongoose');
 const User = require('./UserModel.js');
 
 // safespacedb is the name of the database
-const url = process.env.DB_URL;
+// const url = process.env.DB_URL;
+const url = 'mongodb://localhost:27017/safespacedb';
 
 // additional connection options
 const options = {
@@ -21,7 +22,10 @@ const database = {
     */
     connect: function () {
         mongoose.connect(url, options, function(error) {
-            if(error) throw error;
+            if(error) {
+                console.log("error");
+                throw error;
+            } 
             console.log('Connected to: ' + url);
         });
     },
@@ -40,7 +44,7 @@ const database = {
     /*
         inserts multiple `docs` to the database based on the model `model`
     */
-    insertMany: function(model, docs) {
+    insertMany: function(model, docs, callback) {
         model.insertMany(docs, function(error, result) {
             if(error) return callback(false);
             console.log('Added ' + result);

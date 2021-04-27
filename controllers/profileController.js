@@ -24,6 +24,7 @@ const routerController = {
         }
 
         db.insertOne(userCollection, indivUser, function (flag) {
+
             if(flag) {
                 res.redirect('/Login');
             }
@@ -82,6 +83,18 @@ const routerController = {
                 
         });
     },
+
+    login: function(req,res){
+        var uName = req.body.uName;
+        var pw = req.body.pw;
+
+        db.findOne(userCollection, {uName: uName, pw: pw}, '', function (result) {
+           req.session.uName = result.uName;
+
+           res.redirect('/mainpage');
+                
+        });
+    }
     
     
 };   

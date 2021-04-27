@@ -17,7 +17,7 @@ router.get('/profile/:uName', profileController.getProfile);
 
 //POST // Creation
 router.post('/signup', profileController.signup);
-
+router.post('/login', profileController.login);
 
 //PATCH // Editing
 

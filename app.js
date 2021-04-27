@@ -23,6 +23,14 @@ app.engine('.hbs', exphbs({
     partialsDir: path.join(__dirname, 'views/partials')
 }));
 
+//Session template
+app.use(session({
+    'secret': 'ccapdev-session',
+    'resave': false,
+    'saveUninitialized': false,
+    //store: new MongoStore({mongooseConnection: mongoose.connection})
+}));
+
 app.set('view engine', '.hbs'); //using hbs as view engine
 app.use(express.static('public'));
 

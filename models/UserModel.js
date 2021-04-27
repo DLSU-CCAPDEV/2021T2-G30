@@ -25,14 +25,16 @@ var UserSchema = new mongoose.Schema({
     },
     bio: {
         type: String,
-        required: true
+        required: false
     },
     pw: {
         type: String,
         required: true
     },
     entries: [{
-        type: mongoose.Schema.Types.ObjectId, ref: 'entries'
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'entries',
+        required: false
     }]
 });
 

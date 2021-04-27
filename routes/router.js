@@ -6,7 +6,8 @@ const profileController = require('../controllers/profileController.js');
 // GET
 router.get('/Login', mainController.getLogin);
 router.get('/Homepage', mainController.getIndex);
-
+router.get('/mainpage', mainController.getMainPage);
+router.get('/settings', mainController.getSettingsPage);
 //POST // Creation
 
 router.post('/signup', profileController.signup);

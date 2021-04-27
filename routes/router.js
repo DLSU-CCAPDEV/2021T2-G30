@@ -9,8 +9,10 @@ router.get('/', mainController.getLogin); //incase user tries to access this rou
 router.get('/Error', mainController.getError);
 router.get('/mainpage', mainController.getMainPage);
 router.get('/settings', mainController.getSettingsPage);
-//POST // Creation
 
+router.get('/profile/:uName', profileController.getProfile);
+
+//POST // Creation
 router.post('/signup', profileController.signup);
 
 //PATCH // Editing

@@ -7,9 +7,10 @@ const routerController = {
         });
     },
 
-    getIndex: function (req, res) {
-        res.render('mainpage', {
-            title: 'Homepage'
+    getError: function (req, res) {
+        res.render('error', {
+            title: 'Page not found',
+            css:['global', 'error']
         });
     },
     

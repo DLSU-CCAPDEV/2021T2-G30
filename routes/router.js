@@ -5,7 +5,9 @@ const profileController = require('../controllers/profileController.js');
 
 // GET
 router.get('/Login', mainController.getLogin);
-router.get('/Homepage', mainController.getIndex);
+router.get('/', mainController.getLogin); //incase user tries to access this route
+router.get('/Error', mainController.getError);
+
 
 //POST // Creation
 

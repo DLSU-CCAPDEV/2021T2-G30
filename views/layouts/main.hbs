@@ -7,7 +7,7 @@
     <meta name="description" content="Diary Web Application - Safe Space" />
     <meta name="keyword" content="diary, webapp, Safe Space, Safe Space main page"/>
     <meta name="author" content="Buensalida; Dimaculangan; Rosima"/>
-    <title>{{title}}</title>
+    <title>{{ title }}</title>
 
     <link href="Images/favicon.png" rel="shortcut icon" type="image/jpg" />
     <link
@@ -16,9 +16,11 @@
       integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
       crossorigin="anonymous"
     />
+    
+    {{#each css}}
+    <link href="CSS/{{this}}.css" rel="stylesheet" />
+    {{/each}}
 
-    <link href="CSS/global.css" rel="stylesheet" />
-    {{!-- <link href="CSS/mainpage.css" rel="stylesheet" /> --}}
     <script src="https://kit.fontawesome.com/62fb675735.js" crossorigin="anonymous"></script>
   </head>
 <body>

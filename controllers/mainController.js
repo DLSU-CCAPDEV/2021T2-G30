@@ -2,7 +2,8 @@ const routerController = {
 
     getLogin: function (req, res) {
         res.render('login', {
-            title: 'login'
+            title: 'login',
+            css: ['global']
         });
     },
 

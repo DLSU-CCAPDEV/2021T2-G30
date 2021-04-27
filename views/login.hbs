@@ -136,7 +136,8 @@
                     {{!-- required --}}
                   />
                 </div>
-                <div class="mb-3">
+                <div id="error" class="ps-1" style="font-size: 8pt; margin-top: -1.2em; color: red;"></div>
+                <div class="mb-3" style="margin-top: 30px;" id="bioDiv">
                   <textarea
                     class="form-control"
                     maxlength="150"
@@ -176,6 +177,7 @@
                     type="submit" 
                     class="btn btn-primary"
                     style="margin-bottom: -0.5rem; margin-right: -0.8rem"
+                    id="submit"
                   >
                     Create Account
                   </button>
@@ -192,4 +194,6 @@
       integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
       crossorigin="anonymous"
     ></script>
+
+    <script src="Js/signup.js"></script>
   </body>

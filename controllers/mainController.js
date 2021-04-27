@@ -13,6 +13,20 @@ const routerController = {
             css:['global', 'error']
         });
     },
+
+    getMainPage: function (req, res){
+        res.render('mainpage', {
+            title: 'SafeSpace',
+            css: ['global','mainpage']
+        });
+    },
+
+    getSettingsPage: function (req, res){
+        res.render('settings',{
+            title: 'Settings',
+            css: ['global','settings']
+        });
+    }
     
 };   
 

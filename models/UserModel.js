@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 var UserSchema = new mongoose.Schema({
     dPicture: {
          type: Buffer,
-         required: true
+         required: false
     },
     fName: {
         type: String,
@@ -25,14 +25,16 @@ var UserSchema = new mongoose.Schema({
     },
     bio: {
         type: String,
-        required: true
+        required: false
     },
     pw: {
         type: String,
         required: true
     },
     entries: [{
-        type: mongoose.Schema.Types.ObjectId, ref: 'entries'
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'entries',
+        required: false
     }]
 });
 

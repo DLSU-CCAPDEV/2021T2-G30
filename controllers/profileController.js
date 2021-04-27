@@ -28,6 +28,7 @@ const routerController = {
             if(flag) {
                 res.redirect('/Login');
             }
+            else res.render('error');
         });
 
     },

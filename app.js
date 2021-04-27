@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const exphbs  = require('express-handlebars');
 const path = require('path');
 const session = require('express-session');
+const DeezNutzStore = require('connect-mongo');
 
 const app = express(); //initializing express server
 
@@ -14,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 dotenv.config();
 port = process.env.PORT;
 hostname = process.env.HOSTNAME;
-
+url = process.env.DB_URL;
 //Templating Engine
 app.engine('.hbs', exphbs({
     defaultLayout: 'main',
@@ -28,7 +29,7 @@ app.use(session({
     'secret': 'ccapdev-session',
     'resave': false,
     'saveUninitialized': false,
-    //store: new MongoStore({mongooseConnection: mongoose.connection})
+    store: DeezNutzStore.create({mongoUrl: url})
 }));
 
 app.set('view engine', '.hbs'); //using hbs as view engine

@@ -31,6 +31,29 @@ const routerController = {
 
     },
 
+    getProfile: function(req, res) {
+        //query where 
+        var query = {uName: req.params.uName};
+
+        var projection = 'fName lName uName bio';
+        // var projection = 'dPicture fName lName uName bio';
+
+        db.findOne(userCollection, query, projection, function(result) {
+            if(result != null) {
+                var details = {
+                    //dPicture: result.dPicture
+                    fName: result.fName,
+                    lName: result.lName,
+                    uName: result.uName,
+                    //friends: friends
+                };
+                res.render('profile', details);
+            } else {
+                res.render('error');
+            }
+        });
+    },
+    
     checksignup: function (req, res) {
         var uName = req.query.uName;
         // console.log("test");

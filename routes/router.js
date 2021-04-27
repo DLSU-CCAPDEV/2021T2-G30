@@ -13,6 +13,8 @@ router.get('/settings', mainController.getSettingsPage);
 router.get('/checksignup', profileController.checksignup);
 router.get('/checklogin', profileController.checklogin);
 
+router.get('/profile/:uName', profileController.getProfile);
+
 //POST // Creation
 router.post('/signup', profileController.signup);
 

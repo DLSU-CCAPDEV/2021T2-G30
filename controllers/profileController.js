@@ -40,17 +40,17 @@ const routerController = {
 
         db.findOne(userCollection, query, projection, function(result) {
             if(result != null) {
-                var details = {
-                    //dPicture: result.dPicture
-                    fName: result.fName,
-                    lName: result.lName,
-                    uName: result.uName,
-                    //friends: friends
-                };
+                // var result = {
+                //     //dPicture: result.dPicture
+                //     fName: result.fName,
+                //     lName: result.lName,
+                //     uName: result.uName,
+                //     //friends: friends
+                // };
                 res.render('profile',  {
                     title: 'SafeSpace',
-                    css: ['global','personalprofile'],
-                    details
+                    css: ['global','personalprofile'], 
+                    details: result
                 });
             } else {
                 res.render('error', {
@@ -73,14 +73,13 @@ const routerController = {
         var uName = req.query.uName;
         var pw = req.query.pw;
 
-        console.log(uName + ' ' + pw);
         // console.log("test");
         db.findOne(userCollection, {uName: uName, pw: pw}, '', function (result) {
             if(result === null)
                 res.send(false);
             else 
                 res.send(true);
-            // console.log(result);
+                
         });
     },
     

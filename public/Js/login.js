@@ -28,8 +28,8 @@ $(document).ready(function () {
             */
 
             if(!isValid) {
-                alert('Invalid login credentials')
-
+                $('#error').text('Invalid Login Credentials');
+                $('#error').css('margin-top', '-8px').css('margin-bottom', '8px');
             }
 
             /*
@@ -39,7 +39,6 @@ $(document).ready(function () {
                 and enable the submit button
             */
             else {
-                alert('Valid login credentials')
                 $('#loginForm').submit();
             }
         });

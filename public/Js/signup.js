@@ -27,7 +27,7 @@ $(document).ready(function () {
             */
             if(result.uName == uName) {
                 $('#bioDiv').css('margin-top', '10px');
-                $('#error').text('Username already registered');
+                $('#errorsignup').text('Username already registered');
                 $('#submit').prop('disabled', true);
             }
 

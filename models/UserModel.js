@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 var UserSchema = new mongoose.Schema({
     dPicture: {
          type: Buffer,
-         required: true
+         required: false
     },
     fName: {
         type: String,

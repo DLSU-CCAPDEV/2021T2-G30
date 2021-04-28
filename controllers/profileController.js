@@ -5,7 +5,7 @@ const userCollection = require('../models/UserModel.js');
 const routerController = {
 
     signup: function (req, res) {
-        // var dPicture = req.body.dPicture;
+        var dPicture = req.body.dPicture;
         var fName = req.body.fName;
         var lName = req.body.lName;
         var email = req.body.email;
@@ -14,7 +14,7 @@ const routerController = {
         var pw = req.body.pw;
 
         var indivUser = {
-            // dPicture: dPicture,
+            dPicture: dPicture,
             fName: fName,
             lName: lName,
             email: email,
@@ -25,7 +25,7 @@ const routerController = {
 
         db.insertOne(userCollection, indivUser, function (flag) {
             if(flag) {
-                res.redirect('/Login');
+                res.redirect('/login');
             }
             else res.render('error');
         });
@@ -82,7 +82,7 @@ const routerController = {
                 res.send(true);
                 
         });
-    },
+    }
     
     
 };   

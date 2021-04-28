@@ -15,6 +15,7 @@ dotenv.config();
 port = process.env.PORT;
 hostname = process.env.HOSTNAME;
 url = process.env.DB_URL;
+
 // Database connection
 const db = require('./models/db.js');
 const conn = db.connect();
@@ -29,6 +30,14 @@ conn.once("open", function () {
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
+//Session template
+app.use(session({
+    'secret': 'ccapdev-session',
+    'resave': false,
+    'saveUninitialized': false,
+    store: store.create({mongoUrl: url})
+}));
+
 // Routers
 const appRouter = require('./routes/router.js');
 app.use('/', appRouter);
@@ -39,14 +48,6 @@ app.engine('.hbs', exphbs({
     extname: '.hbs',
     layoutsDir: path.join(__dirname, 'views/layouts'),
     partialsDir: path.join(__dirname, 'views/partials')
-}));
-
-//Session template
-app.use(session({
-    'secret': 'ccapdev-session',
-    'resave': false,
-    'saveUninitialized': false,
-    store: store.create({mongoUrl: url})
 }));
 
 app.set('view engine', '.hbs'); //using hbs as view engine

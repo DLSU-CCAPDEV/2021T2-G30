@@ -92,7 +92,7 @@ const profileController = {
         console.log('uName = ' + uName);
         console.log('pw =' + pw);
         db.findOne(userCollection, {uName: uName, pw: pw}, '', function (result) {
-            console.log(result);
+           console.log(result);
            req.session.uName = result.uName;
 
            res.redirect('/mainpage');
@@ -114,4 +114,4 @@ const profileController = {
     
 };   
 
-module.exports = routerController;
+module.exports = profileController;

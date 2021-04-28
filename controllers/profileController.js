@@ -41,19 +41,6 @@ const routerController = {
 
         db.findOne(userCollection, query, projection, function(result) {
             if(result != null) {
-<<<<<<< HEAD
-                var details = {
-                    //dPicture: result.dPicture
-                    fName: result.fName,
-                    lName: result.lName,
-                    uName: result.uName,
-                    //friends: friends
-                };
-                res.render('profile',  {
-                    title: 'SafeSpace',
-                    css: ['global','mainpage'],
-                    details
-=======
                 // var result = {
                 //     //dPicture: result.dPicture
                 //     fName: result.fName,
@@ -65,7 +52,6 @@ const routerController = {
                     title: 'SafeSpace',
                     css: ['global','personalprofile'], 
                     details: result
->>>>>>> c7150a546b17f518537f80acef1d0546d8cfb8d7
                 });
             } else {
                 res.render('error', {

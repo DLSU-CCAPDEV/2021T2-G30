@@ -1,6 +1,7 @@
 const router = require("express")();
 const mainController = require('../controllers/mainController.js');
 const profileController = require('../controllers/profileController.js');
+const entryController = require('../controllers/entryController.js');
 
 
 // GET
@@ -17,6 +18,8 @@ router.get('/profile/:uName', profileController.getProfile);
 
 //POST // Creation
 router.post('/signup', profileController.signup);
+router.post('/createEntry', entryController.createEntry);
+
 
 //PUT // Editing
 

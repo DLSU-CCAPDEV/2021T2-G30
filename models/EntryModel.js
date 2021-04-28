@@ -22,6 +22,10 @@ var EntrySchema = new mongoose.Schema({
     authorUserName: {
         type: String,
         required: true
+    },
+    privacy: {
+        type: String,
+        required: true
     }
 });
 

@@ -15,9 +15,14 @@ const routerController = {
     },
 
     getMainPage: function (req, res){
+
         res.render('mainpage', {
             title: 'SafeSpace',
-            css: ['global','mainpage']
+            css: ['global','mainpage'],
+            entries: [
+                { entryTitle: 'Title 1', entryBody: 'Body 1', entryDate: 'June 14, 2012' }, 
+                { entryTitle: 'Title 2', entryBody: 'Body 2', entryDate: 'April 28, 2021' }
+            ]
         });
     },
 

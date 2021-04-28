@@ -24,6 +24,8 @@ router.post('/signup', profileController.signup);
 
 router.post('/login', profileController.login);
 
+router.post('/editaccount',profileController.editAccount);
+
 //PATCH // Editing
 
 //PUT // Editing

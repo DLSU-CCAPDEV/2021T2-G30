@@ -110,7 +110,41 @@ const profileController = {
             else
                 res.redirect('/login');
         })
+    },
+
+    editAccount: function (req, res) {
+        
+        var uName = req.session.uName;
+        var fName = req.body.fName;
+        var lName = req.body.lName;
+        var email = req.body.email;
+        var bio = req.body.bio;
+        var pw = req.body.pw;
+
+        
+        var indivUser = {
+            fName: req.body.fName,
+            lName: req.body.lName,
+            email: req.body.email,
+            bio: req.body.bio,
+            pw: req.body.pw,
+
+        }
+
+        db.updateOne(userCollection, {uName: uName},indivUser,function(update){
+
+            console.log(update);
+
+            if(update != null){
+                res.redirect('/settings');
+            }
+        })
+
+
+
     }
+
+    
 };   
 
 module.exports = profileController;

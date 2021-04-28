@@ -109,8 +109,6 @@ const profileController = {
                 res.redirect('/login');
         })
     }
-    
-    
 };   
 
 module.exports = profileController;

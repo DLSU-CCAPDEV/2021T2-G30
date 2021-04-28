@@ -3,19 +3,19 @@ var mongoose = require('mongoose');
 
 // defines the schema for collection `users`
 var EntrySchema = new mongoose.Schema({
-    title: {
+    entryTitle: {
          type: String,
          required: false
     },
-    body: {
+    entryBody: {
         type: String,
         required: false
     },
     significance: {
-        type: Number,
+        type: String,
         required: false
     },
-    date: {
+    entryDate: {
         type: Date,
         required: false
     },

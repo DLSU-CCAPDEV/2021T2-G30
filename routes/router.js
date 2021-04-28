@@ -1,4 +1,4 @@
-const router = require("express")();
+const router = require("express");
 const mainController = require('../controllers/mainController.js');
 const profileController = require('../controllers/profileController.js');
 

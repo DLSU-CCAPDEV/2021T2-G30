@@ -33,11 +33,7 @@ app.engine('.hbs', exphbs({
     partialsDir: path.join(__dirname, 'views/partials')
 }));
 
-
-
-
-
 app.listen(port, hostname, function() {
     console.log('Server running at: ');
-    console.log('http://' + hostname + ':' + port +  '/Login');
+    console.log('http://' + hostname + ':' + port +  '/login');
 }); 

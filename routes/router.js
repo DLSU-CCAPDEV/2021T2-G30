@@ -5,8 +5,8 @@ const profileController = require('../controllers/profileController.js');
 
 // GET
 router.get('/', mainController.getLogin); //incase user tries to access this route
-router.get('/Login', mainController.getLogin);
-router.get('/Error', mainController.getError);
+router.get('/login', mainController.getLogin);
+router.get('/error', mainController.getError);
 router.get('/mainpage', mainController.getMainPage);
 router.get('/settings', mainController.getSettingsPage);
 
@@ -21,6 +21,8 @@ router.post('/signup', profileController.signup);
 router.post('/login', profileController.login);
 
 //PATCH // Editing
+
+//PUT // Editing
 
 //DELETE
 

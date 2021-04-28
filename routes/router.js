@@ -1,6 +1,7 @@
 const router = require("express");
 const mainController = require('../controllers/mainController.js');
 const profileController = require('../controllers/profileController.js');
+const entryController = require('../controllers/entryController.js');
 
 // initialize gridfs stream
 // let gfs;
@@ -20,9 +21,15 @@ router.get('/checksignup', profileController.checksignup);
 router.get('/checklogin', profileController.checklogin);
 
 router.get('/profile/:uName', profileController.getProfile);
+router.get('/logout', profileController.getLogout);
 
 //POST // Creation
-router.post('/signup', upload.single('dPicture'), profileController.signup);
+router.post('/signup', profileController.signup);
+router.post('/createEntry', entryController.createEntry);
+
+router.post('/login', profileController.login);
+
+//PATCH // Editing
 
 //PUT // Editing
 

@@ -5,7 +5,7 @@ const multer = require('multer');
 const profileController = {
 
     signup: function (req, res) {
-        // var dPicture = req.body.dPicture;
+        var dPicture = req.body.dPicture;
         var fName = req.body.fName;
         var lName = req.body.lName;
         var email = req.body.email;
@@ -14,7 +14,7 @@ const profileController = {
         var pw = req.body.pw;
 
         var indivUser = {
-            // dPicture: dPicture,
+            dPicture: dPicture,
             fName: fName,
             lName: lName,
             email: email,
@@ -24,8 +24,9 @@ const profileController = {
         }
 
         db.insertOne(userCollection, indivUser, function (flag) {
+
             if(flag) {
-                res.redirect('/Login');
+                res.redirect('/login');
             }
             else res.render('error');
         });
@@ -83,6 +84,32 @@ const profileController = {
                 
         });
     },
+
+    login: function(req,res){
+        var uName = req.body.uName;
+        var pw = req.body.pw;
+
+        console.log('uName = ' + uName);
+        console.log('pw =' + pw);
+        db.findOne(userCollection, {uName: uName, pw: pw}, '', function (result) {
+            console.log(result);
+           req.session.uName = result.uName;
+
+           res.redirect('/mainpage');
+                
+        });
+    },
+
+    getLogout: function(req,res){
+        
+        req.session.destroy(function(error){
+            if(error){
+                res.render('error');
+            }
+            else
+                res.redirect('/login');
+        })
+    }
     
     
 };   

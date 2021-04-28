@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const DeezNutzStore = require('connect-mongo');
 const exphbs  = require('express-handlebars');
 
 const app = express(); //initializing express server
@@ -13,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 dotenv.config();
 port = process.env.PORT;
 hostname = process.env.HOSTNAME;
-
+url = process.env.DB_URL;
 // Database connection
 const db = require('./models/db.js');
 db.connect();
@@ -28,6 +29,14 @@ app.engine('.hbs', exphbs({
     extname: '.hbs',
     layoutsDir: path.join(__dirname, 'views/layouts'),
     partialsDir: path.join(__dirname, 'views/partials')
+}));
+
+//Session template
+app.use(session({
+    'secret': 'ccapdev-session',
+    'resave': false,
+    'saveUninitialized': false,
+    store: DeezNutzStore.create({mongoUrl: url})
 }));
 
 app.set('view engine', '.hbs'); //using hbs as view engine

@@ -1,3 +1,5 @@
+const { replaceOne } = require("../models/UserModel");
+
 const routerController = {
 
     getLogin: function (req, res) {
@@ -14,8 +16,13 @@ const routerController = {
         });
     },
 
+
     getMainPage: function (req, res){
 
+        // Checks for login user (VERY IMPORTANT)
+        if(req.session.uName != null){
+            console.log(req.session.uName);
+        }
         res.render('mainpage', {
             title: 'SafeSpace',
             css: ['global','mainpage'],

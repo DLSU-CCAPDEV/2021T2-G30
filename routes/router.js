@@ -15,11 +15,15 @@ router.get('/checksignup', profileController.checksignup);
 router.get('/checklogin', profileController.checklogin);
 
 router.get('/profile/:uName', profileController.getProfile);
+router.get('/logout', profileController.getLogout);
 
 //POST // Creation
 router.post('/signup', profileController.signup);
 router.post('/createEntry', entryController.createEntry);
 
+router.post('/login', profileController.login);
+
+//PATCH // Editing
 
 //PUT // Editing
 

@@ -4,7 +4,7 @@ const dotenv = require('dotenv');
 const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
-const DeezNutzStore = require('connect-mongo');
+const store = require('connect-mongo');
 const exphbs  = require('express-handlebars');
 
 const app = express(); //initializing express server
@@ -36,7 +36,7 @@ app.use(session({
     'secret': 'ccapdev-session',
     'resave': false,
     'saveUninitialized': false,
-    store: DeezNutzStore.create({mongoUrl: url})
+    store: store.create({mongoUrl: url})
 }));
 
 app.set('view engine', '.hbs'); //using hbs as view engine

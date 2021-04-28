@@ -4,8 +4,9 @@ var mongoose = require('mongoose');
 // defines the schema for collection `users`
 var UserSchema = new mongoose.Schema({
     dPicture: {
-         type: Buffer,
-         required: false
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'uploads', 
+        required: true
     },
     fName: {
         type: String,

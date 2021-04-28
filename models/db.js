@@ -8,6 +8,11 @@ const User = require('./UserModel.js');
 const url = process.env.DB_URL;
 // const url = 'mongodb://localhost:27017/safespacedb';
 
+const crypto = require("crypto");
+const path = require("path");
+const multer = require("multer");
+const GridFsStorage = require("multer-gridfs-storage");
+var GridFsBucket; 
 
 // additional connection options
 const options = {
@@ -15,9 +20,34 @@ const options = {
     useNewUrlParser: true
 };
 
+// Storage
+const storage = new GridFsStorage({
+    url: "mongodb://localhost:27017/safespacedb",
+    file: (req, file) => {
+      return new Promise((resolve, reject) => {
+        crypto.randomBytes(16, (err, buf) => {
+          if (err) {
+            return reject(err);
+          }
+          const filename = buf.toString("hex") + path.extname(file.originalname);
+          const fileInfo = {
+            filename: filename,
+            bucketName: "uploads"
+          };
+          resolve(fileInfo);
+        });
+      });
+    }
+  });
+  
+const upload = multer({storage});
+
+
 // defines an object which contains necessary database functions
 const database = {
 
+    //multer
+    upload: upload,
     /*
         connects to database
     */
@@ -26,9 +56,12 @@ const database = {
             if(error) {
                 console.log("error");
                 throw error;
-            } 
+            }
             console.log('Connected to: ' + url);
-        });
+            GridFsBucket = new mongoose.mongo.GridFSBucket(mongoose.connection.db, {
+                bucketName: "uploads"
+            });
+        }); 
     },
 
     /*
@@ -63,7 +96,7 @@ const database = {
         callback function is called after the execution of findOne() function
     */
     findOne: function(model, query, projection, callback) {
-        model.findOne(query, projection, function(error, result) {
+        model.findOne(query, projection).lean().exec(function(error, result) {
             if(error) return callback(null);
             return callback(result);
         });
@@ -76,7 +109,7 @@ const database = {
         callback function is called after the execution of findMany() function
     */
     findMany: function(model, query, projection, callback) {
-        model.find(query, projection, function(error, result) {
+        model.find(query, projection).lean().exec(function(error, result) {
             if(error) return callback(false);
             return callback(result);
         });
@@ -130,6 +163,10 @@ const database = {
             console.log('Document deleted: ' + result.deletedCount);
             return callback(true);
         });
+    },
+
+    openDownloadStream: function(id, callback) {
+        callback(GridFsBucket.openDownloadStream(id));
     }
 
 }

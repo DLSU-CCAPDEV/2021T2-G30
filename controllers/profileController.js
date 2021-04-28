@@ -1,17 +1,21 @@
 const db = require('../models/db.js');
 const userCollection = require('../models/UserModel.js');
 const multer = require('multer');
+const mainController = require('../controllers/mainController');
 
 const profileController = {
 
     signup: function (req, res) {
-        var dPicture = req.body.dPicture;
+        // console.log("im in");
+        var dPicture = req.file.id;
         var fName = req.body.fName;
         var lName = req.body.lName;
         var email = req.body.email;
         var uName = req.body.uName;
         var bio = req.body.bio;
         var pw = req.body.pw;
+
+        // console.log(dPicture);
 
         var indivUser = {
             dPicture: dPicture,
@@ -37,7 +41,7 @@ const profileController = {
         //query where 
         var query = {uName: req.params.uName};
 
-        var projection = 'fName lName uName bio';
+        var projection = 'dPicture fName lName uName bio';
         // var projection = 'dPicture fName lName uName bio';
 
         db.findOne(userCollection, query, projection, function(result) {
@@ -49,12 +53,14 @@ const profileController = {
                 //     uName: result.uName,
                 //     //friends: friends
                 // };
+                // gridfs bucket
                 res.render('profile',  {
                     title: 'SafeSpace',
                     css: ['global','personalprofile'], 
                     details: result
                 });
             } else {
+                res.status(404);
                 res.render('error', {
                     title: 'SafeSpace',
                     css: ['global','mainpage']
@@ -94,9 +100,7 @@ const profileController = {
         db.findOne(userCollection, {uName: uName, pw: pw}, '', function (result) {
            console.log(result);
            req.session.uName = result.uName;
-
-           res.redirect('/mainpage');
-                
+           res.redirect('/mainpage');  
         });
     },
 

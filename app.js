@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const store = require('connect-mongo');
 const exphbs  = require('express-handlebars');
+const mongoose = require('mongoose');
 
 const app = express(); //initializing express server
 
@@ -18,17 +19,8 @@ url = process.env.DB_URL;
 
 // Database connection
 const db = require('./models/db.js');
-const conn = db.connect();
+db.connect();
  
-let gfs;
-conn.once("open", function () {
-    //init stream
-    gfs = new mongoose.mongo.GridFSBucket(conn.d, {
-        bucketName: "uploads"
-    });
-});
-
-app.use(bodyParser.urlencoded({ extended: false }));
 
 //Session template
 app.use(session({
@@ -42,6 +34,8 @@ app.use(session({
 const appRouter = require('./routes/router.js');
 app.use('/', appRouter);
 
+app.use(express.static('public'));
+
 //Templating Engine
 app.engine('.hbs', exphbs({
     defaultLayout: 'main',
@@ -51,7 +45,7 @@ app.engine('.hbs', exphbs({
 }));
 
 app.set('view engine', '.hbs'); //using hbs as view engine
-app.use(express.static('public'));
+
 
 app.listen(port, hostname, function() {
     console.log('Server running at: ');

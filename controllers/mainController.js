@@ -77,6 +77,22 @@ const mainController = {
             title: 'Settings',
             css: ['global','settings']
         });
+    },
+
+    //get picture
+    getPicture: function(req, res) {
+        var id = mongoose.Types.ObjectId(req.params.id);
+        db.openDownloadStream(id, function (downloadStream){
+            if(downloadStream == null) {
+                res.status(404);
+                res.render('error', {
+                    title: 'Page not found',
+                    css:['global', 'error']
+                });
+            } else {
+                downloadStream.pipe(res);
+            }   
+        });
     }
     
 };   

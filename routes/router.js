@@ -18,7 +18,7 @@ router.get('/profile/:uName', profileController.getProfile);
 router.get('/logout', profileController.getLogout);
 
 router.get('/createentry', entryController.mainPageEntry);
-
+router.get('/editaccount', mainController.geteditProfileAccount);
 //POST // Creation
 router.post('/signup', profileController.signup);
 

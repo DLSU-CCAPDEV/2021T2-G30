@@ -61,12 +61,12 @@ const database = {
         limits the fields returned based on the string `projection`
         callback function is called after the execution of findOne() function
     */
-    findOne: function(model, query, projection, callback) {
-        model.findOne(query, projection, function(error, result) {
-            if(error) return callback(null);
-            return callback(result);
-        });
-    },
+        findOne: function(model, query, projection, callback) {
+            model.findOne(query, projection).lean().exec(function(error, result) {
+                if(error) return callback(null);
+                return callback(result);
+            });
+        },
 
     /*
         searches for multiple documents based on the model `model`

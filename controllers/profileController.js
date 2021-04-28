@@ -99,6 +99,8 @@ const profileController = {
         });
     },
 
+    
+
     getLogout: function(req,res){
         
         req.session.destroy(function(error){

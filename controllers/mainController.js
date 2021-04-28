@@ -1,6 +1,7 @@
 //const { replaceOne } = require("../models/UserModel");
 const db = require('../models/db.js');
 const EntryModel = require('../models/EntryModel.js');
+const userCollection = require('../models/UserModel.js');
 
 const mainController = {
 
@@ -39,7 +40,7 @@ const mainController = {
         
 
         db.findOne(userCollection, {uName: req.session.uName}, '', function (result) {
-            console.log(result);
+            // console.log(result);
             res.render('settings',{
                 title: 'Settings',
                 css: ['global','settings'],
@@ -49,7 +50,19 @@ const mainController = {
         });
         
 
-    }
+    },
+
+    geteditProfileAccount: function(req,res){
+
+        db.findOne(userCollection, {uName: req.session.uName},'',function (result){
+            res.render('editaccount',{
+                title: 'EditAccount',
+                css: ['global','settings'],
+                user: result
+            });
+        });
+
+    },
 };   
 
 module.exports = mainController;

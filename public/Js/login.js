@@ -1,9 +1,10 @@
 $(document).ready(function () {
     
-    $('#UserNameRegister').keyup(function () {
+    $('#loginBtn').click(function () {
 
         // get the value entered the user in the `<input>` element
-        var uName = $('#UserNameRegister').val();
+        var uName = $('#LoginUsername').val();
+        var pw = $('#LoginPassword').val();
         
         /*
             send an HTTP GET request using JQuery AJAX
@@ -17,7 +18,7 @@ $(document).ready(function () {
             the last parameter executes a callback function
             when the server sent a response
         */
-        $.get('/checksignup', {uName: uName}, function (result) {
+        $.get('/checklogin', {uName: uName, pw: pw}, function (isValid) {
 
             /*
                 if the current value of `idNum` exists in the database
@@ -25,10 +26,10 @@ $(document).ready(function () {
                 display an error message
                 and disable the submit button
             */
-            if(result.uName == uName) {
-                $('#bioDiv').css('margin-top', '10px');
-                $('#errorsignup').text('Username already registered');
-                $('#submit').prop('disabled', true);
+
+            if(!isValid) {
+                $('#error').text('Invalid Login Credentials');
+                $('#error').css('margin-top', '-8px').css('margin-bottom', '8px');
             }
 
             /*
@@ -38,9 +39,7 @@ $(document).ready(function () {
                 and enable the submit button
             */
             else {
-                $('#bioDiv').css('margin-top', '30px');
-                $('#errorsignup').text('');
-                $('#submit').prop('disabled', false);
+                $('#loginForm').submit();
             }
         });
     });

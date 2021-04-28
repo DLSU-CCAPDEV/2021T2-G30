@@ -15,8 +15,8 @@
 
         <!-- Grey line -->
         <hr>
-
-        <form action="mainpage.html">
+        <div id="error" style="font-size: 10pt; color: red;"></div>
+        <form action="/mainpage" id="loginForm">
           <div class="mb-3">
             <input
               type="email"
@@ -49,7 +49,7 @@
               </button>
             </p>
           </div>
-          <button type="submit" class="btn btn-custom mb-1 w-100 mt-0">
+          <button type="button" id="loginBtn" class="btn btn-custom mb-1 w-100 mt-0">
             Log In
           </button>
         </form>
@@ -136,7 +136,7 @@
                     required
                   />
                 </div>
-                <div id="error" class="ps-1" style="font-size: 8pt; margin-top: -1.2em; color: red;"></div>
+                <div id="errorsignup" class="ps-1" style="font-size: 8pt; margin-top: -1.2em; color: red;"></div>
                 <div class="mb-3" style="margin-top: 30px;" id="bioDiv">
                   <textarea
                     class="form-control"
@@ -196,4 +196,5 @@
     ></script>
 
     <script src="Js/signup.js"></script>
+    <script src="Js/login.js"></script>
   </body>

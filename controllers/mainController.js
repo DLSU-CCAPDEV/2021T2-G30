@@ -73,10 +73,19 @@ const mainController = {
     },
 
     getSettingsPage: function (req, res){
-        res.render('settings',{
-            title: 'Settings',
-            css: ['global','settings']
+        
+
+        db.findOne(userCollection, {uName: req.session.uName}, '', function (result) {
+            console.log(result);
+            res.render('settings',{
+                title: 'Settings',
+                css: ['global','settings'],
+                user: result
+            });
+                 
         });
+        
+
     }
     
 };   

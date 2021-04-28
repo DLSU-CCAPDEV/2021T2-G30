@@ -1,0 +1,89 @@
+{{> navbar}}
+
+<body style="min-height: 100vh;">
+
+      <body style="height: 95vh;">
+        <!-- Centering -->
+        <div
+          class="card shadow row justify-content-center my-5 mx-auto" 
+          style="width: 35em; border-radius: 15px"
+        >
+        <div class="card-body p-3">
+            <h3 class="text-center">Edit Account</h1>
+            <!-- Grey line -->
+            <hr />
+    
+            <form action="editaccount.html">
+              <div class="mb-3">
+                <div class="row">
+                  <div class="col">
+                    <h5>First Name</h5>
+                    <input
+                      type="email"
+                      class="form-control p-2"
+                      id="FirstNameEdit"
+                      aria-describedby="emailHelp"
+                      placeholder="{{user.fName}}"
+                    />
+                  </div>
+                  <div class="col">
+                    <h5>Last Name</h5>
+                    <input
+                      type="email"
+                      class="form-control p-2"
+                      id="LastNameEdit"
+                      aria-describedby="emailHelp"
+                      placeholder="{{user.lName}}"
+                    />
+                  </div>
+                </div>
+              </div>      
+
+              <div class="mb-3">
+                <h5>Email</h5>
+                <input
+                  type="email"
+                  class="form-control p-2"
+                  id="EmailEdit"
+                  aria-describedby="emailHelp"
+                  placeholder="{{user.email}}"
+                />
+              </div>
+              <div class="mb-3">
+                <h5>Password</h5>
+                <input
+                  type="password"
+                  class="form-control p-2"
+                  id="PasswordEdit"
+                  placeholder="Password"
+                />
+              </div>
+              <div class="mb-3">
+                <h5>Profile Picture</h5>
+                <input
+                  type="file"
+                  accept=".jpg, .jpeg, .png"
+                  class="form-control p-2"
+                  id="DisplayPicture"
+                  title="Upload display picture"
+                  
+                />
+              </div>
+              <div class="mb-4">
+                <h5>Bio</h5>
+                <textarea class="form-control p-2" maxlength="150" placeholder="{{user.bio}}" aria-label="With textarea"></textarea>
+              </div>
+              <div class="modal-footer">
+                <a onclick="location.href='/settings'">
+                  <button type="button" class="btn btn-secondary" style="margin-bottom: -0.6em;">Cancel</button>
+                </a>
+                <a onclick="location.href='/settings'">
+                <button type="button" class="btn btn-primary" style="margin-bottom: -0.6em;">Save changes</button>
+                </a>
+              </div>
+            </form>
+          </div>
+        </div>
+    
+
+</body>

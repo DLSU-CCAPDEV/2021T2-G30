@@ -35,13 +35,22 @@ const appRouter = require('./routes/router.js');
 app.use('/', appRouter);
 
 app.use(express.static('public'));
+const helpers = {
+    privacy: function(privacy) {
+        if(privacy === 'public')
+            return '<i class="fas fa-globe-americas mx-1 privacy-globe" data-bs-toggle="tooltip" title="Public Entry"></i>';
+        else 
+            return '<i class="fas fa-lock mx-1 privacy-lock" data-bs-toggle="tooltip" title="Private Entry"></i>';
+    }
+}
 
 //Templating Engine
 app.engine('.hbs', exphbs({
     defaultLayout: 'main',
     extname: '.hbs',
     layoutsDir: path.join(__dirname, 'views/layouts'),
-    partialsDir: path.join(__dirname, 'views/partials')
+    partialsDir: path.join(__dirname, 'views/partials'),
+    helpers: helpers
 }));
 
 app.set('view engine', '.hbs'); //using hbs as view engine

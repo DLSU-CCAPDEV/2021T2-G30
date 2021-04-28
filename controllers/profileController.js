@@ -104,6 +104,8 @@ const profileController = {
         });
     },
 
+    
+
     getLogout: function(req,res){
         
         req.session.destroy(function(error){
@@ -114,8 +116,6 @@ const profileController = {
                 res.redirect('/login');
         })
     }
-    
-    
 };   
 
 module.exports = profileController;

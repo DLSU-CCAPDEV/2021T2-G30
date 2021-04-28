@@ -48,7 +48,7 @@
                     <div class="col mt-1">
                       <p class="card-text justify-content-center">
                         <small class="text-muted">
-                          <i class="fas fa-globe-americas mx-1 privacy-globe" data-bs-toggle="tooltip" title="Public Entry"></i> 
+                          {{{privacy this.privacy}}}
                           {{this.entryDate}}
                         </small></p>
                     </div>
@@ -93,7 +93,7 @@
               <form action="/createentry" method="GET">
                 <div class="mb-3">
                   <label class="visually-hidden" for="autoSizingSelect">Title of Entry</label>
-                  <input type="text" name="title" class="form-control" placeholder="Title of Entry" aria-label="Title of Entry" maxlength = "50">
+                  <input type="text" name="entryTitle" class="form-control" placeholder="Title of Entry" aria-label="Title of Entry" maxlength = "50">
                 </div>
                 <div class="row g-3 mb-4">
                   <div class="col-md-4">
@@ -105,7 +105,7 @@
                   </div>
                   <div class="col-md-4">
                     <label for="dateEntry" style="font-size: 14px;">Date and Time</label>
-                    <input type="datetime-local" name="date" class="form-control" id="dateEntry">
+                    <input type="datetime-local" name="entryDate" class="form-control" id="dateEntry">
                   </div>
                   <div class="col-md-4">
                     <label for="inputPrivacy" style="font-size: 14px;">Entry's Significance</label>
@@ -121,7 +121,7 @@
                 </div>       
                 <div class="mb-3">
                   <label class="visually-hidden" for="entryFormControlTextarea1" class="form-label">Entry Text Area</label>
-                  <textarea class="form-control" name="body" id="entryFormControlTextarea1" rows="5" placeholder="What happened today?" aria-label="entry content"></textarea>
+                  <textarea class="form-control" name="entryBody" id="entryFormControlTextarea1" rows="5" placeholder="What happened today?" aria-label="entry content"></textarea>
                 </div>
                 <div class="mb-3">
                   <div class="row">

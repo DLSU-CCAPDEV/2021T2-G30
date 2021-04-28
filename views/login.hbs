@@ -78,7 +78,7 @@
               ></button>
             </div>
             <div class="modal-body">
-              <form action="/signup" method="POST" enctype="multipart/form-data">
+              <form action="/signup" id="signupform" method="POST" enctype="multipart/form-data">
                 <div class="col">
                   <div class="mb-3">
                     <input
@@ -148,31 +148,16 @@
                     name="bio"
                   ></textarea>
                 </div>
-                <div class="row mb-3">
-                  <div class="col">
-                    <div class="mb-0">
-                      <input
-                        type="password"
-                        class="form-control p-2"
-                        id="PasswordRegister"
-                        placeholder="Password"
-                        name="pw"
-                        minlength="5"
-                        required
-                      />
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="mb-0">
-                      <input
-                        type="password"
-                        class="form-control p-2"
-                        id="PasswordRegister2"
-                        placeholder="Re-enter Password"
-                        required
-                      />
-                    </div>
-                  </div>
+                <div class="mb-0">
+                  <input
+                    type="password"
+                    class="form-control p-2 mb-3"
+                    id="PasswordRegister"
+                    placeholder="Password"
+                    name="pw"
+                    minlength="5"
+                    required
+                  />
                 </div>
                 <div class="modal-footer">
                   <button
@@ -180,23 +165,17 @@
                     type="submit" 
                     class="btn btn-primary"
                     style="margin-bottom: -0.5rem; margin-right: -0.8rem"
-                    id="submit"
+                    id="btnsubmit"
                   >
                     Create Account
                   </button>
                 </div>
               </form>
-            </div>
+            </div> 
           </div>
         </div>
       </div>
     </div>
-
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
-      crossorigin="anonymous"
-    ></script>
 
     <script src="Js/signup.js"></script>
     <script src="Js/login.js"></script>

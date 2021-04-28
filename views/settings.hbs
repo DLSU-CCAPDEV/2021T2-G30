@@ -108,11 +108,11 @@
                       <div class="col">
                         <h5>First Name</h5>
                         <input
-                          type="email"
+                          type="fName"
                           class="form-control p-2"
                           id="FirstNameNoEdit"
                           aria-describedby="emailHelp"
-                          placeholder="Matthew"
+                          placeholder="{{user.fName}}"
                           readonly
                           style="border: 0px"
                         />
@@ -120,11 +120,11 @@
                       <div class="col">
                         <h5>Last Name</h5>
                           <input
-                            type="email"
+                            type="lName"
                             class="form-control p-2"
                             id="LastNameNoEdit"
                             aria-describedby="emailHelp"
-                            placeholder="Buensalida"
+                            placeholder="{{user.lName}}"
                             readonly
                             style="border: 0px"
                           />
@@ -139,7 +139,7 @@
                       class="form-control p-2"
                       id="UsernameNoEdit"
                       aria-describedby="emailHelp"
-                      placeholder="mattbuen"
+                      placeholder="{{user.uName}}"
                       readonly
                       style="border: 0px"
                     />
@@ -151,7 +151,7 @@
                       class="form-control p-2"
                       id="EmailNoEdit"
                       aria-describedby="emailHelp"
-                      placeholder="matt@yahoo.com"
+                      placeholder="{{user.email}}"
                       readonly
                       style="border: 0px"
                     />
@@ -169,7 +169,7 @@
                   </div>
                   <div class="mb-0">
                     <h5>Bio</h5>
-                    <textarea class="form-control" maxlength="150" placeholder="This is a short bio about me. I am cool and I send letters back! Add me if you want! :)" aria-label="With textarea" readonly style="border: 0px"></textarea>
+                    <textarea class="form-control" maxlength="150" placeholder="{{user.bio}}" aria-label="With textarea" readonly style="border: 0px"></textarea>
                   </div>
                 </form>
               </div>
@@ -177,7 +177,7 @@
                 <a
                   type="button"
                   class="btn btn-primary"
-                  href="editaccount.html"
+                  onclick="location.href='/editaccount'"
                 >
                   Edit Account
               </a>

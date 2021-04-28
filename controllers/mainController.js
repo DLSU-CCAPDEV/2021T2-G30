@@ -1,4 +1,4 @@
-const routerController = {
+const mainController = {
 
     getLogin: function (req, res) {
         res.render('login', {

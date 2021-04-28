@@ -39,7 +39,7 @@ $(document).ready(function () {
             */
             else {
                 $('#bioDiv').css('margin-top', '30px');
-                $('#error').text('');
+                $('#errorsignup').text('');
                 $('#submit').prop('disabled', false);
             }
         });

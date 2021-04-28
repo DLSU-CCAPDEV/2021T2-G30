@@ -5,27 +5,27 @@ var mongoose = require('mongoose');
 var EntrySchema = new mongoose.Schema({
     title: {
          type: String,
-         required: true
+         required: false
     },
     body: {
         type: String,
-        required: true
+        required: false
     },
     significance: {
         type: Number,
-        required: true
+        required: false
     },
     date: {
         type: Date,
-        required: true
+        required: false
     },
     authorUserName: {
         type: String,
-        required: true
+        required: false
     },
     privacy: {
         type: String,
-        required: true
+        required: false
     }
 });
 

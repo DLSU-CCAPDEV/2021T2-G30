@@ -1,8 +1,7 @@
 const db = require('../models/db.js');
 const userCollection = require('../models/UserModel.js');
 
-
-const routerController = {
+const profileController = {
 
     signup: function (req, res) {
         var dPicture = req.body.dPicture;
@@ -92,7 +91,7 @@ const routerController = {
         console.log('uName = ' + uName);
         console.log('pw =' + pw);
         db.findOne(userCollection, {uName: uName, pw: pw}, '', function (result) {
-            console.log(result);
+           console.log(result);
            req.session.uName = result.uName;
 
            res.redirect('/mainpage');
@@ -114,4 +113,4 @@ const routerController = {
     
 };   
 
-module.exports = routerController;
+module.exports = profileController;

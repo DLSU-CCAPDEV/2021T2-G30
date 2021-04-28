@@ -47,9 +47,16 @@ const routerController = {
                     uName: result.uName,
                     //friends: friends
                 };
-                res.render('profile', details);
+                res.render('profile',  {
+                    title: 'SafeSpace',
+                    css: ['global','mainpage'],
+                    details
+                });
             } else {
-                res.render('error');
+                res.render('error', {
+                    title: 'SafeSpace',
+                    css: ['global','mainpage']
+                });
             }
         });
     },

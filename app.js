@@ -8,13 +8,25 @@ const exphbs  = require('express-handlebars');
 
 const app = express(); //initializing express server
 
+
+
 dotenv.config();
 port = process.env.PORT;
 hostname = process.env.HOSTNAME;
 
 // Database connection
 const db = require('./models/db.js');
-db.connect();
+const conn = db.connect();
+ 
+let gfs;
+conn.once("open", function () {
+    //init stream
+    gfs = new mongoose.mongo.GridFSBucket(conn.d, {
+        bucketName: "uploads"
+    });
+});
+
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // Routers
 const appRouter = require('./routes/router.js');
@@ -22,8 +34,6 @@ app.use('/', appRouter);
 
 app.set('view engine', '.hbs'); //using hbs as view engine
 app.use(express.static('public'));
-
-app.use(bodyParser.urlencoded({ extended: false }));
 
 //Templating Engine
 app.engine('.hbs', exphbs({

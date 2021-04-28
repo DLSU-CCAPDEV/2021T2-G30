@@ -1,8 +1,8 @@
 const db = require('../models/db.js');
 const userCollection = require('../models/UserModel.js');
+const multer = require('multer');
 
-
-const routerController = {
+const profileController = {
 
     signup: function (req, res) {
         // var dPicture = req.body.dPicture;

@@ -2,6 +2,12 @@ const router = require("express");
 const mainController = require('../controllers/mainController.js');
 const profileController = require('../controllers/profileController.js');
 
+// initialize gridfs stream
+// let gfs;
+// conn.once('open', function() {
+//     gfs = Grid(conn.db, mongoose.mongo);
+//     gfs.collection('uploads');
+// });
 
 // GET
 router.get('/', mainController.getLogin); //incase user tries to access this route
@@ -16,7 +22,7 @@ router.get('/checklogin', profileController.checklogin);
 router.get('/profile/:uName', profileController.getProfile);
 
 //POST // Creation
-router.post('/signup', profileController.signup);
+router.post('/signup', upload.single('dPicture'), profileController.signup);
 
 //PUT // Editing
 

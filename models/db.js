@@ -5,8 +5,9 @@ const mongoose = require('mongoose');
 const User = require('./UserModel.js');
 
 // safespacedb is the name of the database
-// const url = process.env.DB_URL;
-const url = 'mongodb://localhost:27017/safespacedb';
+const url = process.env.DB_URL;
+// const url = 'mongodb://localhost:27017/safespacedb';
+
 
 // additional connection options
 const options = {

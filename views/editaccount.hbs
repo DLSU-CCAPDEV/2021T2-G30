@@ -13,15 +13,16 @@
             <!-- Grey line -->
             <hr />
     
-            <form action="editaccount.html">
+            <form action="/editaccount" method="POST" id="editAccountForm">
               <div class="mb-3">
                 <div class="row">
                   <div class="col">
                     <h5>First Name</h5>
                     <input
-                      type="email"
+                      type="text"
                       class="form-control p-2"
                       id="FirstNameEdit"
+                      name="fName"
                       aria-describedby="emailHelp"
                       placeholder="{{user.fName}}"
                     />
@@ -29,9 +30,10 @@
                   <div class="col">
                     <h5>Last Name</h5>
                     <input
-                      type="email"
+                      type="text"
                       class="form-control p-2"
                       id="LastNameEdit"
+                      name="lName"
                       aria-describedby="emailHelp"
                       placeholder="{{user.lName}}"
                     />
@@ -45,6 +47,7 @@
                   type="email"
                   class="form-control p-2"
                   id="EmailEdit"
+                  name="email"
                   aria-describedby="emailHelp"
                   placeholder="{{user.email}}"
                 />
@@ -55,6 +58,7 @@
                   type="password"
                   class="form-control p-2"
                   id="PasswordEdit"
+                  name="pw"
                   placeholder="Password"
                 />
               </div>
@@ -71,15 +75,13 @@
               </div>
               <div class="mb-4">
                 <h5>Bio</h5>
-                <textarea class="form-control p-2" maxlength="150" placeholder="{{user.bio}}" aria-label="With textarea"></textarea>
+                <textarea class="form-control p-2" name="bio" id="BioEdit" maxlength="150" placeholder="{{user.bio}}" aria-label="With textarea"></textarea>
               </div>
               <div class="modal-footer">
                 <a onclick="location.href='/settings'">
                   <button type="button" class="btn btn-secondary" style="margin-bottom: -0.6em;">Cancel</button>
-                </a>
-                <a onclick="location.href='/settings'">
-                <button type="button" class="btn btn-primary" style="margin-bottom: -0.6em;">Save changes</button>
-                </a>
+                </a>    
+                <button type="submit" id="saveChangesbtn" class="btn btn-primary" style="margin-bottom: -0.6em;">Save changes</button>
               </div>
             </form>
           </div>

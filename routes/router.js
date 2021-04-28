@@ -22,6 +22,9 @@ router.get('/editaccount', mainController.geteditProfileAccount);
 
 //POST // Creation
 router.post('/signup', db.upload.single("dPicture"), profileController.signup);
+router.post('/editaccount',profileController.editAccount);
+
+//PATCH // Editing
 
 //PUT // Editing
 

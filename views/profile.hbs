@@ -4,7 +4,12 @@
       <div class="container d-flex align-items-center justify-content-center" style="min-height: inherit;">
         <div class="row">
           <div class="col-12 mx-auto text-center">
-            <img src="/image/{{details.dPicture}}" alt="displayPicture" class="mx-auto btn dropdown-toggle displaypicture text-center" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" title="Profile Options">
+            {{#if details.dPicture}}
+                <img src="/image/{{details.dPicture}}" alt="displayPicture" class="mx-auto btn dropdown-toggle displaypicture text-center" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" title="{{details.uName}} picture">
+            {{else}}
+                 <img src="/Images/defaultdp.jpg" alt="displayPicture" class="mx-auto btn dropdown-toggle displaypicture text-center" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" title="{{details.uName}} picture">
+            {{/if}}
+            
             <ul class="dropdown-menu ms-5" aria-labelledby="dropdownMenuButton1" style="padding-right:0.5em; padding-left: 0.5em;">
               <li><a class="dropdown-item" href="#">View Profile Picture</a></li>
               <li><a class="dropdown-item" href="editaccount.html">Edit profile</a></li>

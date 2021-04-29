@@ -30,7 +30,7 @@ var EntrySchema = new mongoose.Schema({
     entryImage: {
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'uploads', 
-        required: true
+        required: false
     }
 });
 

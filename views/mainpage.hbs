@@ -37,7 +37,7 @@
                 </div>
                      
                 <div class="col-3">
-                  <img src="/image/{{details.entryImage}}" class="img-fluid" style="height: 169px; width: 246.5px; object-fit: cover;" alt="...">
+                  <img src="/image/{{this.entryImage}}" class="img-fluid" style="height: 169px; width: 246.5px; object-fit: cover;" alt="...">
                 </div>
                   <!-- Entry Footer -->
                 <div class="card-footer">
@@ -87,7 +87,7 @@
             </div>
             <div class="modal-body">
               <!-- Creating entry -->
-              <form action="/createentry" method="GET">
+              <form action="/createentry" method="GET" enctype="multipart/form-data">
                 <div class="mb-3">
                   <label class="visually-hidden" for="autoSizingSelect">Title of Entry</label>
                   <input type="text" name="entryTitle" class="form-control" placeholder="Title of Entry" aria-label="Title of Entry" maxlength = "50">

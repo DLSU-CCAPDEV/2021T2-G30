@@ -14,6 +14,13 @@ const entryController = {
         var authorUserName = req.session.uName;
         var entryDate = req.query.entryDate;
         var privacy = req.query.privacy;
+        var entryImage = req.file.id;
+        if(0 == req.files.length) {
+            entryImage = null;
+            console.log("picture is empty"); 
+        } else {
+            entryImage = req.files[0].id;
+        }
 
         entry = {
             _id: mongoose.Types.ObjectId(),
@@ -22,7 +29,8 @@ const entryController = {
             significance: significance,
             authorUserName: authorUserName,
             entryDate: entryDate,
-            privacy: privacy
+            privacy: privacy,
+            entryImage: entryImage
         }
 
         var update = {
@@ -39,7 +47,7 @@ const entryController = {
             })
         });
 
-    }
+    },
     
 };   
 

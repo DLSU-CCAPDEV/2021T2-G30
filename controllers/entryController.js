@@ -8,12 +8,12 @@ const entryController = {
 
     mainPageEntry: function (req, res){
 
-        var entryTitle = req.query.entryTitle;
-        var entryBody = req.query.entryBody;
-        var significance = req.query.significance;
+        var entryTitle = req.body.entryTitle;
+        var entryBody = req.body.entryBody;
+        var significance = req.body.significance;
         var authorUserName = req.session.uName;
-        var entryDate = req.query.entryDate;
-        var privacy = req.query.privacy;
+        var entryDate = req.body.entryDate;
+        var privacy = req.body.privacy;
 
         entry = {
             _id: mongoose.Types.ObjectId(),
@@ -35,10 +35,25 @@ const entryController = {
             db.updateOne(userCollection, {uName: authorUserName}, update, function(flag) {
                 if(flag)
                     console.log('Successfully updated ' + authorUserName);
-                    res.redirect('/mainpage');
+                res.redirect('/mainpage');
             })
         });
 
+    },
+
+    deleteEntry: function(req, res) {
+        var id = req.query.id;
+        
+        db.deleteOne(entryCollection, {_id: id}, function(flag) {
+            if(flag) {
+                res.redirect('/mainpage');
+                console.log('successful');
+            }
+            else
+                console.log('something happened')
+            
+
+        })
     }
     
 };   

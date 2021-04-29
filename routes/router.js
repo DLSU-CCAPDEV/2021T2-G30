@@ -20,17 +20,17 @@ router.get('/checklogin', profileController.checklogin);
 router.get('/profile/:uName', profileController.getProfile);
 router.get('/logout', profileController.getLogout);
 
-router.get('/createentry', entryController.mainPageEntry);
-
 //POST // Creation
 router.post('/signup', db.upload.single("dPicture"), profileController.signup);
-router.post('/login', profileController.login);
 router.post('/editaccount',profileController.editAccount);
+router.post('/createentry', entryController.mainPageEntry);
+router.post('/login', profileController.login);
 
 //PATCH // Editing
 
 //PUT // Editing
 
 //DELETE
+router.get('/deleteentry', entryController.deleteEntry);
 
 module.exports = router; 

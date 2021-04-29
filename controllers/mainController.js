@@ -1,6 +1,6 @@
 //const { replaceOne } = require("../models/UserModel");
 const db = require('../models/db.js');
-const EntryModel = require('../models/EntryModel.js');
+const entryCollection = require('../models/EntryModel.js');
 const userCollection = require('../models/UserModel.js');
 const mongoose = require('mongoose');
 
@@ -28,7 +28,7 @@ const mainController = {
             //console.log(req.session.uName);
         }
 
-        db.findMany(EntryModel, {authorUserName: req.session.uName}, '', function(result) {
+        db.findMany(entryCollection, {authorUserName: req.session.uName}, '', function(result) {
 
             res.render('mainpage', {
                 title: 'SafeSpace',

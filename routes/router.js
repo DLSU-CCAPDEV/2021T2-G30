@@ -24,8 +24,11 @@ router.get('/createentry', db.upload.any("image"), entryController.mainPageEntry
 
 //POST // Creation
 router.post('/signup', db.upload.any("dPicture"), profileController.signup);
-router.post('/login', profileController.login);
 router.post('/editaccount',profileController.editAccount);
+router.post('/login', profileController.login);
+
+router.post('/createentry', entryController.mainPageEntry);
+router.post('/deleteentry', entryController.deleteEntry);
 
 //PATCH // Editing
 

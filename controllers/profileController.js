@@ -6,7 +6,7 @@ const profileController = {
     signup: function (req, res) {
         // console.log("im in");
         var dPicture;
-        if(0 == req.files.length) {
+        if(req.files.length == 0) {
             dPicture = null;
             console.log("picture is empty"); 
         } else {

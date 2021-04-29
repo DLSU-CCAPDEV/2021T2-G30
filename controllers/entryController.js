@@ -1,4 +1,3 @@
-//const { replaceOne } = require("../models/UserModel");
 const db = require('../models/db.js');
 const entryCollection = require('../models/EntryModel.js');
 const userCollection = require('../models/UserModel.js');
@@ -14,16 +13,15 @@ const entryController = {
         var authorUserName = req.session.uName;
         var entryDate = req.body.entryDate;
         var privacy = req.body.privacy;
-        var entryImage = req.file.id;
+        var entryImage;
 
-        if(0 == req.files.length) {
+        if(req.files.length == 0) {
             entryImage = null;
-            console.log("picture is empty"); 
         } else {
             entryImage = req.files[0].id;
         }
         
-        entry = {
+        var entry = {
             _id: mongoose.Types.ObjectId(),
             entryTitle: entryTitle,
             entryBody: entryBody,
@@ -45,7 +43,7 @@ const entryController = {
                 if(flag)
                     console.log('Successfully updated ' + authorUserName);
                 res.redirect('/mainpage');
-            })
+            });
         });
     },
 

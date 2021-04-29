@@ -37,21 +37,6 @@ const mainController = {
         }, {entryDate: -1})
     },
 
-    getSettingsPage: function (req, res){
-        
-
-        db.findOne(userCollection, {uName: req.session.uName}, '', function (result) {
-            // console.log(result);
-            res.render('settings',{
-                title: 'Settings',
-                css: ['global','settings'],
-                user: result
-            });
-                 
-        });
-        
-
-    },
 
     geteditProfileAccount: function(req,res){
 
@@ -71,7 +56,8 @@ const mainController = {
             res.render('settings',{
                 title: 'Settings',
                 css: ['global','settings'],
-                user: result
+                user: result,
+                sessionUser: req.session.uName
             });
         });
     },

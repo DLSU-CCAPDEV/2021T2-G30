@@ -14,14 +14,16 @@ router.get('/mainpage', mainController.getMainPage);
 router.get('/settings', mainController.getSettingsPage);
 router.get('/checksignup', profileController.checksignup);
 router.get('/checklogin', profileController.checklogin);
-router.get('/profile/:uName', profileController.getProfile);
+router.get('/profile', profileController.getProfile);
 router.get('/image/:id', mainController.getPicture);
 router.get('/createentry', entryController.mainPageEntry);
 router.get('/editaccount', mainController.geteditProfileAccount);
+router.get('/logout', profileController.getLogout);
 
 
 //POST // Creation
 router.post('/signup', db.upload.single("dPicture"), profileController.signup);
+router.post('/login', profileController.login);
 router.post('/editaccount',profileController.editAccount);
 
 //PATCH // Editing

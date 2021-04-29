@@ -39,27 +39,20 @@ const profileController = {
 
     getProfile: function(req, res) {
         //query where 
-        var query = {uName: req.params.uName};
+        var query = {uName: req.session.uName};
 
         var projection = 'dPicture fName lName uName bio';
         // var projection = 'dPicture fName lName uName bio';
 
         db.findOne(userCollection, query, projection, function(result) {
             if(result != null) {
-                // var result = {
-                //     //dPicture: result.dPicture
-                //     fName: result.fName,
-                //     lName: result.lName,
-                //     uName: result.uName,
-                //     //friends: friends
-                // };
-                // gridfs bucket
                 res.render('profile',  {
                     title: 'SafeSpace',
                     css: ['global','personalprofile'], 
                     details: result
                 });
             } else {
+                console.log('error');
                 res.status(404);
                 res.render('error', {
                     title: 'SafeSpace',

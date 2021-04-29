@@ -2,6 +2,7 @@
 const db = require('../models/db.js');
 const EntryModel = require('../models/EntryModel.js');
 const userCollection = require('../models/UserModel.js');
+const mongoose = require('mongoose');
 
 const mainController = {
 

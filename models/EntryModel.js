@@ -26,6 +26,11 @@ var EntrySchema = new mongoose.Schema({
     privacy: {
         type: String,
         required: false
+    },
+    entryImage: {
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'uploads', 
+        required: true
     }
 });
 

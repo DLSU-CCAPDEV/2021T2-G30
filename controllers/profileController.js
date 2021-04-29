@@ -113,6 +113,7 @@ const profileController = {
 
     editAccount: function (req, res) {
         
+        var dPicture = req.file.id;
         var uName = req.session.uName;
         var fName = req.body.fName;
         var lName = req.body.lName;
@@ -120,8 +121,11 @@ const profileController = {
         var bio = req.body.bio;
         var pw = req.body.pw;
 
+        console.log(dPicture);
+
         
         var indivUser = {
+            dPicture: dPicture,
             fName: req.body.fName,
             lName: req.body.lName,
             email: req.body.email,
@@ -141,6 +145,23 @@ const profileController = {
 
 
 
+    },
+
+    deleteaccount: function(req,res){
+
+        var uName = req.session.uName;
+
+        db.deleteOne(userCollection, {uName: uName},function(deleted){
+
+            console.log(deleted);
+            req.session.destroy(function(error){
+                if(error){
+                    res.render('error');
+                }
+                else
+                    res.redirect('/login');
+            })
+        })
     }
 
     

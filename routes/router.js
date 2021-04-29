@@ -33,5 +33,6 @@ router.post('/deleteentry', entryController.deleteEntry);
 //PUT // Editing
 
 //DELETE
+router.get('/deleteaccount',profileController.deleteaccount);
 
 module.exports = router; 

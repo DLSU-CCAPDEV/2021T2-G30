@@ -48,8 +48,6 @@ const profileController = {
         var query = {uName: req.params.uName};
         var projection = 'dPicture fName lName uName bio';
 
-        
-
         db.findOne(userCollection, query, projection, function(result) {
             
             if(result != null) {

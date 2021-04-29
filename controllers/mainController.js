@@ -56,7 +56,7 @@ const mainController = {
 
     },
 
-    geteditProfileAccount: function(req,res){
+    geteditProfileAccount: function(req,res) {
         db.findOne(userCollection, {uName: req.session.uName},'',function (result){
             res.render('editaccount',{
                 title: 'EditAccount',
@@ -65,17 +65,16 @@ const mainController = {
                 sessionUser: req.session.uName
             });
         });
-
     },
 
-    //get picture
+    //gets picture
     getPicture: function(req, res) {
         var id = mongoose.Types.ObjectId(req.params.id);
         db.openDownloadStream(id, function (downloadStream){
             if(downloadStream == null) {
                 res.status(404);
                 res.render('error', {
-                    title: 'Page not found',
+                    title: 'Image not found',
                     css:['global', 'error']
                 });
             } else {

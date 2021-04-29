@@ -38,22 +38,24 @@ const entryController = {
                 res.redirect('/mainpage');
             })
         });
-
     },
 
     deleteEntry: function(req, res) {
-        var id = req.query.id;
+        var id = req.body.id;
+
+        var update = {
+            $pull: {
+              entries: entry._id
+            }
+          }
         
         db.deleteOne(entryCollection, {_id: id}, function(flag) {
-            if(flag) {
+            db.updateOne(userCollection, {uName: req.session.uName}, update, function(flag) {
+                if(flag) 
+                    console.log('Successfully updated ' + req.session.uName);
                 res.redirect('/mainpage');
-                console.log('successful');
-            }
-            else
-                console.log('something happened')
-            
-
-        })
+            })
+        });
     }
     
 };   

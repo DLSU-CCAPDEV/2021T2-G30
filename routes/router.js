@@ -23,14 +23,15 @@ router.get('/logout', profileController.getLogout);
 //POST // Creation
 router.post('/signup', db.upload.single("dPicture"), profileController.signup);
 router.post('/editaccount',profileController.editAccount);
-router.post('/createentry', entryController.mainPageEntry);
 router.post('/login', profileController.login);
+
+router.post('/createentry', entryController.mainPageEntry);
+router.post('/deleteentry', entryController.deleteEntry);
 
 //PATCH // Editing
 
 //PUT // Editing
 
 //DELETE
-router.get('/deleteentry', entryController.deleteEntry);
 
 module.exports = router; 

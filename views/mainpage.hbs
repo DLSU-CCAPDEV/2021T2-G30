@@ -36,9 +36,9 @@
                   </a> 
                 </div>
                 {{#if this.entryImage}}
-                <div class="col-3">
-                  <img src="/image/{{this.entryImage}}" class="img-fluid" style="height: 169px; width: 246.5px; object-fit: cover;" alt="...">
-                </div>
+                  <div class="col-3">
+                    <img src="/image/{{this.entryImage}}" class="img-fluid" style="height: 169px; width: 246.5px; object-fit: cover;" alt="...">
+                  </div>
                 {{/if}}
                   <!-- Entry Footer -->
                 <div class="card-footer">
@@ -164,8 +164,9 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+
               <!-- Creating entry -->
-              <form action="/createentry" method="GET" enctype="multipart/form-data">
+              <form action="/createentry" method="POST" enctype="multipart/form-data">
                 <div class="mb-3">
                   <label class="visually-hidden" for="autoSizingSelect">Title of Entry</label>
                   <input type="text" name="entryTitle" class="form-control" placeholder="Title of Entry" aria-label="Title of Entry" maxlength = "50">
@@ -204,12 +205,16 @@
                     <input type="file" name="entryImage" class="form-control-file" id="imageFormControlFile1" accept="image/x-png,image/jpeg" >
                   </div>
                 </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save changes</button>
-              </div>
-            </form>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+              </form>
+            </div>
+              
+          
+              
+                
           </div>
         </div>
       </div>

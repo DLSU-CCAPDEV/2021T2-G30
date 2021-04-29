@@ -68,17 +68,6 @@ const mainController = {
 
     },
 
-    getSettingsPage: function (req, res){
-
-        db.findOne(userCollection, {uName: req.session.uName},'',function (result){
-            res.render('settings',{
-                title: 'Settings',
-                css: ['global','settings'],
-                user: result
-            });
-        });
-    },
-
     //get picture
     getPicture: function(req, res) {
         var id = mongoose.Types.ObjectId(req.params.id);

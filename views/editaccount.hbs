@@ -21,7 +21,8 @@
                       id="FirstNameEdit"
                       name="fName"
                       aria-describedby="emailHelp"
-                      placeholder="{{user.fName}}"
+                      value="{{user.fName}}"
+                      required
                     />
                   </div>
                   <div class="col">
@@ -32,7 +33,8 @@
                       id="LastNameEdit"
                       name="lName"
                       aria-describedby="emailHelp"
-                      placeholder="{{user.lName}}"
+                      value="{{user.lName}}"
+                      required
                     />
                   </div>
                 </div>
@@ -46,7 +48,8 @@
                   id="EmailEdit"
                   name="email"
                   aria-describedby="emailHelp"
-                  placeholder="{{user.email}}"
+                  value="{{user.email}}"
+                  required
                 />
               </div>
               <div class="mb-3">
@@ -56,7 +59,9 @@
                   class="form-control p-2"
                   id="PasswordEdit"
                   name="pw"
-                  placeholder="Password"
+                  value="{{user.pw}}"
+                  minlength="5"
+                  required
                 />
               </div>
               <div class="mb-3">
@@ -67,12 +72,11 @@
                   class="form-control p-2"
                   id="DisplayPicture"
                   title="Upload display picture"
-                  
                 />
               </div>
               <div class="mb-4">
                 <h5>Bio</h5>
-                <textarea class="form-control p-2" name="bio" id="BioEdit" maxlength="150" placeholder="{{user.bio}}" aria-label="With textarea"></textarea>
+                <textarea class="form-control p-2" name="bio" id="BioEdit" maxlength="150" value="{{user.bio}}" aria-label="With textarea"></textarea>
               </div>
               <div class="modal-footer">
                 <a onclick="location.href='/settings'">

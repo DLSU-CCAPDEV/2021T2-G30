@@ -6,7 +6,7 @@ var UserSchema = new mongoose.Schema({
     dPicture: {
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'uploads', 
-        required: true
+        required: false
     },
     fName: {
         type: String,

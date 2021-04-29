@@ -35,10 +35,11 @@
                     </div>
                   </a> 
                 </div>
-                     
+                {{#if this.entryImage}}
                 <div class="col-3">
-                  <img src="Images/gedance.jpg" class="img-fluid" style="height: 169px; width: 246.5px; object-fit: cover;" alt="...">
+                  <img src="/image/{{this.entryImage}}" class="img-fluid" style="height: 169px; width: 246.5px; object-fit: cover;" alt="...">
                 </div>
+                {{/if}}
                   <!-- Entry Footer -->
                 <div class="card-footer">
                   <div class="row">
@@ -46,7 +47,7 @@
                       <p class="card-text justify-content-center">
                         <small class="text-muted">
                           {{{privacy this.privacy}}}
-                          {{this.entryDate}}
+                          {{date this.entryDate}}
                         </small></p>
                     </div>
                     <!-- Entry Settings -->
@@ -57,9 +58,9 @@
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuEntry">
                           <li><button class="dropdown-item" type="button" data-bs-toggle="modal"
-                            data-bs-target="#editEntry">Edit Entry</button></li>
+                            data-bs-target="#modal-edit-{{this._id}}">Edit Entry</button></li>
                           <li><button class="dropdown-item" type="button" data-bs-toggle="modal"
-                            data-bs-target="#modal-{{this._id}}">Delete Entry</button></li>
+                            data-bs-target="#modal-del-{{this._id}}">Delete Entry</button></li>
                         </ul>
                       </div>
                     </div>
@@ -69,8 +70,67 @@
             </div>
           </div>
         </div>
+        <!-- Edit Entry Modal -->
+        <div class="modal fade" id="modal-edit-{{this._id}}" tabindex="-1" aria-labelledby="createEntryModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" style="width: 50em">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="editEntryModalLabel">Edit Entry</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+
+                  <!-- Edit entry -->
+                <form>
+                  <div class="mb-3">
+                    <label class="visually-hidden" for="autoSizingSelect">New Title</label>
+                    <input id="entryTitle-{{this._id}}" type="text" class="form-control" value="{{this.entryTitle}}" aria-label="New Title" maxlength = "50">
+                  </div>
+                  <div class="row g-3 mb-4">
+                    <div class="col-md-4">
+                      <label for="inputPrivacy" style="font-size: 14px;">Select Privacy</label>
+                      <select id="privacy-{{this._id}}" class="form-select">
+                        <option selected value="private">Private</option>
+                        <option value="public">Public</option>
+                      </select>
+                    </div>
+                    <div class="col-md-4">
+                      <label for="dateEntry" style="font-size: 14px;">Date and Time</label>
+                      <input type="date" class="form-control" id="entryDate-{{this._id}}" value="{{defaultDate this.entryDate}}">
+                    </div>
+                    <div class="col-md-4">
+                      <label for="inputPrivacy" style="font-size: 14px;" >Entry's Significance</label>
+                      <select id="significance-{{this._id}}" class="form-select ">
+                        <option selected>None</option>
+                        <option value="5">5</option>
+                        <option value="4">4</option>
+                        <option value="3">3</option>
+                        <option value="2">2</option>
+                        <option value="1">1</option>
+                      </select>
+                    </div> 
+                  </div>
+                  <div class="mb-3">
+                    <label class="visually-hidden" for="entryFormControlTextarea1" class="form-label">New Entry</label>
+                    <textarea id="entryBody-{{this._id}}" class="form-control" id="entryFormControlTextarea1" rows="5" aria-label="entry content">{{this.entryBody}}</textarea>
+                  </div>
+                  <div class="mb-3">
+                    <div class="row">
+                      <label for="exampleFormControlFile1" style="font-size: 14px;">Insert Image</label>
+                      <input type="file" class="form-control-file" id="imageFormControlFile1" accept="image/x-png,image/jpeg" >
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary editBtn" id="{{this._id}}">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
         <!-- Delete Modal -->
-        <div class="modal fade" id="modal-{{this._id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="modal-del-{{this._id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
@@ -105,7 +165,7 @@
             </div>
             <div class="modal-body">
               <!-- Creating entry -->
-              <form action="/createentry" method="POST">
+              <form action="/createentry" method="GET" enctype="multipart/form-data">
                 <div class="mb-3">
                   <label class="visually-hidden" for="autoSizingSelect">Title of Entry</label>
                   <input type="text" name="entryTitle" class="form-control" placeholder="Title of Entry" aria-label="Title of Entry" maxlength = "50">
@@ -120,7 +180,7 @@
                   </div>
                   <div class="col-md-4">
                     <label for="dateEntry" style="font-size: 14px;">Date and Time</label>
-                    <input type="datetime-local" name="entryDate" class="form-control" id="dateEntry">
+                    <input type="date" name="entryDate" class="form-control" id="dateEntry">
                   </div>
                   <div class="col-md-4">
                     <label for="inputPrivacy" style="font-size: 14px;">Entry's Significance</label>
@@ -141,7 +201,7 @@
                 <div class="mb-3">
                   <div class="row">
                     <label for="exampleFormControlFile1" style="font-size: 14px;">Insert Image</label>
-                    <input type="file" name="image" class="form-control-file" id="imageFormControlFile1" accept="image/x-png,image/jpeg" >
+                    <input type="file" name="entryImage" class="form-control-file" id="imageFormControlFile1" accept="image/x-png,image/jpeg" >
                   </div>
                 </div>
               </div>
@@ -153,66 +213,5 @@
           </div>
         </div>
       </div>
-
-      <!-- Edit Entry Modal -->
-      <div class="modal fade" id="editEntry" tabindex="-1" aria-labelledby="createEntryModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="width: 50em">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="editEntryModalLabel">Edit Entry</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-
-                <!-- Edit entry -->
-              <form>
-                <div class="mb-3">
-                  <label class="visually-hidden" for="autoSizingSelect">New Title</label>
-                  <input type="text" class="form-control" placeholder="New Title" aria-label="New Title" maxlength = "50">
-                </div>
-                <div class="row g-3 mb-4">
-                  <div class="col-md-4">
-                    <label for="inputPrivacy" style="font-size: 14px;">Select Privacy</label>
-                    <select id="inputPrivacy" class="form-select">
-                      <option selected>Private</option>
-                      <option>Public</option>
-                    </select>
-                  </div>
-                  <div class="col-md-4">
-                    <label for="dateEntry" style="font-size: 14px;">Date and Time</label>
-                    <input type="datetime-local" class="form-control" id="dateEntry">
-                  </div>
-                  <div class="col-md-4">
-                    <label for="inputPrivacy" style="font-size: 14px;">Entry's Significance</label>
-                    <select id="inputPrivacy" class="form-select ">
-                      <option selected>None</option>
-                      <option>5</option>
-                      <option>4</option>
-                      <option>3</option>
-                      <option>2</option>
-                      <option>1</option>
-                    </select>
-                  </div> 
-                </div>
-                <div class="mb-3">
-                  <label class="visually-hidden" for="entryFormControlTextarea1" class="form-label">New Entry</label>
-                  <textarea class="form-control" id="entryFormControlTextarea1" rows="5" placeholder="Enter new entry" aria-label="entry content"></textarea>
-                </div>
-                <div class="mb-3">
-                  <div class="row">
-                    <label for="exampleFormControlFile1" style="font-size: 14px;">Insert Image</label>
-                    <input type="file" class="form-control-file" id="imageFormControlFile1" accept="image/x-png,image/jpeg" >
-                  </div>
-                </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </section>
    

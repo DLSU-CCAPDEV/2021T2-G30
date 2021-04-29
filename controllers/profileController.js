@@ -1,13 +1,19 @@
 const db = require('../models/db.js');
 const userCollection = require('../models/UserModel.js');
-const multer = require('multer');
-const mainController = require('../controllers/mainController');
 
 const profileController = {
 
     signup: function (req, res) {
         // console.log("im in");
-        var dPicture = req.file.id;
+        var dPicture;
+        if(0 == req.files.length) {
+            dPicture = null;
+            console.log("picture is empty"); 
+        } else {
+            dPicture = req.files[0].id;
+        }
+        
+        console.log(dPicture);
         var fName = req.body.fName;
         var lName = req.body.lName;
         var email = req.body.email;
@@ -41,8 +47,6 @@ const profileController = {
         //query where 
         var query = {uName: req.params.uName};
         var projection = 'dPicture fName lName uName bio';
-
-        //res.send(req.params);
 
         db.findOne(userCollection, query, projection, function(result) {
             
@@ -98,8 +102,6 @@ const profileController = {
         });
     },
 
-    
-
     getLogout: function(req,res){
         
         req.session.destroy(function(error){
@@ -115,11 +117,6 @@ const profileController = {
         
         var dPicture = req.file.id;
         var uName = req.session.uName;
-        var fName = req.body.fName;
-        var lName = req.body.lName;
-        var email = req.body.email;
-        var bio = req.body.bio;
-        var pw = req.body.pw;
 
         console.log(dPicture);
 
@@ -131,13 +128,10 @@ const profileController = {
             email: req.body.email,
             bio: req.body.bio,
             pw: req.body.pw,
-
         }
 
         db.updateOne(userCollection, {uName: uName},indivUser,function(update){
-
             console.log(update);
-
             if(update != null){
                 res.redirect('/settings');
             }
@@ -163,8 +157,6 @@ const profileController = {
             })
         })
     }
-
-    
 };   
 
 module.exports = profileController;

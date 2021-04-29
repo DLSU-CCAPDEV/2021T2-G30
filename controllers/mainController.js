@@ -53,7 +53,6 @@ const mainController = {
     },
 
     getSettingsPage: function (req, res){
-
         db.findOne(userCollection, {uName: req.session.uName},'',function (result){
             res.render('settings',{
                 title: 'Settings',
@@ -64,14 +63,14 @@ const mainController = {
         });
     },
 
-    //get picture
+    //gets picture
     getPicture: function(req, res) {
         var id = mongoose.Types.ObjectId(req.params.id);
         db.openDownloadStream(id, function (downloadStream){
             if(downloadStream == null) {
                 res.status(404);
                 res.render('error', {
-                    title: 'Page not found',
+                    title: 'Image not found',
                     css:['global', 'error']
                 });
             } else {

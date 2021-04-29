@@ -38,7 +38,8 @@ const profileController = {
             if(flag) {
                 res.redirect('/login');
             }
-            else res.render('error');
+            else 
+                res.redirect('/error');
         });
 
     },
@@ -54,15 +55,13 @@ const profileController = {
                 res.render('profile',  {
                     title: 'SafeSpace',
                     css: ['global','personalprofile'], 
-                    details: result
+                    details: result,
+                    sessionUser: req.session.uName
                 });
             } else {
-                console.log('error');
+                //console.log('error');
                 res.status(404);
-                res.render('error', {
-                    title: 'SafeSpace',
-                    css: ['global','mainpage']
-                });
+                res.redirect('/error');
             }
         });
     },

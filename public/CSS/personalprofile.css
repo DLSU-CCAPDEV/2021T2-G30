@@ -26,6 +26,17 @@ a {
   transition: 0.2s;
 }
 
+.displaypicturemodal {
+  padding: 0;
+  border: 0;
+  border-radius: 200%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
+  height: 30em;
+  width: 30em;
+  object-fit: cover;
+  transition: 0.2s;
+}
+
 .card-text {
   overflow: hidden;
   text-overflow: ellipsis;

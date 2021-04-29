@@ -24,11 +24,17 @@ $(document).ready(function () {
             entryDate: $('#entryDate-' + id).val(),
             privacy: $('#privacy-' + id).val()
         }
-
-        $.post('editentry', entry, function(result) {
-            if(result) {
-                location.reload();
-            }
-        });
+        
+        if(entry.entryDate <= formattedDate) {
+            $.post('editentry', entry, function(result) {
+                if(result) {
+                    location.reload();
+                }
+            });
+        }
+        else {
+            $('#futureDate').text('Entered date is invalid!');
+            $('#futureDate').css('margin-bottom', '-2em');
+        }
     });
 });

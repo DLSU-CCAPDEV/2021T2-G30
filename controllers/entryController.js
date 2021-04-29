@@ -56,7 +56,7 @@ const entryController = {
             entryBody: req.body.entryBody,
             significance: req.body.significance,
             entryDate: req.body.entryDate,
-            privacy: req.body.privacy            
+            privacy: req.body.privacy,       
         }
         
         db.updateOne(entryCollection, {_id: id}, entry, function(flag) {

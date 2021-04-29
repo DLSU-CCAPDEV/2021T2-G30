@@ -26,8 +26,8 @@ router.post('/signup', db.upload.any(), profileController.signup);
 router.post('/editaccount', db.upload.any(),profileController.editAccount);
 router.post('/login', profileController.login);
 
-router.post('/createentry',  db.upload.any(), entryController.createEntry);
-router.post('/editentry', entryController.editEntry);
+router.post('/createentry', db.upload.any(), entryController.createEntry);
+router.post('/editentry', db.upload.any(),  entryController.editEntry);
 router.post('/deleteentry', entryController.deleteEntry);
 
 //PATCH // Editing

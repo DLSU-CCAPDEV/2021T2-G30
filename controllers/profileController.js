@@ -115,11 +115,15 @@ const profileController = {
 
     editAccount: function (req, res) {
         
-        var dPicture = req.file.id;
+        var dPicture;
         var uName = req.session.uName;
 
-        console.log(dPicture);
-
+        if(req.files.length == 0) {
+            dPicture = null;
+        } else {
+            dPicture = req.files[0].id;
+        }
+        
         
         var indivUser = {
             dPicture: dPicture,

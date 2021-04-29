@@ -23,7 +23,7 @@ router.get('/logout', profileController.getLogout);
 
 //POST // Creation
 router.post('/signup', db.upload.any(), profileController.signup);
-router.post('/editaccount',profileController.editAccount);
+router.post('/editaccount', db.upload.any(),profileController.editAccount);
 router.post('/login', profileController.login);
 
 router.post('/createentry',  db.upload.any(), entryController.createEntry);

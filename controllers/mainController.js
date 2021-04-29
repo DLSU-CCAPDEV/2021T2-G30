@@ -16,7 +16,8 @@ const mainController = {
     getError: function (req, res) {
         res.render('error', {
             title: 'Page not found',
-            css:['global', 'error']
+            css:['global', 'error'],
+            sessionUser: req.session.uName
         });
     },
 
@@ -32,7 +33,8 @@ const mainController = {
             res.render('mainpage', {
                 title: 'SafeSpace',
                 css: ['global','mainpage'],
-                entries: result
+                entries: result,
+                sessionUser: req.session.uName
             });
         }, {entryDate: -1})
     },
@@ -45,7 +47,8 @@ const mainController = {
             res.render('settings',{
                 title: 'Settings',
                 css: ['global','settings'],
-                user: result
+                user: result,
+                sessionUser: req.session.uName
             });
                  
         });
@@ -54,22 +57,15 @@ const mainController = {
     },
 
     geteditProfileAccount: function(req,res){
-
         db.findOne(userCollection, {uName: req.session.uName},'',function (result){
             res.render('editaccount',{
                 title: 'EditAccount',
                 css: ['global','settings'],
-                user: result
+                user: result,
+                sessionUser: req.session.uName
             });
         });
 
-    },
-
-    getSettingsPage: function (req, res){
-        res.render('settings',{
-            title: 'Settings',
-            css: ['global','settings']
-        });
     },
 
     //get picture

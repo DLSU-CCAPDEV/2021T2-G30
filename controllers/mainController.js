@@ -1,6 +1,6 @@
 //const { replaceOne } = require("../models/UserModel");
 const db = require('../models/db.js');
-const EntryModel = require('../models/EntryModel.js');
+const entryCollection = require('../models/EntryModel.js');
 const userCollection = require('../models/UserModel.js');
 const mongoose = require('mongoose');
 
@@ -16,7 +16,8 @@ const mainController = {
     getError: function (req, res) {
         res.render('error', {
             title: 'Page not found',
-            css:['global', 'error']
+            css:['global', 'error'],
+            sessionUser: req.session.uName
         });
     },
 
@@ -27,24 +28,25 @@ const mainController = {
             //console.log(req.session.uName);
         }
 
-        db.findMany(EntryModel, {authorUserName: req.session.uName}, '', function(result) {
+        db.findMany(entryCollection, {authorUserName: req.session.uName}, '', function(result) {
 
             res.render('mainpage', {
                 title: 'SafeSpace',
                 css: ['global','mainpage'],
-                entries: result
+                entries: result,
+                sessionUser: req.session.uName
             });
         }, {entryDate: -1})
     },
 
 
     geteditProfileAccount: function(req,res){
-
         db.findOne(userCollection, {uName: req.session.uName},'',function (result){
             res.render('editaccount',{
                 title: 'EditAccount',
                 css: ['global','settings'],
-                user: result
+                user: result,
+                sessionUser: req.session.uName
             });
         });
 

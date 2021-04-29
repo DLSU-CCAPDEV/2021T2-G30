@@ -39,12 +39,13 @@ const profileController = {
 
     getProfile: function(req, res) {
         //query where 
-        var query = {uName: req.session.uName};
-
+        var query = {uName: req.params.uName};
         var projection = 'dPicture fName lName uName bio';
-        // var projection = 'dPicture fName lName uName bio';
+
+        //res.send(req.params);
 
         db.findOne(userCollection, query, projection, function(result) {
+            
             if(result != null) {
                 res.render('profile',  {
                     title: 'SafeSpace',

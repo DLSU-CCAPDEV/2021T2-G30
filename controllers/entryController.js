@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 
 const entryController = {
 
-    mainPageEntry: function (req, res){
+    createEntry: function (req, res){
 
         var entryTitle = req.body.entryTitle;
         var entryBody = req.body.entryBody;
@@ -40,12 +40,33 @@ const entryController = {
         });
     },
 
+    editEntry: function(req, res) {
+
+        var id = req.body.id;
+
+        var entry = {
+            entryTitle: req.body.entryTitle,
+            entryBody: req.body.entryBody,
+            significance: req.body.significance,
+            entryDate: req.body.entryDate,
+            privacy: req.body.privacy            
+        }
+        
+        db.updateOne(entryCollection, {_id: id}, entry, function(flag) {
+            if(flag)
+                console.log('Successful edit');
+            else 
+                console.log('unsuccessful edit');
+            res.send(true);
+        })
+    },
+
     deleteEntry: function(req, res) {
         var id = req.body.id;
 
         var update = {
             $pull: {
-              entries: entry._id
+              entries: id
             }
           }
         
@@ -53,11 +74,10 @@ const entryController = {
             db.updateOne(userCollection, {uName: req.session.uName}, update, function(flag) {
                 if(flag) 
                     console.log('Successfully updated ' + req.session.uName);
-                res.redirect('/mainpage');
+                res.send(true);
             })
         });
     }
-    
 };   
 
 module.exports = entryController;

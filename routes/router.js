@@ -25,7 +25,8 @@ router.post('/signup', db.upload.single("dPicture"), profileController.signup);
 router.post('/editaccount',profileController.editAccount);
 router.post('/login', profileController.login);
 
-router.post('/createentry', entryController.mainPageEntry);
+router.post('/createentry', entryController.createEntry);
+router.post('/editentry', entryController.editEntry);
 router.post('/deleteentry', entryController.deleteEntry);
 
 //PATCH // Editing

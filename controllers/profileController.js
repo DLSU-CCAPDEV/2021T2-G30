@@ -111,8 +111,8 @@ const profileController = {
 
         console.log('uName = ' + uName);
         console.log('pw = ' + pw);
-        
-        db.findOne(userCollection, {uName: uName, pw: pw}, '', function (result) {
+
+        db.findOne(userCollection, {uName: uName}, '', function (result) {
            console.log(result);
 
            // Bookmark

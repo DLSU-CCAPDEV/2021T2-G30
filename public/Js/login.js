@@ -26,7 +26,7 @@ $(document).ready(function () {
                 display an error message
                 and disable the submit button
             */
-
+            
             if(!isValid) {
                 $('#error').text('Invalid Login Credentials');
                 $('#error').css('margin-top', '-8px').css('margin-bottom', '8px');

@@ -41,12 +41,34 @@ $(document).ready(function () {
     $('#createBtn').click(function () {
 
         var entryDate = $('#dateEntry').val();
+        var title = $('#entryTitleCreate').val();
+        var body = $('#entryBodyCreate').val();
 
-        if (entryDate > formattedDate){
+        if(title === '') {
+            $('#emptyBodyCreate').text('').css('margin-bottom', '1rem');;
+            $('#emptyTitleCreate').text('Please enter a title!');
+            $('#emptyTitleCreate').css('margin-bottom', '-2em').css('margin-top', '.2em');
+        }
+        else if(body === '') {
+            $('#emptyTitleCreate').text('');
+            $('#emptyBodyCreate').text('Please enter a body!');
+            $('#emptyBodyCreate').css('margin-bottom', '-1em').css('margin-top', '.2em');
+        }
+        else if (entryDate > formattedDate){
             $('#futureDateOnCreate').text('Entered date is invalid!');
             $('#futureDateOnCreate').css('margin-bottom', '-2em');
         }
         else 
             $('#createEntryForm').submit();
+    });
+
+    $('#createEntryModal').on("hidden.bs.modal", function () {
+
+        //alert('closed modal');
+
+        $('#emptyBodyCreate').text('').css('margin-bottom', '1rem');;
+        $('#emptyTitleCreate').text('');
+        $('#futureDateOnCreate').text('');
+           
     });
 });

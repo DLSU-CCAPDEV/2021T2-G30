@@ -25,31 +25,51 @@ $(document).ready(function () {
             privacy: $('#privacy-' + id).val()
         }
         
-        if(entry.entryDate <= formattedDate) {
+        if(entry.entryTitle === '') {
+            $('#emptyBodyEdit-' + id).text('').css('margin-bottom', '1rem');;
+            $('#emptyTitleEdit-' + id).text('Please enter a title!');
+            $('#emptyTitleEdit-' + id).css('margin-bottom', '-2em').css('margin-top', '.2em');
+        }
+        else if(entry.entryBody === '') {
+            $('#emptyTitleEdit-' + id).text('');
+            $('#emptyBodyEdit-' + id).text('Please enter a body!');
+            $('#emptyBodyEdit-' + id).css('margin-bottom', '-1em').css('margin-top', '.2em')
+        }
+        else if(entry.entryDate > formattedDate) {
+            $('#futureDate').text('Entered date is invalid!');
+            $('#futureDate').css('margin-bottom', '-2em');
+        }
+        else {
             $.post('editentry', entry, function(result) {
                 if(result) {
                     location.reload();
                 }
             });
         }
-        else {
-            $('#futureDate').text('Entered date is invalid!');
-            $('#futureDate').css('margin-bottom', '-2em');
-        }
+    });
+
+    $('.editEntry').on("hidden.bs.modal", function () {
+
+        //alert('closed modal');
+
+        $('.emptyBodyEdit').text('').css('margin-bottom', '1rem');;
+        $('.emptyTitleEdit').text('');
+        $('#futureDateOnCreate').text('');
+           
     });
 
     $('#createBtn').click(function () {
 
         var entryDate = $('#dateEntry').val();
-        var title = $('#entryTitleCreate').val();
-        var body = $('#entryBodyCreate').val();
+        var entryTitle = $('#entryTitleCreate').val();
+        var entryBody = $('#entryBodyCreate').val();
 
-        if(title === '') {
+        if(entryTitle === '') {
             $('#emptyBodyCreate').text('').css('margin-bottom', '1rem');;
             $('#emptyTitleCreate').text('Please enter a title!');
             $('#emptyTitleCreate').css('margin-bottom', '-2em').css('margin-top', '.2em');
         }
-        else if(body === '') {
+        else if(entryBody === '') {
             $('#emptyTitleCreate').text('');
             $('#emptyBodyCreate').text('Please enter a body!');
             $('#emptyBodyCreate').css('margin-bottom', '-1em').css('margin-top', '.2em');

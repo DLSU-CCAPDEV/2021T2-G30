@@ -71,7 +71,7 @@
           </div>
         </div>
         <!-- Edit Entry Modal -->
-        <div class="modal fade" id="modal-edit-{{this._id}}" tabindex="-1" aria-labelledby="createEntryModalLabel" aria-hidden="true">
+        <div class="modal fade editEntry" id="modal-edit-{{this._id}}" tabindex="-1" aria-labelledby="createEntryModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" style="width: 50em">
             <div class="modal-content">
               <div class="modal-header">
@@ -85,6 +85,7 @@
                   <div class="mb-3">
                     <label class="visually-hidden" for="autoSizingSelect">New Title</label>
                     <input id="entryTitle-{{this._id}}" type="text" class="form-control" value="{{this.entryTitle}}" aria-label="New Title" maxlength = "50">
+                    <div id="emptyTitleEdit-{{this._id}}" class="emptyTitleEdit" style="font-size: 8pt; color: red;"></div>
                   </div>
                   <div class="row g-3 mb-4">
                     <div class="col-md-4">
@@ -114,6 +115,7 @@
                   <div class="mb-3">
                     <label class="visually-hidden" for="entryFormControlTextarea1" class="form-label">New Entry</label>
                     <textarea id="entryBody-{{this._id}}" class="form-control" id="entryFormControlTextarea1" rows="5" aria-label="entry content">{{this.entryBody}}</textarea>
+                    <div id="emptyBodyEdit-{{this._id}}" class="emptyBodyEdit" style="font-size: 8pt; color: red;"></div>
                   </div>
                   {{!-- <div class="mb-3">
                     <div class="row">

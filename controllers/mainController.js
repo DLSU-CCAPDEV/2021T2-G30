@@ -25,18 +25,23 @@ const mainController = {
 
         // Checks for login user (VERY IMPORTANT)
         if(req.session.uName != null){
-            //console.log(req.session.uName);
+            
+            db.findMany(entryCollection, {authorUserName: req.session.uName}, '', function(result) {
+
+                res.render('mainpage', {
+                    title: 'SafeSpace',
+                    css: ['global','mainpage'],
+                    entries: result,
+                    sessionUser: req.session.uName
+                });
+            }, {entryDate: -1})
+        }
+        else {
+            console.log("no session users");
+            res.redirect('/login');
         }
 
-        db.findMany(entryCollection, {authorUserName: req.session.uName}, '', function(result) {
-
-            res.render('mainpage', {
-                title: 'SafeSpace',
-                css: ['global','mainpage'],
-                entries: result,
-                sessionUser: req.session.uName
-            });
-        }, {entryDate: -1})
+        
     },
 
 

@@ -36,7 +36,19 @@ var UserSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'entries',
         required: false
-    }]
+    }],
+    sentRequest:[{
+		userId: {type: mongoose.Schema.Types.ObjectId, ref: 'users'},
+		username: {type: String, default: ''}
+	}],
+	pendingRequest: [{
+		userId: {type: mongoose.Schema.Types.ObjectId, ref: 'users'},
+		username: {type: String, default: ''}
+	}],
+	friendsList: [{
+		friendId: {type: mongoose.Schema.Types.ObjectId, ref: 'users'},
+		friendName: {type: String, default: ''}
+	}],
 });
 
 /*

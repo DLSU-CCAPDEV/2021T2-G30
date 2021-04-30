@@ -93,9 +93,11 @@ const profileController = {
         var pw = req.body.pw;
 
         console.log('uName = ' + uName);
-        console.log('pw =' + pw);
+        console.log('pw = ' + pw);
         db.findOne(userCollection, {uName: uName, pw: pw}, '', function (result) {
            console.log(result);
+
+           // Bookmark
            req.session.uName = result.uName;
            res.redirect('/mainpage');  
         });

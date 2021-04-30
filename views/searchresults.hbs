@@ -1,0 +1,48 @@
+{{> navbar}}
+
+
+    
+
+        <!-- Entries Container -->
+        <div class="row my-5">
+          <div class="col-7 mx-auto">
+            <div class="card">
+              <div class="card-body">
+                <h3 class="card-title mx-1 mb-2">Entries</h3>
+                {{#each entries}}
+                <!-- 1st Entry Public -->
+                <hr />
+                <div class="container pt-3">
+                  <div class="row">
+                    <div class="col-11 mx-auto">
+                      <div class="card mb-3">
+                        <div class="row g-0">
+                          <div class="col-12">
+                              {{#if this.entryImage}}
+                            <a href="entry1webpage.html" target="_blank">
+                                {{/if}}
+                              <h5
+                                class="card-title ps-3 pt-4"
+                                style="margin-bottom: -0.4em"
+                              >
+                               {{this.entryTitle}}
+                              </h5>
+                              <div class="card-body">
+                                <p class="card-text">
+                                  {{this.entryBody}}
+                                </p>
+                              </div>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                {{/each}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+

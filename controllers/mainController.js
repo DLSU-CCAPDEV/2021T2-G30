@@ -46,6 +46,7 @@ const mainController = {
 
 
     geteditProfileAccount: function(req,res){
+        console.log("editprofile before passowrd change: " + req.session.pw);
         db.findOne(userCollection, {uName: req.session.uName},'',function (result){
             res.render('editaccount',{
                 title: 'EditAccount',
@@ -57,6 +58,7 @@ const mainController = {
 
     },
 
+    // settings page
     getSettingsPage: function (req, res){
         db.findOne(userCollection, {uName: req.session.uName},'',function (result){
             res.render('settings',{
@@ -82,6 +84,24 @@ const mainController = {
                 downloadStream.pipe(res);
             }   
         });
+    },
+
+    getSearch: function(req,res){
+        console.log('im in');
+        var SearchTitle = req.query.SearchTitle;
+        console.log(SearchTitle);
+
+            db.findMany(entryCollection,{entryTitle: SearchTitle},'',function(result){
+                if(result){
+                    console.log('Search results success');
+                    res.render('searchresults',{
+                        title: 'SearchResults',
+                        css: ['global','searchresults'],
+                        entries: result
+                    });
+                }
+
+            }, {entryDate: -1})
     }
     
 };   

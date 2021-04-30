@@ -30,6 +30,8 @@ router.post('/createentry', db.upload.any(), entryController.createEntry);
 router.post('/editentry', db.upload.any(),  entryController.editEntry);
 router.post('/deleteentry', entryController.deleteEntry);
 
+router.get('/searchresults', mainController.getSearch);
+
 //PATCH // Editing
 
 //PUT // Editing

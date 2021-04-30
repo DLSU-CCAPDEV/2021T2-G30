@@ -77,6 +77,24 @@ const mainController = {
                 downloadStream.pipe(res);
             }   
         });
+    },
+
+    getSearch: function(req,res){
+        console.log('im in');
+        var SearchTitle = req.body.SearchTitle;
+        console.log(SearchTitle);
+
+            db.findMany(entryCollection,{entryTitle: SearchTitle},'',function(result){
+                if(result){
+                    console.log('Search results success');
+                    res.render('searchresults',{
+                        title: 'SearchResults',
+                        css: ['global','searchresults'],
+                        entries: result
+                    });
+                }
+
+            }, {entryDate: -1})
     }
     
 };   

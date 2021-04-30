@@ -37,4 +37,16 @@ $(document).ready(function () {
             $('#futureDate').css('margin-bottom', '-2em');
         }
     });
+
+    $('#createBtn').click(function () {
+
+        var entryDate = $('#dateEntry').val();
+
+        if (entryDate > formattedDate){
+            $('#futureDateOnCreate').text('Entered date is invalid!');
+            $('#futureDateOnCreate').css('margin-bottom', '-2em');
+        }
+        else 
+            $('#createEntryForm').submit();
+    });
 });

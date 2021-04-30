@@ -167,10 +167,10 @@
             <div class="modal-body">
 
               <!-- Creating entry -->
-              <form action="/createentry" method="POST" enctype="multipart/form-data">
+              <form id="createEntryForm" action="/createentry" method="POST" enctype="multipart/form-data">
                 <div class="mb-3">
                   <label class="visually-hidden" for="autoSizingSelect">Title of Entry</label>
-                  <input type="text" name="entryTitle" class="form-control" placeholder="Title of Entry" aria-label="Title of Entry" maxlength = "50">
+                  <input id="entryTitleCreate" type="text" name="entryTitle" class="form-control" placeholder="Title of Entry" aria-label="Title of Entry" maxlength = "50">
                 </div>
                 <div class="row g-3 mb-4">
                   <div class="col-md-4">
@@ -183,6 +183,7 @@
                   <div class="col-md-4">
                     <label for="dateEntry" style="font-size: 14px;">Date</label>
                     <input type="date" name="entryDate" class="form-control" id="dateEntry">
+                    <div id="futureDateOnCreate" style="font-size: 8pt; color: red;"></div>
                   </div>
                   <div class="col-md-4">
                     <label for="inputPrivacy" style="font-size: 14px;">Entry's Significance</label>
@@ -208,7 +209,7 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-primary">Save changes</button>
+                  <button id="createBtn" type="button" class="btn btn-primary">Save changes</button>
                 </div>
               </form>
             </div>   

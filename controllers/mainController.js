@@ -83,7 +83,7 @@ const mainController = {
 
     getSearch: function(req,res){
         console.log('im in');
-        var SearchTitle = req.body.SearchTitle;
+        var SearchTitle = req.query.SearchTitle;
         console.log(SearchTitle);
 
             db.findMany(entryCollection,{entryTitle: SearchTitle},'',function(result){

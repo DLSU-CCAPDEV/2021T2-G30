@@ -133,7 +133,7 @@ const profileController = {
         
         var dPicture;
         var uName = req.session.uName;
-        var pw = req.body.pw;
+        var pw = req.body.pw; // the password changed
 
         console.log("password in session at editAccount: " + pw);
         if(req.files.length == 0) {

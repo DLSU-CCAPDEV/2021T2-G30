@@ -26,6 +26,7 @@ router.get('/userprofile/:uName', userController.getUserProfile);
 
 
 router.get('/memories', memoriesController.getMemories);
+router.get('/searchentry/:_id',mainController.getEntry);
 
 //POST // Creation
 router.post('/signup', db.upload.any(), profileController.signup);

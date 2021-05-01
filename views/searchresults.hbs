@@ -12,7 +12,6 @@
                 <h3 class="card-title mx-1 mb-2">People</h3>
                 {{#each people}}
                 <hr />
-
                 <!-- Dummy data 1 -->
                 <div class="card mt-3">
                   <div
@@ -67,9 +66,8 @@
                       <div class="card mb-3">
                         <div class="row g-0">
                           <div class="col-12">
-                              {{#if this.entryImage}}
-                            <a href="entry1webpage.html" target="_blank">
-                                {{/if}}
+                            <a class="nav-link" href="/searchentry/{{this._id}}" method="GET" target="_blank">
+
                               <h5
                                 class="card-title ps-3 pt-4"
                                 style="margin-bottom: -0.4em"

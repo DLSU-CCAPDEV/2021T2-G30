@@ -14,55 +14,90 @@ const mainController = {
     },
 
     getError: function (req, res) {
+        res.status(400);
         res.render('error', {
-            title: 'Page not found',
+            title: '400 Bad Request',
             css:['global', 'error'],
-            sessionUser: req.session.uName
+            status: {
+                code: "400",
+                message: "Bad request"
+            } 
+            
         });
     },
 
-    getMainPage: function (req, res){
-
+    getMainPage: function(req, res) {
         // Checks for login user (VERY IMPORTANT)
         if(req.session.uName != null){
-            //console.log(req.session.uName);
+            
+            db.findMany(entryCollection, {authorUserName: req.session.uName}, '', function(result) {
+
+                res.render('mainpage', {
+                    title: 'SafeSpace',
+                    css: ['global','mainpage'],
+                    entries: result,
+                    sessionUser: req.session.uName
+                });
+            }, {entryDate: -1})
+        }
+        else {
+            console.log("no session users");
+            res.redirect('/login');
         }
 
-        db.findMany(entryCollection, {authorUserName: req.session.uName}, '', function(result) {
-
-            res.render('mainpage', {
-                title: 'SafeSpace',
-                css: ['global','mainpage'],
-                entries: result,
-                sessionUser: req.session.uName
-            });
-        }, {entryDate: -1})
+        
     },
 
 
     geteditProfileAccount: function(req,res){
         console.log("editprofile before passowrd change: " + req.session.pw);
-        db.findOne(userCollection, {uName: req.session.uName},'',function (result){
-            res.render('editaccount',{
-                title: 'EditAccount',
-                css: ['global','settings'],
-                user: result,
-                sessionUser: req.session.uName
+        if(req.session.uName) {
+            db.findOne(userCollection, {uName: req.session.uName},'',function (result){
+                res.render('editaccount',{
+                    title: 'EditAccount',
+                    css: ['global','settings'],
+                    user: result,
+                    sessionUser: req.session.uName
+                });
             });
-        });
+        } else {
+            res.status(401);
+            res.render('error', {
+                title: '401 Unauthorized Access',
+                css:['global', 'error'],
+                status: {
+                    code: "401",
+                    message: "Unautorized access."
+                } 
+                
+            });
+        }
 
     },
 
     // settings page
-    getSettingsPage: function (req, res){
-        db.findOne(userCollection, {uName: req.session.uName},'',function (result){
-            res.render('settings',{
-                title: 'Settings',
-                css: ['global','settings'],
-                user: result,
-                sessionUser: req.session.uName
+    getSettingsPage: function (req, res) {
+        if(req.session.uName) {
+            db.findOne(userCollection, {uName: req.session.uName},'',function (result){
+                res.render('settings',{
+                    title: 'Settings',
+                    css: ['global','settings'],
+                    user: result,
+                    sessionUser: req.session.uName
+                });
             });
-        });
+        } else {
+            res.status(401);
+            res.render('error', {
+                title: '401 Unauthorized Access',
+                css:['global', 'error'],
+                status: {
+                    code: "401",
+                    message: "Unautorized access."
+                } 
+                
+            });
+        }
     },
 
     //gets picture
@@ -72,8 +107,13 @@ const mainController = {
             if(downloadStream == null) {
                 res.status(404);
                 res.render('error', {
-                    title: 'Image not found',
-                    css:['global', 'error']
+                    title: '404 Not found',
+                    css:['global', 'error'],
+                    status: {
+                        code: "404",
+                        message: "Not found"
+                    } 
+                    
                 });
             } else {
                 downloadStream.pipe(res);

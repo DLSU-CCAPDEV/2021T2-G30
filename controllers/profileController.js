@@ -35,13 +35,18 @@ const profileController = {
     
             db.insertOne(userCollection, indivUser, function (flag) {
                 if(flag) {
-                    console.log("successfully inserted");
                     res.redirect('/login');
                 }
-                else {
-                    console.log("may error");
-                    res.redirect('/error');
-                    
+                else { 
+                    res.status(500);
+                    res.render('error', {
+                        title: '500  Internal Server Error',
+                        css:['global', 'error'],
+                        status: {
+                            code: "500",
+                            message: "Something unexpected happened."
+                        }  
+                    });   
                 }
                     
             });
@@ -54,7 +59,6 @@ const profileController = {
         //query where 
         var query = {uName: req.params.uName};
         var projection = 'dPicture fName lName uName bio';
-
         db.findOne(userCollection, query, projection, function(result) {
             
             if(result != null) {
@@ -65,9 +69,18 @@ const profileController = {
                     sessionUser: req.session.uName
                 });
             } else {
-                //console.log('error');
-                res.status(404);
-                res.redirect('/error');
+                
+                res.status(400);
+                res.render('error', {
+                    title: '400 Bad Request',
+                    css:['global', 'error'],
+                    status: {
+                        code: "400",
+                        message: "Bad request"
+            } 
+            
+        });
+                
             }
         });
     },
@@ -127,7 +140,17 @@ const profileController = {
         
         req.session.destroy(function(error){
             if(error){
-                res.render('error');
+                res.status(400);
+                res.render('error', {
+                    title: '400 Bad Request',
+                    css:['global', 'error'],
+                    status: {
+                        code: "400",
+                        message: "Bad request"
+                    } 
+                    
+                });
+                throw error;
             }
             else
                 res.redirect('/login');
@@ -172,12 +195,11 @@ const profileController = {
 
         var uName = req.session.uName;
 
-        db.deleteOne(userCollection, {uName: uName},function(deleted){
-
+        db.deleteOne(userCollection, {uName: uName},function(deleted) {
             console.log(deleted);
             req.session.destroy(function(error){
                 if(error){
-                    res.render('error');
+                    throw error;
                 }
                 else
                     res.redirect('/login');

@@ -1,7 +1,56 @@
 {{> navbar}}
 
 
-    
+  <section
+      class="custom-section mt-5"
+    >
+      <div class="container">
+        <div class="row">
+          <div class="col-7 mx-auto">
+            <div class="card">
+              <div class="card-body">
+                <h3 class="card-title mx-1 mb-2">People</h3>
+                {{#each people}}
+                <hr />
+
+                <!-- Dummy data 1 -->
+                <div class="card mt-3">
+                  <div
+                    class="row d-flex align-items-center justify-content-center"
+                  >
+                    <div
+                      class="col-md-12 col-lg-2 px-4 d-flex align-items-center justify-content-center"
+                    >
+                    {{#if this.dPicture}}
+                      <img
+                        src={{this.dPicture}}
+                        class="img-fluid profile-pic"
+                        alt="..."
+                      />
+                      {{/if}}
+                    </div>
+                    <div class="col-md-12 col-lg-6 d-flex justify-content-sm-center justify-content-md-center justify-content-lg-start">
+                      <a href="friendprofile2notadded.html">
+                        <div class="card-body  name-card-body" >
+                          <h5 class="card-title">{{this.fName}} {{this.lName}}</h5>
+                          <p><small class="text-muted">{{this.uName}}</small></p>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-md-12 col-lg-4 d-flex justify-content-sm-center justify-content-md-center justify-content-lg-end">
+                      <a
+                        href="friendprofile2notadded.html"
+                        class="btn btn-primary"
+                        >Visit Profile</a
+                      >
+                    </div>
+                  </div>
+                  {{/each}}
+                </div>
+              </div>
+            </div>
+          </div>
+
 
         <!-- Entries Container -->
         <div class="row my-5">
@@ -44,5 +93,6 @@
             </div>
           </div>
         </div>
+        </section>
 
 

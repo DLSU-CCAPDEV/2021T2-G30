@@ -4,10 +4,10 @@
     <div class="container d-flex align-items-center justify-content-center" style="min-height: inherit;">
         <div class="row">
             <div class="col-12">
-                <h1 style="text-align: center; margin-bottom: 0.5em">ERROR 404</h1>
+                <h1 style="text-align: center; margin-bottom: 0.5em">ERROR {{status.code}}</h1>
             </div>
             <div class="col-12">
-                <h3 style="text-align: center;">We cannot find the page you are looking for.</h1>
+                <h3 style="text-align: center;">{{status.message}}</h1>
             </div>
             <div class="col-12">
                 <a href="/mainpage" style="text-align: center;"><p>Return to Main Page</p></href>

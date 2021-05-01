@@ -54,7 +54,6 @@ const database = {
     connect: function () {
         mongoose.connect(url, options, function(error) {
             if(error) {
-                console.log("error");
                 throw error;
             }
             console.log('Connected to: ' + url);

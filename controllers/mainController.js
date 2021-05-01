@@ -27,7 +27,6 @@ const mainController = {
     },
 
     getMainPage: function(req, res) {
-
         // Checks for login user (VERY IMPORTANT)
         if(req.session.uName != null){
             
@@ -52,14 +51,27 @@ const mainController = {
 
     geteditProfileAccount: function(req,res){
         console.log("editprofile before passowrd change: " + req.session.pw);
-        db.findOne(userCollection, {uName: req.session.uName},'',function (result){
-            res.render('editaccount',{
-                title: 'EditAccount',
-                css: ['global','settings'],
-                user: result,
-                sessionUser: req.session.uName
+        if(req.session.uName) {
+            db.findOne(userCollection, {uName: req.session.uName},'',function (result){
+                res.render('editaccount',{
+                    title: 'EditAccount',
+                    css: ['global','settings'],
+                    user: result,
+                    sessionUser: req.session.uName
+                });
             });
-        });
+        } else {
+            res.status(401);
+            res.render('error', {
+                title: '401 Unauthorized Access',
+                css:['global', 'error'],
+                status: {
+                    code: "401",
+                    message: "Unautorized access."
+                } 
+                
+            });
+        }
 
     },
 

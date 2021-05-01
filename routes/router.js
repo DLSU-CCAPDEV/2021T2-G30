@@ -3,6 +3,7 @@ const mainController = require('../controllers/mainController.js');
 const profileController = require('../controllers/profileController.js');
 const entryController = require('../controllers/entryController.js');
 const router = express();
+const memoriesController = require('../controllers/memoriesController');
 const db = require('../models/db.js');
 
 
@@ -20,6 +21,8 @@ router.get('/checklogin', profileController.checklogin);
 router.get('/profile/:uName', profileController.getProfile);
 router.get('/logout', profileController.getLogout);
 
+
+router.get('/memories', memoriesController.getMemories);
 
 //POST // Creation
 router.post('/signup', db.upload.any(), profileController.signup);

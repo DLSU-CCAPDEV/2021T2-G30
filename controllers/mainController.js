@@ -50,7 +50,8 @@ const mainController = {
 
 
     geteditProfileAccount: function(req,res){
-        console.log("editprofile before passowrd change: " + req.session.pw);
+        console.log("Session: " + req.session.uName);
+        
         if(req.session.uName) {
             db.findOne(userCollection, {uName: req.session.uName},'',function (result){
                 res.render('editaccount',{

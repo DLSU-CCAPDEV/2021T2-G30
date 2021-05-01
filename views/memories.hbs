@@ -1,0 +1,227 @@
+{{> navbar}}
+
+<div class="container" style="padding-top: 1.5em">
+    <div class="row">
+        <div class="col-9 mx-auto">
+        <p
+            class="text-center"
+            style="
+            text-shadow: 0 0 1px #22479c7e, 0 0 1px #16327271;
+            font-weight: 400;
+            font-size: 30pt;
+            "
+        >
+            Memories
+        </p>
+        <div class="col mx-auto text-center" style="width: 11.6em; margin-top: -1.4em;">
+            <p style="font-weight: 100;"> On this day 1 year ago </p>
+        </div>
+        <hr>
+        </div>
+    </div>
+</div>
+
+<section> 
+    {{#each entries}}
+    <div class="container pt-3">
+    <div class="row">
+        <div class="col-9 mx-auto">
+        <div class="card mb-3 mx-auto" style="padding-right: 0;">
+            <div class="row g-0">
+            <div class="col-9 custom">
+                <a href="entry1webpage.html" target="_blank">
+                <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;"> {{this.entryTitle}} </h5>
+                <div class="card-body">
+                    <p class="card-text">
+                    {{this.entryBody}}
+                    </p>
+                </div>
+                </a> 
+            </div>
+            {{#if this.entryImage}}
+                <div class="col-3">
+                <img src="/image/{{this.entryImage}}" class="img-fluid" style="height: 169px; width: 246.5px; object-fit: cover;" alt="...">
+                </div>
+            {{/if}}
+                <!-- Entry Footer -->
+            <div class="card-footer">
+                <div class="row">
+                <div class="col mt-1">
+                    <p class="card-text justify-content-center">
+                    <small class="text-muted">
+                        {{{privacy this.privacy}}}
+                        {{date this.entryDate}}
+                    </small></p>
+                </div>
+                <!-- Entry Settings -->
+                <div class="col d-flex justify-content-end">
+                    <div class="dropdown dropup" id="{{this._id}}">
+                    <button class="btn" type="button" id="dropdownMenuEntry" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-ellipsis-h text-end" data-bs-toggle="tooltip"></i>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuEntry">
+                        <li><button class="dropdown-item" type="button" data-bs-toggle="modal"
+                        data-bs-target="#modal-edit-{{this._id}}">Edit Entry</button></li>
+                        <li><button class="dropdown-item" type="button" data-bs-toggle="modal"
+                        data-bs-target="#modal-del-{{this._id}}">Delete Entry</button></li>
+                    </ul>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- Edit Entry Modal -->
+    <div class="modal fade editEntry" id="modal-edit-{{this._id}}" tabindex="-1" aria-labelledby="createEntryModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="width: 50em">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="editEntryModalLabel">Edit Entry</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <!-- Edit entry -->
+            <form>
+                <div class="mb-3">
+                <label class="visually-hidden" for="autoSizingSelect">New Title</label>
+                <input id="entryTitle-{{this._id}}" type="text" class="form-control" value="{{this.entryTitle}}" aria-label="New Title" maxlength = "50">
+                <div id="emptyTitleEdit-{{this._id}}" class="emptyTitleEdit" style="font-size: 8pt; color: red;"></div>
+                </div>
+                <div class="row g-3 mb-4">
+                <div class="col-md-4">
+                    <label for="inputPrivacy" style="font-size: 14px;">Select Privacy</label>
+                    <select id="privacy-{{this._id}}" class="form-select">
+                    <option selected value="private">Private</option>
+                    <option value="public">Public</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="dateEntry" style="font-size: 14px;">Date</label>
+                    <input type="date" class="form-control" id="entryDate-{{this._id}}" value="{{defaultDate this.entryDate}}">
+                    <div id="futureDate" style="font-size: 8pt; color: red;"></div>
+                </div>
+                <div class="col-md-4">
+                    <label for="inputPrivacy" style="font-size: 14px;" >Entry's Significance</label>
+                    <select id="significance-{{this._id}}" class="form-select ">
+                    <option selected>None</option>
+                    <option value="5">5</option>
+                    <option value="4">4</option>
+                    <option value="3">3</option>
+                    <option value="2">2</option>
+                    <option value="1">1</option>
+                    </select>
+                </div> 
+                </div>
+                <div class="mb-3">
+                <label class="visually-hidden" for="entryFormControlTextarea1" class="form-label">New Entry</label>
+                <textarea id="entryBody-{{this._id}}" class="form-control" id="entryFormControlTextarea1" rows="5" aria-label="entry content">{{this.entryBody}}</textarea>
+                <div id="emptyBodyEdit-{{this._id}}" class="emptyBodyEdit" style="font-size: 8pt; color: red;"></div>
+                </div>
+                {{!-- <div class="mb-3">
+                <div class="row">
+                    <label for="exampleFormControlFile1" style="font-size: 14px;">Insert Image</label>
+                    <input type="file" class="form-control-file" id="entryImage-{{this._id}}" accept="image/x-png,image/jpeg" >
+                </div>
+                </div> --}}
+            </form>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary editBtn" id="{{this._id}}">Save changes</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- Delete Modal -->
+    <div class="modal fade" id="modal-del-{{this._id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="deleteEntryModalLabel">Remove Post</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            This option will delete your entry forever. Delete entry?
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-dark deleteBtn" data-bs-dismiss="modal" id="{{this._id}}">Delete Entry</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+
+    {{/each}}
+    
+    <!-- Create entry button (modal) -->
+    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#createEntryModal" style="box-shadow: none">
+    <i class="fas fa-feather-alt" id="newEntry"></i>
+    </button>
+    
+    <!-- Create Entry Modal -->
+    <div class="modal fade" id="createEntryModal" tabindex="-1" aria-labelledby="createEntryModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="width: 50em">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="createEntryModalLabel">Create an Entry</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <!-- Creating entry -->
+            <form id="createEntryForm" action="/createentry" method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label class="visually-hidden" for="autoSizingSelect">Title of Entry</label>
+                <input id="entryTitleCreate" type="text" name="entryTitle" class="form-control" placeholder="Title of Entry" aria-label="Title of Entry" maxlength = "50">
+                <div id="emptyTitleCreate" style="font-size: 8pt; color: red;"></div>
+            </div>
+            <div class="row g-3 mb-4">
+                <div class="col-md-4">
+                <label for="inputPrivacy" style="font-size: 14px;">Select Privacy</label>
+                <select id="inputPrivacy" name="privacy" class="form-select">
+                    <option selected value="private">Private</option>
+                    <option value="public">Public</option>
+                </select>
+                </div>
+                <div class="col-md-4">
+                <label for="dateEntry" style="font-size: 14px;">Date</label>
+                <input type="date" name="entryDate" class="form-control" id="dateEntry">
+                <div id="futureDateOnCreate" style="font-size: 8pt; color: red;"></div>
+                </div>
+                <div class="col-md-4">
+                <label for="inputPrivacy" style="font-size: 14px;">Entry's Significance</label>
+                <select id="inputPrivacy" name="significance" class="form-select ">
+                    <option selected>None</option>
+                    <option value="5">5</option>
+                    <option value="4">4</option>
+                    <option value="3">3</option>
+                    <option value="2">2</option>
+                    <option value="1">1</option>
+                </select>
+                </div> 
+            </div>       
+            <div class="mb-3">
+                <label class="visually-hidden" for="entryFormControlTextarea1" class="form-label">Entry Text Area</label>
+                <textarea class="form-control" name="entryBody" id="entryBodyCreate" rows="5" placeholder="What happened today?" aria-label="entry content"></textarea>
+                <div id="emptyBodyCreate" style="font-size: 8pt; color: red;"></div>
+            </div>
+            <div class="mb-3">
+                <div class="row">
+                <label for="exampleFormControlFile1" style="font-size: 14px;">Insert Image</label>
+                <input type="file" name="entryImage" class="form-control-file" id="imageFormControlFile1" accept="image/x-png,image/jpeg" >
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="cancelEntry" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button id="createBtn" type="button" class="btn btn-primary">Save changes</button>
+            </div>
+            </form>
+        </div>   
+        </div>
+    </div>
+    </div>
+</section>

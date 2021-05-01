@@ -7,7 +7,7 @@ const session = require('express-session');
 const store = require('connect-mongo');
 const exphbs  = require('express-handlebars');
 const mongoose = require('mongoose');
-
+const nocache = require('nocache');
 const app = express(); //initializing express server
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -22,6 +22,7 @@ const db = require('./models/db.js');
 db.connect();
  
 
+
 //Session template
 app.use(session({
     'secret': 'ccapdev-session',
@@ -30,9 +31,7 @@ app.use(session({
     store: store.create({mongoUrl: url})
 }));
 
-// Routers
-const appRouter = require('./routes/router.js');
-app.use('/', appRouter);
+app.use(nocache());
 
 app.use(express.static('public'));
 
@@ -50,6 +49,9 @@ app.engine('.hbs', exphbs({
 
 app.set('view engine', '.hbs'); //using hbs as view engine
 
+// Routers
+const appRouter = require('./routes/router.js');
+app.use('/', appRouter);
 
 app.listen(port, hostname, function() {
     console.log('Server running at: ');

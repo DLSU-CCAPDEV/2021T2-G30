@@ -9,7 +9,7 @@ const db = require('../models/db.js');
 
 
 // GET
-router.get('/', mainController.getLogin); //incase user tries to access this route
+router.get('/', mainController.getMainPage); //incase user tries to access this route
 router.get('/login', mainController.getLogin);
 router.get('/error', mainController.getError);
 router.get('/mainpage', mainController.getMainPage);

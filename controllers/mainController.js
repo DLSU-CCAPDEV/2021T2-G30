@@ -127,17 +127,20 @@ const mainController = {
         var SearchTitle = req.query.SearchTitle;
         console.log(SearchTitle);
 
+        db.findMany(userCollection,{uName: SearchTitle},'',function(people){
             db.findMany(entryCollection,{entryTitle: SearchTitle},'',function(result){
                 if(result){
                     console.log('Search results success');
                     res.render('searchresults',{
                         title: 'SearchResults',
                         css: ['global','searchresults'],
+                        people: people,
                         entries: result
                     });
                 }
 
             }, {entryDate: -1})
+        });
     }
     
 };   

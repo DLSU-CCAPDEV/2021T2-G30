@@ -16,6 +16,13 @@ const helpers = {
     defaultDate: function(date) {
         //console.log(date.getFullYear() + '-' + (date.getMonth() + 1).toString().padStart(2, 0) + '-' + date.getDate().toString().padStart(2, 0))
         return date.getFullYear() + '-' + (date.getMonth() + 1).toString().padStart(2, 0) + '-' + date.getDate().toString().padStart(2, 0)
+    },
+
+    status: function(friend) {
+        if(friend)
+            return '<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#removefriendmodal"> Unfriend </button>'
+        else
+            return '<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addfriendmodal"> Add Friend </button>'
     }
 }
 

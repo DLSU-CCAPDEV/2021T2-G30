@@ -10,18 +10,16 @@ const memoriesController = {
         // var formattedDate = today.getFullYear().toString() + '-' + (today.getMonth() + 1).toString().padStart(2, 0) + '-' + today.getDate().toString().padStart(2, 0);
         if(req.session.uName) {
             var date = new Date();
-            date.setFullYear(date.getFullYear() - 1);
+            date.setFullYear(date.getFullYear() - 1); //last year's memories
             var newdate = new Date(date.toDateString());
-            console.log("date querying: " + newdate);
+            
             var query = {
                 authorUserName: req.session.uName,
                 entryDate: {$eq: newdate}
             }
 
+            //find all entries from last year
             db.findMany(entryCollection, query, '', function(result) {
-                console.log("results: "+ result);
-                // console.log("date in db: "+ result[0].entryDate);
-                
                 res.render('memories', {
                     title: 'SafeSpace',
                     css: ['global','mainpage'],

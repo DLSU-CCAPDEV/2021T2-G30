@@ -49,12 +49,13 @@ const entryController = {
     editEntry: function(req, res) {
 
         var id = req.body.id;
+        var entryDate = new Date(req.body.entryDate);
 
         var entry = {
             entryTitle: req.body.entryTitle,
             entryBody: req.body.entryBody,
             significance: req.body.significance,
-            entryDate: req.body.entryDate,
+            entryDate: entryDate.setHours(0, 0, 0),
             privacy: req.body.privacy,       
         }
         

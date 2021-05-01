@@ -4,22 +4,27 @@
       <div class="container d-flex align-items-center justify-content-center" style="min-height: inherit;">
         <div class="row">
           <div class="col-12 mx-auto text-center">
-            <img src="Images/DP/emma.jpg" alt="displayPicture" class="mx-auto displaypicture">
+            {{#if details.dPicture}}
+                <img src="/image/{{details.dPicture}}" alt="displayPicture" class="mx-auto btn dropdown-toggle displaypicture text-center" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" title="{{details.uName}} picture">
+            {{else}}
+                 <img src="/Images/defaultdp.jpg" alt="displayPicture" class="mx-auto btn dropdown-toggle displaypicture text-center" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" title="{{details.uName}} picture">
+            {{/if}}
           </div>
           <div class="col-12 mx-auto pt-2">
-            <p style="text-align: center; font-size: 30pt; font-weight: 400; margin-bottom: -0.4em;"> Emma Gardener </p>
+            <p style="text-align: center; font-size: 30pt; font-weight: 400; margin-bottom: -0.4em;"> {{details.fName}} {{details.lName}} </p>
           </div>
           <div class="col-12 mx-auto pt-2">
-            <p style="text-align: center; margin-top: .5em;"><small class="text-muted">  @GardeGorl21  </small></p>
+            <p style="text-align: center; margin-top: .5em;"><small class="text-muted">  @{{details.uName}}  </small></p>
           </div>
           <div class="col-10 mx-auto">
             <hr class="mx-auto" style="margin-top: -0.5em; margin-bottom: 0.3em; border: 1px solid #000000; width: 5em; height: 2px;">
           </div>    
           <div class="col-3 mx-auto pt-2" style="width: 28em;">
-            <p style="text-align: center; font-size: 12pt; font-weight: 100; margin-top: -0.4em;"> I like gardening (funny right?) </p>
+            <p style="text-align: center; font-size: 12pt; font-weight: 100; margin-top: -0.4em;"> {{details.bio}} </p>
           </div>
           <div class="col-12 d-flex justify-content-center">
-            <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#removefriendmodal"> Unfriend </button>
+            {{{status friend}}}
+            {{!-- <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#removefriendmodal"> Unfriend </button> --}}
           </div>
         </div>
       </div>

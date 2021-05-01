@@ -2,6 +2,7 @@ const express = require("express");
 const mainController = require('../controllers/mainController.js');
 const profileController = require('../controllers/profileController.js');
 const entryController = require('../controllers/entryController.js');
+const userController = require('../controllers/userController.js');
 const router = express();
 const db = require('../models/db.js');
 
@@ -19,6 +20,8 @@ router.get('/checksignup', profileController.checksignup);
 router.get('/checklogin', profileController.checklogin);
 router.get('/profile/:uName', profileController.getProfile);
 router.get('/logout', profileController.getLogout);
+
+router.get('/userprofile/:uName', userController.getUserProfile);
 
 
 //POST // Creation

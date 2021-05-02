@@ -151,13 +151,13 @@ const mainController = {
 
     getEntry: function(req,res){
 
-        console.log('getting entry');
+        //console.log('getting entry');
         var EntryId = req.params._id;
         // I'm sending as a path parameter instead of a query parameter
-        console.log(EntryId);
+        //console.log(EntryId);
         db.findOne(entryCollection,{_id: EntryId},'',function(result){
             if(result){
-                console.log('entry found, refreshing');
+                //console.log('entry found, refreshing');
                 res.render('searchentry',{
                     title: 'EntryResults',
                     css: ['global','entry-webpage'],

@@ -11,23 +11,22 @@ const entryController = {
         var entryBody = req.body.entryBody;
         var significance = req.body.significance;
         var authorUserName = req.session.uName;
-        var entryDate = req.body.entryDate;
+        var entryDate = new Date(req.body.entryDate);
         var privacy = req.body.privacy;
         var entryImage;
-
+        
         if(req.files.length == 0) {
             entryImage = null;
         } else {
             entryImage = req.files[0].id;
         }
-        
         var entry = {
             _id: mongoose.Types.ObjectId(),
             entryTitle: entryTitle,
             entryBody: entryBody,
             significance: significance,
             authorUserName: authorUserName,
-            entryDate: entryDate,
+            entryDate: entryDate.setHours(0, 0, 0),
             privacy: privacy,
             entryImage: entryImage
         }
@@ -50,12 +49,13 @@ const entryController = {
     editEntry: function(req, res) {
 
         var id = req.body.id;
+        var entryDate = new Date(req.body.entryDate);
 
         var entry = {
             entryTitle: req.body.entryTitle,
             entryBody: req.body.entryBody,
             significance: req.body.significance,
-            entryDate: req.body.entryDate,
+            entryDate: entryDate.setHours(0, 0, 0),
             privacy: req.body.privacy,       
         }
         

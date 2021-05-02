@@ -4,11 +4,12 @@ const profileController = require('../controllers/profileController.js');
 const entryController = require('../controllers/entryController.js');
 const userController = require('../controllers/userController.js');
 const router = express();
+const memoriesController = require('../controllers/memoriesController');
 const db = require('../models/db.js');
 
 
 // GET
-router.get('/', mainController.getLogin); //incase user tries to access this route
+router.get('/', mainController.getMainPage); //incase user tries to access this route
 router.get('/login', mainController.getLogin);
 router.get('/error', mainController.getError);
 router.get('/mainpage', mainController.getMainPage);
@@ -26,6 +27,9 @@ router.get('/friendRequest', userController.friendRequest);
 router.get('/pendingRequest', userController.pendingRequest);
 router.get('/acceptRequest', userController.acceptRequest);
 router.get('/removeFriend', userController.unfriend);
+
+router.get('/memories', memoriesController.getMemories);
+router.get('/searchentry/:_id',mainController.getEntry);
 
 //POST // Creation
 router.post('/signup', db.upload.any(), profileController.signup);

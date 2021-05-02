@@ -22,7 +22,10 @@ router.get('/profile/:uName', profileController.getProfile);
 router.get('/logout', profileController.getLogout);
 
 router.get('/userprofile/:uName', userController.getUserProfile);
-
+router.get('/friendRequest', userController.friendRequest);
+router.get('/pendingRequest', userController.pendingRequest);
+router.get('/acceptRequest', userController.acceptRequest);
+router.get('/removeFriend', userController.unfriend);
 
 //POST // Creation
 router.post('/signup', db.upload.any(), profileController.signup);

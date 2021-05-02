@@ -1,48 +1,86 @@
 {{> navbar}}
 
 
-  <section
-      class="custom-section mt-5"
-    >
-      <div class="container">
+  <section class="custom-section mt-5">
+    <div class="container">
+      {{#if people}}
         <div class="row">
           <div class="col-7 mx-auto">
             <div class="card">
               <div class="card-body">
                 <h3 class="card-title mx-1 mb-2">People</h3>
+                
                 {{#each people}}
-                <hr />
-
+                <hr>
                 <!-- Dummy data 1 -->
                 <div class="card mt-3">
-                  <div
-                    class="row d-flex align-items-center justify-content-center"
-                  >
-                    <div
-                      class="col-md-12 col-lg-2 px-4 d-flex align-items-center justify-content-center"
-                    >
+                  <div class="row d-flex align-items-center justify-content-center">
+                    <div class="col-md-12 col-lg-2 d-flex align-items-center justify-content-center">
                     {{#if this.dPicture}}
-                      <img
-                        src={{this.dPicture}}
-                        class="img-fluid profile-pic"
-                        alt="..."
-                      />
-                      {{/if}}
+                      <img src="/image/{{this.dPicture}}" class="img-fluid profile-pic img" alt="..."/>
+                    {{else}}
+                      <img src="/Images/defaultdp.jpg" alt="displayPicture" class="img-fluid profile-pic img" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" title="{{details.uName}} picture">
+                    {{/if}}
                     </div>
                     <div class="col-md-12 col-lg-6 d-flex justify-content-sm-center justify-content-md-center justify-content-lg-start">
-                      <a href="friendprofile2notadded.html">
-                        <div class="card-body  name-card-body" >
-                          <h5 class="card-title">{{this.fName}} {{this.lName}}</h5>
+                      <a href="userprofile/{{this.uName}}">
+                        <div class="card-body name-card-body" >
+                          <h5 class="card-title mb-0">{{this.fName}} {{this.lName}}</h5>
                           <p><small class="text-muted">{{this.uName}}</small></p>
                         </div>
                       </a>
                     </div>
                     <div class="col-md-12 col-lg-4 d-flex justify-content-sm-center justify-content-md-center justify-content-lg-end">
                       <a
-                        href="friendprofile2notadded.html"
+                        href="userprofile/{{this.uName}}"
                         class="btn btn-primary"
                         >Visit Profile</a
                       >
+                    </div>
+                  </div>
+                </div>
+                {{/each}}
+              </div>
+            </div>
+          </div>
+        </div>
+      {{/if}}
+
+        <!-- Entries Container -->
+      {{#if entries}} 
+          <div class="row my-5">
+            <div class="col-7 mx-auto">
+              <div class="card">
+                <div class="card-body">
+                  <h3 class="card-title mx-1 mb-2">Entries</h3>
+                  {{#each entries}}
+                  <!-- 1st Entry Public -->
+                  <hr>
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-11 mx-auto">
+                        <div class="card">
+                          <div class="row g-0">
+                            <div class="col-12">
+                                {{#if this.entryImage}}
+                              <a href="entry1webpage.html" target="_blank">
+                                  {{/if}}
+                                <h5
+                                  class="card-title ps-3 pt-2"
+                                  style="margin-bottom: -0.4em"
+                                >
+                                {{this.entryTitle}}
+                                </h5>
+                                <div class="card-body pb-1">
+                                  <p class="card-text">
+                                    {{this.entryBody}}
+                                  </p>
+                                </div>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   {{/each}}
@@ -50,49 +88,8 @@
               </div>
             </div>
           </div>
-
-
-        <!-- Entries Container -->
-        <div class="row my-5">
-          <div class="col-7 mx-auto">
-            <div class="card">
-              <div class="card-body">
-                <h3 class="card-title mx-1 mb-2">Entries</h3>
-                {{#each entries}}
-                <!-- 1st Entry Public -->
-                <hr />
-                <div class="container pt-3">
-                  <div class="row">
-                    <div class="col-11 mx-auto">
-                      <div class="card mb-3">
-                        <div class="row g-0">
-                          <div class="col-12">
-                              {{#if this.entryImage}}
-                            <a href="entry1webpage.html" target="_blank">
-                                {{/if}}
-                              <h5
-                                class="card-title ps-3 pt-4"
-                                style="margin-bottom: -0.4em"
-                              >
-                               {{this.entryTitle}}
-                              </h5>
-                              <div class="card-body">
-                                <p class="card-text">
-                                  {{this.entryBody}}
-                                </p>
-                              </div>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                {{/each}}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        {{/if}}
         </div>
-        </section>
+      </section>
 
 

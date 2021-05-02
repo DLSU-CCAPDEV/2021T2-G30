@@ -7,33 +7,194 @@ const userController = {
         var query = {uName: req.params.uName};
         var projection = 'dPicture fName lName uName bio';
 
-        console.log("im here");
+        //console.log("successful");
 
         db.findOne(userCollection, query, projection, function(user) {
-            
+            //console.log(user.uName + ' <--- user to add')
             if(user != null) {
-                var query = {friendsList: {friendName: user.uName}};
-                db.findOne(userCollection, query, projection, function(result) {
-                    var friend
-                    if(result === null) 
-                        friend = false
-                    else 
-                        friend = true
+                var friend = -1;
+                var queryFriend = {uName: req.session.uName, "friendsList.friendName": user.uName};
+                var querySent = {uName: req.session.uName, "sentRequest.username": user.uName};
+                var queryPending = {uName: req.session.uName, "pendingRequest.username": user.uName};
+
+                /*
+                2 = friends
+                1 = sent
+                0 = to accept 
+                -1 = not friends
+                */
+
+                //console.log(req.session.uName + ' <--- session user');
+
+                db.findOne(userCollection, queryFriend, projection, function(result1) {
                     
-                    res.render('user',  {
-                        title: 'SafeSpace',
-                        css: ['global','personalprofile'], 
-                        details: user,
-                        friend: friend,
-                        sessionUser: req.session.uName
+                    if(result1 != null) 
+                        friend = 2;
+                    
+                    db.findOne(userCollection, querySent, projection, function(result2) {
+                        //console.log(result.uName);
+                        if(result2 != null) 
+                            friend = 1;
+
+                        db.findOne(userCollection, queryPending, projection, function(result3) {
+                            //console.log(result.uName);
+                            if(result3 != null) 
+                                friend = 0;
+
+                            
+                            console.log(friend);
+                            
+                            res.render('user',  {
+                                title: 'SafeSpace',
+                                css: ['global','personalprofile'], 
+                                details: user,
+                                friend: friend,
+                                sessionUser: req.session.uName
+                            });
+                        });
                     });
-                })
+                });
                 
             } else {
                 //console.log('error');
                 res.status(404);
                 res.redirect('/error');
             }
+        });
+    },
+
+    friendRequest: function(req, res) {
+        //console.log('Hello')
+        //console.log(req.query.receiver + ' ' + req.session.uName)
+
+        var receiver = req.query.receiver;
+        var sender = req.session.uName;
+
+        db.findOne(userCollection, {uName: receiver}, '', function(resultReceiver) {
+            db.findOne(userCollection, {uName: sender}, '', function(resultSender) {
+                var updateSender = {
+                    $push: {
+                      sentRequest: {userId: resultReceiver._id, username: resultReceiver.uName}
+                    }
+                }
+                var updateReceiver = {
+                    $push: {
+                      pendingRequest: {userId: resultSender._id, username: resultSender.uName}
+                    }
+                }
+                //console.log(updateReceiver + ' IN ' + resultSender.uName);
+                db.updateOne(userCollection, {uName: resultReceiver.uName}, updateReceiver, function(flag) {
+                    if(flag)
+                        console.log('Successfully updated ' + resultReceiver.uName);
+                    db.updateOne(userCollection, {uName: resultSender.uName}, updateSender, function(flag) {
+                        if(flag)
+                            console.log('Successfully updated ' + resultSender.uName);
+                        //res.redirect('/mainpage');
+                    });
+                });
+            });
+        });
+    },
+
+    pendingRequest: function(req, res) {
+
+        var receiver = req.query.receiver;
+        var sender = req.session.uName;
+
+        db.findOne(userCollection, {uName: receiver}, '', function(resultReceiver) {
+            db.findOne(userCollection, {uName: sender}, '', function(resultSender) {
+                var updateSender = {
+                    $pull: {
+                      sentRequest: {userId: resultReceiver._id, username: resultReceiver.uName}
+                    }
+                }
+                var updateReceiver = {
+                    $pull: {
+                      pendingRequest: {userId: resultSender._id, username: resultSender.uName}
+                    }
+                }
+                //console.log(updateReceiver + ' IN ' + resultSender.uName);
+                db.updateOne(userCollection, {uName: resultReceiver.uName}, updateReceiver, function(flag) {
+                    if(flag)
+                        console.log('Successfully updated ' + resultReceiver.uName);
+                    db.updateOne(userCollection, {uName: resultSender.uName}, updateSender, function(flag) {
+                        if(flag)
+                            console.log('Successfully updated ' + resultSender.uName);
+                        //res.redirect('/userprofile/' + resultReceiver.uName);
+                        res.send(true);
+                    });
+                });
+            });
+        });
+    },
+
+    acceptRequest: function(req, res) {
+
+        var receiver = req.query.receiver;
+        var sender = req.session.uName;
+        var ifaccept = req.query.accept;
+        
+        db.findOne(userCollection, {uName: receiver}, '', function(resultReceiver) {
+            db.findOne(userCollection, {uName: sender}, '', function(resultSender) {
+                var updateReceiverRemove = {
+                    $pull: {
+                      sentRequest: {userId: resultSender._id, username: resultSender.uName}
+                    }
+                }
+                var updateSenderRemove = {
+                    $pull: {
+                      pendingRequest: {userId: resultReceiver._id, username: resultReceiver.uName}
+                    }
+                }
+                var updateSender = {
+                    $push: {
+                      friendsList: {friendId: resultReceiver._id, friendName: resultReceiver.uName}
+                    }
+                }
+                var updateReceiver = {
+                    $push: {
+                      friendsList: {friendId: resultSender._id, friendName: resultSender.uName}
+                    }
+                }
+                db.updateOne(userCollection, {uName: resultReceiver.uName}, updateReceiverRemove, function(flag) {
+                    db.updateOne(userCollection, {uName: resultSender.uName}, updateSenderRemove, function(flag) {
+                        if(ifaccept === 'true') {
+                            db.updateOne(userCollection, {uName: resultReceiver.uName}, updateReceiver, function(flag) {
+                                db.updateOne(userCollection, {uName: resultSender.uName}, updateSender, function(flag) {
+                                    //res.send(true);
+                                });
+                            });
+                        }
+                        res.send(true);
+                    });
+                });
+            });
+        });
+    },
+
+    unfriend: function(req, res) {
+
+        var receiver = req.query.receiver;
+        var sender = req.session.uName;
+
+        db.findOne(userCollection, {uName: receiver}, '', function(resultReceiver) {
+            db.findOne(userCollection, {uName: sender}, '', function(resultSender) {
+                var updateReceiver = {
+                    $pull: {
+                      friendsList: {friendId: resultSender._id, friendName: resultSender.uName}
+                    }
+                }
+                var updateSender = {
+                    $pull: {
+                        friendsList: {friendId: resultReceiver._id, friendName: resultReceiver.uName}
+                    }
+                }
+                db.updateOne(userCollection, {uName: resultReceiver.uName}, updateReceiver, function(flag) {
+                    db.updateOne(userCollection, {uName: resultSender.uName}, updateSender, function(flag) {
+                        res.send(true);
+                    });
+                });
+            });
         });
     }
     

@@ -11,16 +11,16 @@
             {{/if}}
           </div>
           <div class="col-12 mx-auto pt-2">
-            <p style="text-align: center; font-size: 30pt; font-weight: 400; margin-bottom: -0.4em;"> {{details.fName}} {{details.lName}} </p>
+            <p style="text-align: center; font-size: 30pt; font-weight: 400; margin-bottom: -0.4em;">{{details.fName}} {{details.lName}}</p>
           </div>
           <div class="col-12 mx-auto pt-2">
-            <p style="text-align: center; margin-top: .5em;"><small class="text-muted">  @{{details.uName}}  </small></p>
+            <p style="text-align: center; margin-top: .5em;"><small class="text-muted" id="uName">@{{details.uName}}</small></p>
           </div>
           <div class="col-10 mx-auto">
             <hr class="mx-auto" style="margin-top: -0.5em; margin-bottom: 0.3em; border: 1px solid #000000; width: 5em; height: 2px;">
           </div>    
           <div class="col-3 mx-auto pt-2" style="width: 28em;">
-            <p style="text-align: center; font-size: 12pt; font-weight: 100; margin-top: -0.4em;"> {{details.bio}} </p>
+            <p style="text-align: center; font-size: 12pt; font-weight: 100; margin-top: -0.4em;">{{details.bio}}</p>
           </div>
           <div class="col-12 d-flex justify-content-center">
             {{{status friend}}}
@@ -29,3 +29,37 @@
         </div>
       </div>
     </section>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="addfriendmodal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add Friend</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">Friend Request Sent</div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+              id="requestSent"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>

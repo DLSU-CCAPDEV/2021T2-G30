@@ -122,19 +122,25 @@ const mainController = {
     },
 
     getSearch: function(req,res){
-        console.log('im in');
-        var SearchTitle = req.query.SearchTitle;
-        console.log(SearchTitle);
+        // console.log('im in');
+        var SearchTitle
+
+        if(req.query.SearchTitle != req.session.uName)
+            SearchTitle = req.query.SearchTitle;
+        else
+            SearchTitle = "";
+        // console.log(SearchTitle);
 
         db.findMany(userCollection,{uName: SearchTitle},'',function(people){
             db.findMany(entryCollection,{entryTitle: SearchTitle},'',function(result){
                 if(result){
-                    console.log('Search results success');
+                    //console.log('Search results success');
                     res.render('searchresults',{
                         title: 'SearchResults',
                         css: ['global','searchresults'],
                         people: people,
-                        entries: result
+                        entries: result,
+                        sessionUser: req.session.uName
                     });
                 }
 

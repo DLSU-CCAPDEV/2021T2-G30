@@ -46,30 +46,30 @@
         </div>
       {{/if}}
 
+      {{#if entries}}
         <!-- Entries Container -->
-        <div class="row my-5">
+        <div class="row my-4">
           <div class="col-7 mx-auto">
             <div class="card">
               <div class="card-body">
                 <h3 class="card-title mx-1 mb-2">Entries</h3>
                 {{#each entries}}
-                <!-- 1st Entry Public -->
                 <hr>
                 <div class="container">
                   <div class="row">
                     <div class="col-11 mx-auto">
-                      <div class="card mb-3">
+                      <div class="card">
                         <div class="row g-0">
                           <div class="col-12">
                             <a class="nav-link" href="/searchentry/{{this._id}}" method="GET" target="_blank">
 
                               <h5
-                                class="card-title ps-3 pt-4"
-                                style="margin-bottom: -0.4em"
+                                class="card-title ps-3"
+                                style="margin-bottom: -0.5em"
                               >
                                {{this.entryTitle}}
                               </h5>
-                              <div class="card-body">
+                              <div class="card-body" style="padding-bottom: 0">
                                 <p class="card-text">
                                   {{this.entryBody}}
                                 </p>
@@ -85,8 +85,9 @@
               </div>
             </div>
           </div>
-        {{/if}}
         </div>
-      </section>
+        {{/if}}
+      </div>
+    </section>
 
 

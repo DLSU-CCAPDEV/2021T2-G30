@@ -16,6 +16,7 @@ router.get('/mainpage', mainController.getMainPage);
 router.get('/settings', mainController.getSettingsPage);
 router.get('/image/:id', mainController.getPicture); //responsible for getting image
 router.get('/editaccount', mainController.geteditProfileAccount);
+router.get('/searchentry/:_id',mainController.getEntry);
 
 router.get('/checksignup', profileController.checksignup);
 router.get('/checklogin', profileController.checklogin);
@@ -29,7 +30,6 @@ router.get('/acceptRequest', userController.acceptRequest);
 router.get('/removeFriend', userController.unfriend);
 
 router.get('/memories', memoriesController.getMemories);
-router.get('/searchentry/:_id',mainController.getEntry);
 
 //POST // Creation
 router.post('/signup', db.upload.any(), profileController.signup);
@@ -47,6 +47,6 @@ router.get('/searchresults', mainController.getSearch);
 //PUT // Editing
 
 //DELETE
-router.get('/deleteaccount',profileController.deleteaccount);
+router.get('/deleteaccount', profileController.deleteaccount);
 
 module.exports = router; 

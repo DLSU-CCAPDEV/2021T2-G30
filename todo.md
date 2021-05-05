@@ -5,6 +5,7 @@ PHASE 2 TO DO:
 - Letters
 - Calendar
 - Front and backend form validation
+- display friends in personal profile
 
 PHASE 3 TO DO:
 

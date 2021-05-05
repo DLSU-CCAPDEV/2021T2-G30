@@ -41,8 +41,16 @@ const mainController = {
             }, {entryDate: -1})
         }
         else {
-            console.log("no session users");
-            res.redirect('/login');
+            res.status(401);
+            res.render('error', {
+                title: '401 Unauthorized Access',
+                css:['global', 'error'],
+                status: {
+                    code: "401",
+                    message: "Unautorized access."
+                } 
+                
+            });
         }
 
         

@@ -7,17 +7,19 @@ A diary web application. Wi-Fi is required to run the web application. For the b
 - Rosima, Rayvhen
 
 ## Instructions
-1. Clone the repository either by using the command below (Note: git should be installed in your system for this to work).
+1. Clone the repository by using the command below (Note: git should be installed in your system for this to work).
+
 ```
 git clone https://github.com/DLSU-CCAPDEV/2021T2-G30.git 
 ```
+
 2. Open Command Prompt
 
 3. Navigate to the project folder - the folder containing the contents of the cloned or downloaded repository.
 
 4. Run the command ```npm install``` to initialize and install all necessary modules used in the project.
 
-5. We may now run our server. To do this, we run the command ```npm run start ```. Upon running the command, your Command Prompt should display the following statement:
+5. We may now run our server. To do this, we run the command ```npm run start```. Upon running the command, your Command Prompt should display the following statement:
 
 ```
 Server running at:

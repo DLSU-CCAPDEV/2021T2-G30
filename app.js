@@ -53,6 +53,19 @@ app.set('view engine', '.hbs'); //using hbs as view engine
 const appRouter = require('./routes/router.js');
 app.use('/', appRouter);
 
+//if route is not defined in the server
+app.use(function(req, res) {
+    res.status(404);
+    res.render('error', {
+        title: '404 Not found',
+        css:['global', 'error'],
+        status: {
+            code: "404",
+            message: "Not found"
+        } 
+    });
+});
+
 app.listen(port, hostname, function() {
     console.log('Server running at: ');
     console.log('http://' + hostname + ':' + port +  '/login');

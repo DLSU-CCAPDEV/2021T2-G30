@@ -1,10 +1,11 @@
 const express = require("express");
+const router = express();
 const mainController = require('../controllers/mainController.js');
 const profileController = require('../controllers/profileController.js');
 const entryController = require('../controllers/entryController.js');
 const userController = require('../controllers/userController.js');
-const router = express();
 const memoriesController = require('../controllers/memoriesController');
+const calendarController = require('../controllers/calendarController');
 const db = require('../models/db.js');
 
 
@@ -14,18 +15,16 @@ router.get('/login', mainController.getLogin);
 router.get('/error', mainController.getError);
 router.get('/mainpage', mainController.getMainPage);
 router.get('/settings', mainController.getSettingsPage);
-router.get('/image/:id', mainController.getPicture); //responsible for getting image
+router.get('/image/:id', mainController.getPicture); //responsible for getting image in profiles
 router.get('/editaccount', mainController.geteditProfileAccount);
-
 router.get('/checksignup', profileController.checksignup);
 router.get('/checklogin', profileController.checklogin);
 router.get('/profile/:uName', profileController.getProfile);
 router.get('/logout', profileController.getLogout);
-
 router.get('/userprofile/:uName', userController.getUserProfile);
 
-
-router.get('/memories', memoriesController.getMemories);
+router.get('/memories', memoriesController.getMemories); //memories feature
+router.get('/calendar', calendarController.getCalendar); //calendar update
 
 //POST // Creation
 router.post('/signup', db.upload.any(), profileController.signup);

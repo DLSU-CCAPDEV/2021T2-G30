@@ -3,11 +3,8 @@ const entryCollection = require('../models/EntryModel.js');
 
 const memoriesController = {
     getMemories: function(req, res) {
-        //get the current date
-        //get the year-1 
-        //get entries equal to current year-1
 
-        // var formattedDate = today.getFullYear().toString() + '-' + (today.getMonth() + 1).toString().padStart(2, 0) + '-' + today.getDate().toString().padStart(2, 0);
+        //first checks if theres a user logged in 
         if(req.session.uName) {
             var date = new Date();
             date.setFullYear(date.getFullYear() - 1); //last year's memories

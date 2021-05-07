@@ -12,9 +12,9 @@ const GridFsStorage = require("multer-gridfs-storage");
 var GridFsBucket; 
 
 dotenv.config();
-// safespacedb is the name of the database
+
 // const url = process.env.DB_URL;
-// additional connection options
+
 const options = {
     useUnifiedTopology: true,
     useNewUrlParser: true

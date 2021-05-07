@@ -1,5 +1,5 @@
 # Safe Space
-A diary web application. Wi-Fi is required to run the web application. For the best experience, begin by opening the login.html file. 
+A diary web application. Wi-Fi is required to run the web application. 
 
 ## Contributors:
 - Buensalida, Matthew

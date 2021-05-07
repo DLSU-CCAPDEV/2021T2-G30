@@ -41,8 +41,16 @@ const mainController = {
             }, {entryDate: -1})
         }
         else {
-            console.log("no session users");
-            res.redirect('/login');
+            res.status(401);
+            res.render('error', {
+                title: '401 Unauthorized Access',
+                css:['global', 'error'],
+                status: {
+                    code: "401",
+                    message: "Unautorized access."
+                } 
+                
+            });
         }
 
         
@@ -123,24 +131,48 @@ const mainController = {
     },
 
     getSearch: function(req,res){
-        console.log('im in');
-        var SearchTitle = req.query.SearchTitle;
-        console.log(SearchTitle);
+        // console.log('im in');
+        var SearchTitle
+
+        if(req.query.SearchTitle != req.session.uName)
+            SearchTitle = req.query.SearchTitle;
+        else
+            SearchTitle = "";
+        // console.log(SearchTitle);
 
         db.findMany(userCollection,{uName: SearchTitle},'',function(people){
             db.findMany(entryCollection,{entryTitle: SearchTitle},'',function(result){
                 if(result){
-                    console.log('Search results success');
+                    //console.log('Search results success');
                     res.render('searchresults',{
                         title: 'SearchResults',
                         css: ['global','searchresults'],
                         people: people,
-                        entries: result
+                        entries: result,
+                        sessionUser: req.session.uName
                     });
                 }
 
             }, {entryDate: -1})
         });
+    },
+
+    getEntry: function(req,res){
+
+        //console.log('getting entry');
+        var EntryId = req.params._id;
+        // I'm sending as a path parameter instead of a query parameter
+        //console.log(EntryId);
+        db.findOne(entryCollection,{_id: EntryId},'',function(result){
+            if(result){
+                //console.log('entry found, refreshing');
+                res.render('searchentry',{
+                    title: 'EntryResults',
+                    css: ['global','entry-webpage'],
+                    entries: result
+                });
+            }
+        })
     }
     
 };   

@@ -17,14 +17,20 @@ router.get('/mainpage', mainController.getMainPage);
 router.get('/settings', mainController.getSettingsPage);
 router.get('/image/:id', mainController.getPicture); //responsible for getting image in profiles
 router.get('/editaccount', mainController.geteditProfileAccount);
+router.get('/searchentry/:_id',mainController.getEntry);
+
 router.get('/checksignup', profileController.checksignup);
 router.get('/checklogin', profileController.checklogin);
 router.get('/profile/:uName', profileController.getProfile);
 router.get('/logout', profileController.getLogout);
 router.get('/userprofile/:uName', userController.getUserProfile);
+router.get('/calendar', calendarController.getCalendar); //calendar update
+router.get('/friendRequest', userController.friendRequest);
+router.get('/pendingRequest', userController.pendingRequest);
+router.get('/acceptRequest', userController.acceptRequest);
+router.get('/removeFriend', userController.unfriend);
 
 router.get('/memories', memoriesController.getMemories); //memories feature
-router.get('/calendar', calendarController.getCalendar); //calendar update
 
 //POST // Creation
 router.post('/signup', db.upload.any(), profileController.signup);
@@ -42,6 +48,6 @@ router.get('/searchresults', mainController.getSearch);
 //PUT // Editing
 
 //DELETE
-router.get('/deleteaccount',profileController.deleteaccount);
+router.get('/deleteaccount', profileController.deleteaccount);
 
 module.exports = router; 

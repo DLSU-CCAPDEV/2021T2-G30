@@ -25,19 +25,30 @@
       <div class="col-9 mx-auto">
         <div class="card mb-3 mx-auto" style="padding-right: 0;">
           <div class="row g-0">
-            <div class="col-9 custom">
-              <a href="entry1webpage.html" target="_blank">
-                <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;"> {{this.entryTitle}} </h5>
-                <div class="card-body">
-                  <p class="card-text">
-                    {{this.entryBody}}
-                  </p>
-                </div>
-              </a> 
-            </div>
             {{#if this.entryImage}}
+              <div class="col-9 custom">
+                <a href="/searchentry/{{this._id}}" method="GET" target="_blank">
+                  <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;"> {{this.entryTitle}} </h5>
+                  <div class="card-body">
+                    <p class="card-text">
+                      {{this.entryBody}}
+                    </p>
+                  </div>
+                </a> 
+              </div>
               <div class="col-3">
                 <img src="/image/{{this.entryImage}}" class="img-fluid" style="height: 169px; width: 246.5px; object-fit: cover;" alt="...">
+              </div>
+            {{else}}
+              <div class="col-12 custom">
+                <a href="/searchentry/{{this._id}}" method="GET" target="_blank">
+                  <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;"> {{this.entryTitle}} </h5>
+                  <div class="card-body">
+                    <p class="card-text">
+                      {{this.entryBody}}
+                    </p>
+                  </div>
+                </a> 
               </div>
             {{/if}}
               <!-- Entry Footer -->

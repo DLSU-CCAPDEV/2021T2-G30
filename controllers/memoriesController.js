@@ -32,7 +32,7 @@ const memoriesController = {
                 css:['global', 'error'],
                 status: {
                     code: "401",
-                    message: "Unautorized access."
+                    message: "Unauthorized access."
                 } 
                 
             });

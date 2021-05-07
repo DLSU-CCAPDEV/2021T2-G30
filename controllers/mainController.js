@@ -47,7 +47,7 @@ const mainController = {
                 css:['global', 'error'],
                 status: {
                     code: "401",
-                    message: "Unautorized access."
+                    message: "Unauthorized access."
                 } 
                 
             });
@@ -76,7 +76,7 @@ const mainController = {
                 css:['global', 'error'],
                 status: {
                     code: "401",
-                    message: "Unautorized access."
+                    message: "Unauthorized access."
                 } 
                 
             });
@@ -102,7 +102,7 @@ const mainController = {
                 css:['global', 'error'],
                 status: {
                     code: "401",
-                    message: "Unautorized access."
+                    message: "Unauthorized access."
                 } 
                 
             });

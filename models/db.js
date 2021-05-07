@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const User = require('./UserModel.js');
 const dotenv = require('dotenv');
 
-// const url = 'mongodb://localhost:27017/safespacedb';
+const url = 'mongodb://localhost:27017/safespacedb';
 
 const crypto = require("crypto");
 const path = require("path");
@@ -13,7 +13,7 @@ var GridFsBucket;
 
 dotenv.config();
 // safespacedb is the name of the database
-const url = process.env.DB_URL;
+// const url = process.env.DB_URL;
 // additional connection options
 const options = {
     useUnifiedTopology: true,
@@ -22,7 +22,7 @@ const options = {
 
 // Storage
 const storage = new GridFsStorage({
-    url: "mongodb://localhost:27017/safespacedb",
+    url: url,
     file: (req, file) => {
       return new Promise((resolve, reject) => {
         crypto.randomBytes(16, (err, buf) => {

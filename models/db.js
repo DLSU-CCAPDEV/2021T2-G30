@@ -1,11 +1,8 @@
-// import module `mongoose`
+
 const mongoose = require('mongoose');
-
-// import module `User` from `../models/UserModel.js`
 const User = require('./UserModel.js');
+const dotenv = require('dotenv');
 
-// safespacedb is the name of the database
-const url = process.env.DB_URL;
 // const url = 'mongodb://localhost:27017/safespacedb';
 
 const crypto = require("crypto");
@@ -14,6 +11,9 @@ const multer = require("multer");
 const GridFsStorage = require("multer-gridfs-storage");
 var GridFsBucket; 
 
+dotenv.config();
+// safespacedb is the name of the database
+const url = process.env.DB_URL;
 // additional connection options
 const options = {
     useUnifiedTopology: true,

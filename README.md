@@ -8,8 +8,9 @@ A diary web application. Wi-Fi is required to run the web application. For the b
 
 ## Instructions
 1. Clone the repository either by using the command below (Note: git should be installed in your system for this to work).
-
-```git clone https://github.com/DLSU-CCAPDEV/2021T2-G30.git ```
+```
+git clone https://github.com/DLSU-CCAPDEV/2021T2-G30.git 
+```
 2. Open Command Prompt
 
 3. Navigate to the project folder - the folder containing the contents of the cloned or downloaded repository.

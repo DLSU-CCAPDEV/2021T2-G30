@@ -6,6 +6,7 @@ PHASE 2 TO DO:
 - Calendar
 - Front and backend form validation
 - display friends in personal profile
+- Fix ajax webpages (main page, friends profile)
 
 PHASE 3 TO DO:
 

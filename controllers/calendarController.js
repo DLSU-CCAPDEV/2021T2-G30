@@ -4,6 +4,7 @@ const entryCollection = require('../models/EntryModel.js');
 const calendarController = {
     getCalendar: function(req, res) {
         if(req.session.uName) {
+            //get data from what user required
             res.render('calendar', {
                 title: 'Calendar View',
                 calendar:true,

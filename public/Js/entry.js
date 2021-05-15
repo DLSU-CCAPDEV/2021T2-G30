@@ -18,6 +18,9 @@ $(document).ready(function () {
     });
 
     $('.editBtn').click(function (event) {
+
+        alert('success');
+
         var id = event.target.id;
 
         var entry = {
@@ -46,7 +49,9 @@ $(document).ready(function () {
         else {
             $.post('editentry', entry, function(result) {
                 if(result) {
-                    location.reload();
+                    // location.reload();
+                    $("#mainSection").load(" #mainSection > *");
+                    // FIX EDIT
                 }
             });
         }

@@ -54,8 +54,6 @@ const entryController = {
                             console.log(err);
                         }
                         else {
-                            //console.log('Rendered partial below \n\n' + rendered)
-                            //console.log(entry.entryImage + ' ');
                             res.send(rendered);
                         }
                     })

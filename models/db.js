@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const User = require('./UserModel.js');
 const dotenv = require('dotenv');
 
-const url = 'mongodb://localhost:27017/safespacedb';
+//const url = 'mongodb://localhost:27017/safespacedb';
+const url = process.env.DB_URL;
 
 const crypto = require("crypto");
 const path = require("path");

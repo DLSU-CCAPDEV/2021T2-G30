@@ -7,10 +7,18 @@ const mongoose = require('mongoose');
 const mainController = {
 
     getLogin: function (req, res) {
-        res.render('login', {
-            title: 'login',
-            css: ['global']
-        });
+        
+        if(req.session.uName) {
+            console.log('hello');
+            res.redirect('/mainpage');
+        }
+        else {
+            res.render('login', {
+                title: 'login',
+                css: ['global']
+            });
+        }
+        
     },
 
     getError: function (req, res) {

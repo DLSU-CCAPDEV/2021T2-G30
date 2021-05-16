@@ -181,7 +181,8 @@ const mainController = {
                 res.render('searchentry',{
                     title: 'EntryResults',
                     css: ['global','entry-webpage'],
-                    entries: result
+                    entries: result,
+                    sessionUser: req.session.uName
                 });
             }
         })

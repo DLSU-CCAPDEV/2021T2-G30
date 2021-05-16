@@ -59,7 +59,7 @@
                   class="form-control p-2"
                   id="PasswordEdit"
                   name="pw"
-                  value="{{user.pw}}"
+                  value=""
                   minlength="5"
                   required
                 />
@@ -83,8 +83,9 @@
                 <a onclick="location.href='/settings'">
                   <button type="button" class="btn btn-secondary" style="margin-bottom: -0.6em;">Cancel</button>
                 </a>    
-                <button type="submit" id="saveChangesbtn" class="btn btn-primary" style="margin-bottom: -0.6em;">Save changes</button>
+                <button type="submit" id="saveChangesbtn" name="saveChanges" class="btn btn-primary" style="margin-bottom: -0.6em;">Save changes</button>
               </div>
+              <p id="error"></p>
             </form>
           </div>
         </div>

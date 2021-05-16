@@ -151,7 +151,7 @@ const mainController = {
 
     getSearch: function(req,res){
         // console.log('im in');
-        var SearchTitle
+        var SearchTitle;
 
         if(req.query.SearchTitle != req.session.uName)
             SearchTitle = req.query.SearchTitle;
@@ -161,7 +161,7 @@ const mainController = {
 
         db.findMany(userCollection,{uName: SearchTitle},'',function(people){
             db.findMany(entryCollection,{entryTitle: SearchTitle},'',function(result){
-                if(result){
+                if(result.length !== 0 || people.length !== 0){
                     //console.log('Search results success');
                     res.render('searchresults',{
                         title: 'Search Results',
@@ -169,6 +169,12 @@ const mainController = {
                         people: people,
                         entries: result,
                         sessionUser: req.session.uName
+                    });
+                } else {
+                    res.render('notfound', {    
+                        title: 'No Results Found',
+                        css: ['global','searchresults'],
+                        query: SearchTitle 
                     });
                 }
 

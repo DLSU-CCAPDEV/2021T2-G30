@@ -39,7 +39,6 @@ const calendarController = {
             db.findMany(entryCollection, query, '', function(result) {
                 if(result.length !== 0) {
                     res.render('partials/calendarentrymodal', {entries: result, layout: false}, function(err, html) {
-                        console.log(html);
                         if(err)
                             res.send(false);
                         else

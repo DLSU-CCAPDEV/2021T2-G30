@@ -3,7 +3,7 @@
   border-radius: 15px;
 }
 
-i {
+/* i {
   cursor: pointer;
 }
 
@@ -37,10 +37,10 @@ i {
   line-height: 20px;
   border: none !important;
   font-size: 13px;
-}
+} */
 
 /* Days with entries have this color */
-.entry {
+/* .entry {
   background-color: #96bce2;
 }
 
@@ -81,7 +81,7 @@ tr td:hover:not(.prev-month):not(.next-month) {
 button::-moz-focus-inner {
   padding: 0;
   border: 0;
-}
+} */
 
 .card-text {
   overflow: hidden;

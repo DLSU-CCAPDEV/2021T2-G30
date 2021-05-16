@@ -17,23 +17,6 @@
       crossorigin="anonymous"
     />
     
-    {{#if calendar}} 
-        <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.css' rel='stylesheet' />
-        <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.js'></script>
-        <script>
-
-          document.addEventListener('DOMContentLoaded', function() {
-            var calendarEl = document.getElementById('calendar');
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-              themeSystem: 'bootstrap',
-              initialView: 'dayGridMonth'
-            });
-            calendar.render();
-          });
-
-        </script>
-    {{/if}}
-    
     {{#each css}}
     <link href="/CSS/{{this}}.css" rel="stylesheet" />
     {{/each}}
@@ -41,6 +24,9 @@
     
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/62fb675735.js" crossorigin="anonymous"></script>
+    {{#if calendar}} 
+        {{>calendarlinks}}
+    {{/if}}
 </head>
 <body>
     {{{ body }}}

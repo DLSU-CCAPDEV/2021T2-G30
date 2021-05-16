@@ -3,4 +3,21 @@
     <div class="container" style="background-color: white;">
         <div id='calendar' class="px-3 py-4" style="width: 100%"></div>
     </div>
+    <div id="dateEntry" class="modal fade"  tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="dateEntryLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div id="entryfield" class="modal-body">
+                    {{> calendarentrymodal}}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"> Close </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </section>

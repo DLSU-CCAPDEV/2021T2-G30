@@ -25,6 +25,7 @@ router.get('/profile/:uName', profileController.getProfile);
 router.get('/logout', profileController.getLogout);
 router.get('/userprofile/:uName', userController.getUserProfile);
 router.get('/calendar', calendarController.getCalendar); //calendar update
+router.get('/getEntries', calendarController.getDesiredEntries); //calendar update
 router.get('/friendRequest', userController.friendRequest);
 router.get('/pendingRequest', userController.pendingRequest);
 router.get('/acceptRequest', userController.acceptRequest);

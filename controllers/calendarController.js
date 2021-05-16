@@ -8,7 +8,8 @@ const calendarController = {
             res.render('calendar', {
                 title: 'Calendar View',
                 calendar:true,
-                css: ['global']
+                css: ['global', 'calendarview'],
+                sessionUser: req.session.uName
             });
         } else {
             res.status(401);
@@ -22,6 +23,50 @@ const calendarController = {
                 
             });
         }
+    },
+ 
+    //gets entries based on the date asked by user
+    getDesiredEntries: function(req, res) {
+        //need to get the date pressed by the user
+        if(req.session.uName) {
+            var dateInput = req.query.date;
+            var newdate = new Date(dateInput);
+            var query = {
+                authorUserName: req.session.uName,
+                entryDate: {$eq: newdate}
+            }
+            //get all the entries from that specific date
+            db.findMany(entryCollection, query, '', function(result) {
+                if(result.length !== 0) {
+                    res.render('partials/calendarentrymodal', {entries: result, layout: false}, function(err, html) {
+                        console.log(html);
+                        if(err)
+                            res.send(false);
+                        else
+                            res.send(html);
+                    });                
+                } else { 
+                    res.send("");
+                }
+            }); 
+
+        } else {
+            res.status(401);
+            res.render('error', {
+                title: '401 Unauthorized Access',
+                css:['global', 'error'],
+                status: {
+                    code: "401",
+                    message: "Unauthorized access."
+                } 
+                
+            });
+        }
+        // var dateInput = req.query.date;
+        // var newdate = new Date(dateInput);
+        // console.log("Date: " + newdate);
+        // console.log(typeof(newdate));
+
     }
 }
 

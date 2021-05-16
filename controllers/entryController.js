@@ -64,6 +64,8 @@ const entryController = {
 
     editEntry: function(req, res) {
 
+        console.log('edit reached here');
+
         var id = req.body.id;
         var entryDate = new Date(req.body.entryDate);
 

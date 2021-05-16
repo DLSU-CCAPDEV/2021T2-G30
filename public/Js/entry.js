@@ -17,9 +17,9 @@ $(document).ready(function () {
         
     });
 
-    $('.editBtn').click(function (event) {
+    $(document).on('click', '.editBtn', function(event) {
 
-        alert('success');
+        //alert('success');
 
         var id = event.target.id;
 
@@ -79,7 +79,6 @@ $(document).ready(function () {
             entryBody: entryBody,
             significance: significance,
             privacy: privacy,
-            
         }
         
         

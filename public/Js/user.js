@@ -5,57 +5,58 @@ $(document).ready(function () {
     });
 
     // add
-    $('#addFriend').click(function() {
+    $(document).on('click', '#addFriend', function() {
         var receiver = $('#uName').text().substring(1);
-        $.get('/friendRequest', {receiver: receiver}, function(result) {})
+        $.get('/friendRequest', {receiver: receiver}, function(result) {
+            // if(result)
+            //     //statusChange();
+        })
     });
 
     // cancel
-    $('#pendingFriend').click(function() {
+    $(document).on('click', '#pendingFriend', function() {
         var receiver = $('#uName').text().substring(1);
         $.get('/pendingRequest', {receiver: receiver}, function(result) {
-            
              if(result)
-                 location.reload();
-            
-            // if(result)
-            //     $.get('/userprofile/' + receiver)
-            
+                statusChange();
         })    
     });
 
     // accept
-    $('#acceptFriend').click(function() {
+    $(document).on('click', '#acceptFriend', function() {
         var receiver = $('#uName').text().substring(1);
         $.get('/acceptRequest', {receiver: receiver, accept: true}, function(result) {
              if(result)
-                 location.reload();
+                statusChange();
             
             
         })    
     });
 
     // reject
-    $('#rejectFriend').click(function() {
+    $(document).on('click', '#rejectFriend', function() {
         var receiver = $('#uName').text().substring(1);
         $.get('/acceptRequest', {receiver: receiver, accept: false}, function(result) {
              if(result)
-                 location.reload();
+                statusChange();
         })    
     });
 
     // unfriend
-    $('#removeFriend').click(function() {
+    $(document).on('click', '#removeFriend', function() {
         var receiver = $('#uName').text().substring(1);
         $.get('/removeFriend', {receiver: receiver}, function(result) {
              if(result)
-                 location.reload();
+                statusChange();
         })    
     });
 
     // confirmation modal
-    $('#requestSent').click(function() {
-        location.reload();
+    $(document).on('click', '#requestSent', function() {
+        statusChange();
     });
 
+    function statusChange() {
+        $("#statusBtn").load(" #statusBtn > *");
+    };
 });

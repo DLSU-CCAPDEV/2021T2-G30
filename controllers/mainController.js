@@ -9,12 +9,11 @@ const mainController = {
     getLogin: function (req, res) {
         
         if(req.session.uName) {
-            console.log('hello');
             res.redirect('/mainpage');
         }
         else {
             res.render('login', {
-                title: 'login',
+                title: 'Login',
                 css: ['global']
             });
         }
@@ -53,7 +52,7 @@ const mainController = {
                     entries.push(entry);
                 }
                 res.render('mainpage', {
-                    title: 'SafeSpace',
+                    title: 'Safe Space',
                     css: ['global','mainpage'],
                     entries: entries,
                     sessionUser: req.session.uName
@@ -165,7 +164,7 @@ const mainController = {
                 if(result){
                     //console.log('Search results success');
                     res.render('searchresults',{
-                        title: 'SearchResults',
+                        title: 'Search Results',
                         css: ['global','searchresults'],
                         people: people,
                         entries: result,
@@ -187,7 +186,7 @@ const mainController = {
             if(result){
                 //console.log('entry found, refreshing');
                 res.render('searchentry',{
-                    title: 'EntryResults',
+                    title: 'Entry Results',
                     css: ['global','entry-webpage'],
                     entries: result,
                     sessionUser: req.session.uName

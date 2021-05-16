@@ -64,8 +64,6 @@ const userController = {
     },
 
     friendRequest: function(req, res) {
-        //console.log('Hello')
-        //console.log(req.query.receiver + ' ' + req.session.uName)
 
         var receiver = req.query.receiver;
         var sender = req.session.uName;
@@ -87,8 +85,10 @@ const userController = {
                     if(flag)
                         console.log('Successfully updated ' + resultReceiver.uName);
                     db.updateOne(userCollection, {uName: resultSender.uName}, updateSender, function(flag) {
-                        if(flag)
+                        if(flag) {
                             console.log('Successfully updated ' + resultSender.uName);
+                            res.send(true);
+                        }
                         //res.redirect('/mainpage');
                     });
                 });

@@ -56,20 +56,18 @@ const profileController = {
     },
 
     getProfile: function(req, res) {
-        //query where 
         var query = {uName: req.params.uName};
-        var projection = 'dPicture fName lName uName bio';
-        db.findOne(userCollection, query, projection, function(result) {
-            
+        //var projection = 'dPicture fName lName uName bio';
+        db.findOne(userCollection, query, '', function(result) {
             if(result != null) {
                 res.render('profile',  {
                     title: 'SafeSpace',
-                    css: ['global','personalprofile'], 
+                    css: ['global','personalprofile'],
+                    JSbool: false,
                     details: result,
                     sessionUser: req.session.uName
                 });
             } else {
-                
                 res.status(400);
                 res.render('error', {
                     title: '400 Bad Request',
@@ -77,10 +75,9 @@ const profileController = {
                     status: {
                         code: "400",
                         message: "Bad request"
-            } 
+                    } 
             
-        });
-                
+                });
             }
         });
     },

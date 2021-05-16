@@ -71,8 +71,6 @@ const mainController = {
                 
             });
         }
-
-        
     },
 
 
@@ -100,7 +98,6 @@ const mainController = {
                 
             });
         }
-
     },
 
     // settings page

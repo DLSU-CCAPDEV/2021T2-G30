@@ -1,0 +1,15 @@
+{{>navbar}}
+
+<section class="custom-section">
+    <div class="container d-flex align-items-center justify-content-center" style="min-height: inherit;">
+        <div class="row">
+            <div class="col-12">
+                {{#if query}}
+                    <h1 style="text-align: center; margin-bottom: 0.5em">We're sorry, we couldn't find any results for "{{query}}"</h1>
+                {{else}}
+                    <h1 style="text-align: center; margin-bottom: 0.5em">We're sorry, we couldn't find any results for what you are looking for.</h1>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</section>

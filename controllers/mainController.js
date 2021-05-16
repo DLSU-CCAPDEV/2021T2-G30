@@ -31,11 +31,23 @@ const mainController = {
         if(req.session.uName != null){
             
             db.findMany(entryCollection, {authorUserName: req.session.uName}, '', function(result) {
+                var entries = [];
 
+                for(var indivEntries of result) {
+                    var entry = {
+                        _id: indivEntries._id,
+                        entryTitle: indivEntries.entryTitle,
+                        entryBody: indivEntries.entryBody,
+                        entryDate: indivEntries.entryDate,
+                        significance: indivEntries. significance,
+                        privacy: indivEntries.privacy
+                    };
+                    entries.push(entry);
+                }
                 res.render('mainpage', {
                     title: 'SafeSpace',
                     css: ['global','mainpage'],
-                    entries: result,
+                    entries: entries,
                     sessionUser: req.session.uName
                 });
             }, {entryDate: -1})

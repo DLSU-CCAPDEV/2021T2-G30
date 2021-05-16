@@ -14,19 +14,20 @@ const entryController = {
         var entryDate = new Date(req.body.entryDate);
         var privacy = req.body.privacy;
         var entryImage;
-        
-        if(req.files.length == 0) {
+
+        if(req.files == null) {
             entryImage = null;
         } else {
             entryImage = req.files[0].id;
         }
+
         var entry = {
             _id: mongoose.Types.ObjectId(),
             entryTitle: entryTitle,
             entryBody: entryBody,
             significance: significance,
             authorUserName: authorUserName,
-            entryDate: entryDate.setHours(0, 0, 0),
+            entryDate: entryDate,
             privacy: privacy,
             entryImage: entryImage
         }
@@ -38,10 +39,25 @@ const entryController = {
           }
 
         db.insertOne(entryCollection, entry, function (flag) {
-            db.updateOne(userCollection, {uName: authorUserName}, update, function(flag) {
-                if(flag)
-                    console.log('Successfully updated ' + authorUserName);
-                res.redirect('/mainpage');
+            db.updateOne(userCollection, {uName: authorUserName}, update, function(result) {
+                if(result) {
+                    res.render('partials/entry', {
+                        //entryImage: entry.entryImage,
+                        entryBody: entry.entryBody,
+                        entryDate: entry.entryDate,
+                        entryTitle: entry.entryTitle,
+                        privacy: entry.privacy,
+                        _id: entry._id,
+                        layout: false
+                    }, function(err, rendered) {
+                        if(err) {
+                            console.log(err);
+                        }
+                        else {
+                            res.send(rendered);
+                        }
+                    })
+                } 
             });
         });
     },

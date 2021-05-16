@@ -1,0 +1,141 @@
+<div class="container pt-3">
+    <div class="row">
+      <div class="col-9 mx-auto">
+        <div class="card mb-3 mx-auto" style="padding-right: 0;">
+          <div class="row g-0">
+            {{#if entryImage}}
+              <div class="col-9 custom">
+                <a href="/searchentry/{{_id}}" method="GET" target="_blank">
+                  <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;"> {{entryTitle}} </h5>
+                  <div class="card-body">
+                    <p class="card-text">
+                      {{entryBody}}
+                    </p>
+                  </div>
+                </a> 
+              </div>
+              <div class="col-3">
+                <img src="/image/{{entryImage}}" class="img-fluid" style="height: 169px; width: 246.5px; object-fit: cover;" alt="...">
+              </div>
+            {{else}}
+              <div class="col-12 custom">
+                <a href="/searchentry/{{_id}}" method="GET" target="_blank">
+                  <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;"> {{entryTitle}} </h5>
+                  <div class="card-body">
+                    <p class="card-text">
+                      {{entryBody}}
+                    </p>
+                  </div>
+                </a> 
+              </div>
+            {{/if}}
+              <!-- Entry Footer -->
+            <div class="card-footer">
+              <div class="row">
+                <div class="col mt-1">
+                  <p class="card-text justify-content-center">
+                    <small class="text-muted">
+                      {{{privacy privacy}}}
+                      {{date entryDate}}
+                    </small></p>
+                </div>
+                <!-- Entry Settings -->
+                <div class="col d-flex justify-content-end">
+                  <div class="dropdown dropup" id="{{_id}}">
+                    <button class="btn" type="button" id="dropdownMenuEntry" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="fas fa-ellipsis-h text-end" data-bs-toggle="tooltip"></i>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuEntry">
+                      <li><button class="dropdown-item" type="button" data-bs-toggle="modal"
+                        data-bs-target="#modal-edit-{{_id}}">Edit Entry</button></li>
+                      <li><button class="dropdown-item" type="button" data-bs-toggle="modal"
+                        data-bs-target="#modal-del-{{_id}}">Delete Entry</button></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Edit Entry Modal -->
+    <div class="modal fade editEntry" id="modal-edit-{{_id}}" tabindex="-1" aria-labelledby="createEntryModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" style="width: 50em">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editEntryModalLabel">Edit Entry</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+            <!-- Edit entry -->
+            <form>
+              <div class="mb-3">
+                <label class="visually-hidden" for="autoSizingSelect">New Title</label>
+                <input id="entryTitle-{{_id}}" type="text" class="form-control" value="{{entryTitle}}" aria-label="New Title" maxlength = "50">
+                <div id="emptyTitleEdit-{{_id}}" class="emptyTitleEdit" style="font-size: 8pt; color: red;"></div>
+              </div>
+              <div class="row g-3 mb-4">
+                <div class="col-md-4">
+                  <label for="inputPrivacy" style="font-size: 14px;">Select Privacy</label>
+                  <select id="privacy-{{_id}}" class="form-select">
+                    <option selected value="private">Private</option>
+                    <option value="public">Public</option>
+                  </select>
+                </div>
+                <div class="col-md-4">
+                  <label for="dateEntry" style="font-size: 14px;">Date</label>
+                  <input type="date" class="form-control" id="entryDate-{{_id}}" value="{{defaultDate entryDate}}">
+                  <div id="futureDate" style="font-size: 8pt; color: red;"></div>
+                </div>
+                <div class="col-md-4">
+                  <label for="inputPrivacy" style="font-size: 14px;" >Entry's Significance</label>
+                  <select id="significance-{{_id}}" class="form-select ">
+                    <option selected>None</option>
+                    <option value="5">5</option>
+                    <option value="4">4</option>
+                    <option value="3">3</option>
+                    <option value="2">2</option>
+                    <option value="1">1</option>
+                  </select>
+                </div> 
+              </div>
+              <div class="mb-3">
+                <label class="visually-hidden" for="entryFormControlTextarea1" class="form-label">New Entry</label>
+                <textarea id="entryBody-{{_id}}" class="form-control" id="entryFormControlTextarea1" rows="5" aria-label="entry content">{{entryBody}}</textarea>
+                <div id="emptyBodyEdit-{{_id}}" class="emptyBodyEdit" style="font-size: 8pt; color: red;"></div>
+              </div>
+              {{!-- <div class="mb-3">
+                <div class="row">
+                  <label for="exampleFormControlFile1" style="font-size: 14px;">Insert Image</label>
+                  <input type="file" class="form-control-file" id="entryImage-{{_id}}" accept="image/x-png,image/jpeg" >
+                </div>
+              </div> --}}
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary editBtn" id="{{_id}}" data-bs-dismiss="modal">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Delete Modal -->
+    <div class="modal fade" id="modal-del-{{_id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="deleteEntryModalLabel">Remove Post</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            This option will delete your entry forever. Delete entry?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-dark deleteBtn" data-bs-dismiss="modal" id="{{_id}}">Delete Entry</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

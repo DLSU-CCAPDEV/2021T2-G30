@@ -20,8 +20,6 @@ url = process.env.DB_URL;
 // Database connection
 const db = require('./models/db.js');
 db.connect();
- 
-
 
 //Session template
 app.use(session({

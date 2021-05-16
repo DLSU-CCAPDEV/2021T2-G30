@@ -4,16 +4,23 @@ $(document).ready(function () {
     var formattedDate = today.getFullYear().toString() + '-' + (today.getMonth() + 1).toString().padStart(2, 0) + '-' + today.getDate().toString().padStart(2, 0);
     
     $('#dateEntry').val(formattedDate);
-    
-    $('.deleteBtn').click(function (event) {
+
+    $('#mainSection').on('click', '.deleteBtn', function (event) {
+        var deleteDiv = $(this).parents().eq(4);
+
         $.post('deleteentry', {id: event.target.id}, function(result) {
+        
             if(result) {
-                location.reload();
+                $(deleteDiv).remove();
             }
         });
+        
     });
 
     $('.editBtn').click(function (event) {
+
+        alert('success');
+
         var id = event.target.id;
 
         var entry = {
@@ -42,15 +49,15 @@ $(document).ready(function () {
         else {
             $.post('editentry', entry, function(result) {
                 if(result) {
-                    location.reload();
+                    // location.reload();
+                    $("#mainSection").load(" #mainSection > *");
+                    // FIX EDIT
                 }
             });
         }
     });
 
     $('.editEntry').on("hidden.bs.modal", function () {
-
-        //alert('closed modal');
 
         $('.emptyBodyEdit').text('').css('margin-bottom', '1rem');;
         $('.emptyTitleEdit').text('');
@@ -60,12 +67,24 @@ $(document).ready(function () {
 
     $('#createBtn').click(function () {
 
-        var entryDate = $('#dateEntry').val();
+        var entryDate = $('#dateEntry').val()
         var entryTitle = $('#entryTitleCreate').val();
         var entryBody = $('#entryBodyCreate').val();
-
+        var significance = $('#inputSignificance').val();
+        var privacy = $('#inputPrivacy').val();
+    
+        var entry = {
+            entryDate: entryDate,
+            entryTitle: entryTitle,
+            entryBody: entryBody,
+            significance: significance,
+            privacy: privacy,
+            
+        }
+        
+        
         if(entryTitle === '') {
-            $('#emptyBodyCreate').text('').css('margin-bottom', '1rem');;
+            $('#emptyBodyCreate').text('').css('margin-bottom', '1rem');
             $('#emptyTitleCreate').text('Please enter a title!');
             $('#emptyTitleCreate').css('margin-bottom', '-2em').css('margin-top', '.2em');
         }
@@ -75,16 +94,22 @@ $(document).ready(function () {
             $('#emptyBodyCreate').css('margin-bottom', '-1em').css('margin-top', '.2em');
         }
         else if (entryDate > formattedDate){
+            $('#emptyBodyCreate').text('').css('margin-bottom', '1rem');
+            $('#emptyTitleCreate').text('');
             $('#futureDateOnCreate').text('Entered date is invalid!');
             $('#futureDateOnCreate').css('margin-bottom', '-2em');
         }
-        else 
-            $('#createEntryForm').submit();
+        else {
+            $.post('/createentry', entry, function(result) {
+                $('#entryTitleCreate').val('');
+                $('#entryBodyCreate').val('');
+                $('#createEntryModal').modal('toggle');
+                $('#mainSection').prepend(result);
+            })
+        }
     });
 
     $('#createEntryModal').on("hidden.bs.modal", function () {
-
-        //alert('closed modal');
 
         $('#emptyBodyCreate').text('').css('margin-bottom', '1rem');;
         $('#emptyTitleCreate').text('');

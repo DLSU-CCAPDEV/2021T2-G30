@@ -34,8 +34,8 @@ const mainController = {
     },
 
     getMainPage: function(req, res) {
-        // Checks for login user (VERY IMPORTANT)
-        if(req.session.uName != null){
+        console.log('Your username is ' + req.session.uName)
+        if(req.session.uName){
             
             db.findMany(entryCollection, {authorUserName: req.session.uName}, '', function(result) {
                 var entries = [];
@@ -75,7 +75,7 @@ const mainController = {
 
 
     geteditProfileAccount: function(req,res){
-        console.log("Session: " + req.session.uName);
+        //console.log("Session: " + req.session.uName);
         
         if(req.session.uName) {
             db.findOne(userCollection, {uName: req.session.uName},'',function (result){
@@ -151,12 +151,8 @@ const mainController = {
         var SearchTitle = req.query.SearchTitle; 
         var SessionUName = req.session.uName;
 
-        console.log("Session Username = "+ SessionUName);
-        console.log("Search Title = " + SearchTitle);
         if(SessionUName === SearchTitle){
-            console.log("in");
             db.findMany(userCollection,{uName: SearchTitle},'',function(SessionUser){
-                console.log(SessionUser);
                 db.findMany(entryCollection,{entryTitle: SearchTitle},'',function(result){
                     if(result.length !== 0 || people.length !== 0){
                         //console.log('Search results success');

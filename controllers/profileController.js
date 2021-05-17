@@ -100,20 +100,15 @@ const profileController = {
         var uName = req.query.uName;
         var pw = req.query.pw;
 
-        // console.log("test");
         db.findOne(userCollection, {uName: uName}, 'pw', function (result) {
             if(result === null)
                 res.send(false);
             else {
                 bcrypt.compare(pw, result.pw, function(err, equal) {
-                    console.log("Password: " + pw );
-                    console.log("password in db: " + result.pw);
                     if(equal) {
-                        console.log("equal");
                         res.send(true);
                     }  
                     else {
-                        console.log("not equal");
                         res.send(false);
                     }
                 });  
@@ -121,22 +116,18 @@ const profileController = {
         });
     },
 
-    login: function(req,res){
+    login: function(req, res){
         var uName = req.body.uName;
         var pw = req.body.pw;
 
-        console.log('uName = ' + uName);
-        console.log('pw = ' + pw);
-
         db.findOne(userCollection, {uName: uName}, '', function (result) {
-           console.log(result);
 
            // Bookmark
            req.session.uName = result.uName;
            req.session.pw = result.pw;
-           console.log("logging in password: " + result.pw);
-           res.redirect('/mainpage');  
+           res.redirect('/mainpage');
         });
+        
     },
 
     getLogout: function(req,res){

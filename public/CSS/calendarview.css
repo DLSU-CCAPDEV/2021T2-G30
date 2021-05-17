@@ -1,87 +1,11 @@
+.custom-section {
+  min-height: calc(100vh - 74px);
+}
+
 .container {
   background-color: white;
   border-radius: 15px;
 }
-
-/* i {
-  cursor: pointer;
-}
-
-#calendar {
-  display: grid;
-  width: 100%;
-  grid-template-columns: repeat(7, 1fr);
-}
-
-#calendar tr,
-#calendar tbody {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  width: 100%;
-}
-
-#calendar td {
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  padding: 10px;
-  border: 1px solid #dadce0;
-  text-align: center;
-  min-height: 120px;
-}
-
-#calendar .weeks th {
-  text-align: center;
-  text-transform: uppercase;
-  line-height: 20px;
-  border: none !important;
-  font-size: 13px;
-} */
-
-/* Days with entries have this color */
-/* .entry {
-  background-color: #96bce2;
-}
-
-.date button {
-  color: white;
-}
-
-.date button:hover {
-  cursor: pointer;
-  font-weight: 800;
-  color: white;
-}
-
-.today button {
-  margin: 0;
-  padding: 5px;
-  border-radius: 50%;
-  background: rgb(30, 105, 218);
-  color: white;
-}
-
-.today button:hover {
-  cursor: pointer;
-  font-weight: 800;
-  color: white;
-}
-
-tr td:hover:not(.prev-month):not(.next-month) {
-  cursor: pointer;
-  font-weight: 800;
-}
-
-#calendar .prev-month,
-.next-month {
-  opacity: 0.5;
-}
-
-button::-moz-focus-inner {
-  padding: 0;
-  border: 0;
-} */
 
 .card-text {
   overflow: hidden;
@@ -108,6 +32,44 @@ button::-moz-focus-inner {
   transform: translateY(-5px);
 }
 
+/* FullCalendar library edits */
+
+.fc .fc-toolbar-title {
+  font-size: 3em;
+  margin-bottom: .3em;
+}
+
 .table-bordered>:not(caption)>*>* {
   border-width: 0;
+}
+
+.fc td {
+    vertical-align: top;
+    padding: 0;
+    border-top: 1.3px solid #163172;
+    border-left: 1.3px solid #163172;
+}
+
+.fc th {
+  vertical-align: top;
+  padding: 0;
+  border-top: 1.3px solid #163172;
+  border-bottom: 1.3px solid #163172;
+  border-left: 1.3px solid #163172;
+}
+
+.fc .fc-daygrid-day-top {
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 4px 8px 0 0;
+}
+
+.fc table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 1.03em;
+}
+
+.fc {
+  height: 750px;
 }

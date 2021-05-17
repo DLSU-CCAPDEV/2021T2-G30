@@ -157,13 +157,24 @@ const mainController = {
             console.log("in");
             db.findMany(userCollection,{uName: SearchTitle},'',function(SessionUser){
                 console.log(SessionUser);
-                console.log("rendering");
-                    res.render('searchresults',{
-                        title: 'Search Results',
-                        css: ['global','searchresults'],
-                        SessionUser: SessionUser,
-                        sessionUser: req.session.uName
-                    });
+                db.findMany(entryCollection,{entryTitle: SearchTitle},'',function(result){
+                    if(result.length !== 0 || people.length !== 0){
+                        //console.log('Search results success');
+                        res.render('searchresults',{
+                            title: 'Search Results',
+                            css: ['global','searchresults'],
+                            SessionUser: SessionUser,
+                            entries: result,
+                            sessionUser: req.session.uName
+                        });
+                    } else {
+                        res.render('notfound', {    
+                            title: 'No Results Found',
+                            css: ['global','searchresults'],
+                            query: SearchTitle 
+                        });
+                    }
+                }, {entryDate: -1})
             });
         }
         else{

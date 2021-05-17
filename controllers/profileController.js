@@ -57,28 +57,34 @@ const profileController = {
 
     getProfile: function(req, res) {
         var query = {uName: req.params.uName};
-        //var projection = 'dPicture fName lName uName bio';
+        //var projection = 'dPicture fName lName uName bio friendsList';
         db.findOne(userCollection, query, '', function(result) {
-            if(result != null) {
-                res.render('profile',  {
-                    title: 'SafeSpace',
-                    css: ['global','personalprofile'],
-                    JSbool: false,
-                    details: result,
-                    sessionUser: req.session.uName
-                });
-            } else {
-                res.status(400);
-                res.render('error', {
-                    title: '400 Bad Request',
-                    css:['global', 'error'],
-                    status: {
-                        code: "400",
-                        message: "Bad request"
-                    } 
-            
-                });
-            }
+            db.findOnePopulate(userCollection, query, '', {path: 'friendsList.friendId', model: 'User'}, function(populateResult) {
+                if(populateResult) {
+
+                    //console.log(populateResult.friendsList);
+    
+                    res.render('profile', {
+                        title: 'SafeSpace',
+                        css: ['global', 'personalprofile'],
+                        JSbool: false,
+                        details: result,
+                        friends: populateResult.friendsList,
+                        sessionUser: req.session.uName
+                    });
+    
+                } else {
+                    res.status(400);
+                    res.render('error', {
+                        title: '400 Bad Request',
+                        css:['global', 'error'],
+                        status: {
+                            code: "400",
+                            message: "Bad request"
+                        }
+                    });
+                }
+            });    
         });
     },
     

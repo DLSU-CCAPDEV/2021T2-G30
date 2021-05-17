@@ -24,7 +24,7 @@
                     {{/if}}
                     </div>
                     <div class="col-md-12 col-lg-6 d-flex justify-content-sm-center justify-content-md-center justify-content-lg-start">
-                      <a href="userprofile/{{this.uName}}">
+                      <a href="profile/{{this.uName}}">
                         <div class="card-body name-card-body" >
                           <h5 class="card-title mb-0">{{this.fName}} {{this.lName}}</h5>
                           <p><small class="text-muted">{{this.uName}}</small></p>
@@ -46,8 +46,9 @@
           </div>
         </div>
       {{/if}}
-  <!-- People Container -->
-  <section class="custom-section mt-5">
+    </div>
+
+    <!-- People Container -->
     <div class="container">
       {{#if people}}
         <div class="row">
@@ -91,7 +92,7 @@
           </div>
         </div>
       {{/if}}
-
+      
       {{#if entries}}
         <!-- Entries Container -->
         <div class="row my-4">

@@ -107,3 +107,7 @@ button::-moz-focus-inner {
   -webkit-transform: translateY(-5px);
   transform: translateY(-5px);
 }
+
+.table-bordered>:not(caption)>*>* {
+  border-width: 0;
+}

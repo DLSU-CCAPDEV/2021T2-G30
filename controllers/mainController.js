@@ -34,10 +34,17 @@ const mainController = {
     },
 
     getMainPage: function(req, res) {
-        console.log('Your username is ' + req.session.uName)
+        
         if(req.session.uName){
-            
-            db.findMany(entryCollection, {authorUserName: req.session.uName}, '', function(result) {
+            if(req.session.sortBy === 'date'){
+                var sortMethod = 'date'
+                var sortDB = {entryDate: -1, timePosted: -1};
+            }
+            else if(req.session.sortBy === 'significance') {
+                var sortMethod = 'significance'
+                var sortDB = {significance: -1, entryDate: -1, timePosted: -1};
+            }
+            db.findMany(entryCollection, {authorUserName: req.session.uName}, '', sortDB ,function(result) {
                 var entries = [];
 
                 for(var indivEntries of result) {
@@ -46,7 +53,7 @@ const mainController = {
                         entryTitle: indivEntries.entryTitle,
                         entryBody: indivEntries.entryBody,
                         entryDate: indivEntries.entryDate,
-                        significance: indivEntries. significance,
+                        significance: indivEntries.significance,
                         privacy: indivEntries.privacy,
                         entryImage: indivEntries.entryImage
                     };
@@ -56,6 +63,7 @@ const mainController = {
                     title: 'Safe Space',
                     css: ['global','mainpage'],
                     entries: entries,
+                    sortMethod: sortMethod,
                     sessionUser: req.session.uName
                 });
             })
@@ -74,8 +82,17 @@ const mainController = {
         }
     },
 
+    changeSort: function(req, res) {
 
-    geteditProfileAccount: function(req,res){
+        if(req.session.sortBy === 'date') 
+            req.session.sortBy = 'significance';
+        else if(req.session.sortBy === 'significance') 
+            req.session.sortBy = 'date'
+
+        res.redirect('/mainpage');
+    },
+
+    geteditProfileAccount: function(req, res){
         //console.log("Session: " + req.session.uName);
         
         if(req.session.uName) {

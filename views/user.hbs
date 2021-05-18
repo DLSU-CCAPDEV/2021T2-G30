@@ -1,64 +1,131 @@
 {{> navbar}}
 
 <section class="custom-section">
-      <div class="container d-flex align-items-center justify-content-center" style="min-height: inherit;">
-        <div class="row">
-          <div class="col-12 mx-auto text-center">
-            {{#if details.dPicture}}
-                <img src="/image/{{details.dPicture}}" alt="displayPicture" class="mx-auto btn dropdown-toggle displaypicture text-center" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" title="{{details.uName}} picture">
-            {{else}}
-                 <img src="/Images/defaultdp.jpg" alt="displayPicture" class="mx-auto btn dropdown-toggle displaypicture text-center" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" title="{{details.uName}} picture">
-            {{/if}}
-          </div>
-          <div class="col-12 mx-auto pt-2">
-            <p style="text-align: center; font-size: 30pt; font-weight: 400; margin-bottom: -0.4em;">{{details.fName}} {{details.lName}}</p>
-          </div>
-          <div class="col-12 mx-auto pt-2">
-            <p style="text-align: center; margin-top: .5em;"><small class="text-muted" id="uName">@{{details.uName}}</small></p>
-          </div>
-          <div class="col-10 mx-auto">
-            <hr class="mx-auto" style="margin-top: -0.5em; margin-bottom: 0.3em; border: 1px solid #000000; width: 5em; height: 2px;">
-          </div>    
-          <div class="col-3 mx-auto pt-2" style="width: 28em;">
-            <p style="text-align: center; font-size: 12pt; font-weight: 100; margin-top: -0.4em;">{{details.bio}}</p>
-          </div>
-          <div class="col-12 d-flex justify-content-center" id="statusBtn">
-            {{{status friend}}}
-          </div>
-        </div>
+  <div class="container d-flex align-items-center justify-content-center" style="min-height: inherit;">
+    <div class="row">
+      <div class="col-12 mx-auto text-center">
+        {{#if details.dPicture}}
+            <img src="/image/{{details.dPicture}}" alt="displayPicture" class="mx-auto btn dropdown-toggle displaypicture text-center" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" title="{{details.uName}} picture">
+        {{else}}
+              <img src="/Images/defaultdp.jpg" alt="displayPicture" class="mx-auto btn dropdown-toggle displaypicture text-center" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" title="{{details.uName}} picture">
+        {{/if}}
       </div>
-    </section>
-
-    <!-- Modal -->
-    <div
-      class="modal fade"
-      id="addfriendmodal"
-      tabindex="-1"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Add Friend</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">Friend Request Sent</div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-              id="requestSent"
-            >
-              Close
-            </button>
-          </div>
-        </div>
+      <div class="col-12 mx-auto pt-2">
+        <p style="text-align: center; font-size: 30pt; font-weight: 400; margin-bottom: -0.4em;">{{details.fName}} {{details.lName}}</p>
+      </div>
+      <div class="col-12 mx-auto pt-2">
+        <p style="text-align: center; margin-top: .5em;"><small class="text-muted" id="uName">@{{details.uName}}</small></p>
+      </div>
+      <div class="col-10 mx-auto">
+        <hr class="mx-auto" style="margin-top: -0.5em; margin-bottom: 0.3em; border: 1px solid #000000; width: 5em; height: 2px;">
+      </div>    
+      <div class="col-3 mx-auto pt-2" style="width: 28em;">
+        <p style="text-align: center; font-size: 12pt; font-weight: 100; margin-top: -0.4em;">{{details.bio}}</p>
+      </div>
+      <div class="col-12 d-flex justify-content-center" id="statusBtn">
+        {{{status friendStatus}}}
       </div>
     </div>
+  </div>
+</section>
+
+<section id="statusChange"> 
+  {{#if friend}}
+    <div class="container">
+      <div class="row text-center">
+          <p style="font-size: 24pt; margin-bottom: -.5em;"> Public Entries </p>
+          <div class="col-9 mx-auto">
+          <hr style="border: 1px solid #000000; height: 2px;">
+          </div>
+      </div>
+      {{#if entries}}
+        {{#each entries}}
+          <div class="row">
+            <div class="col-9 mx-auto">
+              <div class="card mb-3 mx-auto" style="padding-right: 0;">
+                <div class="row g-0">
+                  {{#if this.entryImage}}
+                    <div class="col-9 custom">
+                      <a href="/searchentry/{{this._id}}" method="GET">
+                        <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;"> {{this.entryTitle}} </h5>
+                        <div class="card-body" style="overflow: hidden;">
+                          <p class="card-text">
+                            {{this.entryBody}}
+                          </p>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-3">
+                      <img src="/image/{{this.entryImage}}" class="img-fluid" style="height: 169px; width: 246.5px; object-fit: cover;" alt="...">
+                    </div>
+                  {{else}}
+                    <div class="col-12 custom">
+                      <a href="/searchentry/{{this._id}}" method="GET">
+                        <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;"> {{this.entryTitle}} </h5>
+                        <div class="card-body" style="overflow: hidden;">
+                          <p class="card-text">
+                            {{this.entryBody}}
+                          </p>
+                        </div>
+                      </a>
+                    </div>
+                  {{/if}}
+                  <div class="card-footer">
+                    <div class="row">
+                      <div class="col mt-1">
+                        <p class="card-text">
+                          <small class="text-muted">
+                            {{date this.entryDate}}
+                          </small></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {{/each}}
+      {{else}}
+        <div class="container">
+          <div class="row">
+            <p style="text-align: center; margin-top: 1em">{{details.fName}} {{details.lName}} currently does not have any public entries.</p>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  {{/if}}
+</section>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="addfriendmodal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Friend</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">Friend Request Sent</div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+          id="requestSent"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

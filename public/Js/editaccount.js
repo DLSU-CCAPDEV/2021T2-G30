@@ -54,12 +54,14 @@ $(document).ready(function () {
             $('#error').text('Fill up all fields. ')
         }
         else{
+
+            if($('#pw').val)
             var fname = $('#fName').val()
             var lName = $('#lName').val()
             var pw = $('#pw').val();
             var email = $('#email').val();
 
-            $.get('/add',{name: name, refno: refno, amount: amount}, function(result){
+            $.get('/add',{fname: fname, lName: lName, pw: pw , email: email}, function(result){
 
                 $('#cards').append(result);
                 $('#name').val("");
@@ -71,18 +73,5 @@ $(document).ready(function () {
         }
     });
 
-    /*
-    TODO:   The code below attaches a `click` event to `.remove` buttons
-            inside the `<div>` `#cards`.
-            The code deletes the specific transaction associated to the
-            specific `.remove` button, then removes the its parent `<div>` of
-            class `.card`.
-    */
-    $('#cards').on('click', '.remove', function () {
-        
-        var ref = $(this).parent().find('.text:nth-child(2)').text();
-        $(this).parent().remove();
-        $.get('/delete',{refno: ref})
-    });
 
 })

@@ -145,6 +145,7 @@
                     maxlength="150"
                     placeholder="Bio (optional)"
                     aria-label="With textarea"
+                    id="bio"
                     name="bio"
                   ></textarea>
                 </div>
@@ -155,10 +156,12 @@
                     id="PasswordRegister"
                     placeholder="Password"
                     name="pw"
-                    minlength="5"
+                    {{!-- minlength="5"
+                     --}}
                     required
                   />
                 </div>
+                   <div id="pwError" class="ps-1" style="font-size: 8pt; margin-top: -1.2em; color: red;"></div>
                 <div class="modal-footer">
                   <button
                     {{!-- Change to button --}}

@@ -41,8 +41,11 @@ const calendarController = {
                     res.render('partials/calendarentrymodal', {entries: result, layout: false}, function(err, html) {
                         if(err)
                             res.send(false);
-                        else
+                        else {
+                            //console.log(html);
                             res.send(html);
+                        }
+                            
                     });                
                 } else { 
                     res.send("");
@@ -61,11 +64,6 @@ const calendarController = {
                 
             });
         }
-        // var dateInput = req.query.date;
-        // var newdate = new Date(dateInput);
-        // console.log("Date: " + newdate);
-        // console.log(typeof(newdate));
-
     }
 }
 

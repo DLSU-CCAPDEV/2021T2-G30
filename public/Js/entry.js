@@ -48,8 +48,8 @@ $(document).ready(function () {
         }
         else {
 
-            $.post('editentry', entry, function(result) {
-                if(result) {
+            $.post('editentry', entry, function(flag) {
+                if(flag) {
                     //location.reload();
                     $('.modal-backdrop').hide();
                     $('#editEntry').modal('toggle');

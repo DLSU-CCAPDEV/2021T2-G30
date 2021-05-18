@@ -33,7 +33,7 @@ const entryController = {
             entryBody: entryBody,
             significance: significance,
             authorUserName: authorUserName,
-            entryDate: entryDate,
+            entryDate: entryDate.setHours(0, 0, 0),
             privacy: privacy,
             entryImage: entryImage,
             timePosted: timePosted
@@ -48,24 +48,10 @@ const entryController = {
         db.insertOne(entryCollection, entry, function (flag) {
             db.updateOne(userCollection, {uName: authorUserName}, update, function(result) {
                 if(result) {
-                    res.render('partials/entry', {
-                        entryImage: entry.entryImage,
-                        entryBody: entry.entryBody,
-                        entryDate: entry.entryDate,
-                        entryTitle: entry.entryTitle,
-                        privacy: entry.privacy,
-                        _id: entry._id,
-                        layout: false
-                    }, function(err, rendered) {
-                        if(err) {
-                            console.log(err);
-                        }
-                        else {
-                            //console.log(rendered);
-                            res.send(rendered);
-                        }
-                    })
-                } 
+                    res.send(true);
+                }
+                else
+                    res.send(false);
             });
         });
     },
@@ -105,9 +91,10 @@ const entryController = {
         
         db.deleteOne(entryCollection, {_id: id}, function(flag) {
             db.updateOne(userCollection, {uName: req.session.uName}, update, function(flag) {
-                if(flag) 
+                if(flag) {
                     console.log('Successfully updated ' + req.session.uName);
-                res.send(true);
+                    res.send(true);
+                }
             })
         });
     }

@@ -46,16 +46,16 @@
 .fc td {
     vertical-align: top;
     padding: 0;
-    border-top: 1.3px solid #163172;
-    border-left: 1.3px solid #163172;
+    border-top: 1px solid #bacaee;
+    border-left: 1px solid #bacaee;
 }
 
 .fc th {
   vertical-align: top;
   padding: 0;
-  border-top: 1.3px solid #163172;
-  border-bottom: 1.3px solid #163172;
-  border-left: 1.3px solid #163172;
+  border-top: 1px solid #bacaee;
+  border-bottom: 1px solid #bacaee;
+  border-left: 1px solid #bacaee;
 }
 
 .fc .fc-daygrid-day-top {

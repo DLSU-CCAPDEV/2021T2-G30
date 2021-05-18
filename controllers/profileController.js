@@ -124,6 +124,7 @@ const profileController = {
 
            // Bookmark
            req.session.uName = result.uName;
+           console.log(result.uName);
            req.session.pw = result.pw;
            res.redirect('/mainpage');
         });

@@ -19,7 +19,8 @@ router.get('/image/:id', mainController.getPicture); //responsible for getting i
 router.get('/editaccount', mainController.geteditProfileAccount);
 router.get('/searchentry/:_id',mainController.getEntry);
 
-router.get('/checksignup', profileController.checksignup);
+router.get('/checksignup', profileController.checksignup); //checks username
+router.get('/getCheckEmail', profileController.checkemail); //checks email if it already exists
 router.get('/checklogin', profileController.checklogin);
 router.get('/profile/:uName', profileController.getProfile);
 router.get('/logout', profileController.getLogout);

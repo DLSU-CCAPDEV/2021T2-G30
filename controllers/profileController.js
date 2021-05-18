@@ -96,6 +96,14 @@ const profileController = {
         });
     },
 
+    checkemail: function (req, res) {
+        var email = req.query.email;
+
+        db.findOne(userCollection, {email: email}, '', function(result) {
+            res.send(result);
+        });
+    },
+
     checklogin: function (req, res) {
         var uName = req.query.uName;
         var pw = req.query.pw;

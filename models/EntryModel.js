@@ -4,28 +4,25 @@ var mongoose = require('mongoose');
 // defines the schema for collection `users`
 var EntrySchema = new mongoose.Schema({
     entryTitle: {
-         type: String,
-         required: false
+         type: String
     },
     entryBody: {
-        type: String,
-        required: false
+        type: String
     },
     significance: {
-        type: String,
-        required: false
+        type: String
     },
     entryDate: {
-        type: Date,
-        required: false
+        type: Date
+    },
+    timePosted: {
+        type: Number
     },
     authorUserName: {
-        type: String,
-        required: false
+        type: String
     },
     privacy: {
-        type: String,
-        required: false
+        type: String
     },
     entryImage: {
         type: mongoose.Schema.Types.ObjectId, 

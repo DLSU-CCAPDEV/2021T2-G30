@@ -47,9 +47,12 @@ $(document).ready(function () {
             $('#futureDate').css('margin-bottom', '-2em');
         }
         else {
-            $.post('editentry', entry, function(result) {
-                if(result) {
-                    // location.reload();
+
+            $.post('editentry', entry, function(flag) {
+                if(flag) {
+                    //location.reload();
+                    $('.modal-backdrop').hide();
+                    $('#editEntry').modal('toggle');
                     $("#mainSection").load(" #mainSection > *");
                     // FIX EDIT
                 }
@@ -108,7 +111,6 @@ $(document).ready(function () {
             xhttp.onreadystatechange = function() {
                 $('#entryTitleCreate').val('');
                 $('#entryBodyCreate').val('');
-                $('#createEntryModal').modal('toggle');
                 $("#mainSection").load(" #mainSection > *");
               };
 
@@ -120,16 +122,11 @@ $(document).ready(function () {
             formData.append('privacy', $('#inputPrivacy').val())
             formData.append('significance', $('#dateEntry').val())
             formData.append('entryImage', document.getElementById('imageFormControlFile1').files[0])
+            
+            $('#createEntryModal').modal('toggle');
 
             // Ajax call
             xhttp.send(formData);
-
-            // $.post('/createentry', entry, function(result) {
-            //     $('#entryTitleCreate').val('');
-            //     $('#entryBodyCreate').val('');
-            //     $('#createEntryModal').modal('toggle');
-            //     $('#mainSection').prepend(result);
-            // })
         }
     });
 

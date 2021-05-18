@@ -47,7 +47,8 @@ const mainController = {
                         entryBody: indivEntries.entryBody,
                         entryDate: indivEntries.entryDate,
                         significance: indivEntries. significance,
-                        privacy: indivEntries.privacy
+                        privacy: indivEntries.privacy,
+                        entryImage: indivEntries.entryImage
                     };
                     entries.push(entry);
                 }
@@ -57,7 +58,7 @@ const mainController = {
                     entries: entries,
                     sessionUser: req.session.uName
                 });
-            }, {entryDate: -1})
+            })
         }
         else {
             res.status(401);
@@ -152,9 +153,9 @@ const mainController = {
         var SessionUName = req.session.uName;
 
         if(SessionUName === SearchTitle){
-            db.findMany(userCollection,{uName: SearchTitle},'',function(SessionUser){
-                db.findMany(entryCollection,{entryTitle: SearchTitle},'',function(result){
-                    if(result.length !== 0 || people.length !== 0){
+            db.findMany(userCollection, {uName: SearchTitle}, '',function(SessionUser){
+                db.findMany(entryCollection, {entryTitle: SearchTitle, authorUserName: SessionUName}, '',function(result){
+                    if(result.length !== 0 || SessionUser.length !== 0){
                         //console.log('Search results success');
                         res.render('searchresults',{
                             title: 'Search Results',
@@ -175,7 +176,7 @@ const mainController = {
         }
         else{
             db.findMany(userCollection,{uName: SearchTitle},'',function(people){
-                db.findMany(entryCollection,{entryTitle: SearchTitle},'',function(result){
+                db.findMany(entryCollection, {entryTitle: SearchTitle, authorUserName: SessionUName}, '',function(result){
                     if(result.length !== 0 || people.length !== 0){
                         //console.log('Search results success');
                         res.render('searchresults',{
@@ -192,7 +193,6 @@ const mainController = {
                             query: SearchTitle 
                         });
                     }
-
                 }, {entryDate: -1})
             });
         }

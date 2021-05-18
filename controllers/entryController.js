@@ -15,10 +15,15 @@ const entryController = {
         var privacy = req.body.privacy;
         var entryImage;
 
-        if(req.files == null) {
-            entryImage = null;
-        } else {
+        //console.log(req.files);
+
+        // FIX
+        console.log(req.files.id);
+
+        if(req.files) {
             entryImage = req.files[0].id;
+        } else {
+            entryImage = null;
         }
 
         var entry = {
@@ -47,6 +52,7 @@ const entryController = {
                         entryDate: entry.entryDate,
                         entryTitle: entry.entryTitle,
                         privacy: entry.privacy,
+                        entryImage: entry.entryImage,
                         _id: entry._id,
                         layout: false
                     }, function(err, rendered) {
@@ -54,6 +60,7 @@ const entryController = {
                             console.log(err);
                         }
                         else {
+                            //console.log(rendered);
                             res.send(rendered);
                         }
                     })

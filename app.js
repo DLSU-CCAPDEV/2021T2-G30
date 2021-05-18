@@ -26,6 +26,7 @@ app.use(session({
     'secret': 'ccapdev-session',
     'resave': false,
     'saveUninitialized': false,
+    cookie: { secure: !true },
     store: store.create({mongoUrl: url})
 }));
 

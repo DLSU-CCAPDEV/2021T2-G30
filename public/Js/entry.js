@@ -99,12 +99,37 @@ $(document).ready(function () {
             $('#futureDateOnCreate').css('margin-bottom', '-2em');
         }
         else {
-            $.post('/createentry', entry, function(result) {
+
+            var xhttp = new XMLHttpRequest();
+
+            xhttp.open('POST', '/createentry');
+
+            // After Ajax call
+            xhttp.onreadystatechange = function() {
                 $('#entryTitleCreate').val('');
                 $('#entryBodyCreate').val('');
                 $('#createEntryModal').modal('toggle');
-                $('#mainSection').prepend(result);
-            })
+                $("#mainSection").load(" #mainSection > *");
+              };
+
+            // Form data to be passed to ajax call
+            var formData = new FormData();
+            formData.append('entryDate', $('#dateEntry').val())
+            formData.append('entryTitle', $('#entryTitleCreate').val())
+            formData.append('entryBody', $('#entryBodyCreate').val())
+            formData.append('privacy', $('#inputPrivacy').val())
+            formData.append('significance', $('#dateEntry').val())
+            formData.append('entryImage', document.getElementById('imageFormControlFile1').files[0])
+
+            // Ajax call
+            xhttp.send(formData);
+
+            // $.post('/createentry', entry, function(result) {
+            //     $('#entryTitleCreate').val('');
+            //     $('#entryBodyCreate').val('');
+            //     $('#createEntryModal').modal('toggle');
+            //     $('#mainSection').prepend(result);
+            // })
         }
     });
 

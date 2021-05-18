@@ -24,6 +24,7 @@
                       value="{{user.fName}}"
                       required
                     />
+                    <p id="fNameError" class="error">{{fNameError}}</p>
                   </div>
                   <div class="col">
                     <h5>Last Name</h5>
@@ -36,6 +37,7 @@
                       value="{{user.lName}}"
                       required
                     />
+                    <p id="lNameError" class="error">{{lNameError}}</p>
                   </div>
                 </div>
               </div>      
@@ -51,6 +53,7 @@
                   value="{{user.email}}"
                   required
                 />
+                <p id="emailError" class="error">{{pwError}}</p>
               </div>
               <div class="mb-3">
                 <h5>Password</h5>
@@ -63,6 +66,7 @@
                   minlength="5"
                   required
                 />
+                <p id="pwError" class="error">{{pwError}}</p>
               </div>
               <div class="mb-3">
                 <h5>Profile Picture</h5>

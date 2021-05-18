@@ -1,75 +1,120 @@
 $(document).ready(function () {
-    /*
-    TODO:   The code below attaches a `keyup` event to `#refno` text field.
-            The code checks if the current reference number entered by the user
-            in the text field does not exist in the database.
 
-            If the current reference number exists in the database:
-            - `#refno` text field background color turns to red
-            - `#error` displays an error message `Reference number already in
-            the database`
-            - `#submit` is disabled
 
-            else if the current reference number does not exist in the
-            database:
-            - `#refno` text field background color turns back to `#E3E3E3`
-            - `#error` displays no error message
-            - `#submit` is enabled
-    */
-    $('#pw').keyup(function () {
-        var pw = $('#pw').val();
+    function isValidPassword(field) {
 
-        $.get('/getCheckRefNo', {refNo: refNo}, function(result){
-            if(result.refno == refNo){
-                $('#refno').css('background-color','red');
-                $('#error').text('Reference number already in the database');
-                $('#submit').prop('disabled',true);
+        // sets initial value of return variable to false
+        var validPassword = false;
+
+        /*
+            gets the value of `pw` in the signup form
+            removes leading and trailing blank spaces
+            then checks if it contains at least 8 characters.
+        */
+        var password = validator.trim($('#pw').val());
+        var isValidLength = validator.isLength(password, {min: 8});
+
+        // if the value of `pw` contains at least 8 characters
+        if(isValidLength) {
+
+            /*
+                check if the <input> field calling this function
+                is the `pw` <input> field
+            */
+            if(field.is($('#pw')))
+                // remove the error message in `idNumError`
+                $('#pwError').text('');
+
+            /*
+                since  the value of `pw` contains at least 8 characters
+                set the value of the return variable to true.
+            */
+            validPassword = true;
+        }
+
+        // else if the value of `pw` contains less than 8 characters
+        else {
+
+            /*
+                check if the <input> field calling this function
+                is the `pw` <input> field
+            */
+            if(field.is($('#pw')))
+                // display appropriate error message in `pwError`
+                $('#pwError').text(`Passwords should contain at least 8
+                    characters.`);
+        }
+
+        // return value of return variable
+        return validPassword;
+    }
+
+    function isValidEmail (field) {
+        var email = validator.trim($("#email").val());
+        var isValidEmail = validator.isEmail(email);
+
+        if(isValidEmail) {
+            if(field.is($('#email'))) {
+                $.get('/getCheckEmail', {email: email}, function(result) {
+                    if(result.email == email) {
+                        if(field.is($('#email'))) {
+                            $('#uNameDiv').css('margin-top', '10px');
+                            $('#emailError').text('Email is already taken.');
+                        }
+                        return false;
+                    } else {
+                        if(field.is($('#email'))) {
+                            $('#emailError').text('');
+                            $('#uNameDiv').css('margin-top', '30px');
+                        }
+                        return true;
+                    }
+                });
+            }    
+        } else {
+            if(field.is($('#email'))) { 
+                $('#emailError').text('Invalid email entered.');
+                $('#uNameDiv').css('margin-top', '10px');
+                return false;
             }
-            else{
-                $('#refno').css('background-color','#E3E3E3');
-                $('#error').text('');
-                $('#submit').prop('disabled',false);
-            }
-        })
-    });
+        }
 
-    /*
-    TODO:   The code below attaches a `click` event to `#submit` button.
-            The code checks if all text fields are not empty. The code
-            should communicate asynchronously with the server to save
-            the information in the database.
+    }
 
-            If at least one field is empty, the `#error` paragraph displays
-            the error message `Fill up all fields.`
 
-            If there are no errors, the new transaction should be displayed
-            immediately, and without refreshing the page, after the values
-            are saved in the database.
-
-            The name, reference number, and amount fields are reset to empty
-            values.
-    */
     $('#saveChanges').click(function () {
-        if($('#fName').val() === "" && $('#lName').val() === "" && $('#pw').val() === "" && $('#email').val() === ""){
+        var fname = $('#fName').val();
+        var lName = $('#lName').val();
+        var pw = $('#pw').val();
+        var email = $('#email').val();
+        var bio = $('#bio').val();
+        var validPassword = isValidPassword(field);
+        var validEmail = isValidEmail(field);
+
+
+
+        if(fName === "" && lName === "" && pw === "" && email === ""){
             $('#error').text('Fill up all fields. ')
         }
         else{
 
-            if($('#pw').val)
-            var fname = $('#fName').val()
-            var lName = $('#lName').val()
-            var pw = $('#pw').val();
-            var email = $('#email').val();
+            if(validPassword && validEmail){
+                var xhttp = new XMLHttpRequest();
 
-            $.get('/add',{fname: fname, lName: lName, pw: pw , email: email}, function(result){
+                xhttp.open('POST','/editaccount');
 
-                $('#cards').append(result);
-                $('#name').val("");
-                $('#refno').val("");
-                $('#amount').val("");
+                var formData = new FormData();
+                formData.append('fName', fname);
+                formData.append('lName', lName);
+                formData.append('pw', pw);
+                formData.append('email', email);
+                formData.append('bio', bio);
+                formData.append('dPicture', document.getElementById(dPicture).files[0]);
 
-                
-            })
+                xhttp.send(formData);
+            }
+            else if(pw === "" && validEmail)
+
         }
     });
 

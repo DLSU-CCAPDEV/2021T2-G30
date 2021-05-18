@@ -55,5 +55,6 @@ $(document).ready(function () {
 
     function statusChange() {
         $("#statusBtn").load(" #statusBtn > *");
+        $("#statusChange").load(" #statusChange > *");
     };
 });

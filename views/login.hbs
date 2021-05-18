@@ -7,12 +7,7 @@
         
         <h1 class="text-center"> <i class="fas fa-feather-alt" id="newEntry" title="New Entry"></i> Safe Space </h1>
         
-        <!-- <img
-          src="Images/LogoOne.jpg"
-          alt="Logo"
-          style="margin-top: -10px; margin-bottom: -15px; margin-left: 4.5em"
-        /> -->
-
+        
         <!-- Grey line -->
         <hr>
         <div id="error" style="font-size: 10pt; color: red;"></div>
@@ -24,7 +19,7 @@
               id="LoginUsername"
               placeholder="Username"
               name="uName";
-            />
+            >
             <!-- Required ^ -->
           </div>
           <div class="mb-0">
@@ -34,7 +29,7 @@
               id="LoginPassword"
               placeholder="Password"
               name="pw"
-            />
+            >
             <!-- Required ^ -->
           </div>
           <div>
@@ -89,7 +84,7 @@
                       title="Upload display picture"
                       name="dPicture"
                       {{!-- required --}}
-                    />
+                    >
                   </div>
                 </div>
                 <div class="row mb-3">
@@ -102,7 +97,7 @@
                         placeholder="First Name"
                         name="fName"
                         required
-                      />
+                      >
                     </div>
                   </div>
                   <div class="col">
@@ -114,37 +109,44 @@
                         placeholder="Last Name"
                         name="lName"
                         required
-                      />
+                      >
                     </div>
                   </div>
+                </div>
+                <div class="row">
+                  <p id="fNameError" class="ps-3 col h-25" style="font-size: 8pt; margin-top: -1.2em; color: red;"></p>
+                  <p id="lNameError" class="ps-3 col h-25" style="font-size: 8pt; margin-top: -1.2em; color: red;"></p>
+
                 </div>
                 <div class="mb-3">
                   <input
                     type="email"
                     class="form-control p-2"
-                    id="EmailRegister"
+                    id="email"
                     placeholder="Email"
                     name="email"
                     required
-                  />
+                  >
                 </div>
-                <div class="mb-3">
+                <div id="emailError" class="ps-1" style="font-size: 8pt; margin-top: -1.2em; color: red;"></div>
+                <div class="mb-3" style="margin-top: 30px;" id="uNameDiv">
                   <input
                     type="text"
                     class="form-control p-2"
-                    id="UserNameRegister"
+                    id="uName"
                     placeholder="Username"
                     name="uName"
                     required
-                  />
+                  >
                 </div>
-                <div id="errorsignup" class="ps-1" style="font-size: 8pt; margin-top: -1.2em; color: red;"></div>
+                <div id="uNameError" class="ps-1" style="font-size: 8pt; margin-top: -1.2em; color: red;"></div>
                 <div class="mb-3" style="margin-top: 30px;" id="bioDiv">
                   <textarea
                     class="form-control"
                     maxlength="150"
                     placeholder="Bio (optional)"
                     aria-label="With textarea"
+                    id="bio"
                     name="bio"
                   ></textarea>
                 </div>
@@ -152,20 +154,22 @@
                   <input
                     type="password"
                     class="form-control p-2 mb-3"
-                    id="PasswordRegister"
+                    id="pw"
                     placeholder="Password"
                     name="pw"
-                    minlength="5"
+                    {{!-- minlength="5"
+                     --}}
                     required
-                  />
+                  >
                 </div>
+                   <div id="pwError" class="ps-1" style="font-size: 8pt; margin-top: -1.2em; color: red;"></div>
                 <div class="modal-footer">
                   <button
-                    {{!-- Change to button --}}
                     type="submit" 
                     class="btn btn-primary"
                     style="margin-bottom: -0.5rem; margin-right: -0.8rem"
-                    id="btnsubmit"
+                    id="submit"
+                    {{!-- disabled --}}
                   >
                     Create Account
                   </button>

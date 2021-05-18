@@ -1,5 +1,6 @@
 const db = require('../models/db.js');
 const userCollection = require('../models/UserModel.js');
+const entryCollecion = require('../models/EntryModel.js');
 
 const userController = {
 
@@ -41,16 +42,33 @@ const userController = {
                             if(result3 != null) 
                                 friend = 0;
 
+                            if(friend === 2) {
+                                console.log('friends');
+                                db.findMany(entryCollecion, {authorUserName: req.params.uName, privacy: 'public'}, '', function(friendEntries) {
+                                    console.log(friendEntries);
+                                    res.render('user',  {
+                                        title: 'SafeSpace',
+                                        css: ['global', 'mainpage', 'friendprofile'], 
+                                        details: user,
+                                        entries: friendEntries,
+                                        friendStatus: friend,
+                                        friend: true,
+                                        sessionUser: req.session.uName
+                                    });
+                                })
+                            }
+                            else {
+                                res.render('user',  {
+                                    title: 'SafeSpace',
+                                    css: ['global', 'mainpage', 'friendprofile'], 
+                                    details: user,
+                                    friendStatus: friend,
+                                    friend: false,
+                                    sessionUser: req.session.uName
+                                });
+                            }
                             
-                            console.log(friend);
                             
-                            res.render('user',  {
-                                title: 'SafeSpace',
-                                css: ['global','personalprofile'], 
-                                details: user,
-                                friend: friend,
-                                sessionUser: req.session.uName
-                            });
                         });
                     });
                 });

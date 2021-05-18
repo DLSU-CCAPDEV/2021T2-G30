@@ -32,7 +32,7 @@
             <div class="card mb-3 mx-auto" style="padding-right: 0;">
                 <div class="row g-0">
                 <div class="col-9 custom">
-                    <a href="entry1webpage.html" target="_blank">
+                    <a href="/searchentry/{{this._id}}">
                     <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;"> {{this.entryTitle}} </h5>
                     <div class="card-body">
                         <p class="card-text">
@@ -124,12 +124,6 @@
                     <textarea id="entryBody-{{this._id}}" class="form-control" id="entryFormControlTextarea1" rows="5" aria-label="entry content">{{this.entryBody}}</textarea>
                     <div id="emptyBodyEdit-{{this._id}}" class="emptyBodyEdit" style="font-size: 8pt; color: red;"></div>
                     </div>
-                    {{!-- <div class="mb-3">
-                    <div class="row">
-                        <label for="exampleFormControlFile1" style="font-size: 14px;">Insert Image</label>
-                        <input type="file" class="form-control-file" id="entryImage-{{this._id}}" accept="image/x-png,image/jpeg" >
-                    </div>
-                    </div> --}}
                 </form>
                 </div>
                 <div class="modal-footer">

@@ -15,10 +15,16 @@ const entryController = {
         var privacy = req.body.privacy;
         var entryImage;
 
-        if(req.files == null) {
-            entryImage = null;
-        } else {
+        var currDate = new Date();
+        var timePosted = currDate.getHours() * 10000;
+        timePosted = timePosted + (currDate.getMinutes() * 100);
+        timePosted = timePosted + (currDate.getSeconds());
+        console.log(timePosted);
+
+        if(req.files.length > 0) {
             entryImage = req.files[0].id;
+        } else {
+            entryImage = null;
         }
 
         var entry = {
@@ -27,9 +33,10 @@ const entryController = {
             entryBody: entryBody,
             significance: significance,
             authorUserName: authorUserName,
-            entryDate: entryDate,
+            entryDate: entryDate.setHours(0, 0, 0),
             privacy: privacy,
-            entryImage: entryImage
+            entryImage: entryImage,
+            timePosted: timePosted
         }
 
         var update = {
@@ -41,30 +48,17 @@ const entryController = {
         db.insertOne(entryCollection, entry, function (flag) {
             db.updateOne(userCollection, {uName: authorUserName}, update, function(result) {
                 if(result) {
-                    res.render('partials/entry', {
-                        //entryImage: entry.entryImage,
-                        entryBody: entry.entryBody,
-                        entryDate: entry.entryDate,
-                        entryTitle: entry.entryTitle,
-                        privacy: entry.privacy,
-                        _id: entry._id,
-                        layout: false
-                    }, function(err, rendered) {
-                        if(err) {
-                            console.log(err);
-                        }
-                        else {
-                            res.send(rendered);
-                        }
-                    })
-                } 
+                    res.send(true);
+                }
+                else
+                    res.send(false);
             });
         });
     },
 
     editEntry: function(req, res) {
 
-        console.log('edit reached here');
+        //console.log('edit reached here');
 
         var id = req.body.id;
         var entryDate = new Date(req.body.entryDate);
@@ -97,9 +91,10 @@ const entryController = {
         
         db.deleteOne(entryCollection, {_id: id}, function(flag) {
             db.updateOne(userCollection, {uName: req.session.uName}, update, function(flag) {
-                if(flag) 
+                if(flag) {
                     console.log('Successfully updated ' + req.session.uName);
-                res.send(true);
+                    res.send(true);
+                }
             })
         });
     }

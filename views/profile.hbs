@@ -44,24 +44,32 @@
         <hr style="border: 1px solid #000000; height: 2px;">
         </div>
     </div>
-    <div class="row d-flex justify-content-center">
-    {{#each friends}}
-        <div class="col-sm-12 col-xxl-3 mx-2">
-          <a href="/userprofile/{{this.friendId.uName}}">
-            <div class="card mb-3 mx-auto">
-              <div class="row g-0">
-                  <div class="col-7 custom">
-                  <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;">{{this.friendId.uName}}</h5>
-                  </div>
-                  <div class="col-5">
-                  <img src="/image/{{this.friendId.dPicture}}" class="img-fluid" alt="...">
-                  </div>
+    {{#if friends}}
+      <div class="row d-flex justify-content-center">
+      {{#each friends}}
+          <div class="col-sm-12 col-xxl-3 mx-2">
+            <a href="/userprofile/{{this.friendId.uName}}">
+              <div class="card mb-3 mx-auto">
+                <div class="row g-0">
+                    <div class="col-7 custom">
+                    <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;">{{this.friendId.uName}}</h5>
+                    </div>
+                    <div class="col-5">
+                    <img src="/image/{{this.friendId.dPicture}}" class="img-fluid" alt="...">
+                    </div>
+                </div>
               </div>
-            </div>
-          </a>
+            </a>
+          </div>
+      {{/each}}
+      </div>
+    {{else}}
+      <div class="container">
+        <div class="row">
+          <p style="text-align: center;">You currently do not have any friends.</p>
         </div>
-    {{/each}}
-    </div>
+      </div>
+    {{/if}}
   </div>
 </section>
 

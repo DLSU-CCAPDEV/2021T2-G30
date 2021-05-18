@@ -5,7 +5,7 @@
           <div class="row g-0">
             {{#if entryImage}}
               <div class="col-9 custom">
-                <a href="/searchentry/{{_id}}" method="GET" target="_blank">
+                <a href="/searchentry/{{_id}}" method="GET">
                   <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;"> {{entryTitle}} </h5>
                   <div class="card-body">
                     <p class="card-text">
@@ -19,7 +19,7 @@
               </div>
             {{else}}
               <div class="col-12 custom">
-                <a href="/searchentry/{{_id}}" method="GET" target="_blank">
+                <a href="/searchentry/{{_id}}" method="GET">
                   <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;"> {{entryTitle}} </h5>
                   <div class="card-body">
                     <p class="card-text">
@@ -29,7 +29,6 @@
                 </a> 
               </div>
             {{/if}}
-              <!-- Entry Footer -->
             <div class="card-footer">
               <div class="row">
                 <div class="col mt-1">
@@ -106,17 +105,11 @@
                 <textarea id="entryBody-{{_id}}" class="form-control" id="entryFormControlTextarea1" rows="5" aria-label="entry content">{{entryBody}}</textarea>
                 <div id="emptyBodyEdit-{{_id}}" class="emptyBodyEdit" style="font-size: 8pt; color: red;"></div>
               </div>
-              {{!-- <div class="mb-3">
-                <div class="row">
-                  <label for="exampleFormControlFile1" style="font-size: 14px;">Insert Image</label>
-                  <input type="file" class="form-control-file" id="entryImage-{{_id}}" accept="image/x-png,image/jpeg" >
-                </div>
-              </div> --}}
             </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary editBtn" id="{{_id}}" data-bs-dismiss="modal">Save changes</button>
+            <button type="button" class="btn btn-primary editBtn" id="{{_id}}">Save changes</button>
           </div>
         </div>
       </div>

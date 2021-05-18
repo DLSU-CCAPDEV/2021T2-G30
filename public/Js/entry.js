@@ -2,16 +2,13 @@ $(document).ready(function () {
 
     var today = new Date()
     var formattedDate = today.getFullYear().toString() + '-' + (today.getMonth() + 1).toString().padStart(2, 0) + '-' + today.getDate().toString().padStart(2, 0);
-    
     $('#dateEntry').val(formattedDate);
 
     $('#mainSection').on('click', '.deleteBtn', function (event) {
-        var deleteDiv = $(this).parents().eq(4);
-
         $.post('deleteentry', {id: event.target.id}, function(result) {
-        
             if(result) {
-                $(deleteDiv).remove();
+                $("#sortBtn").load(" #sortBtn > *");
+                $("#mainSection").load(" #mainSection > *");
             }
         });
         
@@ -47,14 +44,10 @@ $(document).ready(function () {
             $('#futureDate').css('margin-bottom', '-2em');
         }
         else {
-
             $.post('editentry', entry, function(flag) {
                 if(flag) {
-                    //location.reload();
-                    $('.modal-backdrop').hide();
-                    $('#editEntry').modal('toggle');
+                    $('#modal-edit-' + id).modal('toggle');
                     $("#mainSection").load(" #mainSection > *");
-                    // FIX EDIT
                 }
             });
         }
@@ -111,6 +104,7 @@ $(document).ready(function () {
             xhttp.onreadystatechange = function() {
                 $('#entryTitleCreate').val('');
                 $('#entryBodyCreate').val('');
+                $("#sortBtn").load(" #sortBtn > *");
                 $("#mainSection").load(" #mainSection > *");
               };
 
@@ -120,7 +114,7 @@ $(document).ready(function () {
             formData.append('entryTitle', $('#entryTitleCreate').val())
             formData.append('entryBody', $('#entryBodyCreate').val())
             formData.append('privacy', $('#inputPrivacy').val())
-            formData.append('significance', $('#dateEntry').val())
+            formData.append('significance', $('#inputSignificance').val())
             formData.append('entryImage', document.getElementById('imageFormControlFile1').files[0])
             
             $('#createEntryModal').modal('toggle');

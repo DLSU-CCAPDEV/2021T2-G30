@@ -6,6 +6,58 @@ const helpers = {
             return '<i class="fas fa-lock mx-1 privacy-lock" data-bs-toggle="tooltip" title="Private Entry"></i>';
     },
 
+    significance: function(significance) {
+        if(significance === 'None'){
+            return null;
+        }
+        else if(significance === '1') {
+            return '<i class="fas fa-circle fa-xs"></i> <i class="far fa-circle fa-xs"></i> <i class="far fa-circle fa-xs"></i> <i class="far fa-circle fa-xs"></i> <i class="far fa-circle fa-xs"></i>'
+        }
+        else if(significance === '2') {
+            return '<i class="fas fa-circle fa-xs"></i> <i class="fas fa-circle fa-xs"></i> <i class="far fa-circle fa-xs"></i> <i class="far fa-circle fa-xs"></i> <i class="far fa-circle fa-xs"></i>'
+        }
+        else if(significance === '3') {
+            return '<i class="fas fa-circle fa-xs"></i> <i class="fas fa-circle fa-xs"></i> <i class="fas fa-circle fa-xs"></i> <i class="far fa-circle fa-xs"></i> <i class="far fa-circle fa-xs"></i>'
+        }
+        else if(significance === '4') {
+            return '<i class="fas fa-circle fa-xs"></i> <i class="fas fa-circle fa-xs"></i> <i class="fas fa-circle fa-xs"></i> <i class="fas fa-circle fa-xs"></i> <i class="far fa-circle fa-xs"></i>'
+        }
+        else if(significance === '5') {
+            return '<i class="fas fa-circle fa-xs"></i> <i class="fas fa-circle fa-xs"></i> <i class="fas fa-circle fa-xs"></i> <i class="fas fa-circle fa-xs"></i> <i class="fas fa-circle fa-xs"></i>'
+        }
+    },
+
+    significanceEdit: function(significance) {
+        if(significance === 'None'){
+            return '<option selected>None</option> <option value="5">5</option> <option value="4">4</option> <option value="3">3</option> <option value="2">2</option> <option value="1">1</option>'
+        }
+        else if(significance === '1') {
+            return '<option>None</option> <option value="5">5</option> <option value="4">4</option> <option value="3">3</option> <option value="2">2</option> <option value="1" selected>1</option>'
+        }
+        else if(significance === '2') {
+            return '<option>None</option> <option value="5">5</option> <option value="4">4</option> <option value="3">3</option> <option value="2" selected>2</option> <option value="1">1</option>'
+        }
+        else if(significance === '3') {
+            return '<option>None</option> <option value="5">5</option> <option value="4">4</option> <option value="3" selected>3</option> <option value="2">2</option> <option value="1">1</option>'
+        }
+        else if(significance === '4') {
+            return '<option>None</option> <option value="5">5</option> <option value="4" selected>4</option> <option value="3">3</option> <option value="2">2</option> <option value="1">1</option>'
+        }
+        else if(significance === '5') {
+            return '<option>None</option> <option value="5" selected>5</option> <option value="4">4</option> <option value="3">3</option> <option value="2">2</option> <option value="1">1</option>'
+        }
+    },
+
+    privacyEdit: function(privacy) {
+        if(privacy === 'private'){
+            return '<option selected value="private">Private</option> <option value="public">Public</option>'
+        }
+        else if(privacy === 'public') {
+            return '<option value="private">Private</option> <option selected value="public">Public</option>'
+        }
+    },
+
+
     date: function(date) {
         const monthNames = ["January", "February", "March", "April", "May", "June",
                             "July", "August", "September", "October", "November", "December"];

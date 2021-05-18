@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
             $.get('/getEntries', {date: dateClicked}, function(result) {
                 document.querySelector('.modal-title').innerHTML = dateString;
                 if(result) {
+                    //console.log(result);
                     $('#entryfield').append(result);
                     $('#dateEntry').modal("show");
                     

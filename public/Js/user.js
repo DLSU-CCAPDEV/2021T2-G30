@@ -7,10 +7,7 @@ $(document).ready(function () {
     // add
     $(document).on('click', '#addFriend', function() {
         var receiver = $('#uName').text().substring(1);
-        $.get('/friendRequest', {receiver: receiver}, function(result) {
-            // if(result)
-            //     //statusChange();
-        })
+        $.get('/friendRequest', {receiver: receiver}, function(result) {})
     });
 
     // cancel

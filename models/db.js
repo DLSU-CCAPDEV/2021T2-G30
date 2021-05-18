@@ -102,6 +102,16 @@ const database = {
         });
     },
 
+    findOnePopulate: function(model, query, projection, path, callback) {
+        model.findOne(query, projection).populate(path).lean().exec(function(err, result) {
+            if(err) {
+                console.log(err);
+                return callback(null);
+            }
+            return callback(result);
+        });
+    },
+
     /*
         searches for multiple documents based on the model `model`
         filtered through the object `query`

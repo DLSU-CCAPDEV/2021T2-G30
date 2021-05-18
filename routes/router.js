@@ -23,9 +23,11 @@ router.get('/checksignup', profileController.checksignup);
 router.get('/checklogin', profileController.checklogin);
 router.get('/profile/:uName', profileController.getProfile);
 router.get('/logout', profileController.getLogout);
-router.get('/userprofile/:uName', userController.getUserProfile);
+
 router.get('/calendar', calendarController.getCalendar); //calendar update
 router.get('/getEntries', calendarController.getDesiredEntries); //calendar update
+
+router.get('/userprofile/:uName', userController.getUserProfile);
 router.get('/friendRequest', userController.friendRequest);
 router.get('/pendingRequest', userController.pendingRequest);
 router.get('/acceptRequest', userController.acceptRequest);

@@ -34,8 +34,8 @@ const mainController = {
     },
 
     getMainPage: function(req, res) {
-        // Checks for login user (VERY IMPORTANT)
-        if(req.session.uName != null){
+        console.log('Your username is ' + req.session.uName)
+        if(req.session.uName){
             
             db.findMany(entryCollection, {authorUserName: req.session.uName}, '', function(result) {
                 var entries = [];
@@ -71,13 +71,11 @@ const mainController = {
                 
             });
         }
-
-        
     },
 
 
     geteditProfileAccount: function(req,res){
-        console.log("Session: " + req.session.uName);
+        //console.log("Session: " + req.session.uName);
         
         if(req.session.uName) {
             db.findOne(userCollection, {uName: req.session.uName},'',function (result){
@@ -100,7 +98,6 @@ const mainController = {
                 
             });
         }
-
     },
 
     // settings page
@@ -151,35 +148,62 @@ const mainController = {
 
     getSearch: function(req,res){
         // console.log('im in');
-        var SearchTitle;
+        var SearchTitle = req.query.SearchTitle; 
+        var SessionUName = req.session.uName;
 
+        if(SessionUName === SearchTitle){
+            db.findMany(userCollection,{uName: SearchTitle},'',function(SessionUser){
+                db.findMany(entryCollection,{entryTitle: SearchTitle},'',function(result){
+                    if(result.length !== 0 || people.length !== 0){
+                        //console.log('Search results success');
+                        res.render('searchresults',{
+                            title: 'Search Results',
+                            css: ['global','searchresults'],
+                            SessionUser: SessionUser,
+                            entries: result,
+                            sessionUser: req.session.uName
+                        });
+                    } else {
+                        res.render('notfound', {    
+                            title: 'No Results Found',
+                            css: ['global','searchresults'],
+                            query: SearchTitle 
+                        });
+                    }
+                }, {entryDate: -1})
+            });
+        }
+        else{
+            db.findMany(userCollection,{uName: SearchTitle},'',function(people){
+                db.findMany(entryCollection,{entryTitle: SearchTitle},'',function(result){
+                    if(result.length !== 0 || people.length !== 0){
+                        //console.log('Search results success');
+                        res.render('searchresults',{
+                            title: 'Search Results',
+                            css: ['global','searchresults'],
+                            people: people,
+                            entries: result,
+                            sessionUser: req.session.uName
+                        });
+                    } else {
+                        res.render('notfound', {    
+                            title: 'No Results Found',
+                            css: ['global','searchresults'],
+                            query: SearchTitle 
+                        });
+                    }
+
+                }, {entryDate: -1})
+            });
+        }
+        /*
         if(req.query.SearchTitle != req.session.uName)
             SearchTitle = req.query.SearchTitle;
         else
             SearchTitle = "";
+        */
         // console.log(SearchTitle);
 
-        db.findMany(userCollection,{uName: SearchTitle},'',function(people){
-            db.findMany(entryCollection,{entryTitle: SearchTitle},'',function(result){
-                if(result.length !== 0 || people.length !== 0){
-                    //console.log('Search results success');
-                    res.render('searchresults',{
-                        title: 'Search Results',
-                        css: ['global','searchresults'],
-                        people: people,
-                        entries: result,
-                        sessionUser: req.session.uName
-                    });
-                } else {
-                    res.render('notfound', {    
-                        title: 'No Results Found',
-                        css: ['global','searchresults'],
-                        query: SearchTitle 
-                    });
-                }
-
-            }, {entryDate: -1})
-        });
     },
 
     getEntry: function(req,res){

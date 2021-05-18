@@ -1,7 +1,54 @@
 {{> navbar}}
 
 
+  <!-- Session User Container -->
   <section class="custom-section mt-5">
+    <div class="container">
+      {{#if SessionUser}}
+        <div class="row">
+          <div class="col-7 mx-auto">
+            <div class="card">
+              <div class="card-body">
+                <h3 class="card-title mx-1 mb-2">People</h3>
+                
+                {{#each SessionUser}}
+                <hr>
+                <!-- Dummy data 1 -->
+                <div class="card mt-3">
+                  <div class="row d-flex align-items-center justify-content-center">
+                    <div class="col-md-12 col-lg-2 d-flex align-items-center justify-content-center">
+                    {{#if this.dPicture}}
+                      <img src="/image/{{this.dPicture}}" class="img-fluid profile-pic img" alt="..."/>
+                    {{else}}
+                      <img src="/Images/defaultdp.jpg" alt="displayPicture" class="img-fluid profile-pic img" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" title="{{details.uName}} picture">
+                    {{/if}}
+                    </div>
+                    <div class="col-md-12 col-lg-6 d-flex justify-content-sm-center justify-content-md-center justify-content-lg-start">
+                      <a href="profile/{{this.uName}}">
+                        <div class="card-body name-card-body" >
+                          <h5 class="card-title mb-0">{{this.fName}} {{this.lName}}</h5>
+                          <p><small class="text-muted">{{this.uName}}</small></p>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-md-12 col-lg-4 d-flex justify-content-sm-center justify-content-md-center justify-content-lg-end">
+                      <a
+                        href="profile/{{this.uName}}"
+                        class="btn btn-primary"
+                        >Visit Profile</a
+                      >
+                    </div>
+                  </div>
+                </div>
+                {{/each}}
+              </div>
+            </div>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+
+    <!-- People Container -->
     <div class="container">
       {{#if people}}
         <div class="row">
@@ -45,7 +92,7 @@
           </div>
         </div>
       {{/if}}
-
+      
       {{#if entries}}
         <!-- Entries Container -->
         <div class="row my-4">

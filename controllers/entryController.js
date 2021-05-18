@@ -15,12 +15,13 @@ const entryController = {
         var privacy = req.body.privacy;
         var entryImage;
 
-        //console.log(req.files);
+        var currDate = new Date();
+        var timePosted = currDate.getHours() * 10000;
+        timePosted = timePosted + (currDate.getMinutes() * 100);
+        timePosted = timePosted + (currDate.getSeconds());
+        console.log(timePosted);
 
-        // FIX
-        console.log(req.files.id);
-
-        if(req.files) {
+        if(req.files.length > 0) {
             entryImage = req.files[0].id;
         } else {
             entryImage = null;
@@ -34,7 +35,8 @@ const entryController = {
             authorUserName: authorUserName,
             entryDate: entryDate,
             privacy: privacy,
-            entryImage: entryImage
+            entryImage: entryImage,
+            timePosted: timePosted
         }
 
         var update = {
@@ -47,12 +49,11 @@ const entryController = {
             db.updateOne(userCollection, {uName: authorUserName}, update, function(result) {
                 if(result) {
                     res.render('partials/entry', {
-                        //entryImage: entry.entryImage,
+                        entryImage: entry.entryImage,
                         entryBody: entry.entryBody,
                         entryDate: entry.entryDate,
                         entryTitle: entry.entryTitle,
                         privacy: entry.privacy,
-                        entryImage: entry.entryImage,
                         _id: entry._id,
                         layout: false
                     }, function(err, rendered) {
@@ -71,7 +72,7 @@ const entryController = {
 
     editEntry: function(req, res) {
 
-        console.log('edit reached here');
+        //console.log('edit reached here');
 
         var id = req.body.id;
         var entryDate = new Date(req.body.entryDate);

@@ -47,7 +47,8 @@ const mainController = {
                         entryBody: indivEntries.entryBody,
                         entryDate: indivEntries.entryDate,
                         significance: indivEntries. significance,
-                        privacy: indivEntries.privacy
+                        privacy: indivEntries.privacy,
+                        entryImage: indivEntries.entryImage
                     };
                     entries.push(entry);
                 }
@@ -57,7 +58,7 @@ const mainController = {
                     entries: entries,
                     sessionUser: req.session.uName
                 });
-            }, {entryDate: -1})
+            })
         }
         else {
             res.status(401);

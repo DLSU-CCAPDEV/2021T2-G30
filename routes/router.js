@@ -22,6 +22,7 @@ router.get('/changeSort', mainController.changeSort);
 
 router.get('/checksignup', profileController.checksignup); //checks username
 router.get('/getCheckEmail', profileController.checkemail); //checks email if it already exists
+router.get('/getEditEmail', profileController.editCheckEmail);
 router.get('/checklogin', profileController.checklogin);
 router.get('/profile/:uName', profileController.getProfile);
 router.get('/logout', profileController.getLogout);

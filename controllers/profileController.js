@@ -131,8 +131,8 @@ const profileController = {
         db.findOne(userCollection, {uName: uName}, '', function (result) {
 
            // Bookmark
+           req.session.sortBy = 'date';
            req.session.uName = result.uName;
-           console.log(result.uName);
            req.session.pw = result.pw;
            res.redirect('/mainpage');
         });

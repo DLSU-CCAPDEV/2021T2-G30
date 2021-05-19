@@ -27,6 +27,11 @@ const entryController = {
             entryImage = null;
         }
 
+        if(significance === 'None')
+            significance = '/' + significance;
+
+        console.log(significance);
+
         var entry = {
             _id: mongoose.Types.ObjectId(),
             entryTitle: entryTitle,

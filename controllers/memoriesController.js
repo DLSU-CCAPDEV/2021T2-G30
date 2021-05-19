@@ -16,7 +16,7 @@ const memoriesController = {
             }
 
             //find all entries from last year
-            db.findMany(entryCollection, query, '', function(result) {
+            db.findMany(entryCollection, query, '', {timePosted: -1}, function(result) {
                 res.render('memories', {
                     title: 'SafeSpace',
                     css: ['global','mainpage'],

@@ -44,8 +44,12 @@
               >
                 Sign up here!
               </button>
+               {{#if errorCreds}}
+                <p id="errorCreds" class="h-25" style="font-size: 10pt; margin-top: -2em; color: red;">You entered invalid credentials. Try again</p>
+              {{/if}}
             </p>
           </div>
+         
           <button type="button" id="loginBtn" class="btn btn-custom mb-1 w-100 mt-0">
             Log In
           </button>
@@ -114,9 +118,8 @@
                   </div>
                 </div>
                 <div class="row">
-                  <p id="fNameError" class="ps-3 col h-25" style="font-size: 8pt; margin-top: -1.2em; color: red;"></p>
-                  <p id="lNameError" class="ps-3 col h-25" style="font-size: 8pt; margin-top: -1.2em; color: red;"></p>
-
+                  <p id="fNameError" class="ps-3 col h-25" style="font-size: 8pt; margin-top: -1.2em; color: red;">{{fNameError}}</p>
+                  <p id="lNameError" class="ps-3 col h-25" style="font-size: 8pt; margin-top: -1.2em; color: red;">{{lNameError}}</p>
                 </div>
                 <div class="mb-3">
                   <input
@@ -128,7 +131,7 @@
                     required
                   >
                 </div>
-                <div id="emailError" class="ps-1" style="font-size: 8pt; margin-top: -1.2em; color: red;"></div>
+                <p id="emailError" class="ps-1" style="font-size: 8pt; margin-top: -1.2em; color: red;">{{emailError}}</p>
                 <div class="mb-3" style="margin-top: 30px;" id="uNameDiv">
                   <input
                     type="text"
@@ -136,10 +139,11 @@
                     id="uName"
                     placeholder="Username"
                     name="uName"
+                    minlength="6"
                     required
                   >
                 </div>
-                <div id="uNameError" class="ps-1" style="font-size: 8pt; margin-top: -1.2em; color: red;"></div>
+                <p id="uNameError" class="ps-1" style="font-size: 8pt; margin-top: -1.2em; color: red;">{{uNameError}}</p>
                 <div class="mb-3" style="margin-top: 30px;" id="bioDiv">
                   <textarea
                     class="form-control"
@@ -157,12 +161,12 @@
                     id="pw"
                     placeholder="Password"
                     name="pw"
-                    {{!-- minlength="5"
-                     --}}
+                    minlength="8"
+                    
                     required
                   >
                 </div>
-                   <div id="pwError" class="ps-1" style="font-size: 8pt; margin-top: -1.2em; color: red;"></div>
+                   <p id="pwError" class="ps-1" style="font-size: 8pt; margin-top: -1.2em; color: red;">{{pwError}}</p>
                 <div class="modal-footer">
                   <button
                     type="submit" 

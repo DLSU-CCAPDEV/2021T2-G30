@@ -2,6 +2,8 @@ const db = require('../models/db.js');
 const userCollection = require('../models/UserModel.js');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
+const {validationResult} = require('express-validator');
+
 
 const profileController = {
 
@@ -21,38 +23,81 @@ const profileController = {
         var bio = req.body.bio;
         var pw = req.body.pw;
 
-        // console.log(dPicture);
-        bcrypt.hash(pw, saltRounds, function(err, hash) {
-            var indivUser = {
-                dPicture: dPicture,
-                fName: fName,
-                lName: lName,
-                email: email,
-                uName: uName,
-                bio: bio,
-                pw: hash
-            }
-    
-            db.insertOne(userCollection, indivUser, function (flag) {
-                if(flag) {
-                    res.redirect('/login');
-                }
-                else { 
-                    res.status(500);
-                    res.render('error', {
-                        title: '500  Internal Server Error',
-                        css:['global', 'error'],
-                        status: {
-                            code: "500",
-                            message: "Something unexpected happened."
-                        }  
-                    });   
-                }
-                    
-            });
-        });
+        var errors = validationResult(req);
         
+        //If there are validation errors
+        if (!errors.isEmpty) {
+            errors = errors.errors;
+            
+             /*
+                for each error, store the error inside the object `details`
+                the field is equal to the parameter + `Error`
+                the value is equal to `msg` as defined in the validation middlewares
 
+                for example, if there is an error for parameter `fName`:
+                store the value to the field `fNameError`
+            */
+            var details = {};
+            for(var i = 0; i < errors.length; i++) {
+                details[errors[i].param + "Error"] = errors[i].msg;
+            }
+            res.render('login', {
+                title: 'Login',
+                css: ['global'],
+                errDetails: details
+            });
+
+        } else {
+            
+            //check if email is already taken
+            var query = {email: email};
+            var projection = 'email';
+            console.log("email being queried: " + email);
+            db.findOne(userCollection, query, projection, function(userEmail){
+                
+                // If email is unique
+                if(userEmail == null) {
+                    console.log(email + " != " + userEmail);
+                    console.log("Email is unique"); 
+                    bcrypt.hash(pw, saltRounds, function(err, hash) {
+                        var indivUser = {
+                            dPicture: dPicture,
+                            fName: fName,
+                            lName: lName,
+                            email: email,
+                            uName: uName,
+                            bio: bio,
+                            pw: hash
+                        }
+                
+                        db.insertOne(userCollection, indivUser, function (flag) {
+                            if(flag) {
+                                res.redirect('/login');
+                            }
+                            else { 
+                                res.status(500);
+                                res.render('error', {
+                                    title: '500  Internal Server Error',
+                                    css:['global', 'error'],
+                                    status: {
+                                        code: "500",
+                                        message: "Something unexpected happened."
+                                    }  
+                                });   
+                            }    
+                        });
+                    });
+
+                } else {
+                    console.log("Invalid email!!!!");
+                    res.render('login', {
+                        title: 'Login',
+                        css: ['global'],
+                        emailError: "Email is already taken."
+                    });
+                }
+            });
+        }
     },
 
     getProfile: function(req, res) {

@@ -7,6 +7,7 @@ const userController = require('../controllers/userController.js');
 const memoriesController = require('../controllers/memoriesController');
 const calendarController = require('../controllers/calendarController');
 const db = require('../models/db.js');
+const validation = require('../helpers/validation.js');
 
 
 // GET
@@ -38,7 +39,7 @@ router.get('/removeFriend', userController.unfriend);
 router.get('/memories', memoriesController.getMemories); //memories feature
 
 //POST // Creation
-router.post('/signup', db.upload.any(), profileController.signup);
+router.post('/signup', [db.upload.any(), validation.signupValidation()], profileController.signup);
 router.post('/editaccount', db.upload.any(),profileController.editAccount);
 router.post('/login', profileController.login);
 

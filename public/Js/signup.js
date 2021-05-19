@@ -65,8 +65,10 @@ $(document).ready(function () {
 
     function isValidUsername(field, callback) {
         var username = validator.trim($('#uName').val());
-        var isNotValid = hasWhiteSpace(username);
+        var lowerCasedUname = username.toLowerCase();
+        var isNotValid = hasWhiteSpace(lowerCasedUname);
 
+        
         // If username has whitespace in between the letters
         if (isNotValid) {
             if(field.is($('#uName'))) {
@@ -78,8 +80,8 @@ $(document).ready(function () {
         }  else {
             if(field.is($('#uName'))) {
                 $('#uNameError').text('');
-                $.get('/checksignup', {uName: username}, function (result) {
-                    if(result.uName == username) {
+                $.get('/checksignup', {uName: lowerCasedUname}, function (result) {
+                    if(result.uName == lowerCasedUname) {
                         if(field.is($('#uName'))) {
                             $('#bioDiv').css('margin-top', '10px');
                             $('#uNameError').text('Username is already taken.');
@@ -130,29 +132,46 @@ $(document).ready(function () {
         if(empty) {
             field.prop('value', '');
             error.text(fieldName + ' should not be empty.');
+            $('#submit').attr('disabled', true);
+
         } else {
             error.text(''); // remove the error message 
+            var validPassword = isValidPassword(field);
+            var filled = isFilled();
+    
+            // If email field is triggered check if values are true to enable submit button
+            isValidEmail(field, function(validEmail) {
+                isValidemail = validEmail;
+                if(filled && validPassword && isValidusername && isValidemail) {
+                    $('#submit').attr('disabled', false);
+                }
+                else {
+                    $('#submit').attr('disabled', true);
+                }
+            });
+            
+            // If username field is triggered check if values are true to enable submit button
+            isValidUsername(field, function (validUsername) {
+                isValidusername = validUsername;
+                if(filled && validPassword && isValidusername && isValidemail) {
+                    $('#submit').attr('disabled', false);
+                }
+                else {
+                    $('#submit').attr('disabled', true);
+                }
+            }); 
+            
+            // If other fields are triggered check if values are true to enable submit button 
+            if(filled && validPassword && isValidusername && isValidemail) {
+                $('#submit').attr('disabled', false);
+            }
+            else {
+                $('#submit').attr('disabled', true);
+            }
+            
         }
 
         
-        var validPassword = isValidPassword(field);
-        var filled = isFilled();
-
-        isValidEmail(field, function(validEmail) {
-            isValidemail = validEmail;
-        });
-        
-        isValidUsername(field, function (validUsername) {
-            isValidusername = validUsername;
-        }); 
-
-        //Check 
-        if(filled && validPassword && isValidusername && isValidemail) {
-            $('#submit').attr('disabled', false);
-        }
-        else {
-            $('#submit').attr('disabled', true);
-        }
     }
     
     $('#FirstName').keyup(function () {

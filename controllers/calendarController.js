@@ -36,7 +36,7 @@ const calendarController = {
                 entryDate: {$eq: newdate}
             }
             //get all the entries from that specific date
-            db.findMany(entryCollection, query, '', function(result) {
+            db.findMany(entryCollection, query, '', {timePosted: -1}, function(result) {
                 if(result.length !== 0) {
                     res.render('partials/calendarentrymodal', {entries: result, layout: false}, function(err, html) {
                         if(err)

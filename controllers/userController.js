@@ -44,7 +44,7 @@ const userController = {
 
                             if(friend === 2) {
                                 console.log('friends');
-                                db.findMany(entryCollecion, {authorUserName: req.params.uName, privacy: 'public'}, '', function(friendEntries) {
+                                db.findMany(entryCollecion, {authorUserName: req.params.uName, privacy: 'public'}, '', {entryDate: -1}, function(friendEntries) {
                                     console.log(friendEntries);
                                     res.render('user',  {
                                         title: 'SafeSpace',

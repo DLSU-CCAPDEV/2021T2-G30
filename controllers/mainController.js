@@ -87,9 +87,9 @@ const mainController = {
         if(req.session.sortBy === 'date') 
             req.session.sortBy = 'significance';
         else if(req.session.sortBy === 'significance') 
-            req.session.sortBy = 'date'
+            req.session.sortBy = 'date';
 
-        res.redirect('/mainpage');
+        res.send(true);
     },
 
     geteditProfileAccount: function(req, res){
@@ -170,8 +170,8 @@ const mainController = {
         var SessionUName = req.session.uName;
 
         if(SessionUName === SearchTitle){
-            db.findMany(userCollection, {uName: SearchTitle}, '',function(SessionUser){
-                db.findMany(entryCollection, {entryTitle: SearchTitle, authorUserName: SessionUName}, '',function(result){
+            db.findMany(userCollection, {uName: SearchTitle}, '', {uName: -1}, function(SessionUser){
+                db.findMany(entryCollection, {entryTitle: SearchTitle, authorUserName: SessionUName}, '', {entryDate: -1}, function(result){
                     if(result.length !== 0 || SessionUser.length !== 0){
                         //console.log('Search results success');
                         res.render('searchresults',{
@@ -192,8 +192,8 @@ const mainController = {
             });
         }
         else{
-            db.findMany(userCollection,{uName: SearchTitle},'',function(people){
-                db.findMany(entryCollection, {entryTitle: SearchTitle, authorUserName: SessionUName}, '',function(result){
+            db.findMany(userCollection,{uName: SearchTitle},'', {uName: -1}, function(people){
+                db.findMany(entryCollection, {entryTitle: SearchTitle, authorUserName: SessionUName}, '', {entryDate: -1}, function(result){
                     if(result.length !== 0 || people.length !== 0){
                         //console.log('Search results success');
                         res.render('searchresults',{

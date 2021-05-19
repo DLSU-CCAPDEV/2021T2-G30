@@ -1,88 +1,176 @@
 $(document).ready(function () {
-    /*
-    TODO:   The code below attaches a `keyup` event to `#refno` text field.
-            The code checks if the current reference number entered by the user
-            in the text field does not exist in the database.
+    var isValidemail = false;
 
-            If the current reference number exists in the database:
-            - `#refno` text field background color turns to red
-            - `#error` displays an error message `Reference number already in
-            the database`
-            - `#submit` is disabled
 
-            else if the current reference number does not exist in the
-            database:
-            - `#refno` text field background color turns back to `#E3E3E3`
-            - `#error` displays no error message
-            - `#submit` is enabled
-    */
-    $('#pw').keyup(function () {
-        var pw = $('#pw').val();
+    function isValidPassword(field) {
 
-        $.get('/getCheckRefNo', {refNo: refNo}, function(result){
-            if(result.refno == refNo){
-                $('#refno').css('background-color','red');
-                $('#error').text('Reference number already in the database');
-                $('#submit').prop('disabled',true);
+        // sets initial value of return variable to false
+        var validPassword = false;
+
+        /*
+            gets the value of `pw` in the signup form
+            removes leading and trailing blank spaces
+            then checks if it contains at least 8 characters.
+        */
+        var password = validator.trim($('#PasswordEdit').val());
+        var isValidLength = validator.isLength(password, {min: 8});
+
+        // if the value of `pw` contains at least 8 characters
+        if(isValidLength) {
+
+            /*
+                check if the <input> field calling this function
+                is the `pw` <input> field
+            */
+            if(field !== $('#ReenterPasswordEdit').val()){
+                // remove the error message in `idNumError`
+                $('#pwError').text('Password entries do not match');
             }
             else{
-                $('#refno').css('background-color','#E3E3E3');
-                $('#error').text('');
-                $('#submit').prop('disabled',false);
+                $('#pwError').text('');
+                validPassword = true;
             }
-        })
-    });
-
-    /*
-    TODO:   The code below attaches a `click` event to `#submit` button.
-            The code checks if all text fields are not empty. The code
-            should communicate asynchronously with the server to save
-            the information in the database.
-
-            If at least one field is empty, the `#error` paragraph displays
-            the error message `Fill up all fields.`
-
-            If there are no errors, the new transaction should be displayed
-            immediately, and without refreshing the page, after the values
-            are saved in the database.
-
-            The name, reference number, and amount fields are reset to empty
-            values.
-    */
-    $('#saveChanges').click(function () {
-        if($('#fName').val() === "" && $('#lName').val() === "" && $('#pw').val() === "" && $('#email').val() === ""){
-            $('#error').text('Fill up all fields. ')
-        }
-        else{
-            var fname = $('#fName').val()
-            var lName = $('#lName').val()
-            var pw = $('#pw').val();
-            var email = $('#email').val();
-
-            $.get('/add',{name: name, refno: refno, amount: amount}, function(result){
-
-                $('#cards').append(result);
-                $('#name').val("");
-                $('#refno').val("");
-                $('#amount').val("");
-
                 
-            })
+
+            /*
+                since  the value of `pw` contains at least 8 characters
+                set the value of the return variable to true.
+            */
         }
+
+        // else if the value of `pw` contains less than 8 characters
+        else {
+
+            /*
+                check if the <input> field calling this function
+                is the `pw` <input> field
+            */
+            if(field !== $('#ReenterPasswordEdit').val()){
+                // display appropriate error message in `pwError`
+                $('#pwError').text(`Password entries do not match`);
+                $('#pwError').css('color','red');
+            }
+            else if(field === $('#ReenterPasswordEdit').val() && field === "" && $('#ReenterPasswordEdit').val() === ""){
+                $('#pwError').text('');
+                validPassword = true;
+            }
+            else{
+                $('#pwError').text(`Passwords should contain at least 8
+                    characters.`);
+            }
+        }
+
+        // return value of return variable
+        return validPassword;
+    }
+
+    function isValidEmail (field, callback) {
+        var email = validator.trim($("#EmailEdit").val());
+        var isValidEmail = validator.isEmail(email);
+
+        console.log(email);
+        console.log(isValidEmail);
+
+        if(isValidEmail) {
+            if(field === $('#EmailEdit').val()) {
+
+                $.get('/getEditEmail', {email: email}, function(result) {
+                    if(result == true) {
+                        if(field === $('#EmailEdit').val()) {
+                            console.log("Goes inside here");
+                            $('#emailError').text('');
+                        }
+                        return callback(true);
+                    } else {
+                        if(field === $('#EmailEdit').val()) {
+                            $('#emailError').text('Email is already taken.');
+                            $('#emailError').css('color','red');
+                        }
+                        return callback(false);
+                    }
+                });
+            }    
+        } else {
+            if(field === $('#EmailEdit').val()) { 
+                $('#emailError').text('Invalid email entered.');
+                $('#emailError').css('color','red');
+            }
+            return callback(false);
+        }
+        
+
+    }
+
+
+
+    $('#saveChangesbtn').click(function () {
+        var fName = $('#FirstNameEdit').val();
+        var lName = $('#LastNameEdit').val();
+        var pw = $('#PasswordEdit').val();
+        var email = $('#EmailEdit').val();
+        var bio = $('#BioEdit').val();
+        var validPassword = isValidPassword(pw);
+
+        isValidEmail(email, function(validEmail) {
+            isValidemail = validEmail;
+            console.log("THINGY = " + isValidemail);
+
+            if(fName === "" && lName === "" && pw === "" && email === ""){
+                $('#error').text('Fill up all fields. ');
+                $('#error').css('color','red');
+            }
+            else{
+                console.log("I have entered");
+                console.log("valid password = " + validPassword);
+                console.log("valid email = " + isValidemail);
+                if(validPassword && isValidemail){
+                    /*console.log("I have entered this thing wherein validPassword is true and validEmail is true");
+                    var xhttp = new XMLHttpRequest();
+    
+                    xhttp.open('POST','/editaccount');
+    
+                    var formData = new FormData();
+                    formData.append('fName', fName);
+                    formData.append('lName', lName);
+                    formData.append('pw', pw);
+                    formData.append('email', email);
+                    formData.append('bio', bio);
+                    formData.append('dPicture', document.getElementById('dPicture').files[0]);
+    
+                    xhttp.send(formData);
+                    xhttp.onreadystatechange = function(){
+                        if(this.readyState === XMLHttpRequest.DONE && this.status === 200){
+                            xhttp.open('GET','/settings');
+                        }
+                    }
+                    */
+                    $('#editAccountForm').submit();
+                }
+                else if($('#ReenterPasswordEdit').val() === "" && pw === ""  && validEmail){
+                    /*
+                    console.log("I have entered this thing wherein pw is blank and validEmail is true");
+                    var xhttp = new XMLHttpRequest();
+    
+                    xhttp.open('POST','/editaccount');
+    
+                    var formData = new FormData();
+                    formData.append('fName', fname);
+                    formData.append('lName', lName);
+                    formData.append('email', email);
+                    formData.append('bio', bio);
+                    formData.append('dPicture', document.getElementById(dPicture).files[0]);
+    
+                    xhttp.send(formData);
+                    */
+                    $('#editAccountForm').submit();
+                }
+    
+            }
+
+        });
+
+
     });
 
-    /*
-    TODO:   The code below attaches a `click` event to `.remove` buttons
-            inside the `<div>` `#cards`.
-            The code deletes the specific transaction associated to the
-            specific `.remove` button, then removes the its parent `<div>` of
-            class `.card`.
-    */
-    $('#cards').on('click', '.remove', function () {
-        
-        var ref = $(this).parent().find('.text:nth-child(2)').text();
-        $(this).parent().remove();
-        $.get('/delete',{refno: ref})
-    });
 
 })

@@ -7,7 +7,6 @@ const session = require('express-session');
 const store = require('connect-mongo');
 const exphbs  = require('express-handlebars');
 const mongoose = require('mongoose');
-const nocache = require('nocache');
 const app = express(); //initializing express server
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -29,8 +28,6 @@ app.use(session({
     cookie: { secure: !true },
     store: store.create({mongoUrl: url})
 }));
-
-app.use(nocache());
 
 app.use(express.static('public'));
 

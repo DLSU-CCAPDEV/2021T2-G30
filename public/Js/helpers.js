@@ -89,9 +89,9 @@ const helpers = {
 
     sortMethod: function (sortMethod) {
         if(sortMethod === 'date') 
-            return '<li><a id="sortDate" href="/changeSort" class="dropdown-item disabled">Sort by Date</a></li> <li><a id="sortSign" href="/changeSort" class="dropdown-item">Sort by Significance</a></li>'
+            return '<li><button id="sortDate" class="dropdown-item disabled">Sort by Date</button></li> <li><button id="sortSign" class="dropdown-item">Sort by Significance</button></li>'
         else 
-            return '<li><a id="sortDate" href="/changeSort" class="dropdown-item">Sort by Date</a></li> <li><a id="sortSign" href="/changeSort" class="dropdown-item disabled">Sort by Significance</a></li>'
+            return '<li><button id="sortDate" class="dropdown-item">Sort by Date</button></li> <li><button id="sortSign" class="dropdown-item disabled">Sort by Significance</button></li>'
     }
 }
 

@@ -20,6 +20,7 @@ const profileController = {
         var uName = req.body.uName;
         var bio = req.body.bio;
         var pw = req.body.pw;
+        var memoryenabler = true;
 
         // console.log(dPicture);
         bcrypt.hash(pw, saltRounds, function(err, hash) {
@@ -30,7 +31,8 @@ const profileController = {
                 email: email,
                 uName: uName,
                 bio: bio,
-                pw: hash
+                pw: hash,
+                memoryenabler: memoryenabler
             }
     
             db.insertOne(userCollection, indivUser, function (flag) {

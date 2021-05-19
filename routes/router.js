@@ -4,11 +4,12 @@ const mainController = require('../controllers/mainController.js');
 const profileController = require('../controllers/profileController.js');
 const entryController = require('../controllers/entryController.js');
 const userController = require('../controllers/userController.js');
-const memoriesController = require('../controllers/memoriesController');
-const calendarController = require('../controllers/calendarController');
+const memoriesController = require('../controllers/memoriesController.js');
+const calendarController = require('../controllers/calendarController.js');
+const letterController = require('../controllers/letterController.js');
+
 const db = require('../models/db.js');
 const validation = require('../helpers/validation.js');
-
 
 // GET
 router.get('/', mainController.getMainPage); //incase user tries to access this route
@@ -39,6 +40,8 @@ router.get('/removeFriend', userController.unfriend);
 
 router.get('/memories', memoriesController.getMemories); //memories feature
 
+router.get('/letters', letterController.getLetters);
+
 //POST // Creation
 router.post('/signup', [db.upload.any(), validation.signupValidation()], profileController.signup);
 router.post('/editaccount', db.upload.any(),profileController.editAccount);
@@ -47,6 +50,8 @@ router.post('/login', profileController.login);
 router.post('/createentry', db.upload.any(), entryController.createEntry);
 router.post('/editentry', db.upload.any(),  entryController.editEntry);
 router.post('/deleteentry', entryController.deleteEntry);
+
+router.post('/createletter', db.upload.any(), letterController.createLetter);
 
 router.get('/searchresults', mainController.getSearch);
 

@@ -1,0 +1,140 @@
+{{> navbar}}
+
+<section>
+    <div class="container" style="padding-top: 1.5em">
+        <div class="row">
+            <div class="col-9 mx-auto">
+                <p class="text-center" style="text-shadow: 0 0 1px #22479c, 0 0 1px #163172; font-weight: 400; font-size: 30pt;">
+                    Letters
+                </p>
+                <hr>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="letterType"></div>
+        {{#if letters}}
+            <div class="row">
+                <div class="col-9 mx-auto">
+                    <div class="btn-group dropstart">
+                        <button type="button" class="btn dropdown-toggle letterdropdown dropDownSort" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-filter"></i>
+                        </button>
+                        <ul class="dropdown-menu">
+                        <li><a class="dropdown-item disabled">Received</a></li>
+                        <li><a class="dropdown-item" href="sentletters.html">Sent</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        {{/if}}
+    </div>
+
+    <div class="container pt-3" id="mainSectionLetter">
+        {{#if letters}}
+        <div class="row">
+            <div class="col-9 mx-auto">
+                <div class="card mb-3 mx-auto" style="padding-right: 0">
+                    <div class="row g-0">
+                        <div class="col-9 custom">
+                            <h5
+                            class="card-title ps-3 pt-4"
+                            style="margin-bottom: -0.4em"
+                            >
+                            You're probably asleep
+                            </h5>
+                            <div class="card-body" style="overflow: hidden">
+                            <p class="card-text">
+                                But I feel like I have to scream out into the world how amazing you are and how excited I am to see you tomorrow. I joked that we are like a human pretzel, and it’s true. 
+                                I’m pretty sure we look like something out of a B rated sci-fi film, fused together with all the lanky limbs twisted and curling. 
+                                Somehow we fit perfectly together, like a glove. I don’t know what’s going to happen, but I know that for once I’m okay with this. 
+                                And I think it’s because if I could choose anyone else to be hurdling through space with at this moment, I would choose you still.
+                            </p>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <img
+                            src="Images/letters2.jpg"
+                            class="img-fluid"
+                            style="height: 169px; width: 246.5px; object-fit: cover"
+                            alt="..."
+                            />
+                        </div>
+                        <div class="card-footer">
+                            <p class="card-text">
+                            <small class="text-muted"> Sent by <a href="friendprofile4.html">William Dimaculangan</a> on April 1, 2021</small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{else}}
+            <div class="row">
+                <div class="col-12">
+                    <p style="text-align: center; margin-bottom: 0.5em">You do not have letters to be sent or recieved</p>
+                </div>
+            </div>
+        {{/if}}
+    </div>
+
+    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#createLetterModal" style="box-shadow: none">
+    <i class="fas fa-feather-alt" id="newLetter" title="Create Letter"></i>
+    </button>
+        
+    <div class="modal fade" id="createLetterModal" tabindex="-1" aria-labelledby="createLetterModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="width: 50em">
+            <div class="modal-content" style="border-radius: 15px">
+                <div class="modal-header">
+                <h5 class="modal-title" id="createLetterModalLabel"> Send a letter</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                <!-- Creating letter -->
+                <form>
+                    <div class="mb-3">
+                    <label class="visually-hidden" for="autoSizingSelect">Title of Letter</label>
+                    <input type="text" id="letterTitle" class="form-control" placeholder="Title of Letter" aria-label="Title of Letter">
+                    <div id="emptyTitleCreate" style="font-size: 8pt; color: red;"></div>
+                    </div>
+                    <div class="row g-3 mb-4">
+                    <div class="col-md-6">
+                        <label for="inputPrivacy" style="font-size: 14px;">Select Recipient</label>
+                        <select id="inputRecipient" class="form-select">
+                        <option selected> Yourself </option>
+                        {{#each friends}}
+                            <option> {{this.friendName}} </option>
+                        {{/each}}
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="dateLetter" style="font-size: 14px;"> Date to be sent </label>
+                        <input type="date" class="form-control" id="dateLetter">
+                    </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                    <label class="visually-hidden" for="LetterFormControlTextarea1" class="form-label">Letter Text Area</label>
+                    <textarea class="form-control" id="LetterFormControlTextarea1" rows="5" placeholder="What do you want to say?" aria-label="letter content"></textarea>
+                    <div id="emptyBodyCreate" style="font-size: 8pt; color: red;"></div>
+                    </div>
+
+                    <div class="mb-3">
+                    <div class="row">
+                        <label for="exampleFormControlFile1" style="font-size: 14px;">Insert Image</label>
+                        <input type="file" class="form-control-file" id="imageFormControlFile2" accept="image/x-png,image/jpeg" >
+                    </div>
+                    </div>
+                    
+                </form>
+                
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="createLetterBtn">Send letter</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

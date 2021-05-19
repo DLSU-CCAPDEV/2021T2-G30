@@ -32,7 +32,7 @@ app.use(session({
 app.use(express.static('public'));
 
 // Helper file
-const helpers = require('./public/Js/helpers.js');
+const helpers = require('./helpers/helpers.js');
 
 //Templating Engine
 app.engine('.hbs', exphbs({

@@ -37,6 +37,9 @@ var UserSchema = new mongoose.Schema({
         ref: 'entries',
         required: false
     }],
+    letters: [{
+        letter: {type: mongoose.Schema.Types.ObjectId, ref: 'letters'}
+    }],
     sentRequest:[{
 		userId: {type: mongoose.Schema.Types.ObjectId, ref: 'users'},
 		username: {type: String, default: ''}
@@ -48,13 +51,7 @@ var UserSchema = new mongoose.Schema({
 	friendsList: [{
 		friendId: {type: mongoose.Schema.Types.ObjectId, ref: 'users'},
 		friendName: {type: String, default: ''}
-	}],
+	}]
 });
 
-/*
-    exports a mongoose.model object based on `UserSchema` (defined above)
-    when another script exports from this file
-    This model executes CRUD operations
-    to collection `users` -> plural of the argument `User`
-*/
 module.exports = mongoose.model('User', UserSchema);

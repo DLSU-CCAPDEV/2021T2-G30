@@ -66,17 +66,6 @@ $(document).ready(function () {
         var entryDate = $('#dateEntry').val()
         var entryTitle = $('#entryTitleCreate').val();
         var entryBody = $('#entryBodyCreate').val();
-        var significance = $('#inputSignificance').val();
-        var privacy = $('#inputPrivacy').val();
-    
-        var entry = {
-            entryDate: entryDate,
-            entryTitle: entryTitle,
-            entryBody: entryBody,
-            significance: significance,
-            privacy: privacy,
-        }
-        
         
         if(entryTitle === '') {
             $('#emptyBodyCreate').text('').css('margin-bottom', '1rem');

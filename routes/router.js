@@ -38,8 +38,8 @@ router.get('/acceptRequest', userController.acceptRequest);
 router.get('/removeFriend', userController.unfriend);
 
 router.get('/memories', memoriesController.getMemories); //memories feature
-router.get('/disablememories', );
-router.get('')
+router.get('/disablememories', profileController.disableMemories);
+router.get('/enablememories', profileController.enableMemories);
 
 //POST // Creation
 router.post('/signup', [db.upload.any(), validation.signupValidation()], profileController.signup);

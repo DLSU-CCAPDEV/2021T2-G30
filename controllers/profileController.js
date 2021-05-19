@@ -24,9 +24,9 @@ const profileController = {
         var pw = req.body.pw;
 
         var errors = validationResult(req);
-        
+
         //If there are validation errors
-        if (!errors.isEmpty) {
+        if (!errors.isEmpty()) {
             errors = errors.errors;
             
              /*
@@ -44,7 +44,8 @@ const profileController = {
             res.render('login', {
                 title: 'Login',
                 css: ['global'],
-                errDetails: details
+                errDetails: details,
+                errorCreds: true
             });
 
         } else {
@@ -53,47 +54,58 @@ const profileController = {
             var query = {email: email};
             var projection = 'email';
             console.log("email being queried: " + email);
-            db.findOne(userCollection, query, projection, function(userEmail){
+            db.findOne(userCollection, query, projection, function(userEmail) {
                 
                 // If email is unique
                 if(userEmail == null) {
                     console.log(email + " != " + userEmail);
                     console.log("Email is unique"); 
-                    bcrypt.hash(pw, saltRounds, function(err, hash) {
-                        var indivUser = {
-                            dPicture: dPicture,
-                            fName: fName,
-                            lName: lName,
-                            email: email,
-                            uName: uName,
-                            bio: bio,
-                            pw: hash
+                    db.findOne(userCollection, {uName: uName}, 'userName', function(userUName) {
+                        if(userUName == null) { //if unique username
+                            console.log("Username is unique");
+                            bcrypt.hash(pw, saltRounds, function(err, hash) {
+                                var indivUser = {
+                                    dPicture: dPicture,
+                                    fName: fName,
+                                    lName: lName,
+                                    email: email,
+                                    uName: uName,
+                                    bio: bio,
+                                    pw: hash
+                                }
+                                
+                                // Insert data to db
+                                db.insertOne(userCollection, indivUser, function (flag) {
+                                    if(flag) {
+                                        res.redirect('/login');
+                                    }
+                                    else { 
+                                        res.status(500);
+                                        res.render('error', {
+                                            title: '500  Internal Server Error',
+                                            css:['global', 'error'],
+                                            status: {
+                                                code: "500",
+                                                message: "Something unexpected happened."
+                                            }  
+                                        });   
+                                    }    
+                                });
+                            });
+                        } else {
+                            res.render('login', {
+                                title: 'Login',
+                                css: ['global'],
+                                errorCreds: true
+                            });
+                            
                         }
-                
-                        db.insertOne(userCollection, indivUser, function (flag) {
-                            if(flag) {
-                                res.redirect('/login');
-                            }
-                            else { 
-                                res.status(500);
-                                res.render('error', {
-                                    title: '500  Internal Server Error',
-                                    css:['global', 'error'],
-                                    status: {
-                                        code: "500",
-                                        message: "Something unexpected happened."
-                                    }  
-                                });   
-                            }    
-                        });
                     });
-
                 } else {
-                    console.log("Invalid email!!!!");
                     res.render('login', {
                         title: 'Login',
                         css: ['global'],
-                        emailError: "Email is already taken."
+                        errorCreds: true
                     });
                 }
             });

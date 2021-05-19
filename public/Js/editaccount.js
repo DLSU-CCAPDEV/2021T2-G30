@@ -48,6 +48,7 @@ $(document).ready(function () {
             if(field !== $('#ReenterPasswordEdit').val()){
                 // display appropriate error message in `pwError`
                 $('#pwError').text(`Password entries do not match`);
+                $('#pwError').css('color','red');
             }
             else if(field === $('#ReenterPasswordEdit').val() && field === "" && $('#ReenterPasswordEdit').val() === ""){
                 $('#pwError').text('');
@@ -83,6 +84,7 @@ $(document).ready(function () {
                     } else {
                         if(field === $('#EmailEdit').val()) {
                             $('#emailError').text('Email is already taken.');
+                            $('#emailError').css('color','red');
                         }
                         return callback(false);
                     }
@@ -91,6 +93,7 @@ $(document).ready(function () {
         } else {
             if(field === $('#EmailEdit').val()) { 
                 $('#emailError').text('Invalid email entered.');
+                $('#emailError').css('color','red');
             }
             return callback(false);
         }
@@ -113,7 +116,8 @@ $(document).ready(function () {
             console.log("THINGY = " + isValidemail);
 
             if(fName === "" && lName === "" && pw === "" && email === ""){
-                $('#error').text('Fill up all fields. ')
+                $('#error').text('Fill up all fields. ');
+                $('#error').css('color','red');
             }
             else{
                 console.log("I have entered");

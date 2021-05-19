@@ -58,49 +58,58 @@ const profileController = {
                 
                 // If email is unique
                 if(userEmail == null) {
-                    console.log(email + " != " + userEmail);
-                    console.log("Email is unique"); 
-                    db.findOne(userCollection, {uName: uName}, 'userName', function(userUName) {
-                        if(userUName == null) { //if unique username
-                            console.log("Username is unique");
-                            bcrypt.hash(pw, saltRounds, function(err, hash) {
-                                var indivUser = {
-                                    dPicture: dPicture,
-                                    fName: fName,
-                                    lName: lName,
-                                    email: email,
-                                    uName: uName,
-                                    bio: bio,
-                                    pw: hash
-                                }
-                                
-                                // Insert data to db
-                                db.insertOne(userCollection, indivUser, function (flag) {
-                                    if(flag) {
-                                        res.redirect('/login');
+                    
+                    var invalidUsername = uName.includes(" ");
+                    console.log("Valid username: " + invalidUsername);
+                    if(!invalidUsername) {
+                        db.findOne(userCollection, {uName: uName}, 'userName', function(userUName) {
+                            if(userUName == null) { //if unique username
+                                console.log("Username is unique");
+                                bcrypt.hash(pw, saltRounds, function(err, hash) {
+                                    var indivUser = {
+                                        dPicture: dPicture,
+                                        fName: fName,
+                                        lName: lName,
+                                        email: email,
+                                        uName: uName,
+                                        bio: bio,
+                                        pw: hash
                                     }
-                                    else { 
-                                        res.status(500);
-                                        res.render('error', {
-                                            title: '500  Internal Server Error',
-                                            css:['global', 'error'],
-                                            status: {
-                                                code: "500",
-                                                message: "Something unexpected happened."
-                                            }  
-                                        });   
-                                    }    
+                                    
+                                    // Insert data to db
+                                    db.insertOne(userCollection, indivUser, function (flag) {
+                                        if(flag) {
+                                            res.redirect('/login');
+                                        }
+                                        else { 
+                                            res.status(500);
+                                            res.render('error', {
+                                                title: '500  Internal Server Error',
+                                                css:['global', 'error'],
+                                                status: {
+                                                    code: "500",
+                                                    message: "Something unexpected happened."
+                                                }  
+                                            });   
+                                        }    
+                                    });
                                 });
-                            });
-                        } else {
-                            res.render('login', {
-                                title: 'Login',
-                                css: ['global'],
-                                errorCreds: true
-                            });
-                            
-                        }
-                    });
+                            } else {
+                                res.render('login', {
+                                    title: 'Login',
+                                    css: ['global'],
+                                    errorCreds: true
+                                });
+                                
+                            }
+                        });
+                    } else {
+                        res.render('login', {
+                            title: 'Login',
+                            css: ['global'],
+                            errorCreds: true
+                        });
+                    }
                 } else {
                     res.render('login', {
                         title: 'Login',
@@ -145,6 +154,7 @@ const profileController = {
         });
     },
     
+    
     checksignup: function (req, res) {
         var uName = req.query.uName;
         // console.log("test");
@@ -153,15 +163,15 @@ const profileController = {
         });
     },
 
+    //Check email to be sent back to the ajax
     checkemail: function (req, res) {
         var email = req.query.email;
-
-
         db.findOne(userCollection, {email: email}, '', function(result) {
             res.send(result);
         });
     },
 
+    //Check email to be sent back to the ajax
     editCheckEmail: function (req, res) {
         var email = req.query.email;
         var sessionUser = req.session.uName;
@@ -186,6 +196,11 @@ const profileController = {
         var uName = req.query.uName;
         var pw = req.query.pw;
 
+        var errors = validationResult(req);
+
+        if(!errors.isEmpty()) {
+
+        }
         db.findOne(userCollection, {uName: uName}, 'pw', function (result) {
             if(result === null)
                 res.send(false);
@@ -327,7 +342,7 @@ const profileController = {
         
     },
 
-    deleteaccount: function(req,res){
+    deleteaccount: function(req,res) {
 
         var uName = req.session.uName;
 

@@ -66,6 +66,7 @@ $(document).ready(function () {
     function isValidUsername(field, callback) {
         var username = validator.trim($('#uName').val());
         var lowerCasedUname = username.toLowerCase();
+        var isValidLength = validator.isLength(lowerCasedUname, {min: 6});
         var isNotValid = hasWhiteSpace(lowerCasedUname);
 
         
@@ -78,24 +79,33 @@ $(document).ready(function () {
             
             return callback(false);
         }  else {
-            if(field.is($('#uName'))) {
-                $('#uNameError').text('');
-                $.get('/checksignup', {uName: lowerCasedUname}, function (result) {
-                    if(result.uName == lowerCasedUname) {
-                        if(field.is($('#uName'))) {
-                            $('#bioDiv').css('margin-top', '10px');
-                            $('#uNameError').text('Username is already taken.');
+            if(isValidLength) {
+                if(field.is($('#uName'))) {
+                    $('#uNameError').text('');
+                    $.get('/checksignup', {uName: lowerCasedUname}, function (result) {
+                        if(result.uName == lowerCasedUname) {
+                            if(field.is($('#uName'))) {
+                                $('#bioDiv').css('margin-top', '10px');
+                                $('#uNameError').text('Username is already taken.');
+                            }
+                            return callback(false); //value of uName is used by another user in the db return false
+                        } else {
+                            if(field.is($('#uName'))) {
+                                $('#bioDiv').css('margin-top', '30px');
+                                $('#uNameError').text('');
+                            }
+                            return callback(true); //value of uName is valid and not used by another user in the db return true
                         }
-                        return callback(false); //value of uName is used by another user in the db return false
-                    } else {
-                        if(field.is($('#uName'))) {
-                            $('#uNameError').text('');
-                            $('#bioDiv').css('margin-top', '30px');
-                        }
-                        return callback(true); //value of uName is valid and not used by another user in the db return true
-                    }
-                });
+                    });
+                }
+            } else {
+                if(field.is($('#uName'))) {
+                    $('#bioDiv').css('margin-top', '10px');
+                    $('#uNameError').text('Username should contain at least 6 characters.');
+                }
+                return callback(false);
             }
+
         }
 
     }

@@ -44,7 +44,9 @@
               >
                 Sign up here!
               </button>
-               <p id="fNameError" class="h-25" style="font-size: 10pt; margin-top: -2em; color: red;">Error in credentials</p>
+               {{#if errorCreds}}
+                <p id="errorCreds" class="h-25" style="font-size: 10pt; margin-top: -2em; color: red;">You entered invalid credentials. Try again</p>
+              {{/if}}
             </p>
           </div>
          
@@ -137,6 +139,7 @@
                     id="uName"
                     placeholder="Username"
                     name="uName"
+                    minlength="6"
                     required
                   >
                 </div>
@@ -158,8 +161,8 @@
                     id="pw"
                     placeholder="Password"
                     name="pw"
-                    {{!-- minlength="5"
-                     --}}
+                    minlength="8"
+                    
                     required
                   >
                 </div>

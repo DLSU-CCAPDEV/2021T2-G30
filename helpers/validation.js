@@ -9,6 +9,7 @@ const validation = {
             check('email','Email should not be empty.').trim().notEmpty(),
             check('email', 'Invalid email address').trim().isEmail(),
             check('uName', 'Username should not be empty').trim().notEmpty(),
+            check('uName', "Username should contain at least 5 characters.").trim().isLength({min: 5}),
             check('pw', "Password should contain at least 8 characters.").trim().isLength({min: 8})
 
             // check('username').custom(value => !/\s/.test(value))

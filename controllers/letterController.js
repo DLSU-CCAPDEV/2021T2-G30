@@ -55,8 +55,10 @@ const letterController = {
         }
 
         db.insertOne(letterCollection, letter, function(flag) {
-            db.updateMany(userCollection, {$and: [{uName: author}, {uName: recipient}]}, update, function(flag) {
-                res.send(true);
+            db.updateOne(userCollection, {uName: author}, update, function(flag) {
+                db.updateOne(userCollection, {uName: recipient}, update, function(flag) {
+                    res.send(true);
+                })
             })
         })
     }

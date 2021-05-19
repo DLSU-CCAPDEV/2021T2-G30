@@ -11,8 +11,9 @@
             </div>
         </div>
     </div>
-    <div class="container" id="letterType"></div>
-        {{#if letters}}
+    
+    <div class="container" id="letterType">
+    {{#if letters}}
             <div class="row">
                 <div class="col-9 mx-auto">
                     <div class="btn-group dropstart">
@@ -28,6 +29,7 @@
             </div>
         {{/if}}
     </div>
+    
 
     <div class="container pt-3" id="mainSectionLetter">
         {{#if letters}}
@@ -76,7 +78,9 @@
             </div>
         {{/if}}
     </div>
+</section>
 
+<section>
     <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#createLetterModal" style="box-shadow: none">
     <i class="fas fa-feather-alt" id="newLetter" title="Create Letter"></i>
     </button>

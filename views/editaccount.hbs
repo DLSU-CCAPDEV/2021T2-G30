@@ -103,6 +103,9 @@
                 <button type="button" id="saveChangesbtn" name="saveChanges" class="btn btn-primary" style="margin-bottom: -0.6em;">Save changes</button>
               </div>
               <p id="error"></p>
+              {{#if errorCreds}}
+                <p id="errorCreds" style="color: red;">Invalid Information, please try again.</p>
+              {{/if}}
             </form>
           </div>
         </div>

@@ -87,11 +87,9 @@ const mainController = {
         if(req.session.sortBy === 'date') 
             req.session.sortBy = 'significance';
         else if(req.session.sortBy === 'significance') 
-            req.session.sortBy = 'date'
+            req.session.sortBy = 'date';
 
-        console.log('Sorted by ' + req.session.sortBy)
-
-        //res.send(true);
+        res.send(true);
     },
 
     geteditProfileAccount: function(req, res){

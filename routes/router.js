@@ -39,6 +39,8 @@ router.get('/acceptRequest', userController.acceptRequest);
 router.get('/removeFriend', userController.unfriend);
 
 router.get('/memories', memoriesController.getMemories); //memories feature
+router.get('/disablememories', profileController.disableMemories);
+router.get('/enablememories', profileController.enableMemories);
 
 router.get('/letters', letterController.getLetters);
 

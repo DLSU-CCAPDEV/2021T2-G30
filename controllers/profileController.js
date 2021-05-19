@@ -22,6 +22,7 @@ const profileController = {
         var uName = req.body.uName;
         var bio = req.body.bio;
         var pw = req.body.pw;
+        var memoryenabler = true;
 
         var errors = validationResult(req);
 
@@ -71,6 +72,7 @@ const profileController = {
                                     email: email,
                                     uName: uName,
                                     bio: bio,
+                                    memoryenabler: memoryenabler,
                                     pw: hash
                                 }
                                 
@@ -243,6 +245,7 @@ const profileController = {
         var dPicture;
         var uName = req.session.uName;
         var pw = req.body.pw; // the password changed
+        var errors = validationResult(req);
 
         console.log("password in session at editAccount: " + pw);
         if(req.files.length == 0) {
@@ -252,64 +255,52 @@ const profileController = {
         }
         
         console.log("dPicture id is = " + dPicture);
-        if(pw !== "" && dPicture != null){
-            bcrypt.hash(pw, saltRounds, function(err, hash) {
-                var indivUser = {
-                    dPicture: dPicture,
-                    fName: req.body.fName,
-                    lName: req.body.lName,
-                    email: req.body.email,
-                    bio: req.body.bio,
-                    pw: hash,
-                }
-                console.log("changed current password: " + hash);
-                
-                db.updateOne(userCollection, {uName: uName}, indivUser, function(update){
-                    console.log("update: " + update);
-                    if(update){
-                        res.redirect('/settings');
-                    }
-                });
-            });
-        }
-        else if(pw === "" && dPicture == null){
-            var indivUser = {
-                fName: req.body.fName,
-                lName: req.body.lName,
-                email: req.body.email,
-                bio: req.body.bio,
-            }
-            
-            db.updateOne(userCollection, {uName: uName}, indivUser, function(update){
-                console.log("update: " + update);
-                if(update){
-                    res.redirect('/settings');
-                }
-            });
-        }
-        else if(pw !== "" && dPicture == null){
-            bcrypt.hash(pw, saltRounds, function(err, hash) {
-                var indivUser = {
-                    fName: req.body.fName,
-                    lName: req.body.lName,
-                    email: req.body.email,
-                    bio: req.body.bio,
-                    pw: hash,
-                }
-                console.log("changed current password: " + hash);
-                
-                db.updateOne(userCollection, {uName: uName}, indivUser, function(update){
-                    console.log("update: " + update);
-                    if(update){
-                        res.redirect('/settings');
-                    }
-                });
-            });
-        }
-        else if(pw === "" && dPicture != null){
 
+        if(!errors.isEmpty()){
+            errors = errors.errors;
+            
+             /*
+                for each error, store the error inside the object `details`
+                the field is equal to the parameter + `Error`
+                the value is equal to `msg` as defined in the validation middlewares
+
+                for example, if there is an error for parameter `fName`:
+                store the value to the field `fNameError`
+            */
+            var details = {};
+            for(var i = 0; i < errors.length; i++) {
+                details[errors[i].param + "Error"] = errors[i].msg;
+            }
+            res.render('settings', {
+                title: 'Settings',
+                css: ['global','settings'],
+                errDetails: details,
+                errorCreds: true
+            });
+        }
+        else{
+            if(pw !== "" && dPicture != null){
+                bcrypt.hash(pw, saltRounds, function(err, hash) {
+                    var indivUser = {
+                        dPicture: dPicture,
+                        fName: req.body.fName,
+                        lName: req.body.lName,
+                        email: req.body.email,
+                        bio: req.body.bio,
+                        pw: hash,
+                    }
+                    console.log("changed current password: " + hash);
+                    
+                    db.updateOne(userCollection, {uName: uName}, indivUser, function(update){
+                        console.log("update: " + update);
+                        if(update){
+                            res.redirect('/settings');
+                        }
+                    });
+                });
+            }
+            else if(pw === "" && dPicture == null){
                 var indivUser = {
-                    dPicture: dPicture,
                     fName: req.body.fName,
                     lName: req.body.lName,
                     email: req.body.email,
@@ -322,9 +313,79 @@ const profileController = {
                         res.redirect('/settings');
                     }
                 });
+            }
+            else if(pw !== "" && dPicture == null){
+                bcrypt.hash(pw, saltRounds, function(err, hash) {
+                    var indivUser = {
+                        fName: req.body.fName,
+                        lName: req.body.lName,
+                        email: req.body.email,
+                        bio: req.body.bio,
+                        pw: hash,
+                    }
+                    console.log("changed current password: " + hash);
+                    
+                    db.updateOne(userCollection, {uName: uName}, indivUser, function(update){
+                        console.log("update: " + update);
+                        if(update){
+                            res.redirect('/settings');
+                        }
+                    });
+                });
+            }
+            else if(pw === "" && dPicture != null){
+
+                    var indivUser = {
+                        dPicture: dPicture,
+                        fName: req.body.fName,
+                        lName: req.body.lName,
+                        email: req.body.email,
+                        bio: req.body.bio,
+                    }
+                    
+                    db.updateOne(userCollection, {uName: uName}, indivUser, function(update){
+                        console.log("update: " + update);
+                        if(update){
+                            res.redirect('/settings');
+                        }
+                    });
+            }
         }
 
         
+    },
+
+    enableMemories: function(req,res){
+        var uName = req.session.uName;
+
+        var memoryenabler = true;
+
+        var indivUser = {
+            memoryenabler:memoryenabler,
+        }
+
+
+        db.updateOne(userCollection, {uName: uName}, indivUser, function(result){
+            if(result)
+            res.redirect('/settings');
+        });
+
+    },
+
+    disableMemories: function(req,res){
+        var uName = req.session.uName;
+
+        var memoryenabler = false;
+        console.log("I am here");
+        console.log(uName + "= Sesison name");
+        var indivUser = {
+            memoryenabler : memoryenabler,
+        }
+
+        db.updateOne(userCollection, {uName: uName}, indivUser, function(result){
+            if(result)
+            res.redirect('/settings');
+        });
     },
 
     deleteaccount: function(req,res){

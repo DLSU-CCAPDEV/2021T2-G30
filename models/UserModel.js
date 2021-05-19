@@ -32,6 +32,10 @@ var UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    memoryenabler: {
+        type: Boolean,
+        required: false
+    },
     entries: [{
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'entries',

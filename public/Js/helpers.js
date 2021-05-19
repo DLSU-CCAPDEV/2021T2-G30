@@ -7,7 +7,7 @@ const helpers = {
     },
 
     significance: function(significance) {
-        if(significance === 'None'){
+        if(significance === '/None'){
             return null;
         }
         else if(significance === '1') {
@@ -28,23 +28,23 @@ const helpers = {
     },
 
     significanceEdit: function(significance) {
-        if(significance === 'None'){
-            return '<option selected>None</option> <option value="5">5</option> <option value="4">4</option> <option value="3">3</option> <option value="2">2</option> <option value="1">1</option>'
+        if(significance === '/None'){
+            return '<option value="/None" selected>None</option> <option value="5">5</option> <option value="4">4</option> <option value="3">3</option> <option value="2">2</option> <option value="1">1</option>'
         }
         else if(significance === '1') {
-            return '<option>None</option> <option value="5">5</option> <option value="4">4</option> <option value="3">3</option> <option value="2">2</option> <option value="1" selected>1</option>'
+            return '<option value="/None">None</option> <option value="5">5</option> <option value="4">4</option> <option value="3">3</option> <option value="2">2</option> <option value="1" selected>1</option>'
         }
         else if(significance === '2') {
-            return '<option>None</option> <option value="5">5</option> <option value="4">4</option> <option value="3">3</option> <option value="2" selected>2</option> <option value="1">1</option>'
+            return '<option value="/None">None</option> <option value="5">5</option> <option value="4">4</option> <option value="3">3</option> <option value="2" selected>2</option> <option value="1">1</option>'
         }
         else if(significance === '3') {
-            return '<option>None</option> <option value="5">5</option> <option value="4">4</option> <option value="3" selected>3</option> <option value="2">2</option> <option value="1">1</option>'
+            return '<option value="/None">None</option> <option value="5">5</option> <option value="4">4</option> <option value="3" selected>3</option> <option value="2">2</option> <option value="1">1</option>'
         }
         else if(significance === '4') {
-            return '<option>None</option> <option value="5">5</option> <option value="4" selected>4</option> <option value="3">3</option> <option value="2">2</option> <option value="1">1</option>'
+            return '<option value="/None">None</option> <option value="5">5</option> <option value="4" selected>4</option> <option value="3">3</option> <option value="2">2</option> <option value="1">1</option>'
         }
         else if(significance === '5') {
-            return '<option>None</option> <option value="5" selected>5</option> <option value="4">4</option> <option value="3">3</option> <option value="2">2</option> <option value="1">1</option>'
+            return '<option value="/None">None</option> <option value="5" selected>5</option> <option value="4">4</option> <option value="3">3</option> <option value="2">2</option> <option value="1">1</option>'
         }
     },
 
@@ -85,6 +85,13 @@ const helpers = {
             return '<button type="button" id="acceptFriend" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#acceptfriendmodal" style="margin-right: 5px"> Accept Request </button> <button type="button" id="rejectFriend" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#rejectfriendmodal" style="margin-left: 5px"> Reject Request </button>'
         else if(friend === -1)
             return '<button type="button" id="addFriend" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addfriendmodal"> Add Friend </button>'
+    },
+
+    sortMethod: function (sortMethod) {
+        if(sortMethod === 'date') 
+            return '<li><button id="sortDate" class="dropdown-item disabled">Sort by Date</button></li> <li><button id="sortSign" class="dropdown-item">Sort by Significance</button></li>'
+        else 
+            return '<li><button id="sortDate" class="dropdown-item">Sort by Date</button></li> <li><button id="sortSign" class="dropdown-item disabled">Sort by Significance</button></li>'
     }
 }
 

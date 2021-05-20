@@ -410,7 +410,7 @@ const profileController = {
         var uName = req.session.uName;
 
         db.deleteOne(userCollection, {uName: uName},function(deleted) {
-            console.log(deleted);
+            console.log(deleted);      
             req.session.destroy(function(error){
                 if(error){
                     throw error;

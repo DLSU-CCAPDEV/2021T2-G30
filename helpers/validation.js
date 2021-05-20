@@ -26,6 +26,20 @@ const validation = {
         ];
         return validation;
     },
+    
+    createEntryValidation: function() {
+        var validation = [
+            check('entryTitle', "Entry title should be at most 50 characters.").trim().isLength({max: 50}),
+            check('entryBody', "Entry Body should not be empty.").trim().notEmpty()
+        ];
+    },
+
+    // editEntryValidation: function () {
+    //     var validation = [
+
+    //     ]
+    // }
+
     editAccountValidation: function (){
         var validation = [
             check('fName', 'First Name should not be empty').trim().notEmpty(),

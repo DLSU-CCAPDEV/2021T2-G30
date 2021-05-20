@@ -11,7 +11,6 @@ $(document).ready(function () {
                 $("#mainSection").load(" #mainSection > *");
             }
         });
-        
     });
 
     $(document).on('click', '.editBtn', function(event) {
@@ -113,20 +112,7 @@ $(document).ready(function () {
         }
     });
     
-    $(document).on('click', '#sortDate', function() {
-        $.get('changeSort', function(flag) {
-            if(flag) {
-                $.get('mainpage', function (result) {
-                    if(result) {
-                        $("#sortBtn").load(" #sortBtn > *");
-                        $("#mainSection").load(" #mainSection > *");
-                    }
-                })
-            }
-        })
-    });
-
-    $(document).on('click', '#sortSign', function(event) {
+    $(document).on('click', '.sortOption', function() {
         $.get('changeSort', function(flag) {
             if(flag) {
                 $.get('mainpage', function (result) {

@@ -19,7 +19,7 @@ var LetterSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    dateToRecieve: {
+    dateToReceive: {
         type: Date,
         required: true
     },

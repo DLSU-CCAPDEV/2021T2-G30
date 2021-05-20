@@ -212,6 +212,7 @@ const profileController = {
 
            // Bookmark
            req.session.sortBy = 'date';
+           req.session.letterType = 'incoming';
            req.session.uName = result.uName;
            req.session.pw = result.pw;
            res.redirect('/mainpage');

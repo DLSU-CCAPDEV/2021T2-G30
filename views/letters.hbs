@@ -1,81 +1,162 @@
 {{> navbar}}
 
-<section>
-    <div class="container" style="padding-top: 1.5em">
+<section id="letterMasterSection">
+    <div class="container" id="letterHeader" style="padding-top: 1.5em">
         <div class="row">
             <div class="col-9 mx-auto">
                 <p class="text-center" style="text-shadow: 0 0 1px #22479c, 0 0 1px #163172; font-weight: 400; font-size: 30pt;">
-                    Letters
+                    {{#if incoming}}
+                        Incoming Letters
+                    {{else}}
+                        Outgoing Letters
+                    {{/if}}
                 </p>
                 <hr>
             </div>
         </div>
     </div>
-    
-    <div class="container" id="letterType">
-    {{#if letters}}
-            <div class="row">
-                <div class="col-9 mx-auto">
-                    <div class="btn-group dropstart">
-                        <button type="button" class="btn dropdown-toggle letterdropdown dropDownSort" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-filter"></i>
-                        </button>
-                        <ul class="dropdown-menu">
-                        <li><a class="dropdown-item disabled">Received</a></li>
-                        <li><a class="dropdown-item" href="sentletters.html">Sent</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        {{/if}}
-    </div>
-    
 
-    <div class="container pt-3" id="mainSectionLetter">
-        {{#if letters}}
+    <div class="container" id="letterType">
         <div class="row">
             <div class="col-9 mx-auto">
-                <div class="card mb-3 mx-auto" style="padding-right: 0">
-                    <div class="row g-0">
-                        <div class="col-9 custom">
-                            <h5
-                            class="card-title ps-3 pt-4"
-                            style="margin-bottom: -0.4em"
-                            >
-                            You're probably asleep
-                            </h5>
-                            <div class="card-body" style="overflow: hidden">
-                            <p class="card-text">
-                                But I feel like I have to scream out into the world how amazing you are and how excited I am to see you tomorrow. I joked that we are like a human pretzel, and it’s true. 
-                                I’m pretty sure we look like something out of a B rated sci-fi film, fused together with all the lanky limbs twisted and curling. 
-                                Somehow we fit perfectly together, like a glove. I don’t know what’s going to happen, but I know that for once I’m okay with this. 
-                                And I think it’s because if I could choose anyone else to be hurdling through space with at this moment, I would choose you still.
-                            </p>
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <img
-                            src="Images/letters2.jpg"
-                            class="img-fluid"
-                            style="height: 169px; width: 246.5px; object-fit: cover"
-                            alt="..."
-                            />
-                        </div>
-                        <div class="card-footer">
-                            <p class="card-text">
-                            <small class="text-muted"> Sent by <a href="friendprofile4.html">William Dimaculangan</a> on April 1, 2021</small>
-                            </p>
-                        </div>
-                    </div>
+                <div class="btn-group dropstart">
+                    <button type="button" class="btn dropdown-toggle letterdropdown dropDownSort" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-filter"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                    {{#if incoming}}
+                        <li><button class="dropdown-item disabled sortOptionLetter">Received</button></li>
+                        <li><button class="dropdown-item sortOptionLetter">Sent</button></li>
+                    {{else}}
+                        <li><button class="dropdown-item sortOptionLetter">Received</button></li>
+                        <li><button class="dropdown-item disabled sortOptionLetter">Sent</button></li>
+                    {{/if}}
+                    
+                    </ul>
                 </div>
             </div>
         </div>
-        {{else}}
-            <div class="row">
-                <div class="col-12">
-                    <p style="text-align: center; margin-bottom: 0.5em">You do not have letters to be sent or recieved</p>
+    </div>
+
+    <div class="container pt-3" id="mainSectionLetter">
+        {{#if incoming}}
+            {{#each letters}}
+                <div class="row">
+                    <div class="col-9 mx-auto">
+                        <div class="card mb-3 mx-auto" style="padding-right: 0">
+                            <div class="row g-0">
+                                {{#if this.entryImage}}
+                                    <div class="col-9 custom">
+                                        <h5
+                                        class="card-title ps-3 pt-4"
+                                        style="margin-bottom: -0.4em"
+                                        >
+                                        {{this.letterTitle}}
+                                        </h5>
+                                        <div class="card-body" style="overflow: hidden">
+                                        <p class="card-text">
+                                            {{this.letterBody}}
+                                        </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <img
+                                        src="image/{{this.entryImage}}"
+                                        class="img-fluid"
+                                        style="height: 169px; width: 246.5px; object-fit: cover"
+                                        alt="..."
+                                        />
+                                    </div>
+                                {{else}}
+                                    <div class="col-12 custom">
+                                        <h5
+                                        class="card-title ps-3 pt-4"
+                                        style="margin-bottom: -0.4em"
+                                        >
+                                        {{this.letterTitle}}
+                                        </h5>
+                                        <div class="card-body" style="overflow: hidden">
+                                        <p class="card-text">
+                                            {{this.letterBody}}
+                                        </p>
+                                        </div>
+                                    </div>
+                                {{/if}}
+                                <div class="card-footer" id="letterFooter">
+                                    <p class="card-text">
+                                        <small class="text-muted"> Sent by <a href="/userprofile/{{this.author}}">{{this.author}}</a> at {{time this.dateToReceive}} on {{date this.dateToReceive}}</small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            {{else}}
+                <div class="row">
+                    <div class="col-12">
+                        <p style="text-align: center; margin-bottom: 0.5em">You do not have incoming letters</p>
+                    </div>
+                </div>
+            {{/each}}
+        {{else}}
+            {{#each letters}}
+                <div class="row">
+                    <div class="col-9 mx-auto">
+                        <div class="card mb-3 mx-auto" style="padding-right: 0">
+                            <div class="row g-0">
+                                {{#if this.entryImage}}
+                                    <div class="col-9 custom">
+                                        <h5
+                                        class="card-title ps-3 pt-4"
+                                        style="margin-bottom: -0.4em"
+                                        >
+                                        {{this.letterTitle}}
+                                        </h5>
+                                        <div class="card-body" style="overflow: hidden">
+                                        <p class="card-text">
+                                            {{this.letterBody}}
+                                        </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <img
+                                        src="image/{{this.entryImage}}"
+                                        class="img-fluid"
+                                        style="height: 169px; width: 246.5px; object-fit: cover"
+                                        alt="..."
+                                        />
+                                    </div>
+                                {{else}}
+                                    <div class="col-12 custom">
+                                        <h5
+                                        class="card-title ps-3 pt-4"
+                                        style="margin-bottom: -0.4em"
+                                        >
+                                        {{this.letterTitle}}
+                                        </h5>
+                                        <div class="card-body" style="overflow: hidden">
+                                        <p class="card-text">
+                                            {{this.letterBody}}
+                                        </p>
+                                        </div>
+                                    </div>
+                                {{/if}}
+                                <div class="card-footer" id="letterFooter">
+                                    <p class="card-text">
+                                        <small class="text-muted"> Send to <a href="/userprofile/{{this.recipient}}">{{this.recipient}}</a> at {{time this.dateToReceive}} on {{date this.dateToReceive}}</small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{else}}
+                <div class="row">
+                    <div class="col-12">
+                        <p style="text-align: center; margin-bottom: 0.5em">You do not have outgoing letters</p>
+                    </div>
+                </div>
+            {{/each}}
         {{/if}}
     </div>
 </section>
@@ -113,7 +194,7 @@
                     </div>
                     <div class="col-md-6">
                         <label for="dateLetter" style="font-size: 14px;"> Date to be sent </label>
-                        <input type="date" class="form-control" id="dateLetter">
+                        <input type="datetime-local" class="form-control" id="dateLetter">
                     </div>
                     </div>
                     

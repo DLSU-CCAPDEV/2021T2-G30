@@ -42,7 +42,9 @@ var UserSchema = new mongoose.Schema({
         required: false
     }],
     letters: [{
-        letter: {type: mongoose.Schema.Types.ObjectId, ref: 'letters'}
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'letters',
+        required: false
     }],
     sentRequest:[{
 		userId: {type: mongoose.Schema.Types.ObjectId, ref: 'users'},

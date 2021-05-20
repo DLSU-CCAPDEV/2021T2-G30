@@ -43,6 +43,7 @@ router.get('/disablememories', profileController.disableMemories);
 router.get('/enablememories', profileController.enableMemories);
 
 router.get('/letters', letterController.getLetters);
+router.get('/lettersoutgoing', letterController.getLettersOutgoing);
 
 //POST // Creation
 router.post('/signup', [db.upload.any(), validation.signupValidation()], profileController.signup);

@@ -207,21 +207,19 @@
                 <form>
                   <div class="mb-3">
                     <p>
-                      Clicking on "Enable" will enable memories to appear on your
-                      timeline
+                      Clicking on "Enable" will enable memories on the main page
                     </p>
-                    <hr />
+                    <hr>
                     <p>
-                      Clicking on "Disable" will disable memories to appear on your
-                      timeline
+                      Clicking on "Disable" will disable memories on the main page
                     </p>
-                    <p>Memories is currently active.</p>
+                    <p>Memories is currently {{user.memoryenabler}}</p>
                   </div>
                 </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-danger">Disable</button>
-                <button type="button" class="btn btn-primary">Enable</button>
+                <button type="button" onclick="location.href='/disablememories'" class="btn btn-danger">Disable</button>
+                <button type="button" onclick="location.href='/enablememories'" class="btn btn-primary">Enable</button>
               </div>
             </div>
           </div>

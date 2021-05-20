@@ -19,7 +19,7 @@ const entryController = {
         var timePosted = currDate.getHours() * 10000;
         timePosted = timePosted + (currDate.getMinutes() * 100);
         timePosted = timePosted + (currDate.getSeconds());
-        // console.log(timePosted);
+        //console.log(timePosted);
 
         if(req.files.length > 0) {
             entryImage = req.files[0].id;
@@ -29,8 +29,6 @@ const entryController = {
 
         if(significance === 'None')
             significance = '/' + significance;
-
-        console.log(significance);
 
         var entry = {
             _id: mongoose.Types.ObjectId(),

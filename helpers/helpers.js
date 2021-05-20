@@ -65,6 +65,10 @@ const helpers = {
         return (monthNames[date.getMonth()]) + ' ' + date.getDate() +  ', ' + date.getFullYear()
     },
 
+    time: function(time) {
+        return time.getHours() + ':' + time.getMinutes();
+    },
+
     defaultDate: function(date) {
         //console.log(date.getFullYear() + '-' + (date.getMonth() + 1).toString().padStart(2, 0) + '-' + date.getDate().toString().padStart(2, 0))
         return date.getFullYear() + '-' + (date.getMonth() + 1).toString().padStart(2, 0) + '-' + date.getDate().toString().padStart(2, 0)
@@ -89,9 +93,9 @@ const helpers = {
 
     sortMethod: function (sortMethod) {
         if(sortMethod === 'date') 
-            return '<li><button id="sortDate" class="dropdown-item disabled">Sort by Date</button></li> <li><button id="sortSign" class="dropdown-item">Sort by Significance</button></li>'
+            return '<li><button class="dropdown-item disabled sortOption">Sort by Date</button></li> <li><button class="dropdown-item sortOption">Sort by Significance</button></li>'
         else 
-            return '<li><button id="sortDate" class="dropdown-item">Sort by Date</button></li> <li><button id="sortSign" class="dropdown-item disabled">Sort by Significance</button></li>'
+            return '<li><button class="dropdown-item sortOption">Sort by Date</button></li> <li><button class="dropdown-item disabled sortOption">Sort by Significance</button></li>'
     }
 }
 

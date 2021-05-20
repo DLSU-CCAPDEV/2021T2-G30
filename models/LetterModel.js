@@ -2,33 +2,25 @@
 var mongoose = require('mongoose');
 
 // defines the schema for collection `users`
-var EntrySchema = new mongoose.Schema({
-    entryTitle: {
+var LetterSchema = new mongoose.Schema({
+    letterTitle: {
         type: String,
         required: true
     },
-    entryBody: {
+    letterBody: {
         type: String,
         required: true
     },
-    significance: {
+    author: {
         type: String,
         required: true
     },
-    entryDate: {
+    recipient: {
+        type: String,
+        required: true
+    },
+    dateToReceive: {
         type: Date,
-        required: true
-    },
-    timePosted: {
-        type: Number,
-        required: true
-    },
-    authorUserName: {
-        type: String,
-        required: true
-    },
-    privacy: {
-        type: String,
         required: true
     },
     entryImage: {
@@ -37,4 +29,4 @@ var EntrySchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('Entry', EntrySchema);
+module.exports = mongoose.model('Letter', LetterSchema);

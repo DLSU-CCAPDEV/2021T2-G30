@@ -81,7 +81,7 @@ const userController = {
                 } else {
                     //console.log('error');
                     res.status(404);
-                    res.redirect('/error');
+                    res.redirect('/usererror');
                 }
             });
         }

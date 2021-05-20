@@ -288,10 +288,14 @@ const profileController = {
                 for example, if there is an error for parameter `fName`:
                 store the value to the field `fNameError`
             */
-
+            var details = {};
+            for(var i = 0; i < errors.length; i++) {
+                details[errors[i].param + "Error"] = errors[i].msg;
+            }
             res.render('settings', {
                 title: 'Settings',
                 css: ['global','settings'],
+                errDetails: details,
                 errorCreds: true
             });
         }
@@ -410,7 +414,7 @@ const profileController = {
         var uName = req.session.uName;
 
         db.deleteOne(userCollection, {uName: uName},function(deleted) {
-            console.log(deleted);      
+            console.log(deleted);
             req.session.destroy(function(error){
                 if(error){
                     throw error;

@@ -79,13 +79,13 @@ $(document).ready(function () {
     $(document).on('click', '.editBtn', function(event) {
         //alert('success');
         var id = event.target.id;
-
         var entryDate =  $('#entryDate-' + id).val();
         var entryTitle = validator.trim($('#entryTitle-' + id).val());
         var entryBody =  validator.trim($('#entryBody-' + id).val());
         var significance =  $('#significance-' + id).val();
         var privacy =  $('#privacy-' + id).val();
         var entryTitleEmpty = validator.isEmpty(entryTitle);
+
 
         var entryTitleValid = editisValidTitle($('#entryTitle-' + id), id);
         var entryBodyValid = editisValidBody($('#entryBody-' + id), id);
@@ -109,49 +109,6 @@ $(document).ready(function () {
                 }
             });
         }
-        // if(entryBodyEmpty) {
-            
-        //     $('#emptyBodyEdit-' + id).text('Entry Body should not be empty!!!!!!');
-        //     $('#emptyBodyEdit-' + id).css('margin-bottom', '-1em').css('margin-top', '.2em')
-        // } else {
-        //     $('#emptyBodyEdit-' + id).text('');
-        // }
-
-        // if (entryDate > formattedDate) {
-        //     $('#futureDate').text('Entered date is invalid.');
-        //     $('#futureDate').css('margin-bottom', '-2em');
-        // } else {
-        //     $('#futureDate').text('');
-        // }
-
-        // if(!entryBodyEmpty && !(entryDate > formattedDate)) {
-        //     if(entryTitleEmpty) {
-        //         $('#entryTitle-' + id).val(dateTitle);
-        //     }
-            
-        //     var xhttp = new XMLHttpRequest();
-        //     xhttp.open('POST', '/editentry');
-
-        //     // After Ajax Call
-        //     xhttp.onreadystatechange = function() {
-        //         $('#entryTitle-' + id).val('');
-        //         $('#entryBody-' + id).val('');
-        //     }
-
-        //     // Data to be passed to ajax call
-        //     var formData = new FormData();
-        //     formData.append('id-' + id, id);
-        //     formData.append('editEntryTitle-' + id, entryBody);
-        //     formData.append('editPrivacy-' + id, privacy);
-        //     formData.append('editEntryDate-' + id, entryDate);
-        //     formData.append('editSignificance-' + id, significance);
-        //     formData.append('editEntryBody-' + id, entryBody);
-        //     formData.append('editEntyImage-' + id, document.getElementById('editImageForm-'+ id).files[0]);
-        //     $('#modal-edit-' + id).modal('toggle');
-        //     $("#mainSection").load(" #mainSection > *");
-        //     xhttp.send(formData);
-            
-        // }
     });
 
     $('.editEntry').on("hidden.bs.modal", function () {
@@ -171,15 +128,7 @@ $(document).ready(function () {
         var privacy = $('#inputPrivacy').val();
     
         var entryBodyEmpty = validator.isEmpty(entryBody);
-        var entryTitleEmpty = validator.isEmpty(entryTitle);
-        // var entry = {
-        //     entryDate: entryDate,
-        //     entryTitle: entryTitle,
-        //     entryBody: entryBody,
-        //     significance: significance,
-        //     privacy: privacy,
-        // }
-        
+        var entryTitleEmpty = validator.isEmpty(entryTitle);        
         
         if(entryBodyEmpty) {
             $('#emptyTitleCreate').text('');
@@ -196,8 +145,6 @@ $(document).ready(function () {
 
             if(entryTitleEmpty) {
                 $('#entryTitleCreate').val(dateTitle);
-                // $('#emptyBodyCreate').text('').css('margin-bottom', '1rem');
-                // $('#emptyTitleCreate').css('margin-bottom', '-2em').css('margin-top', '.2em');
             }
             var xhttp = new XMLHttpRequest();
 

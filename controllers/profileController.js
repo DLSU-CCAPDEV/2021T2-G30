@@ -409,16 +409,31 @@ const profileController = {
 
         var uName = req.session.uName;
 
-        db.deleteOne(userCollection, {uName: uName},function(deleted) {
-            console.log(deleted);
-            req.session.destroy(function(error){
-                if(error){
-                    throw error;
-                }
-                else
-                    res.redirect('/login');
+        db.findOne(userCollection, {uName: uName}, '', function(result) {
+            var friendNames = [];
+
+            result.friendsList.forEach(function(friend) {
+                friendNames.push(friend.friendName)
             })
-        })
+            //console.log(friendNames);
+            var update = {
+                $pull: {
+                  friendsList: {friendId: result._id, friendName: result.uName}
+                }
+            }
+            db.updateMany(userCollection, {'uName': {$in: friendNames}}, update, function(result) {
+                db.deleteOne(userCollection, {uName: uName}, function(deleted) {
+                    //console.log(deleted);
+                    req.session.destroy(function(error){
+                        if(error){
+                            throw error;
+                        }
+                        else
+                            res.redirect('/login');
+                    })
+                })
+            });
+        });
     }
 };   
 

@@ -1,5 +1,4 @@
 const express = require("express");
-const router = express();
 const mainController = require('../controllers/mainController.js');
 const profileController = require('../controllers/profileController.js');
 const entryController = require('../controllers/entryController.js');
@@ -10,6 +9,8 @@ const letterController = require('../controllers/letterController.js');
 
 const db = require('../models/db.js');
 const validation = require('../helpers/validation.js');
+
+const router = express();
 
 // GET
 router.get('/', mainController.getMainPage); //incase user tries to access this route
@@ -26,7 +27,7 @@ router.get('/changeSort', mainController.changeSort);
 router.get('/checksignup', profileController.checksignup); //checks username
 router.get('/getCheckEmail', profileController.checkemail); //checks email if it already exists
 router.get('/getEditEmail', profileController.editCheckEmail);
-router.get('/checklogin', profileController.checklogin);
+router.get('/checklogin', profileController.checklogin); //checks credentials and sends it back to ajax
 router.get('/profile/:uName', profileController.getProfile);
 router.get('/logout', profileController.getLogout);
 
@@ -49,7 +50,7 @@ router.get('/lettersoutgoing', letterController.getLettersOutgoing);
 //POST // Creation
 router.post('/signup', [db.upload.any(), validation.signupValidation()], profileController.signup);
 router.post('/editaccount', db.upload.any(),profileController.editAccount);
-router.post('/login', profileController.login);
+router.post('/login', validation.loginValidation(), profileController.login);
 
 router.post('/createentry', db.upload.any(), entryController.createEntry);
 router.post('/editentry', db.upload.any(),  entryController.editEntry);

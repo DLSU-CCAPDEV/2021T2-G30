@@ -25,7 +25,7 @@ const profileController = {
         var memoryenabler = true;
 
         var errors = validationResult(req);
-
+        
         //If there are validation errors
         if (!errors.isEmpty()) {
             errors = errors.errors;
@@ -43,7 +43,7 @@ const profileController = {
                 details[errors[i].param + "Error"] = errors[i].msg;
             }
             res.render('login', {
-                title: 'Login',
+                title: 'Error in Signing Up',
                 css: ['global'],
                 errDetails: details,
                 errorCreds: true
@@ -54,58 +54,64 @@ const profileController = {
             //check if email is already taken
             var query = {email: email};
             var projection = 'email';
-            console.log("email being queried: " + email);
             db.findOne(userCollection, query, projection, function(userEmail) {
                 
                 // If email is unique
-                if(userEmail == null) {
-                    console.log(email + " != " + userEmail);
-                    console.log("Email is unique"); 
-                    db.findOne(userCollection, {uName: uName}, 'userName', function(userUName) {
-                        if(userUName == null) { //if unique username
-                            console.log("Username is unique");
-                            bcrypt.hash(pw, saltRounds, function(err, hash) {
-                                var indivUser = {
-                                    dPicture: dPicture,
-                                    fName: fName,
-                                    lName: lName,
-                                    email: email,
-                                    uName: uName,
-                                    bio: bio,
-                                    memoryenabler: memoryenabler,
-                                    pw: hash
-                                }
-                                
-                                // Insert data to db
-                                db.insertOne(userCollection, indivUser, function (flag) {
-                                    if(flag) {
-                                        res.redirect('/login');
+                if(userEmail == null) { 
+                    var invalidUsername = uName.includes(" "); //check if there is space between the username
+                    if(!invalidUsername) {
+                        db.findOne(userCollection, {uName: uName}, 'userName', function(userUName) {
+                            if(userUName == null) { //if unique username
+                                console.log("Username is unique");
+                                bcrypt.hash(pw, saltRounds, function(err, hash) {
+                                    var indivUser = {
+                                        dPicture: dPicture,
+                                        fName: fName,
+                                        lName: lName,
+                                        email: email,
+                                        uName: uName,
+                                        bio: bio,
+                                        pw: hash,
+                                        memoryenabler: memoryenabler
                                     }
-                                    else { 
-                                        res.status(500);
-                                        res.render('error', {
-                                            title: '500  Internal Server Error',
-                                            css:['global', 'error'],
-                                            status: {
-                                                code: "500",
-                                                message: "Something unexpected happened."
-                                            }  
-                                        });   
-                                    }    
+                                    
+                                    // Insert data to db
+                                    db.insertOne(userCollection, indivUser, function (flag) {
+                                        if(flag) {
+                                            res.redirect('/login');
+                                        }
+                                        else { 
+                                            res.status(500);
+                                            res.render('error', {
+                                                title: '500  Internal Server Error',
+                                                css:['global', 'error'],
+                                                status: {
+                                                    code: "500",
+                                                    message: "Something unexpected happened."
+                                                }  
+                                            });   
+                                        }    
+                                    });
                                 });
-                            });
-                        } else {
-                            res.render('login', {
-                                title: 'Login',
-                                css: ['global'],
-                                errorCreds: true
-                            });
-                            
-                        }
-                    });
+                            } else { //else username is not unique
+                                res.render('login', {
+                                    title: 'Error in Signing Up',
+                                    css: ['global'],
+                                    errorCreds: true
+                                });
+                                
+                            }
+                        });
+                    } else {
+                        res.render('login', {
+                            title: 'Error in Signing Up',
+                            css: ['global'],
+                            errorCreds: true
+                        });
+                    }
                 } else {
                     res.render('login', {
-                        title: 'Login',
+                        title: 'Error in Signing Up',
                         css: ['global'],
                         errorCreds: true
                     });
@@ -147,6 +153,7 @@ const profileController = {
         });
     },
     
+    
     checksignup: function (req, res) {
         var uName = req.query.uName;
         // console.log("test");
@@ -155,15 +162,15 @@ const profileController = {
         });
     },
 
+    //Check email to be sent back to the ajax
     checkemail: function (req, res) {
         var email = req.query.email;
-
-
         db.findOne(userCollection, {email: email}, '', function(result) {
             res.send(result);
         });
     },
 
+    //Check email to be sent back to the ajax
     editCheckEmail: function (req, res) {
         var email = req.query.email;
         var sessionUser = req.session.uName;
@@ -204,20 +211,33 @@ const profileController = {
         });
     },
 
+
     login: function(req, res){
         var uName = req.body.uName;
         var pw = req.body.pw;
+        var errors = validationResult(req);
 
-        db.findOne(userCollection, {uName: uName}, '', function (result) {
-
-           // Bookmark
-           req.session.sortBy = 'date';
-           req.session.letterType = 'incoming';
-           req.session.uName = result.uName;
-           req.session.pw = result.pw;
-           res.redirect('/mainpage');
-        });
-        
+        if(!errors.isEmpty()) {
+            errors = errors.errors;
+            var details = {};
+            for(var i = 0; i < errors.length; i++) {
+                details[errors[i].param + "Error"] = errors[i].msg;
+            }
+            res.render('login', {
+                title: "Error in Logging in",
+                css: ['global'],
+                errorLogin: "Invalid Login Credentials"
+            });
+        } else {
+            db.findOne(userCollection, {uName: uName}, '', function (result) {
+               // Bookmark
+               console.log("Value in db: " + result);
+               req.session.sortBy = 'date';
+               req.session.uName = result.uName;
+               req.session.pw = result.pw;
+               res.redirect('/mainpage');
+            });
+        }
     },
 
     getLogout: function(req,res){
@@ -268,14 +288,10 @@ const profileController = {
                 for example, if there is an error for parameter `fName`:
                 store the value to the field `fNameError`
             */
-            var details = {};
-            for(var i = 0; i < errors.length; i++) {
-                details[errors[i].param + "Error"] = errors[i].msg;
-            }
+
             res.render('settings', {
                 title: 'Settings',
                 css: ['global','settings'],
-                errDetails: details,
                 errorCreds: true
             });
         }

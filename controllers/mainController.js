@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 
 const mainController = {
 
+    //Redirects user if already is logged in
     getLogin: function (req, res) {
         
         if(req.session.uName) {

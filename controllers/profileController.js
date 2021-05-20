@@ -71,7 +71,8 @@ const profileController = {
                                         email: email,
                                         uName: uName,
                                         bio: bio,
-                                        pw: hash
+                                        pw: hash,
+                                        memoryenabler: memoryenabler
                                     }
                                     
                                     // Insert data to db

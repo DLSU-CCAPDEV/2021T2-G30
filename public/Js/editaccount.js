@@ -217,6 +217,46 @@ $(document).ready(function () {
         return validLName;
     }
 
+    function isValidBio(field) {
+
+        // sets initial value of return variable to false
+        var validBio = false;
+
+        /*
+            gets the value of `pw` in the signup form
+            removes leading and trailing blank spaces
+            then checks if it contains at least 8 characters.
+        */
+        var lName = validator.trim($('#BioEdit').val());
+        var isValidLength = validator.isLength(lName, {max: 150});
+
+        // if the value of fName contains at least 1 character
+        if(isValidLength) {
+
+
+                $('#bioError').text('');
+                validBio = true;
+            
+                
+
+            /*
+                since  the value of `pw` contains at least 8 characters
+                set the value of the return variable to true.
+            */
+        }
+
+        // else if the value of fName contains no characters
+        else {
+
+            
+                $('#bioError').text('');
+                
+            
+        }
+
+        // return value of return variable
+        return validBio;
+    }
 
 
 
@@ -230,12 +270,13 @@ $(document).ready(function () {
         var validPassword = isValidPassword(pw);
         var validFname = isValidFName(fName);
         var validLname = isValidLName(lName);
+        var validBio = isValidBio(bio);
 
         isValidEmail(email, function(validEmail) {
             isValidemail = validEmail;
             console.log("THINGY = " + isValidemail);
 
-            if(!validFname || !validLname){
+            if(!validFname || !validLname || !validBio){
                 $('#error').text('Fill up all fields. ');
                 $('#error').css('color','red');
             }

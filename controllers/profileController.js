@@ -175,7 +175,6 @@ const profileController = {
         var email = req.query.email;
         var sessionUser = req.session.uName;
 
-        console.log("hello");
         db.findOne(userCollection, {email: email}, '', function(result) {
 
             if(result != null){

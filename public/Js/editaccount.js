@@ -227,29 +227,30 @@ $(document).ready(function () {
             removes leading and trailing blank spaces
             then checks if it contains at least 8 characters.
         */
-        var lName = validator.trim($('#BioEdit').val());
-        var isValidLength = validator.isLength(lName, {max: 150});
+        var bioName = validator.trim($('#BioEdit').val());
+        var isValidLength = validator.isLength(bioName, {max: 150});
 
         // if the value of fName contains at least 1 character
         if(isValidLength) {
 
 
+                if(field === $('#BioEdit').val()){
                 $('#bioError').text('');
                 validBio = true;
+                }
             
-                
-
-            /*
-                since  the value of `pw` contains at least 8 characters
-                set the value of the return variable to true.
-            */
+            
         }
 
         // else if the value of fName contains no characters
         else {
 
             
-                $('#bioError').text('');
+            if(field === $('#BioEdit').val()){
+                $('#bioError').text('Max Values Inputted');
+                $('#lNameError').css('color','red');
+            }
+                
                 
             
         }
@@ -276,7 +277,7 @@ $(document).ready(function () {
             isValidemail = validEmail;
             console.log("THINGY = " + isValidemail);
 
-            if(!validFname || !validLname || !validBio){
+            if(!validFname && !validLname && !validBio){
                 $('#error').text('Fill up all fields. ');
                 $('#error').css('color','red');
             }

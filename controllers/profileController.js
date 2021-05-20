@@ -267,6 +267,7 @@ const profileController = {
         var pw = req.body.pw; // the password changed
         var errors = validationResult(req);
 
+
         console.log("password in session at editAccount: " + pw);
         if(req.files.length == 0) {
             dPicture = null;
@@ -277,6 +278,7 @@ const profileController = {
         console.log("dPicture id is = " + dPicture);
 
         if(!errors.isEmpty()){
+            console.log("I have arrived");
             errors = errors.errors;
             
              /*
@@ -300,6 +302,7 @@ const profileController = {
         }
         else{
             if(pw !== "" && dPicture != null){
+                console.log("I have arrived (1)");
                 bcrypt.hash(pw, saltRounds, function(err, hash) {
                     var indivUser = {
                         dPicture: dPicture,
@@ -313,6 +316,7 @@ const profileController = {
                     
                     db.updateOne(userCollection, {uName: uName}, indivUser, function(update){
                         console.log("update: " + update);
+                        console.log("Inside pw !== dPicture != null is == " + indivUser);
                         if(update){
                             res.redirect('/settings');
                         }
@@ -320,6 +324,7 @@ const profileController = {
                 });
             }
             else if(pw === "" && dPicture == null){
+                console.log("I have arrived (2)");
                 var indivUser = {
                     fName: req.body.fName,
                     lName: req.body.lName,
@@ -335,6 +340,7 @@ const profileController = {
                 });
             }
             else if(pw !== "" && dPicture == null){
+                console.log("I have arrived (3)");
                 bcrypt.hash(pw, saltRounds, function(err, hash) {
                     var indivUser = {
                         fName: req.body.fName,
@@ -353,8 +359,8 @@ const profileController = {
                     });
                 });
             }
-            else if(pw === "" && dPicture != null){
-
+            else if(pw === "" && dPicture !== null){
+                console.log("I have arrived (4)");
                     var indivUser = {
                         dPicture: dPicture,
                         fName: req.body.fName,

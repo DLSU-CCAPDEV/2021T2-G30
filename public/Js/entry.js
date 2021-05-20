@@ -9,7 +9,7 @@ $(document).ready(function () {
     var dateTitle =   (monthNames[today.getMonth()]) + ' ' + today.getDate().toString().padStart(2, 0) + ", " + today.getFullYear().toString();
     
 
-    function isValidTitle (field, id) {
+    function editisValidTitle (field, id) {
         var validTitle = false; 
         // var entryTitle = validator.trim($('#entryTitle-' + id).val());
         var entryTitle =  validator.trim($('#entryTitle-' + id).val());
@@ -25,10 +25,10 @@ $(document).ready(function () {
                 $('#errorTitleEdit-' + id).css('margin-bottom', '-2em').css('margin-top', '.2em');
             }
         }
-        return false;
+        return validTitle;
     }
 
-    function isValidBody(field, id) {
+    function editisValidBody(field, id) {
         var validBody = false;
         var entryBody = validator.trim($('#entryBody-' + id).val());
         var isEmpty = validator.isEmpty(entryBody);
@@ -47,7 +47,7 @@ $(document).ready(function () {
         return validBody;
     }
 
-    function isValidDate(field, id) {
+    function editisValidDate(field, id) {
         var validDate = false;
         var entryDate =  $('#entryDate-' + id).val();
         var invalidDate = entryDate > formattedDate; //if future
@@ -87,13 +87,13 @@ $(document).ready(function () {
         var privacy =  $('#privacy-' + id).val();
         var entryTitleEmpty = validator.isEmpty(entryTitle);
 
-        var entryTitleValid = isValidTitle($('#entryTitle-' + id), id);
-        var entryBodyValid = isValidBody($('#entryBody-' + id), id);
-        var entryDateValid = isValidDate($('#entryDate-' + id), id);
+        var entryTitleValid = editisValidTitle($('#entryTitle-' + id), id);
+        var entryBodyValid = editisValidBody($('#entryBody-' + id), id);
+        var entryDateValid = editisValidDate($('#entryDate-' + id), id);
 
         if(entryTitleValid && entryBodyValid && entryDateValid) {
             if(entryTitleEmpty)
-                $('#entryTitle-' + id).val(formattedDate);
+                entryTitle = dateTitle;
             var entry = {
                 id: id,
                 entryTitle: entryTitle,

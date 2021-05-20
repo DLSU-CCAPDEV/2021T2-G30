@@ -24,7 +24,7 @@ const profileController = {
         var pw = req.body.pw;
 
         var errors = validationResult(req);
-
+        
         //If there are validation errors
         if (!errors.isEmpty()) {
             errors = errors.errors;
@@ -42,7 +42,7 @@ const profileController = {
                 details[errors[i].param + "Error"] = errors[i].msg;
             }
             res.render('login', {
-                title: 'Login',
+                title: 'Error in Signing Up',
                 css: ['global'],
                 errDetails: details,
                 errorCreds: true
@@ -53,14 +53,11 @@ const profileController = {
             //check if email is already taken
             var query = {email: email};
             var projection = 'email';
-            console.log("email being queried: " + email);
             db.findOne(userCollection, query, projection, function(userEmail) {
                 
                 // If email is unique
-                if(userEmail == null) {
-                    
-                    var invalidUsername = uName.includes(" ");
-                    console.log("Valid username: " + invalidUsername);
+                if(userEmail == null) { 
+                    var invalidUsername = uName.includes(" "); //check if there is space between the username
                     if(!invalidUsername) {
                         db.findOne(userCollection, {uName: uName}, 'userName', function(userUName) {
                             if(userUName == null) { //if unique username
@@ -94,9 +91,9 @@ const profileController = {
                                         }    
                                     });
                                 });
-                            } else {
+                            } else { //else username is not unique
                                 res.render('login', {
-                                    title: 'Login',
+                                    title: 'Error in Signing Up',
                                     css: ['global'],
                                     errorCreds: true
                                 });
@@ -105,14 +102,14 @@ const profileController = {
                         });
                     } else {
                         res.render('login', {
-                            title: 'Login',
+                            title: 'Error in Signing Up',
                             css: ['global'],
                             errorCreds: true
                         });
                     }
                 } else {
                     res.render('login', {
-                        title: 'Login',
+                        title: 'Error in Signing Up',
                         css: ['global'],
                         errorCreds: true
                     });
@@ -196,11 +193,6 @@ const profileController = {
         var uName = req.query.uName;
         var pw = req.query.pw;
 
-        var errors = validationResult(req);
-
-        if(!errors.isEmpty()) {
-
-        }
         db.findOne(userCollection, {uName: uName}, 'pw', function (result) {
             if(result === null)
                 res.send(false);
@@ -217,18 +209,34 @@ const profileController = {
         });
     },
 
+
     login: function(req, res){
         var uName = req.body.uName;
         var pw = req.body.pw;
+        var errors = validationResult(req);
 
-        db.findOne(userCollection, {uName: uName}, '', function (result) {
+        if(!errors.isEmpty()) {
+            errors = errors.errors;
+            var details = {};
+            for(var i = 0; i < errors.length; i++) {
+                details[errors[i].param + "Error"] = errors[i].msg;
+            }
+            res.render('login', {
+                title: "Error in Logging in",
+                css: ['global'],
+                errorLogin: "Invalid Login Credentials"
+            });
+        } else {
+            db.findOne(userCollection, {uName: uName}, '', function (result) {
+               // Bookmark
+               console.log("Value in db: " + result);
+               req.session.sortBy = 'date';
+               req.session.uName = result.uName;
+               req.session.pw = result.pw;
+               res.redirect('/mainpage');
+            });
 
-           // Bookmark
-           req.session.sortBy = 'date';
-           req.session.uName = result.uName;
-           req.session.pw = result.pw;
-           res.redirect('/mainpage');
-        });
+        }
         
     },
 
@@ -266,7 +274,6 @@ const profileController = {
             dPicture = req.files[0].id;
         }
         
-        console.log("dPicture id is = " + dPicture);
         if(pw !== "" && dPicture != null){
             bcrypt.hash(pw, saltRounds, function(err, hash) {
                 var indivUser = {

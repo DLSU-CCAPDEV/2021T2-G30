@@ -17,7 +17,15 @@ const validation = {
         ];
             
         return validation;
-    }
+    },
+    loginValidation: function () {
+        var validation = [
+            check('uName', "Username should contain at least 5 characters.").trim().isLength({min: 5}),
+            check('uName', 'Username should not be empty').trim().notEmpty(),
+            check('pw', 'Password should be at least 8 characters.').trim().isLength({min: 8})
+        ]
+        return validation;
+    },
 }
 
 

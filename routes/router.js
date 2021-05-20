@@ -49,7 +49,7 @@ router.get('/lettersoutgoing', letterController.getLettersOutgoing);
 
 //POST // Creation
 router.post('/signup', [db.upload.any(), validation.signupValidation()], profileController.signup);
-router.post('/editaccount', db.upload.any(), profileController.editAccount);
+router.post('/editaccount', [db.upload.any(), validation.editAccountValidation()],profileController.editAccount);
 router.post('/login', validation.loginValidation(), profileController.login);
 
 router.post('/createentry', db.upload.any(), entryController.createEntry);

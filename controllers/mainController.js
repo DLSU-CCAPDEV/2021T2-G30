@@ -34,6 +34,19 @@ const mainController = {
         });
     },
 
+    getUserError: function (req, res) {
+        res.status(400);
+        res.render('error', {
+            title: '400 Bad Request',
+            css:['global', 'error'],
+            status: {
+                code: "400",
+                message: "User account has been deleted"
+            } 
+            
+        });
+    },
+
     getMainPage: function(req, res) {
         
         if(req.session.uName){

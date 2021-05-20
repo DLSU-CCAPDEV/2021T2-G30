@@ -5,9 +5,9 @@
     <div class="row">
       <div class="col-12 mx-auto text-center">
         {{#if details.dPicture}}
-            <img src="/image/{{details.dPicture}}" alt="displayPicture" class="mx-auto btn dropdown-toggle displaypicture text-center" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" title="{{details.uName}} picture">
+            <img src="/image/{{details.dPicture}}" alt="displayPicture" class="mx-auto btn dropdown-toggle displaypicture text-center" type="button" id="dropdownMenuButton1" data-bs-toggle="modal" data-bs-target="#modalDP" title="{{details.uName}} picture">
         {{else}}
-              <img src="/Images/defaultdp.jpg" alt="displayPicture" class="mx-auto btn dropdown-toggle displaypicture text-center" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" title="{{details.uName}} picture">
+              <img src="/Images/defaultdp.jpg" alt="displayPicture" class="mx-auto btn dropdown-toggle displaypicture text-center" type="button" id="dropdownMenuButton1" data-bs-toggle="modal" data-bs-target="#modalDP" title="{{details.uName}} picture">
         {{/if}}
       </div>
       <div class="col-12 mx-auto pt-2">
@@ -95,6 +95,16 @@
     </div>
   {{/if}}
 </section>
+
+<div class="modal fade" id="modalDP" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    {{#if details.dPicture}}
+      <img src="/image/{{details.dPicture}}" alt="displayPicture" class="mx-auto btn dropdown-toggle displaypicturemodal text-center" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" title="{{details.uName}} picture">
+    {{else}}
+        <img src="/Images/defaultdp.jpg" alt="displayPicture" class="mx-auto btn dropdown-toggle displaypicturemodal text-center" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" title="{{details.uName}} picture">
+    {{/if}}
+  </div>
+</div>
 
 <!-- Modal -->
 <div

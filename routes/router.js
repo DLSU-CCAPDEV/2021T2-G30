@@ -16,6 +16,7 @@ const router = express();
 router.get('/', mainController.getMainPage); //incase user tries to access this route
 router.get('/login', mainController.getLogin);
 router.get('/error', mainController.getError);
+router.get('/usererror', mainController.getUserError);
 router.get('/mainpage', mainController.getMainPage);
 router.get('/settings', mainController.getSettingsPage);
 router.get('/image/:id', mainController.getPicture); //responsible for getting image in profiles

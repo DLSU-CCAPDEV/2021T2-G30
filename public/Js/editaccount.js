@@ -101,6 +101,124 @@ $(document).ready(function () {
 
     }
 
+    function isValidFName(field) {
+
+        // sets initial value of return variable to false
+        var validFName = false;
+
+        /*
+            gets the value of `pw` in the signup form
+            removes leading and trailing blank spaces
+            then checks if it contains at least 8 characters.
+        */
+        var fName = validator.trim($('#FirstNameEdit').val());
+        var isValidLength = validator.isLength(fName, {min: 1});
+
+        // if the value of fName contains at least 1 character
+        if(isValidLength) {
+
+            /*
+                check if the <input> field calling this function
+                is the `pw` <input> field
+            */
+            if(field !== $('#FirstNameEdit').val()){
+                // remove the error message in `idNumError`
+                $('#fNameError').text('First Name Entry is not the same?');
+            }
+            else{
+                $('#fNameError').text('');
+                validFName = true;
+            }
+                
+
+            /*
+                since  the value of `pw` contains at least 8 characters
+                set the value of the return variable to true.
+            */
+        }
+
+        // else if the value of fName contains no characters
+        else {
+
+            /*
+                check if the <input> field calling this function
+                is the `pw` <input> field
+            */
+            if(field === $('#FirstNameEdit').val()){
+                // display appropriate error message in `pwError`
+                $('#fNameError').text(`Please fill out this field`);
+                $('#fNameError').css('color','red');
+            }
+            else{
+                $('#fNameError').text('');
+                validFName = true;
+            }
+        }
+
+        // return value of return variable
+        return validFName;
+    }
+
+    function isValidLName(field) {
+
+        // sets initial value of return variable to false
+        var validLName = false;
+
+        /*
+            gets the value of `pw` in the signup form
+            removes leading and trailing blank spaces
+            then checks if it contains at least 8 characters.
+        */
+        var lName = validator.trim($('#LastNameEdit').val());
+        var isValidLength = validator.isLength(lName, {min: 1});
+
+        // if the value of fName contains at least 1 character
+        if(isValidLength) {
+
+            /*
+                check if the <input> field calling this function
+                is the `pw` <input> field
+            */
+            if(field !== $('#LastNameEdit').val()){
+                // remove the error message in `idNumError`
+                $('#lNameError').text('First Name Entry is not the same?');
+            }
+            else{
+                $('#lNameError').text('');
+                validLName = true;
+            }
+                
+
+            /*
+                since  the value of `pw` contains at least 8 characters
+                set the value of the return variable to true.
+            */
+        }
+
+        // else if the value of fName contains no characters
+        else {
+
+            /*
+                check if the <input> field calling this function
+                is the `pw` <input> field
+            */
+            if(field === $('#LastNameEdit').val()){
+                // display appropriate error message in `pwError`
+                $('#lNameError').text(`Please fill out this field`);
+                $('#lNameError').css('color','red');
+            }
+            else{
+                $('#lNameError').text('');
+                validLName = true;
+            }
+        }
+
+        // return value of return variable
+        return validLName;
+    }
+
+
+
 
 
     $('#saveChangesbtn').click(function () {
@@ -110,12 +228,14 @@ $(document).ready(function () {
         var email = $('#EmailEdit').val();
         var bio = $('#BioEdit').val();
         var validPassword = isValidPassword(pw);
+        var validFname = isValidFName(fName);
+        var validLname = isValidLName(lName);
 
         isValidEmail(email, function(validEmail) {
             isValidemail = validEmail;
             console.log("THINGY = " + isValidemail);
 
-            if(fName === "" && lName === "" && pw === "" && email === ""){
+            if(!validFname || !validLname){
                 $('#error').text('Fill up all fields. ');
                 $('#error').css('color','red');
             }

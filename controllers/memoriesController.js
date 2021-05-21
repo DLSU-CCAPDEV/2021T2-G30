@@ -1,52 +1,54 @@
 const db = require('../models/db.js');
 const entryCollection = require('../models/EntryModel.js');
 const userCollection = require('../models/UserModel.js');
+const { editEntry } = require('./entryController.js');
 
 const memoriesController = {
     getMemories: function(req, res) {
 
-        db.findOne(userCollection, {uName: req.session.uName}, '', function(result) {
-            //console.log(result.memoryenabler)
-            if(result.memoryenabler) 
-                var memories = true;
-            else 
-                var memories = false;
-
-            //first checks if theres a user logged in 
-            if(req.session.uName) {
-                var date = new Date();
-                date.setFullYear(date.getFullYear() - 1); //last year's memories
-                var newdate = new Date(date.toDateString());
+        if(req.session.uName) {
+            db.findOne(userCollection, {uName: req.session.uName}, '', function(result) {
+                //console.log(result.memoryenabler)
+                if(result.memoryenabler) 
+                    var memories = true;
+                else 
+                    var memories = false;
                 
-                var query = {
-                    authorUserName: req.session.uName,
-                    entryDate: {$eq: newdate}
-                }
+                var date = new Date();
+                var newdate = new Date(date.toDateString());
+                    
+                db.findMany(entryCollection, {authorUserName: result.uName, entryDate: {$lt: newdate}}, '', {entryDate: 1}, function(result) {
+                    var dates = [];
 
-                //find all entries from last year
-                db.findMany(entryCollection, query, '', {timePosted: -1}, function(result) {
+                    result.forEach(function(entry) {
+                        var month = newdate.getMonth();
+                        var day = newdate.getDate();
+
+                        if(entry.entryDate.getMonth() === month && entry.entryDate.getDate() === day)
+                            dates.push(entry);
+                    });
+
                     res.render('memories', {
                         title: 'SafeSpace',
                         css: ['global','mainpage'],
-                        entries: result,
+                        entries: dates,
                         sessionUser: req.session.uName,
                         memories: memories
                     });
-                
                 }); 
-            } else {
-                res.status(401);
-                res.render('error', {
-                    title: '401 Unauthorized Access',
-                    css:['global', 'error'],
-                    status: {
-                        code: "401",
-                        message: "Unauthorized access."
-                    } 
-                    
-                });
-            }
-        });
+            });
+
+        } else {
+            res.status(401);
+            res.render('error', {
+                title: '401 Unauthorized Access',
+                css:['global', 'error'],
+                status: {
+                    code: "401",
+                    message: "Unauthorized access."
+                } 
+            });
+        }
     }
 }
 

@@ -40,7 +40,8 @@ const mainController = {
             css:['global', 'error'],
             status: {
                 code: "400",
-                message: "User account has been deleted"
+                message: "User account has been deleted",
+                sessionUser: req.session.uName
             } 
             
         });
@@ -182,48 +183,62 @@ const mainController = {
         var SearchTitle = req.query.SearchTitle; 
         var SessionUName = req.session.uName;
 
-        if(SessionUName === SearchTitle){
-            db.findMany(userCollection, {uName: SearchTitle}, '', {uName: -1}, function(SessionUser){
-                db.findMany(entryCollection, {entryTitle: SearchTitle, authorUserName: SessionUName}, '', {entryDate: -1}, function(result){
-                    if(result.length !== 0 || SessionUser.length !== 0){
-                        //console.log('Search results success');
-                        res.render('searchresults',{
-                            title: 'Search Results',
-                            css: ['global','searchresults'],
-                            SessionUser: SessionUser,
-                            entries: result,
-                            sessionUser: req.session.uName
-                        });
-                    } else {
-                        res.render('notfound', {    
-                            title: 'No Results Found',
-                            css: ['global','searchresults'],
-                            query: SearchTitle 
-                        });
-                    }
-                }, {entryDate: -1})
-            });
+        if(SessionUName != null){
+            if(SessionUName === SearchTitle){
+                db.findMany(userCollection, {uName: SearchTitle}, '', {uName: -1}, function(SessionUser){
+                    db.findMany(entryCollection, {entryTitle: SearchTitle, authorUserName: SessionUName}, '', {entryDate: -1}, function(result){
+                        if(result.length !== 0 || SessionUser.length !== 0){
+                            //console.log('Search results success');
+                            res.render('searchresults',{
+                                title: 'Search Results',
+                                css: ['global','searchresults'],
+                                SessionUser: SessionUser,
+                                entries: result,
+                                sessionUser: req.session.uName
+                            });
+                        } else {
+                            res.render('notfound', {    
+                                title: 'No Results Found',
+                                css: ['global','searchresults'],
+                                query: SearchTitle 
+                            });
+                        }
+                    }, {entryDate: -1})
+                });
+            }
+            else{
+                db.findMany(userCollection,{uName: SearchTitle},'', {uName: -1}, function(people){
+                    db.findMany(entryCollection, {entryTitle: SearchTitle, authorUserName: SessionUName}, '', {entryDate: -1}, function(result){
+                        if(result.length !== 0 || people.length !== 0){
+                            //console.log('Search results success');
+                            res.render('searchresults',{
+                                title: 'Search Results',
+                                css: ['global','searchresults'],
+                                people: people,
+                                entries: result,
+                                sessionUser: req.session.uName
+                            });
+                        } else {
+                            res.render('notfound', {    
+                                title: 'No Results Found',
+                                css: ['global','searchresults'],
+                                query: SearchTitle 
+                            });
+                        }
+                    }, {entryDate: -1})
+                });
+            }
         }
         else{
-            db.findMany(userCollection,{uName: SearchTitle},'', {uName: -1}, function(people){
-                db.findMany(entryCollection, {entryTitle: SearchTitle, authorUserName: SessionUName}, '', {entryDate: -1}, function(result){
-                    if(result.length !== 0 || people.length !== 0){
-                        //console.log('Search results success');
-                        res.render('searchresults',{
-                            title: 'Search Results',
-                            css: ['global','searchresults'],
-                            people: people,
-                            entries: result,
-                            sessionUser: req.session.uName
-                        });
-                    } else {
-                        res.render('notfound', {    
-                            title: 'No Results Found',
-                            css: ['global','searchresults'],
-                            query: SearchTitle 
-                        });
-                    }
-                }, {entryDate: -1})
+            res.status(401);
+            res.render('error', {
+                title: '401 Unauthorized Access',
+                css:['global', 'error'],
+                status: {
+                    code: "401",
+                    message: "Unauthorized access."
+                } 
+                
             });
         }
         /*

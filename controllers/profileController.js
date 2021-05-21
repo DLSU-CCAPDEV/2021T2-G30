@@ -434,7 +434,15 @@ const profileController = {
 
             result.friendsList.forEach(function(friend) {
                 friendNames.push(friend.friendName)
-            })
+            });
+
+            result.pendingRequest.forEach(function(friend) {
+                friendNames.push(friend.username)
+            });
+
+            result.sentRequest.forEach(function(friend) {
+                friendNames.push(friend.username)
+            });
             //console.log(friendNames);
             var update = {
                 $pull: {

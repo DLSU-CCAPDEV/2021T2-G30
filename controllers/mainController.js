@@ -34,7 +34,7 @@ const mainController = {
     },
 
     getUserError: function (req, res) {
-        res.status(400);
+        //res.status(400);
         res.render('error', {
             title: '400 Bad Request',
             css:['global', 'error'],

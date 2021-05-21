@@ -427,7 +427,9 @@ const profileController = {
             //console.log(friendNames);
             var update = {
                 $pull: {
-                  friendsList: {friendId: result._id, friendName: result.uName}
+                  friendsList: {friendId: result._id, friendName: result.uName},
+                  sentRequest: {userId: result._id, username: result.uName},
+                  pendingRequest: {userId: result._id, username: result.uName}
                 }
             }
             db.updateMany(userCollection, {'uName': {$in: friendNames}}, update, function(result) {

@@ -6,7 +6,7 @@ const memoriesController = {
     getMemories: function(req, res) {
 
         db.findOne(userCollection, {uName: req.session.uName}, '', function(result) {
-            console.log(result.memoryenabler)
+            //console.log(result.memoryenabler)
             if(result.memoryenabler) 
                 var memories = true;
             else 

@@ -394,34 +394,34 @@ const profileController = {
 
     enableMemories: function(req,res){
         var uName = req.session.uName;
-
         var memoryenabler = true;
 
         var indivUser = {
-            memoryenabler:memoryenabler,
+            memoryenabler: memoryenabler,
         }
 
+        console.log(memoryenabler);
 
         db.updateOne(userCollection, {uName: uName}, indivUser, function(result){
             if(result)
-            res.redirect('/settings');
+                res.send(true);
         });
 
     },
 
     disableMemories: function(req,res){
         var uName = req.session.uName;
-
         var memoryenabler = false;
-        console.log("I am here");
-        console.log(uName + "= Sesison name");
+
         var indivUser = {
-            memoryenabler : memoryenabler,
+            memoryenabler: memoryenabler,
         }
+
+        console.log(memoryenabler);
 
         db.updateOne(userCollection, {uName: uName}, indivUser, function(result){
             if(result)
-            res.redirect('/settings');
+                res.send(true);
         });
     },
 

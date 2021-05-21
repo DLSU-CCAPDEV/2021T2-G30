@@ -35,13 +35,9 @@ const entryController = {
         var newCurrDate = new Date(currDate.toDateString());
         var newEntryDate = new Date(entryDate.toDateString());
 
-        // console.log("entrydate > currdate: " + (newEntryDate > newCurrDate));
-        // console.log("New entryDate: " + entryDate.toDateString());
-        // console.log("New currDate: " + currDate.toDateString());
-        // console.log("there are errors: " + !errors.isEmpty());
         if(!errors.isEmpty() || (newEntryDate  > newCurrDate)) {
             console.log("Invalid entry creation.");
-            // res.redirect('mainpage');
+            
         } else {
             console.log("Valid entry creation.");
             var entry = {
@@ -129,6 +125,7 @@ const entryController = {
     },
 
     deleteEntry: function(req, res) {
+        //console.log('success');
         var id = req.body.id;
 
         var update = {

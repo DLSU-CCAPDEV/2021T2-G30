@@ -1,46 +1,131 @@
 {{> navbar}}  
 
-    <section class="custom-section">
-      <div class="container d-flex align-items-center justify-content-center" style="min-height: inherit;">
-        <div class="row">
-          <div class="card mb-3" style="min-height: inherit;">
-            <div class="row d-flex g-0">
-              {{#if entries.entryImage}}
-              <div class="col-lg-8 col-md-12 py-2">
-                <div class="card-body">
-                  <h5 class="card-title pb-2">{{entries.entryTitle}}</h5>
-                  <p class="card-text" id="area" style="font-size: 14pt;">
-                    {{entries.entryBody}}
-                  </p>
-                </div>
+<section class="custom-section indivEntryMain">
+  <div class="container d-flex align-items-center justify-content-center" style="min-height: inherit;">
+    <div class="row">
+      <div class="card mb-3" style="min-height: inherit;">
+        <div class="row d-flex g-0">
+          {{#if entries.entryImage}}
+          <div class="col-lg-8 col-md-12 py-2">
+            <div class="card-body">
+              <h5 class="card-title pb-2">{{entries.entryTitle}}</h5>
+              <p class="card-text" id="area" style="font-size: 14pt;">
+                {{entries.entryBody}}
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-12 py-3 d-flex align-items-center justify-content-center">
+            <img src="/image/{{entries.entryImage}}" class="img-fluid" alt="...">
+          </div>
+          {{else}}
+          <div class="col-lg-12 col-md-12 py-2">
+            <div class="card-body">
+              <h5 class="card-title pb-2">{{entries.entryTitle}}</h5>
+              <p class="card-text" id="area" style="font-size: 14pt;">
+                {{entries.entryBody}}
+              </p>
+            </div>
+          </div>
+          {{/if}}
+          <!-- Entry Footer -->
+          <div class="card-footer">
+            <div class="row">
+              <div class="col mt-1">
+                <p class="card-text justify-content-center">
+                  <small class="text-muted">
+                    {{{significance entries.significance}}}
+                    {{{privacy entries.privacy}}} 
+                    Posted on {{date entries.entryDate}}
+                  </small></p>
               </div>
-              <div class="col-lg-4 col-md-12 py-3 d-flex align-items-center justify-content-center">
-                <img src="/image/{{entries.entryImage}}" class="img-fluid" alt="...">
-              </div>
-              {{else}}
-              <div class="col-lg-12 col-md-12 py-2">
-                <div class="card-body">
-                  <h5 class="card-title pb-2">{{entries.entryTitle}}</h5>
-                  <p class="card-text" id="area" style="font-size: 14pt;">
-                    {{entries.entryBody}}
-                  </p>
-                </div>
-              </div>
-              {{/if}}
-              <!-- Entry Footer -->
-              <div class="card-footer">
-                <div class="row">
-                  <div class="col mt-1">
-                    <p class="card-text justify-content-center">
-                      <small class="text-muted">
-                        {{{privacy entries.privacy}}} 
-                        Posted on {{date entries.entryDate}}
-                      </small></p>
-                  </div>
+              <!-- Entry Settings -->
+              <div class="col d-flex justify-content-end">
+                <div class="dropdown dropup" id="{{entries._id}}">
+                  <button class="btn" type="button" id="dropdownMenuEntry" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-ellipsis-h text-end" data-bs-toggle="tooltip"></i>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuEntry">
+                    <li><button class="dropdown-item" type="button" data-bs-toggle="modal"
+                      data-bs-target="#modal-edit-{{entries._id}}">Edit Entry</button></li>
+                    <li><button class="dropdown-item" type="button" data-bs-toggle="modal"
+                      data-bs-target="#modal-del-{{entries._id}}">Delete Entry</button></li>
+                  </ul>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
+
+<section id="indivEntry">
+  <!-- Edit Entry Modal -->
+  <div class="modal fade editEntry" id="modal-edit-{{entries._id}}" tabindex="-1" aria-labelledby="createEntryModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="width: 50em">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editEntryModalLabel">Edit Entry</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <!-- Edit entry -->
+          <form>
+            <div class="mb-3">
+              <label class="visually-hidden" for="autoSizingSelect">New Title</label>
+              <input id="entryTitle-{{entries._id}}" type="text" class="form-control" value="{{entries.entryTitle}}" aria-label="New Title" maxlength = "50">
+              <div id="emptyTitleEdit-{{entries._id}}" class="emptyTitleEdit" style="font-size: 8pt; color: red;"></div>
+            </div>
+            <div class="row g-3 mb-4">
+              <div class="col-md-4">
+                <label for="inputPrivacy" style="font-size: 14px;">Select Privacy</label>
+                <select id="privacy-{{entries._id}}" class="form-select">
+                  {{{privacyEdit entries.privacy}}}
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label for="dateEntry" style="font-size: 14px;">Date</label>
+                <input type="date" class="form-control" id="entryDate-{{entries._id}}" value="{{defaultDate entries.entryDate}}">
+                <div id="futureDate" style="font-size: 8pt; color: red;"></div>
+              </div>
+              <div class="col-md-4">
+                <label for="inputPrivacy" style="font-size: 14px;" >Entry's Significance</label>
+                <select id="significance-{{entries._id}}" class="form-select ">
+                  {{{significanceEdit entries.significance}}}
+                </select>
+              </div> 
+            </div>
+            <div class="mb-3">
+              <label class="visually-hidden" for="entryFormControlTextarea1" class="form-label">New Entry</label>
+              <textarea id="entryBody-{{entries._id}}" class="form-control" id="entryFormControlTextarea1" rows="5" aria-label="entry content">{{entries.entryBody}}</textarea>
+              <div id="emptyBodyEdit-{{entries._id}}" class="emptyBodyEdit" style="font-size: 8pt; color: red;"></div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary editBtn editIndivBtn" id="{{entries._id}}">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Delete Modal -->
+  <div class="modal fade" id="modal-del-{{entries._id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteEntryModalLabel">Remove Post</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          This option will delete your entry forever. Delete entry?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-dark deleteIndivBtn" data-bs-dismiss="modal" id="{{entries._id}}">Delete Entry</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

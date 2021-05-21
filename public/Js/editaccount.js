@@ -1,7 +1,6 @@
 $(document).ready(function () {
     var isValidemail = false;
 
-
     function isValidPassword(field) {
 
         // sets initial value of return variable to false
@@ -212,8 +211,7 @@ $(document).ready(function () {
                 validLName = true;
             }
         }
-
-        // return value of return variable
+        
         return validLName;
     }
 
@@ -233,34 +231,22 @@ $(document).ready(function () {
         // if the value of fName contains at least 1 character
         if(isValidLength) {
 
-
                 if(field === $('#BioEdit').val()){
                 $('#bioError').text('');
                 validBio = true;
-                }
-            
-            
+                } 
         }
 
         // else if the value of fName contains no characters
         else {
-
             
             if(field === $('#BioEdit').val()){
                 $('#bioError').text('Max Values Inputted');
                 $('#lNameError').css('color','red');
-            }
-                
-                
-            
+            } 
         }
-
-        // return value of return variable
         return validBio;
     }
-
-
-
 
     $('#saveChangesbtn').click(function () {
         var fName = $('#FirstNameEdit').val();
@@ -326,12 +312,24 @@ $(document).ready(function () {
                     */
                     $('#editAccountForm').submit();
                 }
-    
             }
-
         });
+    });
 
+    $(document).on('click', '.offMem', function(event) {
+        //alert('hello');
+        $.get('disablememories', function(flag) {
+            if(flag)
+                $("#memoryModal").load(" #memoryModal > *");
+        })
+    });
 
+    $(document).on('click', '.onMem', function(event) {
+        //alert('hello');
+        $.get('enablememories', function(flag) {
+            if(flag)
+                $("#memoryModal").load(" #memoryModal > *");
+        })
     });
 
 })

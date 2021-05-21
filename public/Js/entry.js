@@ -65,15 +65,58 @@ $(document).ready(function () {
 
         return validDate;
     }
-
     
-    $('#mainSection').on('click', '.deleteBtn', function (event) {
+    $('#mainSection').on('click', '.deleteBtn', function(event) {
+        //alert(event.target.id);
         $.post('deleteentry', {id: event.target.id}, function(result) {
             if(result) {
                 $("#sortBtn").load(" #sortBtn > *");
                 $("#mainSection").load(" #mainSection > *");
             }
         });
+    });
+
+    $('#indivEntry').on('click', '.deleteIndivBtn', function (event) {
+        //alert(event.target.id);
+        $.post('../deleteentry', {id: event.target.id}, function(result) {
+            if(result) {
+                window.location.href = '../mainpage';
+            }
+        });
+    });
+
+    $('#indivEntry').on('click', '.editIndivBtn', function(event) {
+        //alert('success');
+        var id = event.target.id;
+        var entryDate =  $('#entryDate-' + id).val();
+        var entryTitle = validator.trim($('#entryTitle-' + id).val());
+        var entryBody =  validator.trim($('#entryBody-' + id).val());
+        var significance =  $('#significance-' + id).val();
+        var privacy =  $('#privacy-' + id).val();
+        var entryTitleEmpty = validator.isEmpty(entryTitle);
+
+        var entryTitleValid = editisValidTitle($('#entryTitle-' + id), id);
+        var entryBodyValid = editisValidBody($('#entryBody-' + id), id);
+        var entryDateValid = editisValidDate($('#entryDate-' + id), id);
+
+        if(entryTitleValid && entryBodyValid && entryDateValid) {
+            if(entryTitleEmpty)
+                entryTitle = dateTitle;
+            var entry = {
+                id: id,
+                entryTitle: entryTitle,
+                entryBody: entryBody,
+                significance: significance,
+                entryDate: entryDate,
+                privacy: privacy
+            }
+            $.post('../editentry', entry, function(flag) {
+                if(flag) {
+                    $('#modal-edit-' + id).modal('toggle');
+                    $("#indivEntryMain").load(" #indivEntryMain > *");
+                }
+            });
+        }
     });
 
     $(document).on('click', '.editBtn', function(event) {
@@ -85,7 +128,6 @@ $(document).ready(function () {
         var significance =  $('#significance-' + id).val();
         var privacy =  $('#privacy-' + id).val();
         var entryTitleEmpty = validator.isEmpty(entryTitle);
-
 
         var entryTitleValid = editisValidTitle($('#entryTitle-' + id), id);
         var entryBodyValid = editisValidBody($('#entryBody-' + id), id);
@@ -129,7 +171,7 @@ $(document).ready(function () {
         var entryTitleEmpty = validator.isEmpty(entryTitle);        
         
         if(entryBodyEmpty) {
-            $('#emptyBodyCreate').text('Entry Body should not be empty');
+            $('#emptyBodyCreate').text('Entry Body should not be empty.');
             $('#emptyBodyCreate').css('margin-bottom', '-1em');
         } else {
             $('#emptyBodyCreate').text('');

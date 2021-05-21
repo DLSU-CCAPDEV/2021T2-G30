@@ -223,13 +223,13 @@
               </div>
               {{#if user.memoryenabler}}
               <div class="modal-footer">
-                <button type="button" id="enableMemoriesBtn" onclick="location.href='/disablememories'" class="btn btn-danger">Disable</button>
-                <button type="button" id="disableMemoriesBtn" onclick="location.href='/enablememories'" class="btn btn-primary" disabled>Enable</button>
+                <button type="button" id="enableMemoriesBtn" class="btn btn-secondary offMem">Disable</button>
+                <button type="button" id="disableMemoriesBtn" class="btn btn-secondary onMem" disabled>Enable</button>
               </div>
               {{else}}
               <div class="modal-footer">
-                <button type="button" id="enableMemoriesBtn" onclick="location.href='/disablememories'" class="btn btn-danger" disabled>Disable</button>
-                <button type="button" id="disableMemoriesBtn" onclick="location.href='/enablememories'" class="btn btn-primary">Enable</button>
+                <button type="button" id="enableMemoriesBtn" class="btn btn-secondary offMem" disabled>Disable</button>
+                <button type="button" id="disableMemoriesBtn" class="btn btn-secondary onMem">Enable</button>
               </div>
               {{/if}}
             </div>

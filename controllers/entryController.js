@@ -66,12 +66,18 @@ const entryController = {
         var id = req.body.id;
         var entryDate = new Date(req.body.entryDate);
 
+        var currDate = new Date();
+        var timePosted = currDate.getHours() * 10000;
+        timePosted = timePosted + (currDate.getMinutes() * 100);
+        timePosted = timePosted + (currDate.getSeconds());
+
         var entry = {
             entryTitle: req.body.entryTitle,
             entryBody: req.body.entryBody,
             significance: req.body.significance,
             entryDate: entryDate.setHours(0, 0, 0),
-            privacy: req.body.privacy,       
+            privacy: req.body.privacy,
+            timePosted: timePosted
         }
         
         db.updateOne(entryCollection, {_id: id}, entry, function(flag) {
@@ -84,6 +90,7 @@ const entryController = {
     },
 
     deleteEntry: function(req, res) {
+        //console.log('success');
         var id = req.body.id;
 
         var update = {

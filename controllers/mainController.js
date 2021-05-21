@@ -35,15 +35,15 @@ const mainController = {
 
     getUserError: function (req, res) {
         res.status(400);
+        //console.log(req.session.uName);
         res.render('error', {
             title: '400 Bad Request',
             css:['global', 'error'],
             status: {
                 code: "400",
                 message: "User account has been deleted",
-                sessionUser: req.session.uName
-            } 
-            
+            },
+            sessionUser: req.session.uName
         });
     },
 

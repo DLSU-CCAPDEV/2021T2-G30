@@ -124,24 +124,24 @@ $(document).ready(function () {
         var entryDate = $('#dateEntry').val()
         var entryTitle = validator.trim($('#entryTitleCreate').val());
         var entryBody = validator.trim($('#entryBodyCreate').val());
-        var significance = $('#inputSignificance').val();
-        var privacy = $('#inputPrivacy').val();
-    
+        var privacyEmpty = validator.isEmpty($('#inputPrivacy').val());
         var entryBodyEmpty = validator.isEmpty(entryBody);
         var entryTitleEmpty = validator.isEmpty(entryTitle);        
         
         if(entryBodyEmpty) {
-            $('#emptyTitleCreate').text('');
             $('#emptyBodyCreate').text('Entry Body should not be empty');
-            $('#emptyBodyCreate').css('margin-bottom', '-1em').css('margin-top', '.2em');
+            $('#emptyBodyCreate').css('margin-bottom', '-1em');
+        } else {
+            $('#emptyBodyCreate').text('');
         }
-        else if (entryDate > formattedDate){
-            $('#emptyBodyCreate').text('').css('margin-bottom', '1rem');
-            $('#emptyTitleCreate').text('');
+        if (entryDate > formattedDate){
+            // $('#emptyBodyCreate').text('').css('margin-bottom', '1rem');
             $('#futureDateOnCreate').text('Entered date is invalid.');
             $('#futureDateOnCreate').css('margin-bottom', '-2em');
+        } else {
+            $('#futureDateOnCreate').text('').css('margin-bottom', '1rem');
         }
-        else {
+        if (!entryBodyEmpty && !(entryDate > formattedDate) && !(privacyEmpty)){
 
             if(entryTitleEmpty) {
                 $('#entryTitleCreate').val(dateTitle);
@@ -154,6 +154,9 @@ $(document).ready(function () {
             xhttp.onreadystatechange = function() {
                 $('#entryTitleCreate').val('');
                 $('#entryBodyCreate').val('');
+                $('#inputSignificance').val('None');
+                $('#inputPrivacy').val('private');
+                $('#imageFormControlFile1').val(null);
                 $("#sortBtn").load(" #sortBtn > *");
                 $("#mainSection").load(" #mainSection > *");
               };

@@ -141,8 +141,7 @@ $(document).ready(function () {
         } else {
             $('#futureDateOnCreate').text('').css('margin-bottom', '1rem');
         }
-        if (!entryBodyEmpty && !(entryDate > formattedDate) && !(privacyEmpty)){
-
+        if (!entryBodyEmpty  && !(privacyEmpty)){
             if(entryTitleEmpty) {
                 $('#entryTitleCreate').val(dateTitle);
             }

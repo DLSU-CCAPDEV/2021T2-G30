@@ -23,6 +23,7 @@ router.get('/image/:id', mainController.getPicture); //responsible for getting i
 router.get('/editaccount', mainController.geteditProfileAccount);
 router.get('/searchentry/:_id',mainController.getEntry);
 router.get('/changeSort', mainController.changeSort);
+router.get('/error_signup', profileController.getErrorSignup);
 
 router.get('/checksignup', profileController.checksignup); //checks username
 router.get('/getCheckEmail', profileController.checkemail); //checks email if it already exists
@@ -52,7 +53,7 @@ router.post('/signup', [db.upload.any(), validation.signupValidation()], profile
 router.post('/editaccount', [db.upload.any(), validation.editAccountValidation()],profileController.editAccount);
 router.post('/login', validation.loginValidation(), profileController.login);
 
-router.post('/createentry', db.upload.any(), entryController.createEntry);
+router.post('/createentry', [db.upload.any(), validation.createEntryValidation()], entryController.createEntry);
 router.post('/editentry', db.upload.any(),  entryController.editEntry);
 router.post('/deleteentry', entryController.deleteEntry);
 

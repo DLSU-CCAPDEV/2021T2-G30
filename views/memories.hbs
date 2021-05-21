@@ -13,9 +13,9 @@
         >
             Memories
         </p>
-        {{#if entries}}
-        <div class="col mx-auto text-center" style="width: 11.6em; margin-top: -1.4em;">
-            <p style="font-weight: 100;"> On this day 1 year ago </p> 
+        {{#if memories}}
+        <div class="col mx-auto text-center" style="width: 13em; margin-top: -1.4em;">
+            <p style="font-weight: 100;"> Your memories for this date </p> 
         </div>
         {{/if}}
         <hr>
@@ -53,6 +53,7 @@
                                             <div class="col mt-1">
                                                 <p class="card-text justify-content-center">
                                                 <small class="text-muted">
+                                                    {{{significance this.significance}}}
                                                     {{{privacy this.privacy}}}
                                                     {{date this.entryDate}}
                                                 </small></p>

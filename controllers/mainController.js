@@ -238,23 +238,27 @@ const mainController = {
 
     getEntry: function(req,res){
 
-        //console.log('getting entry');
         var EntryId = req.params._id;
-        // I'm sending as a path parameter instead of a query parameter
-        //console.log(EntryId);
-        db.findOne(entryCollection,{_id: EntryId},'',function(result){
-            if(result){
-                //console.log('entry found, refreshing');
-                res.render('searchentry',{
-                    title: 'Entry Results',
-                    css: ['global','entry-webpage'],
-                    entries: result,
-                    sessionUser: req.session.uName
-                });
-            }
-        })
+        
+        db.findOne(entryCollection, {_id: EntryId}, '',function(entryResult){
+            db.findOne(userCollection, {uName: req.session.uName}, '', function(result) {
+                if(result){
+                    if(req.session.uName === entryResult.authorUserName)
+                        var userOwner = true;
+                    else 
+                        var userOwner = false;
+
+                    res.render('searchentry',{
+                        title: 'Entry Results',
+                        css: ['global','entry-webpage'],
+                        entries: entryResult,
+                        sessionUser: req.session.uName,
+                        userOwner: userOwner
+                    });
+                }
+            });
+        });
     }
-    
 };   
 
 module.exports = mainController;

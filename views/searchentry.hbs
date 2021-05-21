@@ -39,19 +39,21 @@
                   </small></p>
               </div>
               <!-- Entry Settings -->
-              <div class="col d-flex justify-content-end">
-                <div class="dropdown dropup" id="{{entries._id}}">
-                  <button class="btn" type="button" id="dropdownMenuEntry" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fas fa-ellipsis-h text-end" data-bs-toggle="tooltip"></i>
-                  </button>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuEntry">
-                    <li><button class="dropdown-item" type="button" data-bs-toggle="modal"
-                      data-bs-target="#modal-edit-{{entries._id}}">Edit Entry</button></li>
-                    <li><button class="dropdown-item" type="button" data-bs-toggle="modal"
-                      data-bs-target="#modal-del-{{entries._id}}">Delete Entry</button></li>
-                  </ul>
+              {{#if userOwner}}
+                <div class="col d-flex justify-content-end">
+                  <div class="dropdown dropup" id="{{entries._id}}">
+                    <button class="btn" type="button" id="dropdownMenuEntry" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="fas fa-ellipsis-h text-end" data-bs-toggle="tooltip"></i>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuEntry">
+                      <li><button class="dropdown-item" type="button" data-bs-toggle="modal"
+                        data-bs-target="#modal-edit-{{entries._id}}">Edit Entry</button></li>
+                      <li><button class="dropdown-item" type="button" data-bs-toggle="modal"
+                        data-bs-target="#modal-del-{{entries._id}}">Delete Entry</button></li>
+                    </ul>
+                  </div>
                 </div>
-              </div>
+              {{/if}}
             </div>
           </div>
         </div>

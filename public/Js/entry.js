@@ -178,7 +178,6 @@ $(document).ready(function () {
         }
         if (entryDate > formattedDate){
             // $('#emptyBodyCreate').text('').css('margin-bottom', '1rem');
-            alert(entryDate + " vs. " + formattedDate);
             $('#futureDateOnCreate').text('Entered date is invalid.');
             $('#futureDateOnCreate').css('margin-bottom', '-2em');
         } else {

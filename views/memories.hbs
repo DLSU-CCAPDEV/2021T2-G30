@@ -24,55 +24,64 @@
 </div>
 
 <section>
-    {{#if entries}} 
-        {{#each entries}}
-            <div class="container pt-3">
-                <div class="row">
-                    <div class="col-9 mx-auto">
-                        <div class="card mb-3 mx-auto" style="padding-right: 0;">
-                            <div class="row g-0">
-                            <div class="col-9 custom">
-                                <a href="/searchentry/{{this._id}}">
-                                <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;"> {{this.entryTitle}} </h5>
-                                <div class="card-body">
-                                    <p class="card-text">
-                                    {{this.entryBody}}
-                                    </p>
+    {{#if memories}}
+        {{#if entries}} 
+            {{#each entries}}
+                <div class="container pt-3">
+                    <div class="row">
+                        <div class="col-9 mx-auto">
+                            <div class="card mb-3 mx-auto" style="padding-right: 0;">
+                                <div class="row g-0">
+                                    <div class="col-9 custom">
+                                        <a href="/searchentry/{{this._id}}">
+                                        <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;"> {{this.entryTitle}} </h5>
+                                            <div class="card-body">
+                                                <p class="card-text">
+                                                {{this.entryBody}}
+                                                </p>
+                                            </div>
+                                        </a> 
+                                    </div>
+                                {{#if this.entryImage}}
+                                    <div class="col-3">
+                                        <img src="/image/{{this.entryImage}}" class="img-fluid" style="height: 169px; width: 246.5px; object-fit: cover;" alt="...">
+                                    </div>
+                                {{/if}}
+                                    <!-- Entry Footer -->
+                                    <div class="card-footer">
+                                        <div class="row">
+                                            <div class="col mt-1">
+                                                <p class="card-text justify-content-center">
+                                                <small class="text-muted">
+                                                    {{{privacy this.privacy}}}
+                                                    {{date this.entryDate}}
+                                                </small></p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                </a> 
-                            </div>
-                            {{#if this.entryImage}}
-                                <div class="col-3">
-                                <img src="/image/{{this.entryImage}}" class="img-fluid" style="height: 169px; width: 246.5px; object-fit: cover;" alt="...">
-                                </div>
-                            {{/if}}
-                                <!-- Entry Footer -->
-                            <div class="card-footer">
-                                <div class="row">
-                                <div class="col mt-1">
-                                    <p class="card-text justify-content-center">
-                                    <small class="text-muted">
-                                        {{{privacy this.privacy}}}
-                                        {{date this.entryDate}}
-                                    </small></p>
-                                </div>
-                                </div>
-                            </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        {{/each}}
-
+            {{/each}}
+        {{else}}
+            <div class="container pt-3">
+                <div class="row">
+                    <div class="col-12">
+                        <p style="text-align: center; margin-bottom: 0.5em">You do not have entries to look back on today</p>
+                    </div>
+                </div>
+            </div>       
+        {{/if}}
     {{else}}
         <div class="container pt-3">
             <div class="row">
                 <div class="col-12">
-                    <p style="text-align: center; margin-bottom: 0.5em">You do not have entries to look back on today</p>
+                    <p style="text-align: center; margin-bottom: 0.5em">Your memories are disabled</p>
                 </div>
             </div>
-        </div>       
+        </div> 
     {{/if}}
     
 </section>

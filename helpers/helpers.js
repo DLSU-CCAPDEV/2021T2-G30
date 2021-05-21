@@ -66,7 +66,7 @@ const helpers = {
     },
 
     time: function(time) {
-        return time.getHours() + ':' + time.getMinutes();
+        return time.getHours() + ':' + (time.getMinutes()).toString().padStart(2, 0);
     },
 
     defaultDate: function(date) {

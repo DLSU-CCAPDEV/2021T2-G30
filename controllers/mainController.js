@@ -1,6 +1,7 @@
 //const { replaceOne } = require("../models/UserModel");
 const db = require('../models/db.js');
 const entryCollection = require('../models/EntryModel.js');
+const letterCollection = require('../models/LetterModel.js');
 const userCollection = require('../models/UserModel.js');
 const mongoose = require('mongoose');
 
@@ -34,8 +35,7 @@ const mainController = {
     },
 
     getUserError: function (req, res) {
-        res.status(400);
-        //console.log(req.session.uName);
+        //res.status(400);
         res.render('error', {
             title: '400 Bad Request',
             css:['global', 'error'],
@@ -251,7 +251,7 @@ const mainController = {
 
     },
 
-    getEntry: function(req,res){
+    getEntry: function(req, res){
 
         var EntryId = req.params._id;
         
@@ -264,11 +264,34 @@ const mainController = {
                         var userOwner = false;
 
                     res.render('searchentry',{
-                        title: 'Entry Results',
+                        title: 'Individual entry',
                         css: ['global','entry-webpage'],
                         entries: entryResult,
                         sessionUser: req.session.uName,
                         userOwner: userOwner
+                    });
+                }
+            });
+        });
+    },
+
+    getLetter: function(req, res) {
+        var LetterId = req.params._id;
+
+        db.findOne(letterCollection, {_id: LetterId}, '',function(letterResult){
+            db.findOne(userCollection, {uName: req.session.uName}, '', function(result) {
+                if(result) {
+                    if(req.session.uName === letterResult.recipient)
+                        var recipient = true;
+                    else 
+                        var recipient = false;
+
+                    res.render('indivletter', {
+                        title: 'Individual letter',
+                        css: ['global','entry-webpage'],
+                        letter: letterResult,
+                        sessionUser: req.session.uName,
+                        recipient: recipient
                     });
                 }
             });

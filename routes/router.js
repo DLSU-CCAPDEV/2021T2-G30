@@ -22,6 +22,7 @@ router.get('/settings', mainController.getSettingsPage);
 router.get('/image/:id', mainController.getPicture); //responsible for getting image in profiles
 router.get('/editaccount', mainController.geteditProfileAccount);
 router.get('/searchentry/:_id', mainController.getEntry);
+router.get('/indivletter/:_id', mainController.getLetter);
 router.get('/changeSort', mainController.changeSort);
 router.get('/error_signup', profileController.getErrorSignup);
 

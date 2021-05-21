@@ -1,0 +1,44 @@
+{{> navbar}}  
+
+<section class="custom-section" id="indivEntryMain">
+  <div class="container d-flex align-items-center justify-content-center" style="min-height: inherit;">
+    <div class="row">
+      <div class="card mb-3" style="min-height: inherit;">
+        <div class="row d-flex g-0">
+          {{#if letter.entryImage}}
+          <div class="col-lg-8 col-md-12 py-2">
+            <div class="card-body">
+              <h5 class="card-title pb-2">{{letter.letterTitle}}</h5>
+              <p class="card-text" id="area" style="font-size: 14pt;">
+                {{letter.letterBody}}
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-12 py-3 d-flex align-items-center justify-content-center">
+            <img src="/image/{{letter.entryImage}}" class="img-fluid" alt="...">
+          </div>
+          {{else}}
+          <div class="col-lg-12 col-md-12 py-2">
+            <div class="card-body">
+              <h5 class="card-title pb-2">{{letter.letterTitle}}</h5>
+              <p class="card-text" id="area" style="font-size: 14pt;">
+                {{letter.letterBody}}
+              </p>
+            </div>
+          </div>
+          {{/if}}
+          <!-- Entry Footer -->
+          <div class="card-footer" id="letterFooter">
+            <p class="card-text">
+              {{#if recipient}}
+                <small class="text-muted"> Sent by <a href="/userprofile/{{letter.author}}">{{letter.author}}</a> at {{time letter.dateToReceive}} on {{date letter.dateToReceive}}</small>
+              {{else}}
+                <small class="text-muted"> Send to <a href="/userprofile/{{letter.recipient}}">{{letter.recipient}}</a> at {{time letter.dateToReceive}} on {{date letter.dateToReceive}}</small>
+              {{/if}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

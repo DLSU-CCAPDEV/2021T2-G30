@@ -32,7 +32,14 @@ const letterController = {
             var letters = [];
             populateResult.letters.forEach(function(indivLetter) {
                 if(indivLetter !== null) {
-                    letters.push(indivLetter);
+                    if(!direction) {
+                        if(indivLetter.recipient !== req.session.uName) {
+                            letters.push(indivLetter);
+                        }
+                    } 
+                    else {
+                        letters.push(indivLetter);
+                    }
                 }
             });
 

@@ -75,7 +75,7 @@
         <form>
           <div class="mb-3">
             <label class="visually-hidden" for="autoSizingSelect">New Title</label>
-            <input id="entryTitle-{{_id}}" type="text" class="form-control" value="{{entryTitle}}" aria-label="New Title" maxlength = "50">
+            <input id="entryTitle-{{_id}}" type="text" class="form-control" value="{{entryTitle}}" aria-label="New Title" >
             <div id="emptyTitleEdit-{{_id}}" class="emptyTitleEdit" style="font-size: 8pt; color: red;"></div>
           </div>
           <div class="row g-3 mb-4">
@@ -92,14 +92,14 @@
             </div>
             <div class="col-md-4">
               <label for="inputPrivacy" style="font-size: 14px;" >Entry's Significance</label>
-              <select id="significance-{{_id}}" class="form-select ">
+              <select id="significance-{{_id}}"  class="form-select ">
                 {{{significanceEdit significance}}}
               </select>
             </div> 
           </div>
           <div class="mb-3">
             <label class="visually-hidden" for="entryFormControlTextarea1" class="form-label">New Entry</label>
-            <textarea id="entryBody-{{_id}}" class="form-control" id="entryFormControlTextarea1" rows="5" aria-label="entry content">{{entryBody}}</textarea>
+            <textarea id="entryBody-{{_id}}" name="editEntryBody" class="form-control" rows="5" aria-label="entry content">{{entryBody}}</textarea>
             <div id="emptyBodyEdit-{{_id}}" class="emptyBodyEdit" style="font-size: 8pt; color: red;"></div>
           </div>
         </form>

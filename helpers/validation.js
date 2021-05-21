@@ -29,15 +29,16 @@ const validation = {
     createEntryValidation: function() {
         var validation = [
             check('entryTitle', "Entry title should be at most 50 characters.").trim().isLength({max: 50}),
-            check('entryBody', "Entry Body should not be empty.").trim().notEmpty()
         ];
+        return validation;
     },
 
     // editEntryValidation: function () {
     //     var validation = [
-
-    //     ]
-    // }
+    //         check('editEntryTitle', "Entry title should be at most 50 characters.").trim().isLength({max: 50}),
+    //     ];
+    //     return validation;
+    // },
 
     editAccountValidation: function (){
         var validation = [

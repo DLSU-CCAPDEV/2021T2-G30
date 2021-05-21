@@ -38,17 +38,17 @@ const profileController = {
                 for example, if there is an error for parameter `fName`:
                 store the value to the field `fNameError`
             */
-            var details = {};
-            for(var i = 0; i < errors.length; i++) {
-                details[errors[i].param + "Error"] = errors[i].msg;
-            }
-            res.render('login', {
-                title: 'Error in Signing Up',
-                css: ['global'],
-                errDetails: details,
-                errorCreds: true
-            });
-
+            // var details = {};
+            // for(var i = 0; i < errors.length; i++) {
+            //     details[errors[i].param + "Error"] = errors[i].msg;
+            // }
+            // res.render('login', {
+            //     title: 'Error in Signing Up',
+            //     css: ['global'],
+            //     errDetails: details,
+            //     errorCreds: true
+            // });
+            res.redirect('error_signup');
         } else {
             
             //check if email is already taken
@@ -62,7 +62,7 @@ const profileController = {
                     if(!invalidUsername) {
                         db.findOne(userCollection, {uName: uName}, 'userName', function(userUName) {
                             if(userUName == null) { //if unique username
-                                console.log("Username is unique");
+                                // console.log("Username is unique");
                                 bcrypt.hash(pw, saltRounds, function(err, hash) {
                                     var indivUser = {
                                         dPicture: dPicture,
@@ -94,30 +94,41 @@ const profileController = {
                                     });
                                 });
                             } else { //else username is not unique
-                                res.render('login', {
-                                    title: 'Error in Signing Up',
-                                    css: ['global'],
-                                    errorCreds: true
-                                });
+                                
+                                res.redirect('error_signup');
                                 
                             }
                         });
                     } else {
-                        res.render('login', {
-                            title: 'Error in Signing Up',
-                            css: ['global'],
-                            errorCreds: true
-                        });
+                        res.redirect('error_signup');
+                        
                     }
                 } else {
-                    res.render('login', {
-                        title: 'Error in Signing Up',
-                        css: ['global'],
-                        errorCreds: true
-                    });
+                    res.redirect('error_signup');
                 }
             });
         }
+    },
+
+    getErrorSignup: function(req, res) {
+        if(req.session.uName) {
+            res.status(403);
+            res.render('error', {
+                title: '403 Forbidden',
+                css:['global', 'error'],
+                status: {
+                    code: "403",
+                    message: "Forbidden"
+                }  
+            });
+        } else {
+            res.render('login', {
+                title: 'Error in Signing Up',
+                css: ['global'],
+                errorCreds: true
+            });
+        }
+
     },
 
     getProfile: function(req, res) {

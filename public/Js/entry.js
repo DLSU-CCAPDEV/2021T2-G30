@@ -17,12 +17,12 @@ $(document).ready(function () {
 
         if(isValidLength) {
             if(field.is($('#entryTitle-' + id)))
-                $('#errorTitleEdit-' + id).text('');
+                $('#emptyTitleEdit-' + id).text('');
             validTitle = true;
         } else {
             if(field.is($('#entryTitle-' + id))){
-                $('#errorTitleEdit-' + id).text('Entry title should be at most 50 characters.');
-                $('#errorTitleEdit-' + id).css('margin-bottom', '-2em').css('margin-top', '.2em');
+                $('#emptyTitleEdit-' + id).text('Entry title should be at most 50 characters.');
+                $('#emptyTitleEdit-' + id).css('margin-bottom', '-2em').css('margin-top', '.2em');
             }
         }
         return validTitle;
@@ -35,12 +35,12 @@ $(document).ready(function () {
 
         if(isEmpty) {
             if(field.is($('#entryBody-' + id))) {
-                $('#errorBodyEdit-' + id).text('Entry Body should not be empty.');
-                $('#errorBodyEdit-' + id).css('margin-bottom', '-1em').css('margin-top', '.2em');
+                $('#emptyBodyEdit-' + id).text('Entry Body should not be empty.');
+                $('#emptyBodyEdit-' + id).css('margin-bottom', '-1em').css('margin-top', '.2em');
             }
         } else {
             if(field.is($('#entryBody-' + id)))
-                $('#errorBodyEdit-' + id).text('');
+                $('#emptyBodyEdit-' + id).text('');
             validBody = true;
         }
 
@@ -54,12 +54,12 @@ $(document).ready(function () {
 
         if(invalidDate) {
             if(field.is($('#entryDate-' + id))) {
-                $('#futureDate-' + id).text('Entered date is invalid.');
-                $('#futureDate-' + id).css('margin-bottom', '-2em');
+                $('#futureDate').text('Entered date is invalid.');
+                $('#futureDate').css('margin-bottom', '-2em');
             }
         } else {
             if(field.is($('#entryDate-' + id)))
-                $('#futureDate-' + id).text('');
+                $('#futureDate').text('');
             validDate = true;
         }
 
@@ -178,13 +178,13 @@ $(document).ready(function () {
         }
         if (entryDate > formattedDate){
             // $('#emptyBodyCreate').text('').css('margin-bottom', '1rem');
+            alert(entryDate + " vs. " + formattedDate);
             $('#futureDateOnCreate').text('Entered date is invalid.');
             $('#futureDateOnCreate').css('margin-bottom', '-2em');
         } else {
             $('#futureDateOnCreate').text('').css('margin-bottom', '1rem');
         }
-        if (!entryBodyEmpty && !(entryDate > formattedDate) && !(privacyEmpty)){
-
+        if (!entryBodyEmpty  && !(privacyEmpty) && !(entryDate > formattedDate)){
             if(entryTitleEmpty) {
                 $('#entryTitleCreate').val(dateTitle);
             }

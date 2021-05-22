@@ -245,7 +245,6 @@ const mainController = {
                     code: "401",
                     message: "Unauthorized access."
                 } 
-                
             });
         }
         /*
@@ -262,22 +261,79 @@ const mainController = {
 
         var EntryId = req.params._id;
         
-        db.findOne(entryCollection, {_id: EntryId}, '',function(entryResult){
-            db.findOne(userCollection, {uName: req.session.uName}, '', function(result) {
-                if(result){
-                    if(req.session.uName === entryResult.authorUserName)
-                        var userOwner = true;
-                    else 
-                        var userOwner = false;
-                    res.render('searchentry',{
+        db.findOne(entryCollection, {_id: EntryId}, '', function(entryResult){
+            if(entryResult) {
+                // if(req.session.uName === entryResult.authorUserName)
+                //     var userOwner = true;
+                // else 
+                //     var userOwner = false;
+
+                // If current user is same as entry author    
+                if(req.session.uName === entryResult.authorUserName) {
+                    res.render('searchentry', {
                         title: 'Entry Results',
                         css: ['global','entry-webpage'],
                         entries: entryResult,
                         sessionUser: req.session.uName,
-                        userOwner: userOwner
+                        userOwner: true
                     });
                 }
-            });
+                // If current user is different as entry author and entry is public    
+                else if(entryResult.privacy === 'public') {
+
+                    db.findOne(userCollection, {uName: req.session.uName, friendsList : {$elemMatch : {friendName: entryResult.authorUserName}}}, '', function(result) {
+                    
+                        // If current user is friends with entry author
+                        if(result) {
+                            res.render('searchentry',{
+                                title: 'Entry Results',
+                                css: ['global','entry-webpage'],
+                                entries: entryResult,
+                                sessionUser: req.session.uName,
+                                userOwner: false
+                            });
+                        }
+                        // If current user is not friends with entry author
+                        else {
+                            console.log("Not friends");
+
+                            res.status(401);
+                            res.render('error', {
+                            title: '401 Unauthorized Access',
+                            css:['global', 'error'],
+                            status: {
+                                code: "401",
+                                message: "Unauthorized access."
+                                } 
+                            });
+                        }
+                    })
+                }
+                // If current user is different as entry author and entry is private    
+                else {
+
+                    res.status(401);
+                    res.render('error', {
+                    title: '401 Unauthorized Access',
+                    css:['global', 'error'],
+                    status: {
+                        code: "401",
+                        message: "Unauthorized access."
+                        } 
+                    });
+                }
+            }
+            else {
+                res.status(404);
+                res.render('error', {
+                title: '404 Not Found',
+                css:['global', 'error'],
+                status: {
+                    code: "404",
+                    message: "Page not found"
+                    } 
+                });
+            }
         });
     },
 

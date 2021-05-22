@@ -36,7 +36,7 @@ http://localhost:3000/login
 
 
 ## Third Party Libraries Used
-- [controllers] (https://github.com/DLSU-CCAPDEV/2021T2-G30/tree/main/controllers)
+- [controllers](https://github.com/arvention/ccapdev-mongoose/tree/master/controllers) - This folder contains files which defines callback functions for client requests.
 - [JQuery] (https://jquery.com/) 
 - [FullCalendar] (https://fullcalendar.io/)
 - [Bootstrap] (https://getbootstrap.com/)

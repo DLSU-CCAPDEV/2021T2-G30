@@ -1,5 +1,6 @@
 # Safe Space
-A diary web application. Wi-Fi is required to run the web application. 
+Safe Space is a diary web application that aims to provide users an avenue to store moments precious to their life while providing
+an option to add their closest friends and share entries that mean most to them. Wi-Fi and enabling Javascript is required to get the best experience from the web application. 
 
 ## Contributors:
 - Buensalida, Matthew

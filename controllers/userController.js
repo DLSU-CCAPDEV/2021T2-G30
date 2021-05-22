@@ -52,7 +52,7 @@ const userController = {
                                     db.findMany(entryCollecion, {authorUserName: req.params.uName, privacy: 'public'}, '', {entryDate: -1}, function(friendEntries) {
                                         console.log(friendEntries);
                                         res.render('user',  {
-                                            title: 'SafeSpace',
+                                            title: 'Safe Space',
                                             css: ['global', 'mainpage', 'friendprofile'], 
                                             details: user,
                                             entries: friendEntries,
@@ -64,7 +64,7 @@ const userController = {
                                 }
                                 else {
                                     res.render('user',  {
-                                        title: 'SafeSpace',
+                                        title: 'Safe Space',
                                         css: ['global', 'mainpage', 'friendprofile'], 
                                         details: user,
                                         friendStatus: friend,

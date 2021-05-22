@@ -27,6 +27,7 @@ const profileController = {
 
         var errors = validationResult(req);
         
+        console.log("username lowercase: " + uName.toLowerCase());
         //If there are validation errors
         if (!errors.isEmpty()) {
             errors = errors.errors;
@@ -70,7 +71,7 @@ const profileController = {
                                         fName: fName,
                                         lName: lName,
                                         email: email,
-                                        uName: uName,
+                                        uName: uName.toLowerCase(),
                                         bio: bio,
                                         pw: hash,
                                         memoryenabler: memoryenabler
@@ -245,7 +246,7 @@ const profileController = {
 
 
     login: function(req, res){
-        var uName = req.body.uName;
+        var uName = req.body.uName.toLowerCase();
         var pw = req.body.pw;
         var errors = validationResult(req);
 

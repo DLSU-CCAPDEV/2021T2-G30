@@ -4,7 +4,7 @@ $(document).ready(function () {
         event.preventDefault(); //avoid to execute submitting of the form
 
         // get the value entered the user in the `<input>` element
-        var uName = $('#LoginUsername').val().trim();
+        var uName = $('#LoginUsername').val().trim().toLowerCase();
         var pw = $('#LoginPassword').val();
         
         $.get('/checklogin', {uName: uName, pw: pw}, function (isValid) {

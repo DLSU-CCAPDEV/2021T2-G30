@@ -78,47 +78,40 @@
 </section>
 
 {{!-- Pending --}}
-<section>
-  <div class="container">
-
-    <div class="row text-center">
-        <p style="font-size: 24pt; margin-bottom: -.5em;"> Pending Requests </p>
-        <div class="col-9 mx-auto">
-        <hr style="border: 1px solid #000000; height: 2px;">
+{{#if pending}}
+  <section>
+    <div class="container">
+      <div class="row text-center">
+          <p style="font-size: 24pt; margin-bottom: -.5em;"> Pending Requests </p>
+          <div class="col-9 mx-auto">
+            <hr style="border: 1px solid #000000; height: 2px;">
+          </div>
+      </div>
+        <div class="row d-flex justify-content-center">
+        {{#each pending}}
+            <div class="col-sm-12 col-xxl-3 mx-2">
+              <a href="/userprofile/{{this.userId.uName}}">
+                <div class="card mb-3 mx-auto">
+                  <div class="row g-0">
+                      <div class="col-7 custom">
+                        <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;">{{this.userId.uName}}</h5>
+                      </div>
+                      <div class="col-5">
+                        {{#if this.userId.dPicture}}
+                          <img src="/image/{{this.userId.dPicture}}" class="img-fluid" alt="...">
+                        {{else}}
+                          <img src="/Images/defaultdp.jpg" class="img-fluid" alt="...">
+                        {{/if}}
+                      </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+        {{/each}}
         </div>
     </div>
-    {{#if pending}}
-      <div class="row d-flex justify-content-center">
-      {{#each pending}}
-          <div class="col-sm-12 col-xxl-3 mx-2">
-            <a href="/userprofile/{{this.userId.uName}}">
-              <div class="card mb-3 mx-auto">
-                <div class="row g-0">
-                    <div class="col-7 custom">
-                    <h5 class="card-title ps-3 pt-4" style="margin-bottom: -0.4em;">{{this.userId.uName}}</h5>
-                    </div>
-                    <div class="col-5">
-                      {{#if this.userId.dPicture}}
-                        <img src="/image/{{this.userId.dPicture}}" class="img-fluid" alt="...">
-                      {{else}}
-                        <img src="/Images/defaultdp.jpg" class="img-fluid" alt="...">
-                      {{/if}}
-                    </div>
-                </div>
-              </div>
-            </a>
-          </div>
-      {{/each}}
-      </div>
-    {{else}}
-      <div class="container">
-        <div class="row">
-          <p style="text-align: center;">You currently do not have any pending requests.</p>
-        </div>
-      </div>
-    {{/if}}
-  </div>
-</section>
+  </section>
+{{/if}}
 
 <div class="modal fade" id="modalDP" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">

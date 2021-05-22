@@ -36,8 +36,8 @@ http://localhost:3000/login
 
 
 ## Third Party Libraries Used
-* [JQuery] (https://jquery.com/)
-* [FullCalendar] (https://fullcalendar.io/)
+* [JQuery] (https://jquery.com/) 
+* [FullCalendar] (https://fullcalendar.io/) - This library was used for developing front-end scripts
 * [Bootstrap] (https://getbootstrap.com/)
 * [Font Awesome] (https://fontawesome.com/)
 

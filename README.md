@@ -36,31 +36,26 @@ http://localhost:3000/login
 
 
 ## Third Party Libraries Used
-- [controllers](https://github.com/arvention/ccapdev-mongoose/tree/master/controllers) - This folder contains files which defines callback functions for client requests.
-- [JQuery] (https://jquery.com/) 
-- [FullCalendar] (https://fullcalendar.io/)
-- [Bootstrap] (https://getbootstrap.com/)
-- [Font Awesome] (https://fontawesome.com/)
+
+- [JQuery](https://jquery.com/) 
+- [FullCalendar](https://fullcalendar.io/)
+- [Bootstrap](https://getbootstrap.com/)
+- [Font Awesome](https://fontawesome.com/)
 
 ## NPM Packages Used
-- [bcrypt] (https://www.npmjs.com/package/bcrypt)
-- [body-parser]    
-- [connect-mongo]
-- [dotenv]
-- [express]
-- [express-handlebars]
-- [express-session]
-- [express-validator]
-- [gridfs-stream]
-- [method-override]
-- [mongoose]
-- [multer]
-- [multer-gridfs-storage]
-
-## Resources:
-* https://getbootstrap.com/
-* https://fontawesome.com/
-* https://fullcalendar.io/
+- [bcrypt](https://www.npmjs.com/package/bcrypt)
+- [body-parser](https://www.npmjs.com/package/body-parser)    
+- [connect-mongo](https://www.npmjs.com/package/connect-mongo)
+- [dotenv](https://www.npmjs.com/package/dotenv)
+- [express](https://www.npmjs.com/package/express)
+- [express-handlebars](https://www.npmjs.com/package/express-handlebars)
+- [express-session](https://www.npmjs.com/package/express-session)
+- [express-validator](https://www.npmjs.com/package/express-validator)
+- [gridfs-stream](https://www.npmjs.com/package/gridfs-stream)
+- [method-override](https://www.npmjs.com/package/method-override)
+- [mongoose](https://www.npmjs.com/package/mongoose)
+- [multer](https://www.npmjs.com/package/multer)
+- [multer-gridfs-storage](https://www.npmjs.com/package/multer-gridfs-storage)
 
 Mainpage sources:
 * https://unsplash.com/photos/3ckWUnaCxzc 

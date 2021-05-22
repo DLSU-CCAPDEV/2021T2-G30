@@ -256,22 +256,52 @@ const mainController = {
         var EntryId = req.params._id;
         
         db.findOne(entryCollection, {_id: EntryId}, '',function(entryResult){
-            db.findOne(userCollection, {uName: req.session.uName}, '', function(result) {
-                if(result){
-                    if(req.session.uName === entryResult.authorUserName)
-                        var userOwner = true;
-                    else 
-                        var userOwner = false;
+                if(entryResult){
+                    db.findOne(userCollection, {uName: req.session.uName}, '', function(result) {
+                            if(req.session.uName === entryResult.authorUserName)
+                                var userOwner = true;
+                            else if (entryResult.authorUserName === null)
+                                var userOwner = false;
+                            else 
+                                var userOwner = false;
+                            
 
-                    res.render('searchentry',{
-                        title: 'Individual entry',
-                        css: ['global','entry-webpage'],
-                        entries: entryResult,
-                        sessionUser: req.session.uName,
-                        userOwner: userOwner
+                            if(userOwner){    
+                                res.render('searchentry',{
+                                    title: 'Individual entry',
+                                    css: ['global','entry-webpage'],
+                                    entries: entryResult,
+                                    sessionUser: req.session.uName,
+                                    userOwner: userOwner
+                                });
+                            }
+                            else{
+                                res.status(401);
+                                res.render('error', {
+                                    title: '401 Unauthorized Access',
+                                    css:['global', 'error'],
+                                    status: {
+                                        code: "401",
+                                        message: "Unauthorized access."
+                                    } 
+                                    
+                                });
+                            }
+
                     });
                 }
-            });
+                else{
+                    res.status(401);
+                    res.render('error', {
+                        title: '401 Unauthorized Access',
+                        css:['global', 'error'],
+                        status: {
+                            code: "401",
+                            message: "Unauthorized access."
+                        } 
+                        
+                    });
+                }
         });
     },
 

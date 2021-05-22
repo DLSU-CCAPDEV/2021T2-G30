@@ -341,33 +341,46 @@ const mainController = {
         var LetterId = req.params._id;
 
         db.findOne(letterCollection, {_id: LetterId}, '',function(letterResult){
-            db.findOne(userCollection, {uName: req.session.uName}, '', function(result) {
-                if(result.uName === letterResult.author || result.uName === letterResult.recipient) {
-                    if(req.session.uName === letterResult.recipient)
-                        var recipient = true;
-                    else 
-                        var recipient = false;
-
-                    res.render('indivletter', {
-                        title: 'Individual letter',
-                        css: ['global','entry-webpage'],
-                        letter: letterResult,
-                        sessionUser: req.session.uName,
-                        recipient: recipient
-                    });
-                }
-                else {
-                    res.status(401);
-                    res.render('error', {
-                        title: '401 Unauthorized Access',
-                        css:['global', 'error'],
-                        status: {
-                            code: "401",
-                            message: "Unauthorized access"
-                        } 
-                    });
-                }
-            });
+            if(letterResult) {
+                db.findOne(userCollection, {uName: req.session.uName}, '', function(result) {
+                    if(result.uName === letterResult.author || result.uName === letterResult.recipient) {
+                        if(req.session.uName === letterResult.recipient)
+                            var recipient = true;
+                        else 
+                            var recipient = false;
+    
+                        res.render('indivletter', {
+                            title: 'Individual letter',
+                            css: ['global','entry-webpage'],
+                            letter: letterResult,
+                            sessionUser: req.session.uName,
+                            recipient: recipient
+                        });
+                    }
+                    else {
+                        res.status(401);
+                        res.render('error', {
+                            title: '401 Unauthorized Access',
+                            css:['global', 'error'],
+                            status: {
+                                code: "401",
+                                message: "Unauthorized access"
+                            } 
+                        });
+                    }
+                });
+            }
+            else  {
+                res.status(404);
+                res.render('error', {
+                title: '404 Not Found',
+                css:['global', 'error'],
+                status: {
+                    code: "404",
+                    message: "Page not found"
+                    } 
+                });
+            }
         });
     }
 };   

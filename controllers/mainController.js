@@ -307,7 +307,7 @@ const mainController = {
                         css:['global', 'error'],
                         status: {
                             code: "401",
-                            message: "Unauthorized access."
+                            message: "Unauthorized access"
                         } 
                     });
                 }

@@ -135,34 +135,47 @@ const profileController = {
     getProfile: function(req, res) {
         var query = {uName: req.params.uName};
         //var projection = 'dPicture fName lName uName bio friendsList';
-        db.findOne(userCollection, query, '', function(result) {
-            db.findOnePopulate(userCollection, query, '', {path: 'friendsList.friendId', model: 'User'}, function(populateResult) {
-                if(populateResult) {
-
-                    //console.log(populateResult.friendsList);
+        if(req.session.uName === req.params.uName) {
+            db.findOne(userCollection, query, '', function(result) {
+                db.findOnePopulate(userCollection, query, '', {path: 'friendsList.friendId', model: 'User'}, function(populateResult) {
+                    if(populateResult) {
     
-                    res.render('profile', {
-                        title: 'Safe Space | Profile',
-                        css: ['global', 'personalprofile'],
-                        JSbool: false,
-                        details: result,
-                        friends: populateResult.friendsList,
-                        sessionUser: req.session.uName
-                    });
-    
-                } else {
-                    res.status(400);
-                    res.render('error', {
-                        title: '400 Bad Request',
-                        css:['global', 'error'],
-                        status: {
-                            code: "400",
-                            message: "Bad request"
-                        }
-                    });
-                }
-            });    
-        });
+                        //console.log(populateResult.friendsList);
+        
+                        res.render('profile', {
+                            title: 'Safe Space | Profile',
+                            css: ['global', 'personalprofile'],
+                            JSbool: false,
+                            details: result,
+                            friends: populateResult.friendsList,
+                            sessionUser: req.session.uName
+                        });
+        
+                    } else {
+                        res.status(400);
+                        res.render('error', {
+                            title: '400 Bad Request',
+                            css:['global', 'error'],
+                            status: {
+                                code: "400",
+                                message: "Bad request"
+                            }
+                        });
+                    }
+                });    
+            });
+        }
+        else {
+            res.status(401);
+            res.render('error', {
+                title: '401 Unauthorized Access',
+                css:['global', 'error'],
+                status: {
+                    code: "401",
+                    message: "Unauthorized access"
+                } 
+            });
+        }
     },
     
     

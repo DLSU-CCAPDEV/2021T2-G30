@@ -10,67 +10,76 @@ const letterController = {
 
     getLetters: function(req, res) {
 
-        var today = new Date();
+        if(req.session.uName) {
+            var today = new Date();
 
-        if(req.session.letterType === 'incoming') {
-            var path = {
-                path: 'letters',
-                match: {'dateToReceive': { $lte: today}, 'recipient': req.session.uName},
-                model: 'Letter'
+            if(req.session.letterType === 'incoming') {
+                var path = {
+                    path: 'letters',
+                    match: {'dateToReceive': { $lte: today}, 'recipient': req.session.uName},
+                    model: 'Letter'
+                }
+                var direction = true;
             }
-            var direction = true;
-        }
-        else {
-            var path = {
-                path: 'letters',
-                match: {'author': req.session.uName},
-                model: 'Letter'
+            else {
+                var path = {
+                    path: 'letters',
+                    match: {'author': req.session.uName},
+                    model: 'Letter'
+                }
+                var direction = false;
             }
-            var direction = false;
-        }
-        db.findOnePopulate(userCollection, {uName: req.session.uName}, '', path, function(populateResult) {
-            var letters = [];
-            populateResult.letters.forEach(function(indivLetter) {
-                if(indivLetter !== null) {
-                    if(!direction) {
-                        if(indivLetter.recipient !== req.session.uName) {
+            db.findOnePopulate(userCollection, {uName: req.session.uName}, '', path, function(populateResult) {
+                var letters = [];
+                populateResult.letters.forEach(function(indivLetter) {
+                    if(indivLetter !== null) {
+                        if(!direction) {
+                            if(indivLetter.recipient !== req.session.uName) {
+                                letters.push(indivLetter);
+                            }
+                        } 
+                        else {
                             letters.push(indivLetter);
                         }
-                    } 
-                    else {
-                        letters.push(indivLetter);
                     }
-                }
-            });
+                });
 
-            // console.log(letters);
+                letters.sort(function (letterOne, letterTwo) {
+                    return letterTwo.dateToReceive - letterOne.dateToReceive;
+                })
 
-            letters.sort(function (letterOne, letterTwo) {
-                return letterTwo.dateToReceive - letterOne.dateToReceive;
+                res.render('letters', {
+                    title: 'Safe Space',
+                    css: ['global','mainpage'],
+                    incoming: direction,
+                    letters: letters,
+                    friends: populateResult.friendsList,
+                    sessionUser: req.session.uName
+                });
             })
-
-            // console.log('after sort');
-            // console.log(letters);
-
-            res.render('letters', {
-                title: 'Safe Space',
-                css: ['global','mainpage'],
-                incoming: direction,
-                letters: letters,
-                friends: populateResult.friendsList,
-                sessionUser: req.session.uName
+        }
+        else {
+            res.status(401);
+            res.render('error', {
+                title: '401 Unauthorized Access',
+                css:['global', 'error'],
+                status: {
+                    code: "401",
+                    message: "Unauthorized access"
+                },
+                sessionUser: req.session.uName 
             });
-        })
+        }
+
+        
     },
 
     getLettersOutgoing: function(req, res) {
-        //console.log(req.session.letterType);
         if(req.session.letterType === 'incoming')
             req.session.letterType = 'outgoing'
         else
             req.session.letterType = 'incoming'
 
-        //console.log(req.session.letterType);
         res.send(true);
     },
 
@@ -78,8 +87,6 @@ const letterController = {
         
         var errors = validationResult(req);
         var formattedDate = req.body.currDate;
-        // var today = new Date()
-        // var formattedDate = today.getFullYear().toString() + '-' + (today.getMonth() + 1).toString().padStart(2, 0) + '-' + today.getDate().toString().padStart(2, 0) + 'T' + today.getHours().toString().padStart(2, 0) + ':' + today.getMinutes().toString().padStart(2, 0);
         var currDate = new Date(formattedDate);
         
         var letterTitle = req.body.letterTitle;
@@ -99,8 +106,7 @@ const letterController = {
         } else {
             entryImage = null;
         }
-        // console.log("There are errors: " + !errors.isEmpty());
-        // console.log(dateToReceive + " < " + currDate);
+        
         if(!errors.isEmpty() || (dateToReceive < currDate)) {
             console.log("Invalid letter created. Try again.");
         } else {
@@ -132,7 +138,6 @@ const letterController = {
                 })
             })
         }
-
     },
 };   
 

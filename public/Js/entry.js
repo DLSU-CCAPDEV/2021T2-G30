@@ -59,7 +59,7 @@ $(document).ready(function () {
             }
         } else {
             if(field.is($('#entryDate-' + id)))
-                $('#futureDate').text('');
+                $('#futureDate-' + id).text('');
             validDate = true;
         }
 
@@ -100,8 +100,12 @@ $(document).ready(function () {
         var entryDateValid = editisValidDate($('#entryDate-' + id), id);
 
         if(entryTitleValid && entryBodyValid && entryDateValid) {
-            if(entryTitleEmpty)
+            if(entryTitleEmpty){
+                var dateEntry = new Date(entryDate);
+                var dateTitle =   (monthNames[dateEntry.getMonth()]) + ' ' + dateEntry.getDate().toString().padStart(2, 0) + ", " + dateEntry.getFullYear().toString();
+                $('#entryTitleCreate').val(dateTitle);
                 entryTitle = dateTitle;
+            }
             var entry = {
                 id: id,
                 entryTitle: entryTitle,

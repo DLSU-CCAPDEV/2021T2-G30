@@ -142,31 +142,32 @@ const profileController = {
             if(req.session.uName === req.params.uName) {
                 db.findOne(userCollection, query, '', function(result) {
                     db.findOnePopulate(userCollection, query, '', {path: 'friendsList.friendId', model: 'User'}, function(populateResult) {
-                        if(populateResult) {
-        
-                            //console.log(populateResult.friendsList);
-            
-                            res.render('profile', {
-                                title: 'Safe Space | Profile',
-                                css: ['global', 'personalprofile'],
-                                JSbool: false,
-                                details: result,
-                                friends: populateResult.friendsList,
-                                sessionUser: req.session.uName
-                            });
-            
-                        } else {
-                            res.status(400);
-                            res.render('error', {
-                                title: '400 Bad Request',
-                                css:['global', 'error'],
-                                status: {
-                                    code: "400",
-                                    message: "Bad request"
-                                },
-                                sessionUser: req.session.uName 
-                            });
-                        }
+                        db.findOnePopulate(userCollection, query, '', {path: 'pendingRequest.userId', model: 'User'}, function(populateResultPending) {
+                            if(populateResult) {
+                
+                                res.render('profile', {
+                                    title: 'Safe Space | Profile',
+                                    css: ['global', 'personalprofile'],
+                                    JSbool: false,
+                                    details: result,
+                                    friends: populateResult.friendsList,
+                                    sessionUser: req.session.uName,
+                                    pending: populateResultPending.pendingRequest
+                                });
+                
+                            } else {
+                                res.status(400);
+                                res.render('error', {
+                                    title: '400 Bad Request',
+                                    css:['global', 'error'],
+                                    status: {
+                                        code: "400",
+                                        message: "Bad request"
+                                    },
+                                    sessionUser: req.session.uName 
+                                });
+                            }
+                        })
                     });    
                 });
             }

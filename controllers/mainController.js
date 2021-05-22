@@ -96,6 +96,11 @@ const mainController = {
         }
     },
 
+    redirectUser: function(req, res) {
+        //console.log('redirect');
+        res.redirect('/mainpage');
+    },
+
     changeSort: function(req, res) {
 
         if(req.session.sortBy === 'date') 

@@ -18,14 +18,15 @@ router.get('/login', mainController.getLogin);
 router.get('/error', mainController.getError);
 router.get('/usererror', mainController.getUserError);
 router.get('/mainpage', mainController.getMainPage);
+router.get('/redirection', mainController.redirectUser);
 router.get('/settings', mainController.getSettingsPage);
 router.get('/image/:id', mainController.getPicture); //responsible for getting image in profiles
 router.get('/editaccount', mainController.geteditProfileAccount);
 router.get('/searchentry/:_id', mainController.getEntry);
 router.get('/indivletter/:_id', mainController.getLetter);
 router.get('/changeSort', mainController.changeSort);
-router.get('/error_signup', profileController.getErrorSignup);
 
+router.get('/error_signup', profileController.getErrorSignup);
 router.get('/checksignup', profileController.checksignup); //checks username
 router.get('/getCheckEmail', profileController.checkemail); //checks email if it already exists
 router.get('/getEditEmail', profileController.editCheckEmail);

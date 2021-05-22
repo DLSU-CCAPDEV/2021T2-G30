@@ -246,7 +246,7 @@ const profileController = {
                req.session.sortBy = 'date';
                req.session.uName = result.uName;
                req.session.pw = result.pw;
-               res.redirect('/mainpage');
+               res.redirect('/redirection');
             });
         }
     },

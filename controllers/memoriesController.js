@@ -29,7 +29,7 @@ const memoriesController = {
                     });
 
                     res.render('memories', {
-                        title: 'SafeSpace',
+                        title: 'Safe Space | Memories',
                         css: ['global','mainpage'],
                         entries: dates,
                         sessionUser: req.session.uName,

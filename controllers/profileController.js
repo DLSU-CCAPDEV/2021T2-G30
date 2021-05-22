@@ -142,7 +142,7 @@ const profileController = {
                     //console.log(populateResult.friendsList);
     
                     res.render('profile', {
-                        title: 'SafeSpace',
+                        title: 'Safe Space | Profile',
                         css: ['global', 'personalprofile'],
                         JSbool: false,
                         details: result,

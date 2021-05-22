@@ -1,5 +1,8 @@
 # Safe Space
-A diary web application. Wi-Fi is required to run the web application. 
+Safe Space is a diary web application that aims to provide users an avenue to store moments precious to their life while providing
+an option to add their closest friends and share entries that mean most to them. 
+
+Wi-Fi and enabling Javascript is required to get the best experience from the web application. 
 
 ## Contributors:
 - Buensalida, Matthew
@@ -31,10 +34,28 @@ http://localhost:3000/login
 http://localhost:3000/login
 ``` 
 
-## Resources:
-* https://getbootstrap.com/
-* https://fontawesome.com/
-* https://fullcalendar.io/
+
+## Third Party Libraries Used
+
+- [JQuery](https://jquery.com/) 
+- [FullCalendar](https://fullcalendar.io/)
+- [Bootstrap](https://getbootstrap.com/)
+- [Font Awesome](https://fontawesome.com/)
+
+## NPM Packages Used
+- [bcrypt](https://www.npmjs.com/package/bcrypt)
+- [body-parser](https://www.npmjs.com/package/body-parser)    
+- [connect-mongo](https://www.npmjs.com/package/connect-mongo)
+- [dotenv](https://www.npmjs.com/package/dotenv)
+- [express](https://www.npmjs.com/package/express)
+- [express-handlebars](https://www.npmjs.com/package/express-handlebars)
+- [express-session](https://www.npmjs.com/package/express-session)
+- [express-validator](https://www.npmjs.com/package/express-validator)
+- [gridfs-stream](https://www.npmjs.com/package/gridfs-stream)
+- [method-override](https://www.npmjs.com/package/method-override)
+- [mongoose](https://www.npmjs.com/package/mongoose)
+- [multer](https://www.npmjs.com/package/multer)
+- [multer-gridfs-storage](https://www.npmjs.com/package/multer-gridfs-storage)
 
 Mainpage sources:
 * https://unsplash.com/photos/3ckWUnaCxzc 

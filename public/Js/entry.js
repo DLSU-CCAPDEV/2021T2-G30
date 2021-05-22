@@ -6,7 +6,7 @@ $(document).ready(function () {
     const monthNames = ["January", "February", "March", "April", "May", "June",
                             "July", "August", "September", "October", "November", "December"];
 
-    var dateTitle =   (monthNames[today.getMonth()]) + ' ' + today.getDate().toString().padStart(2, 0) + ", " + today.getFullYear().toString();
+   
     
 
     function editisValidTitle (field, id) {
@@ -51,11 +51,11 @@ $(document).ready(function () {
         var validDate = false;
         var entryDate =  $('#entryDate-' + id).val();
         var invalidDate = entryDate > formattedDate; //if future
-
+        // alert(entryDate + " > " + formattedDate);
         if(invalidDate) {
             if(field.is($('#entryDate-' + id))) {
-                $('#futureDate').text('Entered date is invalid.');
-                $('#futureDate').css('margin-bottom', '-2em');
+                $('#futureDate-' + id).text('Entered date is invalid.');
+                $('#futureDate-' + id).css('margin-bottom', '-2em');
             }
         } else {
             if(field.is($('#entryDate-' + id)))
@@ -134,8 +134,12 @@ $(document).ready(function () {
         var entryDateValid = editisValidDate($('#entryDate-' + id), id);
 
         if(entryTitleValid && entryBodyValid && entryDateValid) {
-            if(entryTitleEmpty)
+            if(entryTitleEmpty){
+                var dateEntry = new Date(entryDate);
+                var dateTitle =   (monthNames[dateEntry.getMonth()]) + ' ' + dateEntry.getDate().toString().padStart(2, 0) + ", " + dateEntry.getFullYear().toString();
+                $('#entryTitleCreate').val(dateTitle);
                 entryTitle = dateTitle;
+            }
             var entry = {
                 id: id,
                 entryTitle: entryTitle,
@@ -176,6 +180,8 @@ $(document).ready(function () {
         } else {
             $('#emptyBodyCreate').text('');
         }
+        
+        // alert(entryDate + " > " + formattedDate);
         if (entryDate > formattedDate){
             // $('#emptyBodyCreate').text('').css('margin-bottom', '1rem');
             $('#futureDateOnCreate').text('Entered date is invalid.');
@@ -185,6 +191,8 @@ $(document).ready(function () {
         }
         if (!entryBodyEmpty  && !(privacyEmpty) && !(entryDate > formattedDate)){
             if(entryTitleEmpty) {
+                var dateEntry = new Date(entryDate);
+                var dateTitle =   (monthNames[dateEntry.getMonth()]) + ' ' + dateEntry.getDate().toString().padStart(2, 0) + ", " + dateEntry.getFullYear().toString();
                 $('#entryTitleCreate').val(dateTitle);
             }
             var xhttp = new XMLHttpRequest();

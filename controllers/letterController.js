@@ -3,7 +3,7 @@ const letterCollection = require('../models/LetterModel.js');
 const userCollection = require('../models/UserModel.js');
 const mongoose = require('mongoose');
 const { date } = require('../helpers/helpers.js');
-
+const {validationResult} = require('express-validator');
 //var formattedDate = today.getFullYear().toString() + '-' + (today.getMonth() + 1).toString().padStart(2, 0) + '-' + today.getDate().toString().padStart(2, 0);
 
 const letterController = {
@@ -76,6 +76,12 @@ const letterController = {
 
     createLetter: function(req, res) {
         
+        var errors = validationResult(req);
+        var formattedDate = req.body.currDate;
+        // var today = new Date()
+        // var formattedDate = today.getFullYear().toString() + '-' + (today.getMonth() + 1).toString().padStart(2, 0) + '-' + today.getDate().toString().padStart(2, 0) + 'T' + today.getHours().toString().padStart(2, 0) + ':' + today.getMinutes().toString().padStart(2, 0);
+        var currDate = new Date(formattedDate);
+        
         var letterTitle = req.body.letterTitle;
         var letterBody = req.body.letterBody;
         var author = req.session.uName;
@@ -93,34 +99,40 @@ const letterController = {
         } else {
             entryImage = null;
         }
-
-        var letter = {
-            _id: mongoose.Types.ObjectId(),
-            letterTitle: letterTitle,
-            letterBody: letterBody,
-            author: author,
-            recipient: recipient,
-            dateToReceive: dateToReceive,
-            entryImage: entryImage
-        }
-
-        var update = {
-            $push: {
-                letters: letter._id
+        // console.log("There are errors: " + !errors.isEmpty());
+        // console.log(dateToReceive + " < " + currDate);
+        if(!errors.isEmpty() || (dateToReceive < currDate)) {
+            console.log("Invalid letter created. Try again.");
+        } else {
+            var letter = {
+                _id: mongoose.Types.ObjectId(),
+                letterTitle: letterTitle,
+                letterBody: letterBody,
+                author: author,
+                recipient: recipient,
+                dateToReceive: dateToReceive,
+                entryImage: entryImage
             }
+    
+            var update = {
+                $push: {
+                    letters: letter._id
+                }
+            }
+    
+            db.insertOne(letterCollection, letter, function(flag) {
+                db.updateOne(userCollection, {uName: author}, update, function(flag) {
+                    if(author === recipient)
+                        res.send(true);
+                    else { 
+                        db.updateOne(userCollection, {uName: recipient}, update, function(flag) {
+                            res.send(true);
+                        })
+                    }
+                })
+            })
         }
 
-        db.insertOne(letterCollection, letter, function(flag) {
-            db.updateOne(userCollection, {uName: author}, update, function(flag) {
-                if(author === recipient)
-                    res.send(true);
-                else { 
-                    db.updateOne(userCollection, {uName: recipient}, update, function(flag) {
-                        res.send(true);
-                    })
-                }
-            })
-        })
     },
 };   
 

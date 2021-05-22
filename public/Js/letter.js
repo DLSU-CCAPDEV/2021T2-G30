@@ -60,18 +60,19 @@ $(document).ready(function () {
             xhttp.onreadystatechange = function() {
                 $('#letterTitle').val('');
                 $('#LetterFormControlTextarea1').val('');
+                $('#imageFormControlFile2').val(null);
                 $("#letterType").load(" #letterType > *");
                 $("#mainSectionLetter").load(" #mainSectionLetter > *");
               };
 
             // Form data to be passed to ajax call
             var formData = new FormData();
-            formData.append('dateToReceive', $('#dateLetter').val())
-            formData.append('letterTitle', $('#letterTitle').val())
-            formData.append('letterBody', $('#LetterFormControlTextarea1').val())
-            formData.append('recipient', $('#inputRecipient').val())
-            formData.append('entryImage', document.getElementById('imageFormControlFile2').files[0])
-            
+            formData.append('dateToReceive', $('#dateLetter').val());
+            formData.append('letterTitle', $('#letterTitle').val());
+            formData.append('letterBody', $('#LetterFormControlTextarea1').val());
+            formData.append('recipient', $('#inputRecipient').val());
+            formData.append('entryImage', document.getElementById('imageFormControlFile2').files[0]);
+            formData.append('currDate', formattedDate);
             $('#createLetterModal').modal('toggle');
 
             // Ajax call

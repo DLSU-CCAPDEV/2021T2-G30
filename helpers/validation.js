@@ -49,6 +49,14 @@ const validation = {
             check('bio', "Password should contain at least 8 characters.").trim().isLength({max: 150})
         ];
         return validation;
+    },
+
+    createLetterValidation: function () {
+        var validation = [
+            check('letterTitle', 'Letter title should not be empty.').trim().notEmpty(),
+            check('letterBody', 'Letter body should not be empty.').trim().notEmpty()
+        ];
+        return validation;
     }
 }
 

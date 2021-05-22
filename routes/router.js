@@ -58,7 +58,7 @@ router.post('/createentry', [db.upload.any(), validation.createEntryValidation()
 router.post('/editentry', db.upload.any(),  entryController.editEntry);
 router.post('/deleteentry', entryController.deleteEntry);
 
-router.post('/createletter', db.upload.any(), letterController.createLetter);
+router.post('/createletter', [db.upload.any(), validation.createLetterValidation()], letterController.createLetter);
 
 router.get('/searchresults', mainController.getSearch);
 

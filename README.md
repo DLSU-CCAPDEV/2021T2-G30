@@ -34,6 +34,28 @@ http://localhost:3000/login
 http://localhost:3000/login
 ``` 
 
+
+## Third Party Libraries Used
+* [JQuery] (https://jquery.com/)
+* [FullCalendar] (https://fullcalendar.io/)
+* [Bootstrap] (https://getbootstrap.com/)
+* [Font Awesome] (https://fontawesome.com/)
+
+## NPM Packages Used
+* [bcrypt] (https://www.npmjs.com/package/bcrypt)
+* [body-parser]    
+* [connect-mongo]
+* [dotenv]
+* [express]
+* [express-handlebars]
+* [express-session]
+* [express-validator]
+* [gridfs-stream]
+* [method-override]
+* [mongoose]
+* [multer]
+* [multer-gridfs-storage]
+
 ## Resources:
 * https://getbootstrap.com/
 * https://fontawesome.com/

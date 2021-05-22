@@ -89,7 +89,8 @@ const profileController = {
                                                 status: {
                                                     code: "500",
                                                     message: "Something unexpected happened."
-                                                }  
+                                                },
+                                                sessionUser: req.session.uName   
                                             });   
                                         }    
                                     });
@@ -120,7 +121,8 @@ const profileController = {
                 status: {
                     code: "403",
                     message: "Forbidden"
-                }  
+                },
+                sessionUser: req.session.uName   
             });
         } else {
             res.render('login', {
@@ -159,7 +161,8 @@ const profileController = {
                             status: {
                                 code: "400",
                                 message: "Bad request"
-                            }
+                            },
+                            sessionUser: req.session.uName 
                         });
                     }
                 });    
@@ -173,7 +176,8 @@ const profileController = {
                 status: {
                     code: "401",
                     message: "Unauthorized access"
-                } 
+                },
+                sessionUser: req.session.uName  
             });
         }
     },
@@ -275,8 +279,8 @@ const profileController = {
                     status: {
                         code: "400",
                         message: "Bad request"
-                    } 
-                    
+                    },
+                    sessionUser: req.session.uName  
                 });
                 throw error;
             }

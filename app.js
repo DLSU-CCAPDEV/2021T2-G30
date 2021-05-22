@@ -58,7 +58,8 @@ app.use(function(req, res) {
         status: {
             code: "404",
             message: "Not found"
-        } 
+        },
+        sessionUser: req.session.uName 
     });
 });
 

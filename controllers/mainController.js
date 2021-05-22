@@ -29,8 +29,8 @@ const mainController = {
             status: {
                 code: "400",
                 message: "Bad request"
-            } 
-            
+            },
+            sessionUser: req.session.uName    
         });
     },
 
@@ -131,8 +131,8 @@ const mainController = {
                 status: {
                     code: "401",
                     message: "Unauthorized access."
-                } 
-                
+                },
+                sessionUser: req.session.uName    
             });
         }
     },
@@ -156,7 +156,8 @@ const mainController = {
                 status: {
                     code: "401",
                     message: "Unauthorized access."
-                } 
+                },
+                sessionUser: req.session.uName  
                 
             });
         }
@@ -174,7 +175,8 @@ const mainController = {
                     status: {
                         code: "404",
                         message: "Not found"
-                    } 
+                    },
+                    sessionUser: req.session.uName  
                     
                 });
             } else {
@@ -244,7 +246,8 @@ const mainController = {
                 status: {
                     code: "401",
                     message: "Unauthorized access."
-                } 
+                },
+                sessionUser: req.session.uName 
             });
         }
         /*
@@ -299,12 +302,13 @@ const mainController = {
 
                             res.status(401);
                             res.render('error', {
-                            title: '401 Unauthorized Access',
-                            css:['global', 'error'],
-                            status: {
-                                code: "401",
-                                message: "Unauthorized access."
-                                } 
+                                title: '401 Unauthorized Access',
+                                css:['global', 'error'],
+                                status: {
+                                    code: "401",
+                                    message: "Unauthorized access."
+                                },
+                                sessionUser: req.session.uName  
                             });
                         }
                     })
@@ -314,24 +318,26 @@ const mainController = {
 
                     res.status(401);
                     res.render('error', {
-                    title: '401 Unauthorized Access',
-                    css:['global', 'error'],
-                    status: {
-                        code: "401",
-                        message: "Unauthorized access."
-                        } 
+                        title: '401 Unauthorized Access',
+                        css:['global', 'error'],
+                        status: {
+                            code: "401",
+                            message: "Unauthorized access."
+                        }, 
+                        sessionUser: req.session.uName     
                     });
                 }
             }
             else {
                 res.status(404);
                 res.render('error', {
-                title: '404 Not Found',
-                css:['global', 'error'],
-                status: {
-                    code: "404",
-                    message: "Page not found"
-                    } 
+                    title: '404 Not Found',
+                    css:['global', 'error'],
+                    status: {
+                        code: "404",
+                        message: "Page not found"
+                    },
+                    sessionUser: req.session.uName 
                 });
             }
         });
@@ -365,7 +371,8 @@ const mainController = {
                             status: {
                                 code: "401",
                                 message: "Unauthorized access"
-                            } 
+                            },
+                            sessionUser: req.session.uName 
                         });
                     }
                 });
@@ -373,12 +380,13 @@ const mainController = {
             else  {
                 res.status(404);
                 res.render('error', {
-                title: '404 Not Found',
-                css:['global', 'error'],
-                status: {
-                    code: "404",
-                    message: "Page not found"
-                    } 
+                    title: '404 Not Found',
+                    css:['global', 'error'],
+                    status: {
+                        code: "404",
+                        message: "Page not found"
+                    },
+                    sessionUser: req.session.uName  
                 });
             }
         });

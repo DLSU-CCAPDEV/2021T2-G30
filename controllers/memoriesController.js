@@ -46,7 +46,8 @@ const memoriesController = {
                 status: {
                     code: "401",
                     message: "Unauthorized access."
-                } 
+                },
+                sessionUser: req.session.uName  
             });
         }
     }

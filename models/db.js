@@ -167,8 +167,8 @@ const database = {
         deletes multiple documents based on the model `model`
         filtered using the object `conditions`
     */
-    deleteMany: function(model, condition, callbacks) {
-        model.deleteMany(conditions, function (error, result) {
+    deleteMany: function(model, condition, callback) {
+        model.deleteMany(condition, function (error, result) {
             if(error) return callback(false);
             console.log('Document deleted: ' + result.deletedCount);
             return callback(true);

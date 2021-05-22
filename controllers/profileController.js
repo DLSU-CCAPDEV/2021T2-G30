@@ -1,5 +1,6 @@
 const db = require('../models/db.js');
 const userCollection = require('../models/UserModel.js');
+const entryCollection = require('../models/EntryModel.js');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const {validationResult} = require('express-validator');
@@ -453,15 +454,16 @@ const profileController = {
             }
             db.updateMany(userCollection, {'uName': {$in: friendNames}}, update, function(result) {
                 db.deleteOne(userCollection, {uName: uName}, function(deleted) {
-                    //console.log(deleted);
-                    req.session.destroy(function(error){
-                        if(error){
-                            throw error;
-                        }
-                        else
-                            res.redirect('/login');
-                    })
-                })
+                    db.deleteMany(entryCollection, {authorUserName: req.session.uName}, function(resultDeleted) {
+                        req.session.destroy(function(error){
+                            if(error){
+                                throw error;
+                            }
+                            else
+                                res.redirect('/login');
+                        });
+                    });
+                });
             });
         });
     }

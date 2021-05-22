@@ -242,7 +242,7 @@ const profileController = {
         } else {
             db.findOne(userCollection, {uName: uName}, '', function (result) {
                // Bookmark
-               console.log("Value in db: " + result);
+               //console.log("Value in db: " + result);
                req.session.sortBy = 'date';
                req.session.uName = result.uName;
                req.session.pw = result.pw;

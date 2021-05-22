@@ -205,7 +205,8 @@ const mainController = {
                             res.render('notfound', {    
                                 title: 'No Results Found',
                                 css: ['global','searchresults'],
-                                query: SearchTitle 
+                                query: SearchTitle,
+                                sessionUser: req.session.uName
                             });
                         }
                     }, {entryDate: -1})

@@ -10,7 +10,7 @@ Wi-Fi and enabling Javascript is required to get the best experience from the we
 - Rosima, Rayvhen
 
 ## Instructions
-1. Clone the repository by using the command below (Note: git should be installed in your system for this to work).
+1. Clone the repository by using the command below (note: git should be installed in your system for this to work).
 
 ```
 git clone https://github.com/DLSU-CCAPDEV/2021T2-G30.git 

@@ -36,6 +36,7 @@ http://localhost:3000/login
 
 
 ## Third Party Libraries Used
+- [controllers] (https://github.com/DLSU-CCAPDEV/2021T2-G30/tree/main/controllers)
 - [JQuery] (https://jquery.com/) 
 - [FullCalendar] (https://fullcalendar.io/)
 - [Bootstrap] (https://getbootstrap.com/)

@@ -6,84 +6,89 @@ const userController = {
 
     getUserProfile: function(req, res) {
 
-        if(req.params.uName === req.session.uName)
-            res.redirect('/profile/' + req.session.uName);
-        
-        else {
-            var query = {uName: req.params.uName};
-            var projection = 'dPicture fName lName uName bio';
-
-            //console.log("successful");
-
-            db.findOne(userCollection, query, projection, function(user) {
-                //console.log(user.uName + ' <--- user to add')
-                if(user != null) {
-                    var friend = -1;
-                    var queryFriend = {uName: req.session.uName, "friendsList.friendName": user.uName};
-                    var querySent = {uName: req.session.uName, "sentRequest.username": user.uName};
-                    var queryPending = {uName: req.session.uName, "pendingRequest.username": user.uName};
-
-                    /*
-                    2 = friends
-                    1 = sent
-                    0 = to accept 
-                    -1 = not friends
-                    */
-
-                    //console.log(req.session.uName + ' <--- session user');
-
-                    db.findOne(userCollection, queryFriend, projection, function(result1) {
-                        
-                        if(result1 != null) 
-                            friend = 2;
-                        
-                        db.findOne(userCollection, querySent, projection, function(result2) {
-                            //console.log(result.uName);
-                            if(result2 != null) 
-                                friend = 1;
-
-                            db.findOne(userCollection, queryPending, projection, function(result3) {
+        if(req.session.uName) {
+            if(req.params.uName === req.session.uName)
+                res.redirect('/profile/' + req.session.uName);
+            
+            else {
+                var query = {uName: req.params.uName};
+                var projection = 'dPicture fName lName uName bio';
+    
+                //console.log("successful");
+    
+                db.findOne(userCollection, query, projection, function(user) {
+                    //console.log(user.uName + ' <--- user to add')
+                    if(user != null) {
+                        var friend = -1;
+                        var queryFriend = {uName: req.session.uName, "friendsList.friendName": user.uName};
+                        var querySent = {uName: req.session.uName, "sentRequest.username": user.uName};
+                        var queryPending = {uName: req.session.uName, "pendingRequest.username": user.uName};
+    
+                        /*
+                        2 = friends
+                        1 = sent
+                        0 = to accept 
+                        -1 = not friends
+                        */
+    
+                        //console.log(req.session.uName + ' <--- session user');
+    
+                        db.findOne(userCollection, queryFriend, projection, function(result1) {
+                            
+                            if(result1 != null) 
+                                friend = 2;
+                            
+                            db.findOne(userCollection, querySent, projection, function(result2) {
                                 //console.log(result.uName);
-                                if(result3 != null) 
-                                    friend = 0;
-
-                                if(friend === 2) {
-                                    console.log('friends');
-                                    db.findMany(entryCollecion, {authorUserName: req.params.uName, privacy: 'public'}, '', {entryDate: -1}, function(friendEntries) {
-                                        console.log(friendEntries);
+                                if(result2 != null) 
+                                    friend = 1;
+    
+                                db.findOne(userCollection, queryPending, projection, function(result3) {
+                                    //console.log(result.uName);
+                                    if(result3 != null) 
+                                        friend = 0;
+    
+                                    if(friend === 2) {
+                                        console.log('friends');
+                                        db.findMany(entryCollecion, {authorUserName: req.params.uName, privacy: 'public'}, '', {entryDate: -1}, function(friendEntries) {
+                                            console.log(friendEntries);
+                                            res.render('user',  {
+                                                title: 'Safe Space',
+                                                css: ['global', 'mainpage', 'friendprofile'], 
+                                                details: user,
+                                                entries: friendEntries,
+                                                friendStatus: friend,
+                                                friend: true,
+                                                sessionUser: req.session.uName
+                                            });
+                                        })
+                                    }
+                                    else {
                                         res.render('user',  {
                                             title: 'Safe Space',
                                             css: ['global', 'mainpage', 'friendprofile'], 
                                             details: user,
-                                            entries: friendEntries,
                                             friendStatus: friend,
-                                            friend: true,
+                                            friend: false,
                                             sessionUser: req.session.uName
                                         });
-                                    })
-                                }
-                                else {
-                                    res.render('user',  {
-                                        title: 'Safe Space',
-                                        css: ['global', 'mainpage', 'friendprofile'], 
-                                        details: user,
-                                        friendStatus: friend,
-                                        friend: false,
-                                        sessionUser: req.session.uName
-                                    });
-                                }
-                                
-                                
+                                    }
+                                    
+                                    
+                                });
                             });
                         });
-                    });
-                    
-                } else {
-                    //console.log('error');
-                    res.status(404);
-                    res.redirect('/usererror');
-                }
-            });
+                        
+                    } else {
+                        //console.log('error');
+                        res.status(404);
+                        res.redirect('/usererror');
+                    }
+                });
+            }
+
+        } else {
+            res.redirect('/login');
         }
     },
 

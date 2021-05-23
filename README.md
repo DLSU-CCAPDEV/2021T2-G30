@@ -1,5 +1,5 @@
 ![Safe Space](https://i.imgur.com/IUWnDqn.jpeg)
-* Safe Space is a diary web application that aims to provide users a safe space to store precious moments while providing an option to add their closest friends and share entries to them. 
+* Safe Space is a journaling/diary web application that aims to bring people together through transparent entry creations and letter sending.
 * A Wi-Fi connection and enabling Javascript in the browser is required to get the best experience from the web application. 
 * The application is currently deployed and can be found through this link: https://safespace-ph.herokuapp.com/
 * Instructions to run the web application locally can be found below. 

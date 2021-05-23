@@ -1,4 +1,6 @@
 # Safe Space
+
+## About the Safe Space
 * Safe Space is a diary web application that aims to provide users a space to store moments precious to them while providing
 an option to add their closest friends and share entries that mean most to them. 
 

@@ -104,8 +104,8 @@ DB_URL=<database link>
 * https://www.facebook.com/matthew.buensalida.1 Repsective Pictures from Matthew Buensalida
 * https://www.facebook.com/william.cruz.dimaculangan Respective Picture from William Dimaculangan -->
 
-* Copyright Disclaimer under section 107 of the Copyright Act 1976, allowance is made for “fair use” for purposes such as criticism, comment, news reporting, teaching, scholarship, education and research.
+*Copyright Disclaimer under section 107 of the Copyright Act 1976, allowance is made for “fair use” for purposes such as criticism, comment, news reporting, teaching, scholarship, education and research.*
 
-* Fair use is a use permitted by copyright statute that might otherwise be infringing. 
+*Fair use is a use permitted by copyright statute that might otherwise be infringing. *
 
-* Non-profit, educational or personal use tips the balance in favor of fair use.  
+*Non-profit, educational or personal use tips the balance in favor of fair use.*

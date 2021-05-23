@@ -42,7 +42,7 @@ http://localhost:3000/login
 - [Bootstrap](https://getbootstrap.com/)
 - [Font Awesome](https://fontawesome.com/)
 
-## NPM Packages Used
+## Dependencies
 - [bcrypt](https://www.npmjs.com/package/bcrypt)
 - [body-parser](https://www.npmjs.com/package/body-parser)    
 - [connect-mongo](https://www.npmjs.com/package/connect-mongo)

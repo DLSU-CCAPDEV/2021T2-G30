@@ -226,9 +226,10 @@ const profileController = {
     },
 
     checklogin: function (req, res) {
-        var uName = req.query.uName;
-        var pw = req.query.pw;
+        var uName = req.body.uName;
+        var pw = req.body.pw;
 
+        console.log(pw);
         db.findOne(userCollection, {uName: uName}, 'pw', function (result) {
             if(result === null)
                 res.send(false);

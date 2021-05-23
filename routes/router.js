@@ -30,7 +30,6 @@ router.get('/error_signup', profileController.getErrorSignup);
 router.get('/checksignup', profileController.checksignup); //checks username
 router.get('/getCheckEmail', profileController.checkemail); //checks email if it already exists
 router.get('/getEditEmail', profileController.editCheckEmail);
-router.get('/checklogin', profileController.checklogin); //checks credentials and sends it back to ajax
 router.get('/profile/:uName', profileController.getProfile);
 router.get('/logout', profileController.getLogout);
 
@@ -51,6 +50,7 @@ router.get('/letters', letterController.getLetters);
 router.get('/lettersoutgoing', letterController.getLettersOutgoing);
 
 //POST // Creation
+router.post('/checklogin', profileController.checklogin); //checks credentials and sends it back to ajax
 router.post('/signup', [db.upload.any(), validation.signupValidation()], profileController.signup);
 router.post('/editaccount', [db.upload.any(), validation.editAccountValidation()],profileController.editAccount);
 router.post('/login', validation.loginValidation(), profileController.login);

@@ -7,7 +7,7 @@ $(document).ready(function () {
         var uName = $('#LoginUsername').val().trim().toLowerCase();
         var pw = $('#LoginPassword').val();
         
-        $.get('/checklogin', {uName: uName, pw: pw}, function (isValid) {
+        $.post('/checklogin', {uName: uName, pw: pw}, function (isValid) {
 
             if(!isValid) {
                 $('#error').text('Invalid Login Credentials');

@@ -1,17 +1,13 @@
-# Safe Space
-* Safe Space is a diary web application that aims to provide users a space to store moments precious to them while providing
-an option to add their closest friends and share entries that mean most to them. 
-
+![Stuff](https://i.imgur.com/xDmtp7W.png)
+* Safe Space is a diary web application that aims to provide users a space to store moments precious to them while providing an option to add their closest friends and share entries that mean most to them. 
 * Wi-Fi and enabling Javascript in the browser is required to get the best experience from the web application. 
-
 * The application is currently deployed and can be found through this link: https://safespace-ph.herokuapp.com/
-
 * Instructions to run the web application locally can be found below. 
 
 ## Contributors:
-- Buensalida, Matthew C.
-- Dimaculangan, William Mitchell C.
-- Rosima, Rayvhen Mico M.
+- [Buensalida, Matthew C.](https://github.com/matthews-code)
+- [Dimaculangan, William Mitchell C.](https://github.com/dot-william)
+- [Rosima, Rayvhen Mico M.](https://github.com/dslbis)
 
 ## Dependencies
 - [bcrypt](https://www.npmjs.com/package/bcrypt)
@@ -28,6 +24,9 @@ an option to add their closest friends and share entries that mean most to them.
 - [multer](https://www.npmjs.com/package/multer)
 - [multer-gridfs-storage](https://www.npmjs.com/package/multer-gridfs-storage)
 
+## Dev Dependencies
+- [nodemon](https://www.npmjs.com/package/nodemon)
+
 ## Third Party Libraries Used
 
 - [JQuery](https://jquery.com/) 
@@ -35,7 +34,7 @@ an option to add their closest friends and share entries that mean most to them.
 - [Bootstrap](https://getbootstrap.com/)
 - [Font Awesome](https://fontawesome.com/)
 
-## Instructions when Running Locally
+## Instructions when Running Web Application Locally
 1. Clone the repository by using the command below (note: git should be installed in your system for this to work).
 
 ```
@@ -60,7 +59,7 @@ http://localhost:3000/login
 http://localhost:3000/login
 ``` 
 
-7. **Note:** Wi-Fi is required in running the application as it is utilizing a remote database and libraries. You must also create .env file with the following format:
+7. **Note:** Wi-Fi is required in running the application as it is libraries. You must also create .env file with the following format:
 ```
 HOSTNAME=localhost
 PORT=3000
@@ -68,9 +67,9 @@ DB_URL=<database link>
 ```
 
 ## Safe Space Features
-- [Features](https://drive.google.com/file/d/1Z3nS5hH5BAZBP3QdYXk5sbwz7DsO2rDD/view?usp=sharing) - Safe Space's list of features can be viewed in this link.
+- [Features](https://drive.google.com/file/d/1Z3nS5hH5BAZBP3QdYXk5sbwz7DsO2rDD/view?usp=sharing) - Safe Space's list of features can be viewed through this link.
 
-## List of Images used for creating the Dummy Data:
+## Images used for creating Dummy Data:
 * https://unsplash.com/photos/3ckWUnaCxzc 
 * https://unsplash.com/photos/FgSyP02I0gw
 * https://unsplash.com/photos/toQNPpuDuwI

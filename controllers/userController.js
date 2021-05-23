@@ -99,6 +99,8 @@ const userController = {
 
         db.findOne(userCollection, {uName: receiver}, '', function(resultReceiver) {
             db.findOne(userCollection, {uName: sender}, '', function(resultSender) {
+                // console.log("resultReceiver: " + resultReceiver);
+                // console.log("resultSender: " + resultSender)
                 var updateSender = {
                     $push: {
                       sentRequest: {userId: resultReceiver._id, username: resultReceiver.uName}

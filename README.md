@@ -4,9 +4,9 @@ an option to add their closest friends and share entries that mean most to them.
 
 * Wi-Fi and enabling Javascript in the browser is required to get the best experience from the web application. 
 
-The application is currently deployed and can be found through this link: https://safespace-ph.herokuapp.com/
+* The application is currently deployed and can be found through this link: https://safespace-ph.herokuapp.com/
 
-Instructions to run the web application locally can be found below. 
+* Instructions to run the web application locally can be found below. 
 
 ## Contributors:
 - Buensalida, Matthew C.

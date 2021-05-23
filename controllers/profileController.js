@@ -303,27 +303,15 @@ const profileController = {
         var errors = validationResult(req);
 
 
-        console.log("password in session at editAccount: " + pw);
         if(req.files.length == 0) {
             dPicture = null;
         } else {
             dPicture = req.files[0].id;
         }
-        
-        console.log("dPicture id is = " + dPicture);
 
         if(!errors.isEmpty()){
-            console.log("I have arrived");
             errors = errors.errors;
             
-             /*
-                for each error, store the error inside the object `details`
-                the field is equal to the parameter + `Error`
-                the value is equal to `msg` as defined in the validation middlewares
-
-                for example, if there is an error for parameter `fName`:
-                store the value to the field `fNameError`
-            */
             var details = {};
             for(var i = 0; i < errors.length; i++) {
                 details[errors[i].param + "Error"] = errors[i].msg;
@@ -334,10 +322,10 @@ const profileController = {
                 errDetails: details,
                 errorCreds: true
             });
+            console.log("Changes were not saved.");
         }
         else{
             if(pw !== "" && dPicture != null){
-                console.log("I have arrived (1)");
                 bcrypt.hash(pw, saltRounds, function(err, hash) {
                     var indivUser = {
                         dPicture: dPicture,
@@ -347,11 +335,8 @@ const profileController = {
                         bio: req.body.bio,
                         pw: hash,
                     }
-                    console.log("changed current password: " + hash);
                     
                     db.updateOne(userCollection, {uName: uName}, indivUser, function(update){
-                        console.log("update: " + update);
-                        console.log("Inside pw !== dPicture != null is == " + indivUser);
                         if(update){
                             res.redirect('/settings');
                         }
@@ -359,7 +344,6 @@ const profileController = {
                 });
             }
             else if(pw === "" && dPicture == null){
-                console.log("I have arrived (2)");
                 var indivUser = {
                     fName: req.body.fName,
                     lName: req.body.lName,
@@ -368,14 +352,12 @@ const profileController = {
                 }
                 
                 db.updateOne(userCollection, {uName: uName}, indivUser, function(update){
-                    console.log("update: " + update);
                     if(update){
                         res.redirect('/settings');
                     }
                 });
             }
             else if(pw !== "" && dPicture == null){
-                console.log("I have arrived (3)");
                 bcrypt.hash(pw, saltRounds, function(err, hash) {
                     var indivUser = {
                         fName: req.body.fName,
@@ -384,10 +366,8 @@ const profileController = {
                         bio: req.body.bio,
                         pw: hash,
                     }
-                    console.log("changed current password: " + hash);
                     
                     db.updateOne(userCollection, {uName: uName}, indivUser, function(update){
-                        console.log("update: " + update);
                         if(update){
                             res.redirect('/settings');
                         }
@@ -395,7 +375,6 @@ const profileController = {
                 });
             }
             else if(pw === "" && dPicture !== null){
-                console.log("I have arrived (4)");
                     var indivUser = {
                         dPicture: dPicture,
                         fName: req.body.fName,
@@ -405,7 +384,6 @@ const profileController = {
                     }
                     
                     db.updateOne(userCollection, {uName: uName}, indivUser, function(update){
-                        console.log("update: " + update);
                         if(update){
                             res.redirect('/settings');
                         }

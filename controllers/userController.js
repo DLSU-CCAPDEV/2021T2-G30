@@ -98,32 +98,46 @@ const userController = {
         var sender = req.session.uName;
 
         db.findOne(userCollection, {uName: receiver}, '', function(resultReceiver) {
-            db.findOne(userCollection, {uName: sender}, '', function(resultSender) {
-                // console.log("resultReceiver: " + resultReceiver);
-                // console.log("resultSender: " + resultSender)
-                var updateSender = {
-                    $push: {
-                      sentRequest: {userId: resultReceiver._id, username: resultReceiver.uName}
-                    }
-                }
-                var updateReceiver = {
-                    $push: {
-                      pendingRequest: {userId: resultSender._id, username: resultSender.uName}
-                    }
-                }
-                //console.log(updateReceiver + ' IN ' + resultSender.uName);
-                db.updateOne(userCollection, {uName: resultReceiver.uName}, updateReceiver, function(flag) {
-                    if(flag)
-                        console.log('Successfully updated ' + resultReceiver.uName);
-                    db.updateOne(userCollection, {uName: resultSender.uName}, updateSender, function(flag) {
-                        if(flag) {
-                            console.log('Successfully updated ' + resultSender.uName);
-                            res.send(true);
+            if(resultReceiver !== null) {
+                db.findOne(userCollection, {uName: sender}, '', function(resultSender) {
+                    // console.log("resultReceiver: " + resultReceiver);
+                    // console.log("resultSender: " + resultSender)
+                    var updateSender = {
+                        $push: {
+                          sentRequest: {userId: resultReceiver._id, username: resultReceiver.uName}
                         }
-                        //res.redirect('/mainpage');
+                    }
+                    var updateReceiver = {
+                        $push: {
+                          pendingRequest: {userId: resultSender._id, username: resultSender.uName}
+                        }
+                    }
+                    //console.log(updateReceiver + ' IN ' + resultSender.uName);
+                    db.updateOne(userCollection, {uName: resultReceiver.uName}, updateReceiver, function(flag) {
+                        if(flag)
+                            console.log('Successfully updated ' + resultReceiver.uName);
+                        db.updateOne(userCollection, {uName: resultSender.uName}, updateSender, function(flag) {
+                            if(flag) {
+                                console.log('Successfully updated ' + resultSender.uName);
+                                res.send(true);
+                            }
+                            //res.redirect('/mainpage');
+                        });
                     });
                 });
-            });
+            }
+            else {
+                res.status(400);
+                res.render('error', {
+                    title: '400 Bad Request',
+                    css:['global', 'error'],
+                    status: {
+                        code: "400",
+                        message: "Bad request"
+                    },
+                    sessionUser: req.session.uName    
+                });
+            }
         });
     },
 

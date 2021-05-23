@@ -1,8 +1,8 @@
 # Safe Space
-Safe Space is a diary web application that aims to provide users a space to store moments precious to them while providing
+* Safe Space is a diary web application that aims to provide users a space to store moments precious to them while providing
 an option to add their closest friends and share entries that mean most to them. 
 
-Wi-Fi and enabling Javascript in the browser is required to get the best experience from the web application. 
+* Wi-Fi and enabling Javascript in the browser is required to get the best experience from the web application. 
 
 The application is currently deployed and can be found through this link: https://safespace-ph.herokuapp.com/
 
@@ -59,6 +59,13 @@ http://localhost:3000/login
 ```
 http://localhost:3000/login
 ``` 
+
+7. **Note:** Wi-Fi is required in running the application as it is utilizing a remote database and libraries. You must also create .env file with the following format:
+```
+HOSTNAME=localhost
+PORT=3000
+DB_URL=<database link>
+```
 
 ## Safe Space Features
 - [Features](https://drive.google.com/file/d/1Z3nS5hH5BAZBP3QdYXk5sbwz7DsO2rDD/view?usp=sharing) - Safe Space's list of features can be viewed in this link.

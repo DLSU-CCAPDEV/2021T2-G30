@@ -108,4 +108,4 @@ DB_URL=<database link>
 
 * Fair use is a use permitted by copyright statute that might otherwise be infringing. 
 
-* Non-profit, educational or personal use tips the balance in favor of fair use. 
+* Non-profit, educational or personal use tips the balance in favor of fair use.  

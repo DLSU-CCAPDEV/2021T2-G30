@@ -4,7 +4,7 @@
 * The application is currently deployed and can be found through this link: https://safespace-ph.herokuapp.com/
 * Instructions to run the web application locally can be found below. 
 
-## Contributors:
+## Contributors
 - [Buensalida, Matthew C.](https://github.com/matthews-code)
 - [Dimaculangan, William Mitchell C.](https://github.com/dot-william)
 - [Rosima, Rayvhen Mico M.](https://github.com/dslbis)
@@ -69,7 +69,7 @@ DB_URL=<database link>
 ## Safe Space Features
 - [Features](https://drive.google.com/file/d/1Z3nS5hH5BAZBP3QdYXk5sbwz7DsO2rDD/view?usp=sharing) - Safe Space's list of features can be viewed through this link.
 
-## Images used for creating Dummy Data:
+## Images used for creating Dummy Data
 * https://unsplash.com/photos/3ckWUnaCxzc 
 * https://unsplash.com/photos/FgSyP02I0gw
 * https://unsplash.com/photos/toQNPpuDuwI

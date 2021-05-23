@@ -277,21 +277,19 @@ const profileController = {
     getLogout: function(req,res){
         
         req.session.destroy(function(error){
-            if(error){
-                res.status(400);
-                res.render('error', {
-                    title: '400 Bad Request',
-                    css:['global', 'error'],
-                    status: {
-                        code: "400",
-                        message: "Bad request"
-                    },
-                    sessionUser: req.session.uName  
-                });
+            if(error)
                 throw error;
-            }
-            else
-                res.redirect('/login');
+                // res.status(400);
+                // res.render('error', {
+                //     title: '400 Bad Request',
+                //     css:['global', 'error'],
+                //     status: {
+                //         code: "400",
+                //         message: "Bad request"
+                //     },
+                //     sessionUser: req.session.uName  
+                // });
+            res.redirect('/login');
         })
     },
 

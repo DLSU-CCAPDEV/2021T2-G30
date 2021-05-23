@@ -49,9 +49,9 @@ const userController = {
                                         friend = 0;
     
                                     if(friend === 2) {
-                                        console.log('friends');
+                                        // console.log('friends');
                                         db.findMany(entryCollecion, {authorUserName: req.params.uName, privacy: 'public'}, '', {entryDate: -1}, function(friendEntries) {
-                                            console.log(friendEntries);
+                                            // console.log(friendEntries);
                                             res.render('user',  {
                                                 title: 'Safe Space',
                                                 css: ['global', 'mainpage', 'friendprofile'], 
@@ -99,6 +99,8 @@ const userController = {
 
         db.findOne(userCollection, {uName: receiver}, '', function(resultReceiver) {
             db.findOne(userCollection, {uName: sender}, '', function(resultSender) {
+                console.log("resultReceiver: " + resultReceiver);
+                console.log("resultSender: " + resultSender)
                 var updateSender = {
                     $push: {
                       sentRequest: {userId: resultReceiver._id, username: resultReceiver.uName}

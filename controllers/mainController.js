@@ -41,7 +41,7 @@ const mainController = {
             css:['global', 'error'],
             status: {
                 code: "400",
-                message: "User account has been deleted",
+                message: "Bad Request",
             },
             sessionUser: req.session.uName
         });

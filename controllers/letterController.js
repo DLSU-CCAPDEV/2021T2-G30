@@ -59,16 +59,17 @@ const letterController = {
             })
         }
         else {
-            res.status(401);
-            res.render('error', {
-                title: '401 Unauthorized Access',
-                css:['global', 'error'],
-                status: {
-                    code: "401",
-                    message: "Unauthorized access"
-                },
-                sessionUser: req.session.uName 
-            });
+            // res.status(401);
+            // res.render('error', {
+            //     title: '401 Unauthorized Access',
+            //     css:['global', 'error'],
+            //     status: {
+            //         code: "401",
+            //         message: "Unauthorized access"
+            //     },
+            //     sessionUser: req.session.uName 
+            // });
+            res.redirect('/login');
         }
 
         

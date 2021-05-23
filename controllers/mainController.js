@@ -117,7 +117,7 @@ const mainController = {
         if(req.session.uName) {
             db.findOne(userCollection, {uName: req.session.uName},'',function (result){
                 res.render('editaccount',{
-                    title: 'EditAccount',
+                    title: 'Edit Account',
                     css: ['global','settings'],
                     user: result,
                     sessionUser: req.session.uName

@@ -1,46 +1,17 @@
 # Safe Space
-Safe Space is a diary web application that aims to provide users an avenue to store moments precious to their life while providing
+Safe Space is a diary web application that aims to provide users a space to store moments precious to them while providing
 an option to add their closest friends and share entries that mean most to them. 
 
-Wi-Fi and enabling Javascript is required to get the best experience from the web application. 
+Wi-Fi and enabling Javascript in the browser is required to get the best experience from the web application. 
+
+The application is currently deployed and can be found through this link: https://safespace-ph.herokuapp.com/
+
+Instructions to run the web application locally can be found below. 
 
 ## Contributors:
-- Buensalida, Matthew
-- Dimaculangan, William
-- Rosima, Rayvhen
-
-## Instructions
-1. Clone the repository by using the command below (note: git should be installed in your system for this to work).
-
-```
-git clone https://github.com/DLSU-CCAPDEV/2021T2-G30.git 
-```
-
-2. Open Command Prompt
-
-3. Navigate to the project folder - the folder containing the contents of the cloned or downloaded repository.
-
-4. Run the command ```npm install``` to initialize and install all necessary modules used in the project.
-
-5. We may now run our server. To do this, we run the command ```npm run start```. Upon running the command, your Command Prompt should display the following statement:
-
-```
-Server running at:
-http://localhost:3000/login
-```
-
-6. Go to the link below to access the web applcation:
-```
-http://localhost:3000/login
-``` 
-
-
-## Third Party Libraries Used
-
-- [JQuery](https://jquery.com/) 
-- [FullCalendar](https://fullcalendar.io/)
-- [Bootstrap](https://getbootstrap.com/)
-- [Font Awesome](https://fontawesome.com/)
+- Buensalida, Matthew C.
+- Dimaculangan, William Mitchell C.
+- Rosima, Rayvhen Mico M.
 
 ## Dependencies
 - [bcrypt](https://www.npmjs.com/package/bcrypt)
@@ -57,15 +28,48 @@ http://localhost:3000/login
 - [multer](https://www.npmjs.com/package/multer)
 - [multer-gridfs-storage](https://www.npmjs.com/package/multer-gridfs-storage)
 
-Mainpage sources:
+## Third Party Libraries Used
+
+- [JQuery](https://jquery.com/) 
+- [FullCalendar](https://fullcalendar.io/)
+- [Bootstrap](https://getbootstrap.com/)
+- [Font Awesome](https://fontawesome.com/)
+
+## Instructions when Running Locally
+1. Clone the repository by using the command below (note: git should be installed in your system for this to work).
+
+```
+git clone https://github.com/DLSU-CCAPDEV/2021T2-G30.git 
+```
+
+2. Open Command Prompt
+
+3. Navigate to the project folder - the folder containing the contents of the cloned or downloaded repository.
+
+4. Run the command ```npm install``` to initialize and install all necessary modules used in the project.
+
+5. Run the server by typing running the command ```npm run start```. Upon running the command, your Command Prompt should display the following statement:
+
+```
+Server running at:
+http://localhost:3000/login
+```
+
+6. Go to the link below to access the web applcation:
+```
+http://localhost:3000/login
+``` 
+
+## Safe Space Features
+- [Features](https://drive.google.com/file/d/1Z3nS5hH5BAZBP3QdYXk5sbwz7DsO2rDD/view?usp=sharing) - Safe Space's list of features can be viewed in this link.
+
+## List of Images used for creating the Dummy Data:
 * https://unsplash.com/photos/3ckWUnaCxzc 
 * https://unsplash.com/photos/FgSyP02I0gw
 * https://unsplash.com/photos/toQNPpuDuwI
 * https://unsplash.com/photos/_wkd7XBRfU4
 * https://unsplash.com/photos/m_HRfLhgABo
 * https://www.walpaperlist.com/2020/01/4k-wallpaper-vertical.html
-
-Image Sources From:
 * https://pbs.twimg.com/media/ErNNDilVcAEJC9Z?format=jpg&name=large
 * https://pbs.twimg.com/media/Et1RWuBVkAIiCqa?format=jpg&name=large
 * https://pbs.twimg.com/media/Ex-5OfaXMAYu8V1?format=jpg&name=large
@@ -90,9 +94,9 @@ Image Sources From:
 * https://en.wikipedia.org/wiki/File:Sample_User_Icon.png 
 * https://icons8.com/icon/51975/time-capsule
 * https://icons-for-free.com/delete+remove+trash+trash+bin+trash+can+icon-1320073117929397588/
-* https://www.facebook.com/DpcRosima/ Respective Pictures from Rayvhen Mico Rosima
+<!-- * https://www.facebook.com/DpcRosima/ Respective Pictures from Rayvhen Mico Rosima
 * https://www.facebook.com/matthew.buensalida.1 Repsective Pictures from Matthew Buensalida
-* https://www.facebook.com/william.cruz.dimaculangan Respective Picture from William Dimaculangan
+* https://www.facebook.com/william.cruz.dimaculangan Respective Picture from William Dimaculangan -->
 
 * Copyright Disclaimer under section 107 of the Copyright Act 1976, allowance is made for “fair use” for purposes such as criticism, comment, news reporting, teaching, scholarship, education and research.
 

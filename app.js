@@ -63,7 +63,7 @@ app.use(function(req, res) {
     });
 });
 
-app.listen(port, hostname, function() {
+app.listen(port, function() {
     console.log('Server running at: ');
-    console.log('http://' + hostname + ':' + port +  '/login');
+    console.log('http://' + port +  '/login');
 }); 

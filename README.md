@@ -59,7 +59,7 @@ http://localhost:3000/login
 http://localhost:3000/login
 ``` 
 
-7. **Note:** A Wi-Fi connection is required to run the application as it uses libraries sourced from the internet. You must also create a .env file with the following format to run the application successfully:
+7. **Note:** A Wi-Fi connection is required to run the application since it uses libraries sourced from the internet. You must also create a .env file with the following format to run the application successfully:
 ```
 HOSTNAME=localhost
 PORT=3000

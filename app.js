@@ -19,7 +19,7 @@ url = process.env.DB_URL;
 // Database connection
 const db = require('./models/db.js');
 db.connect();
-
+console.log("test");
 //Session template
 app.use(session({
     'secret': 'ccapdev-session',
